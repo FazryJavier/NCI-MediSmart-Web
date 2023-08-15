@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Be Vietnam", sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    /* transition: all 0.2s linear; */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* .example::-webkit-scrollbar {
+    display: none;
+} */
+
+/* Hide scrollbar for IE, Edge and Firefox */
+/* .example {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+} */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff;
+}
+
+.container {
+    padding: 10px 10%; 
+}
+
+/* WhatsApp Button */
+.wa-button {
+    position: fixed;
+    width: 180px;
+    bottom: 15%;
+    right: 1%;
+    text-align: center;
+    z-index: 1000;
+}
+
+.wa-button a img {
+    width: 100%;
+    max-width: 60px;
+}
+
+.wa-button a img:hover {
+    transform: translateY(-10px);
+    transition: all 0.3s ease 0s;
+}
+/* End WhatsApp Button */
+
+/* Media Queries */
+@media screen and (max-width: 1500px) {
+}
+
+@media screen and (max-width: 1350px) {
+}
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 991px) {
+}
+
+@media screen and (max-width: 950px) {
+}
+
+@media screen and (max-width: 720px) {
+}
+
+@media screen and (max-width: 680px) {
+}
+
+@media screen and (max-width: 580px) {
+    /* Fixed Button */
+    .wa-button a img {
+        width: 50px;
+    }
+    /* End Fixed Button */
+}
+
+@media screen and (max-width: 500px) {
+}

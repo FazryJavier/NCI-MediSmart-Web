@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Be Vietnam", sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    /* transition: all 0.2s linear; */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* .example::-webkit-scrollbar {
+    display: none;
+} */
+
+/* Hide scrollbar for IE, Edge and Firefox */
+/* .example {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+} */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff;
+    min-height: 100vh;
+}
+
+.container {
+    padding: 10px 10%;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* BLog */
+.section-blog .blog {
+    padding: 40px 0;
+}
+
+.section-blog .blog .text {
+    margin-bottom: 50px;
+}
+
+.section-blog .blog .top-card {
+    display: flex;
+}
+
+.section-blog .blog .top-card img {
+    width: 100%;
+    max-width: 600px;
+}
+
+.section-blog .blog .top-card .description {
+    padding: 20px 50px;
+}
+
+.section-blog .blog .top-card .description h3 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+
+.section-blog .blog .top-card .description p {
+    color: #707070;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.section-blog .blog .top-card .description a {
+    color: #079d48;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.section-blog .blog .top-card .update {
+    display: flex;
+    margin-top: 30px;
+}
+
+.section-blog .blog .top-card .update .name .admin {
+    color: #242424;
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 20px;
+}
+
+.section-blog .blog .top-card .update .date .admin {
+    color: #b9b9b9;
+    font-size: 18px;
+}
+
+.section-blog .blog .bottom-card {
+    margin-top: 50px;
+}
+
+.section-blog .blog .bottom-card .wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 0 50px;
+}
+
+.section-blog .blog .bottom-card .wrapper .card .description {
+    padding: 10px 10px;
+}
+
+.section-blog .blog .bottom-card .wrapper .card a {
+    color: #079d48;
+}
+/* End Blog */
+
+/* Article */
+.section-article .article {
+    padding: 40px 0;
+}
+
+.section-article .article .wrapper {
+    display: grid;
+    gap: 30px;
+}
+
+.section-article .article .card {
+    display: flex;
+}
+
+.section-article .article .card img {
+    width: 100%;
+    max-width: 500px;
+}
+
+.section-article .article .card .description {
+    padding: 50px;
+}
+
+.section-article .article .card h3 {
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+.section-article .article .card p {
+    font-size: 18px;
+    color: #707070;
+    margin-bottom: 30px;
+}
+
+.section-article .article .card a {
+    color: #079d48;
+    font-size: 18px;
+}
+
+.section-article .article .button {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.section-article .btn-load {
+    padding: 15px 60px;
+    color: #1bad4b;
+    border: 1px solid #1bad4b;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-article .btn-load:hover {
+    background-color: #1bad4b;
+    color: #fff;
+}
+/* End Article */
+
+/* Media Queries */
+@media screen and (max-width: 1500px) {
+}
+
+@media screen and (max-width: 1350px) {
+}
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 991px) {
+}
+
+@media screen and (max-width: 950px) {
+}
+
+@media screen and (max-width: 720px) {
+}
+
+@media screen and (max-width: 680px) {
+}
+
+@media screen and (max-width: 580px) {
+}
+
+@media screen and (max-width: 500px) {
+}

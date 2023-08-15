@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Be Vietnam", sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    /* transition: all 0.2s linear; */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* .example::-webkit-scrollbar {
+    display: none;
+} */
+
+/* Hide scrollbar for IE, Edge and Firefox */
+/* .example {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+} */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff;
+    min-height: 100vh;
+}
+
+.container {
+    padding: 10px 10%;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Testimoni */
+.section-testimoni .testimoni {
+    padding: 50px 0;
+}
+
+.section-testimoni .text {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.section-testimoni .content {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.section-testimoni .content .wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 0 50px;
+}
+
+.section-testimoni .content .wrapper .card {
+    /* border: 1px solid #bcbcbc;
+    border-color: #bcbcbc;
+    border-radius: 10px; */
+    margin-bottom: 50px;
+    padding: 20px;
+}
+
+.section-testimoni .content .wrapper .card img {
+    width: 100%;
+    max-width: 100px;
+}
+
+.section-testimoni .content .wrapper .card h3 {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 0;
+}
+
+.section-testimoni .content .wrapper .card p {
+    font-size: 16px;
+}
+
+.section-testimoni .btn-load {
+    padding: 15px 60px;
+    color: #1bad4b;
+    border: 1px solid #1bad4b;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-testimoni .btn-load:hover {
+    background-color: #1bad4b;
+    color: #fff;
+}
+/* End Testimoni */
+
+/* Client */
+.section-client .client {
+    padding: 50px 0;
+}
+
+.section-client .text {
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 32px;
+}
+
+/* .section-client .image {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.section-client .image img {
+    width: 100%;
+    max-width: 1280px;
+} */
+
+.section-client .maps {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.section-client svg {
+    width: 100%;
+    max-width: 1280px;
+    height: fit-content;
+}
+
+.section-client svg path {
+    cursor: pointer;
+    fill: #1bad4b;
+}
+
+.section-client svg path:hover {
+    fill: #015028;
+    transform: translateY(-10px);
+    /* transform: scale(1.5); */
+    transition: all 0.3s ease 0.1s;
+}
+/* End Client */
+
+/* Media Queries */
+@media screen and (max-width: 950px) {
+    /* Testimoni */
+    .section-testimoni .text {
+        font-size: 32px;
+    }
+
+    .section-testimoni .btn-load {
+        padding: 10px 40px;
+        font-size: 16px;
+    }
+    /* End Testimoni */
+
+    /* Client */
+    .section-client .text {
+        font-size: 24px;
+    }
+    /* End Client */
+}
+
+@media screen and (max-width: 500px) {
+    /* Testimoni */
+    .section-testimoni .text {
+        font-size: 20px;
+    }
+
+    .section-testimoni .btn-load {
+        padding: 8px 20px;
+        font-size: 12px;
+    }
+
+    .section-testimoni .content .wrapper {
+        display: grid;
+        grid-template-columns: none;
+        grid-gap: 0 50px;
+    }
+
+    .section-testimoni .content .wrapper .card {
+        margin-bottom: 30px;
+    }
+
+    .section-testimoni .content .wrapper .card img {
+        width: 100%;
+        max-width: 70px;
+    }
+
+    .section-testimoni .content .wrapper .card h3 {
+        font-size: 16px;
+        padding: 10px 0;
+    }
+
+    .section-testimoni .content .wrapper .card p {
+        font-size: 12px;
+    }
+    /* End Testimoni */
+
+    /* Client */
+    .section-client .text {
+        font-size: 18px;
+    }
+    /* End Client */
+}

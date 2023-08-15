@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Be Vietnam", sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    /* transition: all 0.2s linear; */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* .example::-webkit-scrollbar {
+    display: none;
+} */
+
+/* Hide scrollbar for IE, Edge and Firefox */
+/* .example {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+} */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff;
+    min-height: 100vh;
+}
+
+.container {
+    padding: 10px 10%;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Video Views */
+.section-video .video-view {
+    background-color: #079d48;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    padding: 30px;
+}
+
+.section-video .video-view .text {
+    padding-bottom: 30px;
+    font-size: 32px;
+    letter-spacing: 2px;
+}
+
+.section-video .video-view .content iframe {
+    border-radius: 50px;
+    width: 100%;
+    max-width: 1080px;
+}
+/* End Video Views */
+
+/* Visi Misi */
+.section-visimisi .visimisi {
+    background-color: #fff;
+    color: #242424;
+    padding: 60px 0;
+}
+
+.section-visimisi .visimisi .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.section-visimisi .visimisi .content img {
+    width: 100%;
+    max-width: 370px;
+}
+
+.section-visimisi .visimisi .content p {
+    font-size: 30px;
+    padding: 0 48px;
+    letter-spacing: 2px;
+    text-align: justify;
+}
+
+.section-visimisi .visimisi .text {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.section-visimisi .visimisi .columns {
+    border: 1px solid #242424;
+    border-radius: 20px;
+    flex-basis: 50%;
+}
+
+.section-visimisi .visimisi .text .card {
+    padding: 20px 50px;
+}
+
+.section-visimisi .visimisi .text h1 {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.section-visimisi .visimisi .text p {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+/* End Visi Misi */
+
+/* Media Queries */
+@media screen and (max-width: 1500px) {
+}
+
+@media screen and (max-width: 1350px) {
+}
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 991px) {
+}
+
+@media screen and (max-width: 950px) {
+    /* Visi Misi */
+    .section-visimisi .visimisi .content {
+        display: block;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 100px;
+    }
+
+    .section-visimisi .visimisi .content {
+        text-align: center;
+    }
+
+    .section-visimisi .visimisi .content img {
+        margin-bottom: 20px;
+    }
+
+    .section-visimisi .visimisi .content p {
+        text-align: center;
+    }
+    /* End Visi Misi */
+}
+
+@media screen and (max-width: 720px) {
+    /* Visi Misi */
+    .section-visimisi .visimisi .text {
+        display: block;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .section-visimisi .visimisi .columns {
+        flex-basis: 50%;
+        margin-bottom: 20px;
+    }
+    /* End Visi Misi */
+}
+
+@media screen and (max-width: 680px) {
+}
+
+@media screen and (max-width: 580px) {
+}
+
+@media screen and (max-width: 500px) {
+    /* Video Views */
+    .section-video .video-view .text {
+        font-size: 24px;
+    }
+    /* End Video Views */
+
+    /* Visi Misi */
+    .section-visimisi .visimisi .content {
+        margin-bottom: 50px;
+    }
+
+    .section-visimisi .visimisi .content img {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .section-visimisi .visimisi .content p {
+        font-size: 18px;
+    }
+
+    .section-visimisi .visimisi .text h1 {
+        font-size: 24px;
+    }
+    
+    .section-visimisi .visimisi .text p {
+        font-size: 16px;
+    }
+    /* End Visi Misi */
+}
