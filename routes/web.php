@@ -32,3 +32,7 @@ Route::get('/Blog', function () {
 Route::get('/DetailBlog', function () {
     return view('UserPage/Pages/detail');
 });
+
+Route::get('/Modul', function () {
+    return view('UserPage/Pages/modul');
+});

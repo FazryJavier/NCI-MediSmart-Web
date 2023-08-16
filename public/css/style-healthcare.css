@@ -55,7 +55,7 @@ a {
 }
 
 .section-video .video-view .content iframe {
-    border-radius: 50px;
+    border-radius: 20px;
     width: 100%;
     max-width: 1080px;
 }
