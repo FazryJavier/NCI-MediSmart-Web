@@ -163,6 +163,7 @@ a {
     font-size: 20px;
     color: #242424;
     margin-bottom: 20px;
+    white-space: nowrap;
 }
 
 .section-fasilitas .fasilitas .content ul li i {

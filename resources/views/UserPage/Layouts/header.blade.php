@@ -56,18 +56,30 @@
                         <ul class="nav-list">
                             <li class="nav-item"><a href="#" class="nav-link">Produk <span>&#x25BE;</span></a>
                                 <ul class="nav-list-2">
-                                    <li class="nav-item-2"><a href="#" class="nav-link">SIMRS NCI MEDISMART</a>
+                                    <li class="nav-item-2">
+                                        {{-- <img src="{{ asset('assets/img/simrs.png') }}" alt=""> --}}
+                                        <a href="#" class="nav-link">SIMRS NCI MEDISMART
+                                            <p>Sistem Informasi Manajemen Rumah Sakit </p>
+                                        </a>
                                     </li>
-                                    <li class="nav-item-2"><a href="#" class="nav-link">RME NCI MEDISMART</a>
+                                    <li class="nav-item-2">
+                                        {{-- <img src="{{ asset('assets/img/rme.png') }}" alt=""> --}}
+                                        <a href="#" class="nav-link">RME NCI MEDISMART
+                                            <p>Rekam Medis Elektronik</p>
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a href="#" class="nav-link">Tentang Kami
                                     <span>&#x25BE;</span></a>
                                 <ul class="nav-list-2">
-                                    <li class="nav-item-2"><a href="/HealthcareSolution" class="nav-link">Healthcare
+                                    <li class="nav-item-2">
+                                        {{-- <img src="{{ asset('assets/img/healthcare.png') }}" alt=""> --}}
+                                        <a href="/HealthcareSolution" class="nav-link">Healthcare
                                             Solution</a></li>
-                                    <li class="nav-item-2"><a href="http://nuansa.com/2019/" class="nav-link" target="_blank">PT Nuansa Cerah
+                                    <li class="nav-item-2">
+                                        {{-- <img src="{{ asset('assets/img/pt-nci.png') }}" alt=""> --}}
+                                        <a href="http://nuansa.com/2019/" class="nav-link" target="_blank">PT Nuansa Cerah
                                             Informasi</a>
                                     </li>
                                 </ul>

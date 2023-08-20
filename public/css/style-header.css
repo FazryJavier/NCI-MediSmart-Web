@@ -161,7 +161,8 @@ header {
 .navbar ul li ul {
     position: absolute;
     left: 0;
-    width: 200px;
+    /* width: 300px; */
+    width: auto;
     background: #fff;
     display: none;
 }
@@ -170,10 +171,29 @@ header {
     width: 100%;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     list-style: none;
+    white-space: nowrap;
 }
 
 .navbar ul li:hover > ul {
     display: initial;
+}
+
+.nav-item-2 {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.nav-item-2 img {
+    width: 38px;
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}
+
+.nav-item-2 p {
+    font-size: 12px;
+    color: #707070;
 }
 
 .nav-link {
@@ -289,6 +309,12 @@ header {
         max-width: 100px;
     }
     /* End Top Bar */
+
+    /* Bottom Bar */
+    .bottom-bar .navbar {
+        top: 130px;
+    }
+    /* End Bottom Bar */
 
     /* Menu Bar */
     .bottom-bar label {
