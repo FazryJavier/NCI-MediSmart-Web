@@ -57,15 +57,21 @@
                             <li class="nav-item"><a href="#" class="nav-link">Produk <span>&#x25BE;</span></a>
                                 <ul class="nav-list-2">
                                     <li class="nav-item-2">
-                                        {{-- <img src="{{ asset('assets/img/simrs.png') }}" alt=""> --}}
-                                        <a href="#" class="nav-link">SIMRS NCI MEDISMART
-                                            <p>Sistem Informasi Manajemen Rumah Sakit </p>
+                                        <a href="#" class="nav-link">
+                                            <img src="{{ asset('assets/img/simrs.png') }}" alt="">
+                                            <div class="text">
+                                                <h5>SIMRS NCI MEDISMART</h5>
+                                                <p>Sistem Informasi Manajemen Rumah Sakit </p>
+                                            </div>
                                         </a>
                                     </li>
                                     <li class="nav-item-2">
-                                        {{-- <img src="{{ asset('assets/img/rme.png') }}" alt=""> --}}
-                                        <a href="#" class="nav-link">RME NCI MEDISMART
-                                            <p>Rekam Medis Elektronik</p>
+                                        <a href="#" class="nav-link">
+                                            <img src="{{ asset('assets/img/rme.png') }}" alt="">
+                                            <div class="text">
+                                                <h5>RME NCI MEDISMART</h5>
+                                                <p>Rekam Medis Elektronik</p>
+                                            </div>
                                         </a>
                                     </li>
                                 </ul>
@@ -74,13 +80,18 @@
                                     <span>&#x25BE;</span></a>
                                 <ul class="nav-list-2">
                                     <li class="nav-item-2">
-                                        {{-- <img src="{{ asset('assets/img/healthcare.png') }}" alt=""> --}}
-                                        <a href="/HealthcareSolution" class="nav-link">Healthcare
-                                            Solution</a></li>
+                                        <a href="/HealthcareSolution" class="nav-link">
+                                            <img src="{{ asset('assets/img/healthcare.png') }}" alt="">
+                                            <h5>Healthcare Solution</h5>
+                                            <p></p>
+                                        </a>
+                                    </li>
                                     <li class="nav-item-2">
-                                        {{-- <img src="{{ asset('assets/img/pt-nci.png') }}" alt=""> --}}
-                                        <a href="http://nuansa.com/2019/" class="nav-link" target="_blank">PT Nuansa Cerah
-                                            Informasi</a>
+                                        <a href="http://nuansa.com/2019/" class="nav-link" target="_blank">
+                                            <img src="{{ asset('assets/img/pt-nci.png') }}" alt="">
+                                            <h5>PT Nuansa Cerah Informasi</h5>
+                                            <p></p>
+                                        </a>
                                     </li>
                                 </ul>
                             </li>

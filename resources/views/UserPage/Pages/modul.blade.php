@@ -89,19 +89,16 @@
                         <div class="list">
                             <ul>
                                 <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Import data
-                                    pelayanan
-                                    Pasien</li>
+                                    pelayanan Pasien</li>
                                 <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi proses,
                                     grouper tarif dengan software INA-CBGs</li>
                                 <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Setup ICD IX</li>
                                 <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Rekap Biaya
                                     Pelayanan vs Tarif INA-CBGs</li>
                                 <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan jasa medis
-                                    dan
-                                    Paramedis</li>
+                                    dan Paramedis</li>
                                 <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan perbandingan
-                                    SEP
-                                    dan Claim</li>
+                                    SEP dan Claim</li>
                             </ul>
                         </div>
                     </div>
@@ -121,8 +118,7 @@
                                 <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Rekapitulasi
                                     Tarif Per Pasien</li>
                                 <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Rekap Claim
-                                    BPJS-Rawat
-                                    Jalan</li>
+                                    BPJS-Rawat Jalan</li>
                                 <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Individual
                                     Pasien</li>
                             </ul>
@@ -141,7 +137,67 @@
     <section class="section-testimoni">
         <div class="testimoni">
             <div class="container">
+                <div class="text">
+                    <h1>Apa kata klient tentang kami</h1>
+                </div>
+                <div class="content swiper mySwiper">
+                    <div class="wrapper swiper-wrapper">
+                        <div class="card swiper-slide">
+                            <div class="image">
+                                <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
+                            </div>
+                            <div class="description">
+                                <h3>RSU Bhaksi Asih</h3>
+                                <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian
+                                    dan pelaporan. Support personil site dan dukungan purna jual dari kantor pusat,
+                                    sangat membantu rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"
+                                </p>
+                            </div>
+                        </div>
 
+                        <div class="card swiper-slide">
+                            <div class="image">
+                                <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
+                            </div>
+                            <div class="description">
+                                <h3>RSU Bhaksi Asih</h3>
+                                <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian
+                                    dan pelaporan. Support personil site dan dukungan purna jual dari kantor pusat,
+                                    sangat membantu rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card swiper-slide">
+                            <div class="image">
+                                <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
+                            </div>
+                            <div class="description">
+                                <h3>RSU Bhaksi Asih</h3>
+                                <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian
+                                    dan pelaporan. Support personil site dan dukungan purna jual dari kantor pusat,
+                                    sangat membantu rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card swiper-slide">
+                            <div class="image">
+                                <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
+                            </div>
+                            <div class="description">
+                                <h3>RSU Bhaksi Asih</h3>
+                                <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian
+                                    dan pelaporan. Support personil site dan dukungan purna jual dari kantor pusat,
+                                    sangat membantu rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next nav-btn"></div>
+                    <div class="swiper-button-prev nav-btn"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -160,5 +216,30 @@
 <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
 
 <script src="{{ asset('js/Script.js') }}"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        loop: true,
+        spaceBetween: 10,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            dynamicBullets: true,
+            type: "bullets"
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
 
 </html>

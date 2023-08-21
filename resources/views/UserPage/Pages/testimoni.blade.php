@@ -32,7 +32,8 @@
                             <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
                             <h3>RSU Bhaksi Asih</h3>
                             <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat membantu
+                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
+                                membantu
                                 rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
                         </div>
 
@@ -40,7 +41,8 @@
                             <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
                             <h3>RSU Bhaksi Asih</h3>
                             <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat membantu
+                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
+                                membantu
                                 rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
                         </div>
 
@@ -48,7 +50,8 @@
                             <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
                             <h3>RSU Bhaksi Asih</h3>
                             <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat membantu
+                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
+                                membantu
                                 rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
                         </div>
 
@@ -56,7 +59,8 @@
                             <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
                             <h3>RSU Bhaksi Asih</h3>
                             <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat membantu
+                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
+                                membantu
                                 rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
                         </div>
 
@@ -64,7 +68,8 @@
                             <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
                             <h3>RSU Bhaksi Asih</h3>
                             <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat membantu
+                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
+                                membantu
                                 rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
                         </div>
 
@@ -72,11 +77,40 @@
                             <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
                             <h3>RSU Bhaksi Asih</h3>
                             <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat membantu
+                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
+                                membantu
+                                rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
+                        </div>
+
+                        <div class="card">
+                            <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
+                            <h3>RSU Bhaksi Asih</h3>
+                            <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
+                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
+                                membantu
+                                rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
+                        </div>
+
+                        <div class="card">
+                            <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
+                            <h3>RSU Bhaksi Asih</h3>
+                            <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
+                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
+                                membantu
+                                rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
+                        </div>
+
+                        <div class="card">
+                            <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
+                            <h3>RSU Bhaksi Asih</h3>
+                            <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
+                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
+                                membantu
                                 rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
                         </div>
                     </div>
-                    <a href="#" class="btn-load">load More</a>
+                    <div class="btn-load">load More</div>
+                    <div class="btn-less">load Less</div>
                 </div>
             </div>
         </div>
@@ -255,11 +289,51 @@
     {{-- Footer --}}
     @include('UserPage.Layouts.footer')
     {{-- End Footer --}}
+
 </body>
 
 <!-- Swiper JS -->
 <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
 
 <script src="{{ asset('js/Script.js') }}"></script>
+
+{{-- Load More --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let loadMoreBtn = document.querySelector('.btn-load');
+        let loadLessBtn = document.querySelector('.btn-less');
+        let currentItem = 6;
+
+        loadMoreBtn.addEventListener('click', () => {
+            let boxes = document.querySelectorAll('.section-testimoni .content .wrapper .card');
+
+            for (var i = currentItem; i < currentItem + 3 && i < boxes.length; i++) {
+                boxes[i].style.display = 'block';
+            }
+
+            currentItem += 3;
+
+            if (currentItem >= boxes.length) {
+                loadMoreBtn.style.display = 'none';
+                // loadLessBtn.style.display = 'inline-block';
+            }
+        });
+
+        // loadLessBtn.addEventListener('click', () => {
+        //     let boxes = document.querySelectorAll('.section-testimoni .content .wrapper .card');
+
+        //     for (var i = boxes.length - 1; i >= currentItem - 3; i--) {
+        //         boxes[i].style.display = 'none';
+        //     }
+
+        //     currentItem -= 3;
+
+        //     if (currentItem <= 3) {
+        //         loadMoreBtn.style.display = 'inline-block';
+        //         loadLessBtn.style.display = 'none';
+        //     }
+        // });
+    });
+</script>
 
 </html>

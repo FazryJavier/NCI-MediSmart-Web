@@ -68,6 +68,16 @@ a {
     border-radius: 10px; */
     margin-bottom: 50px;
     padding: 20px;
+    display: none;
+}
+
+.section-testimoni .content .wrapper .card:nth-child(1),
+.section-testimoni .content .wrapper .card:nth-child(2),
+.section-testimoni .content .wrapper .card:nth-child(3),
+.section-testimoni .content .wrapper .card:nth-child(4),
+.section-testimoni .content .wrapper .card:nth-child(5),
+.section-testimoni .content .wrapper .card:nth-child(6) {
+    display: block;
 }
 
 .section-testimoni .content .wrapper .card img {
@@ -96,8 +106,24 @@ a {
     text-align: center;
     justify-content: center;
     align-items: center;
+    display: inline-block;
 }
 
+.section-testimoni .btn-less {
+    padding: 15px 60px;
+    color: #1bad4b;
+    border: 1px solid #1bad4b;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.section-testimoni .btn-less:hover,
 .section-testimoni .btn-load:hover {
     background-color: #1bad4b;
     color: #fff;
