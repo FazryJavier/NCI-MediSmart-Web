@@ -49,15 +49,33 @@ a {
 }
 
 .section-video .video-view .text {
-    padding-bottom: 30px;
+    padding-bottom: 10px;
     font-size: 32px;
     letter-spacing: 2px;
 }
 
-.section-video .video-view .content iframe {
-    border-radius: 20px;
+.section-video .video-view .content {
     width: 100%;
-    max-width: 1080px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.section-video .video-view .content .video {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    background-color: #079d48;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.section-video .video-view .content iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
 /* End Video Views */
 

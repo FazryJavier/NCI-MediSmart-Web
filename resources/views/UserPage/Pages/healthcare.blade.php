@@ -28,11 +28,12 @@
                     <h1>NCI - MediSmart</h1>
                 </div>
                 <div class="content">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/65pOIFtQUyg"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen controls muted></iframe>
-                    {{-- <video src="{{ asset('assets/vid/dummy.mp4') }}" controls muted></video> --}}
+                    <div class="video">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/65pOIFtQUyg"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen controls muted></iframe>
+                    </div>
                 </div>
             </div>
         </div>
