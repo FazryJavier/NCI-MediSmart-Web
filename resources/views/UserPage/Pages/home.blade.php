@@ -29,6 +29,7 @@
                     <h1>
                         Solusi Teknologi Penunjang Fasilitas <br> Pelayanan Kesehatan <br> Sejak 1991
                     </h1>
+                    <h3>Caption dari Judul Utama Per slider</h3>
                     <a href="" class="button-1">Hubungi Kami</a>
                     <a href="" class="button-2">Pelajari Lanjut</a>
                 </div>
@@ -40,6 +41,7 @@
                     <h1>
                         Solusi Teknologi Penunjang Fasilitas <br> Pelayanan Kesehatan <br> Sejak 1991
                     </h1>
+                    <h3>Caption dari Judul Utama Per slider</h3>
                     <a href="" class="button-1">Hubungi Kami</a>
                 </div>
             </div>
@@ -50,6 +52,7 @@
                     <h1>
                         Solusi Teknologi Penunjang Fasilitas <br> Pelayanan Kesehatan <br> Sejak 1991
                     </h1>
+                    <h3>Caption dari Judul Utama Per slider</h3>
                     <a href="" class="button-2">Pelajari Lanjut</a>
                 </div>
             </div>
@@ -64,24 +67,25 @@
     {{-- Client --}}
     <section class="section-client">
         <div class="client">
-            <div class="col">
-                <div class="row1">
-                    <p><b>Layanan kesehatan yang bekerja sama dengan kami</b></p>
+            <div class="container">
+                <div class="title">
+                    <h3><b>Layanan kesehatan yang bekerja sama dengan kami</b></h3>
                 </div>
                 <div class="container-line">
                     <div class="center-line"></div>
                 </div>
-                <div class="row2">
+                <div class="image">
                     <img src="{{ asset('assets/img/Client.png') }}" alt="Client">
                 </div>
-                <div class="custom-shape-divider-bottom-1690273045">
-                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                        preserveAspectRatio="none">
-                        <path
-                            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                            class="shape-fill"></path>
-                    </svg>
-                </div>
+            </div>
+            
+            <div class="custom-shape-divider-bottom-1690273045">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                        class="shape-fill"></path>
+                </svg>
             </div>
         </div>
     </section>
@@ -306,7 +310,7 @@
     </section>
     {{-- End Video View --}}
 
-    {{-- News --}}
+    {{-- Blog --}}
     {{-- <section class="section-news">
         <div class="news">
             <div class="container">
@@ -316,112 +320,107 @@
         </div>
     </section> --}}
 
-    <div id="blog">
-        <div class="container">
-            <h1 class="sub-title">News & Update</h1>
-            <div class="slide-container swiper">
-                <div class="slide-content">
-                    <div class="card-wrapper swiper-wrapper">
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
+    <section class="section-blog">
+        <div class="blog">
+            <div class="container">
+                <div class="title">
+                    <h1><b>News & Update</b></h1>
+                </div>
 
-                                <div class="card-image">
-                                    <img src="{{ asset('assets/img/produk-1.png') }}" alt=""
-                                        class="card-img">
+                <div class="content swiper mySwiper-2">
+                    <div class="wrapper swiper-wrapper">
+                        <div class="card swiper-slide">
+                            <div class="line">
+                                <div class="image">
+                                    <img src="{{ asset('assets/img/blog1.png') }}" alt="">
                                 </div>
-                            </div>
-                            <div class="card-content">
-                                <h2 class="pengalaman">Pengalam Kami dalam mengggunakan SIM-RS NCI MediSmart</h2>
-                                <p class="descript">Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam
-                                    Bandung
-                                    dengan penggunaan SIMRS NCI-Medismart diantaranya adalah kecepatan dalam pengambilan
-                                    keputusan,
-                                    akurasi dalam mengidentifikasi masalah, kemudahan menyususn strategi...
-                                </p>
-                                <a class="button" href="#">Pelajari Lebih</a>
+                                <div class="description">
+                                    <h3>Pengalaman Kami menggunakan SIM-RS NCI MediSmart</h3>
+                                    <p>Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam Bandung dengan
+                                        penggunaan SIMRS NCI-MediSmart diantaranya adalah kecepatan dalam pengambilan
+                                        keputusan, akurasi dalam mengidentifikasi masalah, kemudahan menyusun
+                                        strategi...
+                                    </p>
+                                    <div class="button">
+                                        <a href="#">Pelajari Lanjut</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
 
-                                <div class="card-image">
-                                    <img src="{{ asset('assets/img/produk-1.png') }}" alt=""
-                                        class="card-img">
+                        <div class="card swiper-slide">
+                            <div class="line">
+                                <div class="image">
+                                    <img src="{{ asset('assets/img/blog1.png') }}" alt="">
                                 </div>
-                            </div>
-                            <div class="card-content">
-                                <h2 class="pengalaman">Pengalam Kami dalam mengggunakan SIM-RS NCI MediSmart</h2>
-                                <p class="descript">Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam
-                                    Bandung
-                                    dengan penggunaan SIMRS NCI-Medismart diantaranya adalah kecepatan dalam pengambilan
-                                    keputusan,
-                                    akurasi dalam mengidentifikasi masalah, kemudahan menyususn strategi...
-                                </p>
-                                <a class="button" href="#">Pelajari Lebih</a>
+                                <div class="description">
+                                    <h3>Pengalaman Kami menggunakan SIM-RS NCI MediSmart</h3>
+                                    <p>Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam Bandung dengan
+                                        penggunaan SIMRS NCI-MediSmart diantaranya adalah kecepatan dalam pengambilan
+                                        keputusan, akurasi dalam mengidentifikasi masalah, kemudahan menyusun
+                                        strategi...
+                                    </p>
+                                    <div class="button">
+                                        <a href="#">Pelajari Lanjut</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
 
-                                <div class="card-image">
-                                    <img src="{{ asset('assets/img/produk-1.png') }}" alt=""
-                                        class="card-img">
+                        <div class="card swiper-slide">
+                            <div class="line">
+                                <div class="image">
+                                    <img src="{{ asset('assets/img/blog1.png') }}" alt="">
                                 </div>
-                            </div>
-                            <div class="card-content">
-                                <h2 class="pengalaman">Pengalam Kami dalam mengggunakan SIM-RS NCI MediSmart</h2>
-                                <p class="descript">Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam
-                                    Bandung
-                                    dengan penggunaan SIMRS NCI-Medismart diantaranya adalah kecepatan dalam pengambilan
-                                    keputusan,
-                                    akurasi dalam mengidentifikasi masalah, kemudahan menyususn strategi...
-                                </p>
-                                <a class="button" href="#">Pelajari Lebih</a>
+                                <div class="description">
+                                    <h3>Pengalaman Kami menggunakan SIM-RS NCI MediSmart</h3>
+                                    <p>Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam Bandung dengan
+                                        penggunaan SIMRS NCI-MediSmart diantaranya adalah kecepatan dalam pengambilan
+                                        keputusan, akurasi dalam mengidentifikasi masalah, kemudahan menyusun
+                                        strategi...
+                                    </p>
+                                    <div class="button">
+                                        <a href="#">Pelajari Lanjut</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-
-                                <div class="card-image">
-                                    <img src="{{ asset('assets/img/produk-1.png') }}" alt=""
-                                        class="card-img">
+                            <div class="line">
+                                <div class="image">
+                                    <img src="{{ asset('assets/img/blog1.png') }}" alt="">
                                 </div>
-                            </div>
-                            <div class="card-content">
-                                <h2 class="pengalaman">Pengalam Kami dalam mengggunakan SIM-RS NCI MediSmart</h2>
-                                <p class="descript">Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam
-                                    Bandung
-                                    dengan penggunaan SIMRS NCI-Medismart diantaranya adalah kecepatan dalam pengambilan
-                                    keputusan,
-                                    akurasi dalam mengidentifikasi masalah, kemudahan menyususn strategi...
-                                </p>
-                                <a class="button" href="#">Pelajari Lebih</a>
-
+                                <div class="description">
+                                    <h3>Pengalaman Kami menggunakan SIM-RS NCI MediSmart</h3>
+                                    <p>Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam Bandung dengan
+                                        penggunaan SIMRS NCI-MediSmart diantaranya adalah kecepatan dalam pengambilan
+                                        keputusan, akurasi dalam mengidentifikasi masalah, kemudahan menyusun
+                                        strategi...
+                                    </p>
+                                    <div class="button">
+                                        <a href="#">Pelajari Lanjut</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-
-                                <div class="card-image">
-                                    <img src="{{ asset('assets/img/produk-1.png') }}" alt=""
-                                        class="card-img">
+                            <div class="line">
+                                <div class="image">
+                                    <img src="{{ asset('assets/img/blog1.png') }}" alt="">
                                 </div>
-                            </div>
-                            <div class="card-content">
-                                <h2 class="pengalaman">Pengalam Kami dalam mengggunakan SIM-RS NCI MediSmart</h2>
-                                <p class="descript">Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam
-                                    Bandung
-                                    dengan penggunaan SIMRS NCI-Medismart diantaranya adalah kecepatan dalam pengambilan
-                                    keputusan,
-                                    akurasi dalam mengidentifikasi masalah, kemudahan menyususn strategi...
-                                </p>
-                                <a class="button" href="#">Pelajari Lebih</a>
-
+                                <div class="description">
+                                    <h3>Pengalaman Kami menggunakan SIM-RS NCI MediSmart</h3>
+                                    <p>Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam Bandung dengan
+                                        penggunaan SIMRS NCI-MediSmart diantaranya adalah kecepatan dalam pengambilan
+                                        keputusan, akurasi dalam mengidentifikasi masalah, kemudahan menyusun
+                                        strategi...
+                                    </p>
+                                    <div class="button">
+                                        <a href="#">Pelajari Lanjut</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -429,8 +428,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    {{-- End News --}}
+    </section>
+    {{-- End Blog --}}
 
     {{-- Footer --}}
     @include('UserPage.Layouts.footer')
@@ -442,7 +441,7 @@
 
 <script src="{{ asset('js/Script.js') }}"></script>
 
-<!-- Initialize Swiper -->
+<!-- Initialize Swiper Home -->
 <script>
     var swiper = new Swiper(".mySwiper", {
         slidesPerView: 1,
@@ -456,6 +455,34 @@
         navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
+
+<!-- Initialize Swiper Blog -->
+<script>
+    var swiper = new Swiper(".mySwiper-2", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            dynamicBullets: true,
+            type: "bullets"
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
         },
     });
 </script>

@@ -66,7 +66,9 @@
                                     Sakit...
                                 </p>
                             </div>
-                            <a href="#">Pelajari Lanjut</a>
+                            <div class="button">
+                                <a href="#">Pelajari Lanjut</a>
+                            </div>
                         </div>
 
                         <div class="card">
@@ -83,7 +85,9 @@
                                     Elektronik yang..
                                 </p>
                             </div>
-                            <a href="#">Pelajari Lanjut</a>
+                            <div class="button">
+                                <a href="#">Pelajari Lanjut</a>
+                            </div>
                         </div>
 
                         <div class="card">
@@ -100,7 +104,9 @@
                                     kelainan....
                                 </p>
                             </div>
-                            <a href="#">Pelajari Lanjut</a>
+                            <div class="button">
+                                <a href="#">Pelajari Lanjut</a>
+                            </div>
                         </div>
                     </div>
                 </div>

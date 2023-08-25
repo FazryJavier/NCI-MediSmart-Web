@@ -75,8 +75,17 @@ body {
 
 @media screen and (max-width: 580px) {
     /* Fixed Button */
+    .wa-button {
+        position: fixed;
+        width: 180px;
+        bottom: 10%;
+        right: -10%;
+        text-align: center;
+        z-index: 1000;
+    }
+    
     .wa-button a img {
-        width: 50px;
+        width: 40px;
     }
     /* End Fixed Button */
 }
