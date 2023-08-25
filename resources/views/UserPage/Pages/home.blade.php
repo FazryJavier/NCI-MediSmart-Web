@@ -288,21 +288,22 @@
 
     {{-- Video View --}}
     <section class="section-video">
-        <div id="video-view">
+        <div class="video-view">
             <div class="container">
                 <div class="content">
                     <div class="text">
                         <h1>Bersama Membangun Layanan Kesehatan Dalam Era Revolusi Industri 4.0</h1>
                         <p>NCI-MediSmart memberikan solusi bagi fasilitas kesehatan Indonesia untuk bertransformasi
                             dengan layanan digital dan teknologi terbarukan untuk mendukung fasilitas kesehatan mencapai
-                            hasil terbaik dengan skala yang besar.</p>
+                            hasil terbaik dengan skala yang besar.
+                        </p>
                     </div>
+                    
                     <div class="video">
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/65pOIFtQUyg"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen controls muted></iframe>
-                        {{-- <video src="{{ asset('assets/vid/dummy.mp4') }}" controls muted></video> --}}
                     </div>
                 </div>
             </div>
@@ -311,15 +312,6 @@
     {{-- End Video View --}}
 
     {{-- Blog --}}
-    {{-- <section class="section-news">
-        <div class="news">
-            <div class="container">
-                <div class="sub-title">News & Update</div>
-                
-            </div>
-        </div>
-    </section> --}}
-
     <section class="section-blog">
         <div class="blog">
             <div class="container">

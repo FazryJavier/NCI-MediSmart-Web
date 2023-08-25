@@ -424,27 +424,12 @@ body {
 /* Our Product End */
 
 /* Video View */
-#video-view {
+.section-video .video-view {
     background-color: #015028;
     display: flex;
 }
 
-#video-view .text {
-    color: #fff;
-    margin-right: 35%;
-}
-
-#video-view .text p {
-    font-size: 20px;
-    margin-top: 2%;
-}
-
-#video-view iframe {
-    width: 100%;
-    border-radius: 50px;
-}
-
-#video-view .content {
+.section-video .video-view .content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 40px;
@@ -455,28 +440,26 @@ body {
     flex-direction: column;
 }
 
-@media screen and (max-width: 1350px) {
-    #video-view .text {
-        margin-right: 0;
-    }
+.section-video .video-view .text {
+    color: #fff;
+    margin-right: 35%;
 }
 
-@media screen and (max-width: 991px) {
-    #video-view .content {
-        justify-content: center;
-        text-align: center;
-        align-items: center;
-    }
-
-    #video-view .content {
-        grid-template-columns: 1fr;
-    }
-
-    #video-view .text {
-        margin-right: 0;
-    }
+.section-video .video-view .text h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
 }
-/* Video View End */
+
+.section-video .video-view .text p {
+    font-size: 20px;
+    margin-top: 2%;
+}
+
+.section-video .video-view .video iframe {
+    width: 100%;
+    border-radius: 50px;
+}
+/* End Video View */
 
 /* Blog */
 .section-blog .blog .title {
@@ -555,13 +538,18 @@ body {
 .section-blog .swiper-pagination-bullet-active {
     background-color: #015028;
 }
-/* Blog End */
+/* End Blog */
 
 /* Media Queries */
 @media screen and (max-width: 1500px) {
 }
 
 @media screen and (max-width: 1350px) {
+    /* Video View */
+    .section-video .video-view .text {
+        margin-right: 0;
+    }
+    /* End Video View */
 }
 
 @media screen and (max-width: 1200px) {
@@ -574,6 +562,12 @@ body {
         width: 100%;
     }
     /* End Experience */
+
+    /* Video View */
+    .section-video .video-view .text {
+        margin-right: 0;
+    }
+    /* End Video View */
 }
 
 @media screen and (max-width: 950px) {
@@ -585,17 +579,26 @@ body {
         top: 20%;
     }
     /* End Header Text */
+
+    /* Blog */
+    .section-video .video-view .content {
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        grid-template-columns: 1fr;
+    }
+    /* End Blog */
 }
 
 @media screen and (max-width: 720px) {
 }
 
 @media screen and (max-width: 680px) {
-        /* Header Text */   
-        .section-header .nav-btn {
-            display: none;
-        }
-        /* End Header Text */
+    /* Header Text */
+    .section-header .nav-btn {
+        display: none;
+    }
+    /* End Header Text */
 }
 
 @media screen and (max-width: 580px) {
@@ -607,11 +610,11 @@ body {
     .section-header .slide .image-date h1 {
         font-size: 38px;
     }
-    
+
     .section-header .slide .image-date h3 {
         font-size: 18px;
     }
-    
+
     .section-header .slide a {
         padding: 15px 20px;
         font-size: 14px;
@@ -633,29 +636,35 @@ body {
 }
 
 @media screen and (max-width: 350px) {
-        /* Header Text */
-        .section-header .slide .image-date {
-            top: 15%;
-        }
+    /* Header Text */
+    .section-header .slide .image-date {
+        top: 15%;
+    }
 
-        .section-header .slide .image-date h1 {
-            font-size: 28px;
-        }
-        
-        .section-header .slide .image-date h3 {
-            font-size: 12px;
-        }
-        
-        .section-header .slide a {
-            padding: 10px 15px;
-            font-size: 12px;
-            margin-top: 10px;
-        }
-        /* End Header Text */
+    .section-header .slide .image-date h1 {
+        font-size: 28px;
+    }
 
-            /* Client */
+    .section-header .slide .image-date h3 {
+        font-size: 12px;
+    }
+
+    .section-header .slide a {
+        padding: 10px 15px;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+    /* End Header Text */
+
+    /* Client */
     .section-client .client .title h3 {
         font-size: 20px;
     }
     /* End Client */
+
+    /* Blog */
+    .section-blog .blog .title h1 {
+        font-size: 30px;
+    }
+    /* End Blog */
 }
