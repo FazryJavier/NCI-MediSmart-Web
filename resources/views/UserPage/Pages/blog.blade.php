@@ -197,16 +197,16 @@
     document.addEventListener('DOMContentLoaded', function() {
         let loadMoreBtn = document.querySelector('.btn-load');
         let loadLessBtn = document.querySelector('.btn-less');
-        let currentItem = 6;
+        let currentItem = 2;
 
         loadMoreBtn.addEventListener('click', () => {
             let boxes = document.querySelectorAll('.section-testimoni .content .wrapper .card');
 
-            for (var i = currentItem; i < currentItem + 3 && i < boxes.length; i++) {
+            for (var i = currentItem; i < currentItem + 2 && i < boxes.length; i++) {
                 boxes[i].style.display = 'block';
             }
 
-            currentItem += 3;
+            currentItem += 2;
 
             if (currentItem >= boxes.length) {
                 loadMoreBtn.style.display = 'none';
