@@ -6,91 +6,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style-demo.css') }}">
     {{-- Swiper CSS --}}
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
+    {{-- Bootstrap --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
     {{-- Header --}}
-    {{-- End Header --}}
-
-    {{-- Demo --}}
-    {{-- End Demo --}}
-
-    {{-- Footer --}}
-    {{-- End Footer --}}
-
-
-    <header class="header">
+    <header>
         <nav class="navbar">
-            <div class="navbar-content">
-                <div class="left-content">
-                    <div class="logout">
-                        <a href="/" class="btn default">
-                            < Kembali </a>
-                    </div>
-                </div>
-                <div class="right-content">
-                    <a href="/" class="logo"><img src="{{ asset('assets/img/Logo Medismart.png') }}"
-                            alt="Medismart" class="logo" /></a>
-                </div>
+            <a href="/" class="btn-back"><i class="fa-solid fa-arrow-left" style="color: #707070;"></i> Kembali</a>
+            <a href="/"><img src="{{ asset('assets/img/Logo Medismart.png') }}" alt="MediSmart"></a>
             </div>
         </nav>
     </header>
+    {{-- End Header --}}
 
-    <div class="login-page">
-        <a href="/" class="logo"><img src="{{ asset('assets/img/Logo Medismart.png') }}"
-                alt="Medismart"class="logo" /></a>
-        <h5>Jadwalkan demo dengan tim kami.</h5>
-    </div>
-    <form>
-        <ul class="form-style-1">
-            <li>
-                <label>Nama <span class="required">*</span></label>
-                <input type="text" name="field1" class="field-long" />
-            </li>
-            <li>
-                <label>Jabatan <span class="required">*</span></label>
-                <input type="text" name="field2" class="field-long" />
-            </li>
-            <li>
-                <label>Nama Instansi <span class="required">*</span></label>
-                <input type="text" name="field3" class="field-long" />
-            </li>
-            <li>
-                <label>Alamat instansi <span class="required">*</span></label>
-                <input type="text" name="field4" class="field-long" />
-            </li>
-            <li>
-                <label>Email <span class="required">*</span></label>
-                <input type="text" name="field5" class="field-long" />
-            </li>
-            <li>
-                <label>No Telepon <span class="required">*</span></label>
-                <input type="text" name="field6" class="field-long" />
-            </li>
-            <li>
-                <input type="submit" value="Jadwal Demo" />
-            </li>
-        </ul>
-    </form>
+    {{-- Demo --}}
+    <section class="section-demo">
+        <div class="demo">
+            <div class="container">
+                <div class="title">
+                    <div class="image">
+                        <a href="/" class="logo"><img src="{{ asset('assets/img/Logo Medismart.png') }}"
+                                alt="MediSmart">
+                        </a>
+                    </div>
+                    <div class="text">
+                        <p>Jadwalkan demo dengan tim kami.</p>
+                    </div>
+                </div>
 
-    <footer>
-        <div class="lower-footer">
-            <div class="col-2">
-                <p>
-                    Copyright © 2023 PT NUANSA CERAH INFORMASI
-                </p>
+                <form action="" class="form-demo">
+                    <div class="input-form mb-4">
+                        <label for="nama" class="form-label"><span>*</span> Nama</label>
+                        <input type="text" name="nama" class="form-control" id="nama">
+                    </div>
+                    <div class="input-form mb-4">
+                        <label for="jabatan" class="form-label"><span>*</span> Jabatan</label>
+                        <input type="text" name="jabatan" class="form-control" id="jabatan">
+                    </div>
+                    <div class="input-form mb-4">
+                        <label for="nama-instansi" class="form-label"><span>*</span> Nama Instansi / Faskes</label>
+                        <input type="text" name="nama-instansi" class="form-control" id="nama-instansi">
+                    </div>
+                    <div class="input-form mb-4">
+                        <label for="alamat-instansi" class="form-label"><span>*</span> Alamat Instansi / Faskes</label>
+                        <input type="text" name="alamat-instansi" class="form-control" id="alamat-instansi">
+                    </div>
+                    <div class="input-form mb-4">
+                        <label for="email" class="form-label"><span>*</span> Email</label>
+                        <input type="email" name="email" class="form-control" id="email">
+                    </div>
+                    <div class="input-form mb-4">
+                        <label for="no-telpon" class="form-label"><span>*</span> No Telpon</label>
+                        <input type="text" name="no-telpon" class="form-control" id="no-telpon">
+                    </div>
+                    <div class="input-form mb-4 btn-submit">
+                        <input type="submit" value="Jadwal Demo" />
+                    </div>
+                </form>
             </div>
         </div>
+    </section>
+    {{-- End Demo --}}
+
+    {{-- Footer --}}
+    <footer>
+        <div class="copyright">
+            <p><b>Copyright © 2023 PT NUANSA CERAH INFORMASI</b></p>
+        </div>
+        </div>
     </footer>
+    {{-- End Footer --}}
 </body>
 
 <!-- Swiper JS -->
 <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
 
 <script src="{{ asset('js/Script.js') }}"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="./script.js"></script>
+
+{{-- Bootstrap --}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
 
 </html>

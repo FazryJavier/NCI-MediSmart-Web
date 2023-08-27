@@ -23,7 +23,7 @@ html {
 }
 
 body {
-    background: #F5F5F5;
+    background: #f5f5f5;
     min-height: 100vh;
 }
 
@@ -40,266 +40,129 @@ a {
 }
 
 /* Header */
-/* End Header */
+/* header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+} */
 
-/* Demo */
-/* End Demo */
-
-/* Footer */
-/* End Footer */
-
-.login-page {
-    width: 1000px;
-    padding: 8% 0 0;
-    margin: auto;
-}
-.login-page .form {
-    position: relative;
-    z-index: 1;
-    background: #ffffff;
-    max-width: 500px;
-    margin: 0 auto 100px;
-    margin-top: 15px;
-    padding: 45px;
-    text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-.login-page .form input {
-    font-family: "Roboto", sans-serif;
-    outline: 0;
-    background: #f2f2f2;
-    width: 100%;
-    border: 0;
-    margin: 0 0 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 14px;
-}
-.login-page .form button {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    background: #444444;
-    width: 50%;
-    border: 0;
-    padding: 15px;
-    color: #ffffff;
-    font-size: 14px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
-    cursor: pointer;
-    border-radius: 20px;
-}
-.login-page .form button:hover,
-.form button:active,
-.form button:focus {
-    background: #43a047;
-}
-.form .message {
-    margin: 15px 0 0;
-    color: #bebebe;
-    font-size: 12px;
-}
-.form .message a {
-    color: #4caf50;
-    text-decoration: none;
-}
-
-.login-page .form label {
-    margin: 0 0 3px 0;
-    padding: 0px;
-    display: block;
-    font-size: 20px;
-}
-
-.login-page .form li {
-    padding: 0;
-    display: block;
-    list-style: none;
-    margin: 30px 0 0 0;
-}
-
-body {
-    background: whitesmoke;
-    font-family: "Roboto", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.login-page .logo {
-    height: 150px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.login-page .form .required {
-    color: red;
-}
-/* End Login admin */
-
-/* Halaman Admin */
-.header .navbar {
-    background-color: white;
-    color: #fff;
-    height: 100%;
-    padding: 0 52px;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.1);
-}
-
-.header .navbar .navbar-content {
+.navbar {
+    background-color: #f5f5f5;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px 5%;
 }
 
-.header .navbar .navbar-content a {
-    color: black;
-}
-
-.header .navbar .navbar-content a:hover {
-    text-decoration: underline;
-}
-
-.header .navbar .navbar-content .left-content {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.header .navbar .navbar-content .right-content .logo img {
-    width: 100%;
-    max-width: 150px;
-    align-items: center;
-}
-
-.header .navbar .navbar-content .right-content {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-/* .header .navbar .logout button {
-    border: none;
-    background-color: inherit;
-    padding: 14px 28px;
+.navbar .btn-back {
+    color: #707070;
     font-size: 16px;
-    cursor: pointer;
-    display: inline-block;
+    text-decoration: none;
 }
 
-.header .navbar .logout button:hover {
-    text-decoration: underline;
+/* .navbar .btn-back:hover {
+    color: #1bad4b;
 } */
-/* End Halaman Admin */
 
-/* Halaman Form Demo */
-/*<style type="text/css">*/
-.form-style-1 {
-    margin: 15px auto;
-    max-width: 1000px;
-    padding: 20px 12px 10px 20px;
-    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+.navbar img {
+    width: 100%;
+    max-width: 100px;
+}
+/* End Header */
+
+/* Demo */
+.section-demo .demo .title {
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+.section-demo .demo .image {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.section-demo .demo .image img {
+    width: 100%;
+    max-width: 320px;
+}
+
+.section-demo .demo .text {
     position: relative;
     z-index: 1;
     background: #ffffff;
+    max-width: 800px;
+    margin: 0 auto 0;
+    margin-top: 15px;
+}
+
+.section-demo .demo .text p {
+    font-size: 20px;
+    color: #707070;
+    margin-top: 40px;
+}
+
+.section-demo .demo .form-demo {
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    max-width: 800px;
+    margin: 0 auto 100px;
+    margin-top: 15px;
     padding: 45px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form-style-1 li {
-    padding: 0;
-    display: block;
-    list-style: none;
-    margin: 30px 0 0 0;
-}
-.form-style-1 li:last-child {
-    border: none;
-    margin-bottom: 0px;
-    text-align: center;
-}
-.form-style-1 label {
-    margin: 0 0 3px 0;
-    padding: 0px;
-    display: block;
+
+.section-demo .demo .form-demo label {
     font-size: 20px;
-}
-.form-style-1 input[type="text"],
-.form-style-1 input[type="date"],
-.form-style-1 input[type="datetime"],
-.form-style-1 input[type="number"],
-.form-style-1 input[type="search"],
-.form-style-1 input[type="time"],
-.form-style-1 input[type="url"],
-.form-style-1 input[type="email"],
-textarea,
-select {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    border: 1px solid #bebebe;
-    padding: 7px;
-    margin: 0px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    outline: none;
-}
-.form-style-1 input[type="text"]:focus,
-.form-style-1 input[type="date"]:focus,
-.form-style-1 input[type="datetime"]:focus,
-.form-style-1 input[type="number"]:focus,
-.form-style-1 input[type="search"]:focus,
-.form-style-1 input[type="time"]:focus,
-.form-style-1 input[type="url"]:focus,
-.form-style-1 input[type="email"]:focus,
-.form-style-1 textarea:focus,
-.form-style-1 select:focus {
-    -moz-box-shadow: 0 0 8px #88d5e9;
-    -webkit-box-shadow: 0 0 8px #88d5e9;
-    box-shadow: 0 0 8px #88d5e9;
-    border: 1px solid #88d5e9;
-}
-.form-style-1 .field-divided {
-    width: 49%;
+    color: #242424;
 }
 
-.form-style-1 .field-long {
-    width: 100%;
-    height: 50px;
+.section-demo .demo .form-demo input {
+    font-size: 18px;
+    color: #242424;
 }
-.form-style-1 .field-select {
-    width: 100%;
-}
-.form-style-1 .field-textarea {
-    height: 150px;
-    width: 100%;
-}
-.form-style-1 input[type="submit"],
-.form-style-1 input[type="button"] {
-    background: #43a047;
-    border: none;
-    color: #fff;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
-    padding: 10px 20px 10px 20px;
-    height: 50px;
-    width: auto;
-    border-radius: 10px;
-}
-.form-style-1 input[type="submit"]:hover,
-.form-style-1 input[type="button"]:hover {
-    background: #015028;
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    align-content: center;
-}
-.form-style-1 .required {
+
+.section-demo .demo .form-demo span {
     color: red;
 }
-/* </style> */
-/* End Halaman Form Demo */
+
+.section-demo .demo .form-demo .btn-submit {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.section-demo .demo .form-demo .btn-submit input {
+    font-size: 20px;
+    color: #fff;
+    background-color: #1bad4b;
+    border-radius: 10px;
+    padding: 15px 30px;
+    border: none;
+}
+
+.section-demo .demo .form-demo .btn-submit input:hover {
+    background-color: #015028;
+    transition: all ease 0.3s;
+}
+/* End Demo */
+
+/* Footer */
+.copyright {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.copyright p {
+    font-size: 16px;
+    color: #707070;
+}
+/* End Footer */
 
 /* Media Queries */
 @media screen and (max-width: 1500px) {
@@ -326,5 +189,43 @@ select {
 @media screen and (max-width: 580px) {
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 360px) {
+    /* Demo */
+    .section-demo .demo .image img {
+        max-width: 200px;
+    }
+
+    .section-demo .demo .text p {
+        font-size: 14px;
+        margin-top: 20px;
+    }
+
+    .section-demo .demo .form-demo {
+        margin-top: 10px;
+        padding: 20px;
+    }
+
+    .section-demo .demo .form-demo label {
+        font-size: 16px;
+    }
+
+    .section-demo .demo .form-demo input {
+        font-size: 14px;
+    }
+
+    .section-demo .demo .form-demo .btn-submit {
+        margin-top: 30px;
+    }
+
+    .section-demo .demo .form-demo .btn-submit input {
+        font-size: 16px;
+        padding: 10px 25px;
+    }
+    /* End Demo */
+
+    /* Footer */
+    .copyright p {
+        font-size: 14px;
+    }
+    /* End Footer */
 }
