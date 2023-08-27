@@ -575,9 +575,6 @@ body {
     /* End Video View */
 }
 
-@media screen and (max-width: 950px) {
-}
-
 @media screen and (max-width: 800px) {
     /* Header Text */
     .section-header .slide .image-date {
@@ -593,9 +590,6 @@ body {
         grid-template-columns: 1fr;
     }
     /* End Blog */
-}
-
-@media screen and (max-width: 720px) {
 }
 
 @media screen and (max-width: 680px) {
