@@ -215,26 +215,31 @@ body {
 /* Client End */
 
 /* Experience */
-.experience {
+.section-experience .experience {
     padding: 20px 0;
     background-color: #f1f5f9;
 }
 
-.experience .container .col {
-    display: flex;
+.section-experience .experience .text {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 280px;
+}
+
+.section-experience .experience .text .title p {
     font-size: 32px;
-    justify-content: center;
-    text-align: center;
+    color: #242424;
+    margin-bottom: 30px;
 }
 
-.experience .container .text {
-    display: flex;
+.section-experience .experience .text .description p {
     font-size: 20px;
-    justify-content: center;
-    text-align: center;
+    color: #242424;
+    font-weight: 400;
 }
 
-.experience .experience-list {
+.section-experience .experience .advantage {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 40px;
@@ -242,32 +247,26 @@ body {
     text-align: center;
 }
 
-.experience .experience-list div {
+.section-experience .experience .advantage .experience-list {
     padding: 40px;
-    font-size: 13px;
-    font-weight: 300;
-    border-radius: 10px;
 }
 
-.experience .experience-list div i {
-    font-size: 50px;
-    margin-bottom: 20px;
-}
-
-.experience .experience-list div h2 {
+.section-experience .experience .advantage .experience-list h2 {
     font-size: 24px;
     margin-bottom: 25px;
 }
 
-.experience .experience-list div p {
+.section-experience .experience .advantage .experience-list p {
     font-size: 20px;
 }
 
-.experience .experience-list div img {
+.section-experience .experience .advantage .experience-list img {
     margin-bottom: 10px;
+    width: 100%;
+    max-width: 100px;
 }
 
-.experience .client-map {
+.section-experience .experience .client-map {
     display: flex;
     width: 100%;
     height: 281px;
@@ -277,7 +276,7 @@ body {
     position: relative;
 }
 
-.experience .client-map .content {
+.section-experience .experience .client-map .content {
     font-size: 32px;
     position: absolute;
     height: auto;
@@ -288,17 +287,17 @@ body {
     transform: translateY(-50%);
 }
 
-.experience .client-map:before {
+.section-experience .experience .client-map:before {
     content: "";
     display: flex;
     padding-top: 25%;
 }
 
-.experience .client-map .maps {
+.section-experience .experience .client-map .maps {
     margin: auto;
 }
 
-.experience .client-map .maps img {
+.section-experience .experience .client-map .maps img {
     margin-top: -25px;
     background-size: cover;
     width: 100%;
@@ -306,122 +305,111 @@ body {
 }
 /* End Experience */
 
-/* Our Product */
-#product {
+/* Product */
+.section-product .product {
     padding: 50px 0;
     align-items: center;
-    background: #fff;
 }
 
-#product .sub-title {
+.section-product .product .title h1 {
     text-align: center;
     font-size: 32px;
+    color: #242424;
 }
 
-#product .product-list {
+.section-product .product .wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     grid-gap: 40px;
     margin-top: 50px;
 }
 
-#product .product {
-    border-radius: 10px;
-    position: relative;
+.section-product .product .wrapper .card {
+    padding: 20px;
     box-shadow: 1px 1px 5px 0px grey;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-#product .product img {
+.section-product .product .wrapper .card .image {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.section-product .product .wrapper .card img {
     width: 100%;
     border-radius: 10px;
-    display: block;
-    transition: transform 0.5s;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
-#product .grid .layer h2 {
+.section-product .product .wrapper .card .layer h1 {
     font-size: 32px;
-    margin-bottom: 1%;
+    color: #242424;
 }
 
-#product .layer h3 {
+.section-product .product .wrapper .card .layer h3 {
     font-size: 24px;
-    font-weight: 100;
-    margin-bottom: 1%;
+    color: #242424;
+    font-weight: 500;
+    margin-bottom: 15px;
 }
 
-#product .layer p {
+.section-product .product .wrapper .card .layer p {
     font-size: 16px;
-    margin-bottom: 4%;
+    color: #707070;
+    margin-bottom: 30px;
 }
 
-#product .layer ul li {
+.section-product .product .wrapper .card .layer ul li {
     list-style: none;
     font-size: 20px;
     margin-bottom: 2%;
+    color: #242424;
+    font-weight: 400;
 }
 
-#product .layer ul li i {
-    margin-right: 2%;
+.section-product .product .wrapper .card .layer ul li i {
+    margin-right: 10px;
 }
 
-#product .row {
-    display: grid;
-    padding: 20px;
-    place-items: center;
+.section-product .product .wrapper .card .bottom {
+    padding: 0 20px;
+    margin-top: auto;
 }
 
-#product article {
-    margin: 20px;
+.section-product .product .wrapper .card .container-line {
+    padding: 20px 0;
 }
 
-#product .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    align-items: center;
-    grid-gap: 20px;
-}
-
-#product .container-line {
-    display: flex;
-    padding: 20px;
-    place-items: center;
-}
-
-#product .container-line .center-line {
+.section-product .product .wrapper .card .container-line .center-line {
     width: 100%;
     height: 1px;
     background-color: gray;
 }
 
-#product button {
-    margin-left: 20px;
+.section-product .product .wrapper .card .bottom .button {
+    padding: 20px 0;
+}
+
+.section-product .product .wrapper .card .bottom a {
     padding: 15px 25px;
     background-color: #1bad4b;
     color: #fff;
-    border: none;
     border-radius: 10px;
-    cursor: pointer;
     transition: all 0.3s ease 0s;
     font-size: 20px;
 }
 
-#product button:hover {
-    background: #015028;
-    color: #fff;
-}
-
-#product button i {
+.section-product .product .wrapper .card .bottom a i {
     margin-right: 20px;
 }
 
-@media screen and (max-width: 991px) {
-    #product button {
-        font-size: 15px;
-    }
+.section-product .product .wrapper .card .bottom a:hover {
+    background: #015028;
 }
-/* Our Product End */
+/*  End Product */
 
 /* Video View */
 .section-video .video-view {
@@ -542,9 +530,21 @@ body {
 
 /* Media Queries */
 @media screen and (max-width: 1500px) {
+    /* Experience */
+    .section-experience .experience .text {
+        margin: 0 180px;
+    }
+    /* End Experience */
 }
 
 @media screen and (max-width: 1350px) {
+    /* Product */
+    .section-product .product .wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-gap: 40px;
+    }
+    /* End Product */
+
     /* Video View */
     .section-video .video-view .text {
         margin-right: 0;
@@ -553,6 +553,11 @@ body {
 }
 
 @media screen and (max-width: 1200px) {
+    /* Experience */
+    .section-experience .experience .text {
+        margin: 0 50px;
+    }
+    /* End Experience */
 }
 
 @media screen and (max-width: 991px) {
@@ -599,6 +604,12 @@ body {
         display: none;
     }
     /* End Header Text */
+
+    /* Experience */
+    .section-experience .experience .text {
+        margin: 0;
+    }
+    /* End Experience */
 }
 
 @media screen and (max-width: 580px) {
@@ -621,6 +632,23 @@ body {
         margin-top: 10px;
     }
     /* End Header Text */
+
+    /* Experience */
+    .section-experience .experience .text .title p {
+        font-size: 28px;
+    }
+
+    .section-experience .experience .text .description p {
+        font-size: 16px;
+    }
+    /* End Experience */
+
+    /* Product */
+    .section-product .product .wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-gap: 40px;
+    }
+    /* End Product */
 }
 
 @media screen and (max-width: 500px) {
@@ -633,9 +661,60 @@ body {
         font-size: 26px;
     }
     /* End Client */
+
+    /* Experience */
+    .section-experience .experience .advantage .experience-list {
+        padding: 20px;
+    }
+
+    .section-experience .experience .advantage .experience-list h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .section-experience .experience .advantage .experience-list p {
+        font-size: 14px;
+    }
+
+    .section-experience .experience .advantage .experience-list img {
+        width: 100%;
+        max-width: 70px;
+    }
+    /* End Experience */
+
+    /* Product */
+    .section-product .product .wrapper .card .layer h1 {
+        font-size: 26px;
+    }
+
+    .section-product .product .wrapper .card .layer h3 {
+        font-size: 20px;
+    }
+
+    .section-product .product .wrapper .card .layer p {
+        font-size: 12px;
+    }
+
+    .section-product .product .wrapper .card .layer ul li {
+        font-size: 14px;
+    }
+
+    .section-product .product .wrapper .card .bottom .button {
+        padding: 10px 0;
+    }
+
+    .section-product .product .wrapper .card .bottom a {
+        padding: 15px 15px;
+        font-size: 12px;
+    }
+
+    .section-product .product .wrapper .card .bottom a i {
+        margin-right: 10px;
+    }
+    /* End Product */
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 360px) {
     /* Header Text */
     .section-header .slide .image-date {
         top: 15%;
@@ -661,6 +740,16 @@ body {
         font-size: 20px;
     }
     /* End Client */
+
+    /* Experience */
+    .section-experience .experience .text .title p {
+        font-size: 22px;
+    }
+
+    .section-experience .experience .text .description p {
+        font-size: 14px;
+    }
+    /* End Experience */
 
     /* Blog */
     .section-blog .blog .title h1 {
