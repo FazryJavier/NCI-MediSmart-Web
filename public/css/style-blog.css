@@ -84,6 +84,10 @@ a {
     font-weight: 500;
     margin-bottom: 30px;
     letter-spacing: 2px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
 }
 
 .section-blog .blog .top-card .description a {
@@ -154,6 +158,10 @@ a {
     font-size: 16px;
     text-align: justify;
     margin-bottom: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 .section-blog .blog .bottom-card .wrapper .card .button {
@@ -199,6 +207,10 @@ a {
     font-size: 18px;
     color: #707070;
     margin-bottom: 30px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
 }
 
 .section-article .article .card a {

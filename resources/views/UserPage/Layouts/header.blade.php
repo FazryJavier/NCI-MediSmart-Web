@@ -97,7 +97,7 @@
                             </li>
                             <li class="nav-item"><a href="/Testimoni" class="nav-link">Testimoni</a></li>
                             <li class="nav-item"><a href="/Blog" class="nav-link">Blog</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link">Demo</a></li>
+                            <li class="nav-item"><a href="/Demo" class="nav-link">Demo</a></li>
                             <li class="nav-item"><a href="#" class="btn-contact">Hubungi Kami</a></li>
                         </ul>
                     </nav>

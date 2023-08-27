@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('UserPage/Pages/home');
 });
 
+Route::get('/Modul', function () {
+    return view('UserPage/Pages/modul');
+});
+
 Route::get('/HealthcareSolution', function () {
     return view('UserPage/Pages/healthcare');
 });
@@ -33,6 +37,6 @@ Route::get('/DetailBlog', function () {
     return view('UserPage/Pages/detail');
 });
 
-Route::get('/Modul', function () {
-    return view('UserPage/Pages/modul');
+Route::get('/Demo', function () {
+    return view('UserPage/Pages/demo');
 });
