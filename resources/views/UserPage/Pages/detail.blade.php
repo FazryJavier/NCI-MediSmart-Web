@@ -24,21 +24,30 @@
         <div class="article">
             <div class="container">
                 <article>
-                    <img src="" alt="">
+                    <div class="image">
+                        <img src="{{ asset('assets/img/blog3.png') }}" alt="">
+                    </div>
                     <div class="content">
                         <div class="title">
-                            <h1>Mengenal Orthorexia Nervosa, Obsesi Terhadap Makanan Sehat</h1>
+                            <h1><b>Mengenal Orthorexia Nervosa, Obsesi Terhadap Makanan Sehat</b></h1>
                         </div>
 
-                        <div class="date">
-                            <p>Admin 25/07/2023</p>
+                        <div class="posting">
+                            <div class="admin">
+                                <p><b>Admin</b></p>
+                            </div>
+                            <div class="date">
+                                <p>25/07/2023</p>
+                            </div>
                         </div>
 
                         <div class="text">
-                            <p>Di era modern ini, semakin banyak orang yang mulai peduli dengan kesehatan dan pola makan
-                                yang sehat. Hal ini merupakan langkah positif untuk mencapai gaya hidup sehat dan
+                            <p>
+                                Di era modern ini, semakin banyak orang yang mulai peduli dengan kesehatan dan pola
+                                makan yang sehat. Hal ini merupakan langkah positif untuk mencapai gaya hidup sehat dan
                                 menjaga keseimbangan tubuh. Namun, ada juga kondisi yang mengkhawatirkan yang dapat
-                                berkembang dari obsesi terhadap makanan sehat, yaitu Orthorexia Nervosa.</p>
+                                berkembang dari obsesi terhadap makanan sehat, yaitu Orthorexia Nervosa.
+                            </p>
                         </div>
                     </div>
                 </article>
@@ -58,36 +67,59 @@
                 <h1>Rekomendasi</h1>
                 <div class="wrapper">
                     <div class="card">
-                        <img src="" alt="">
-                        <div class="description">
-                            <h3>Optimalkan Pelayanan, RS Suaka Insan Terapkan Pendaftaran Pasien Secara Online</h3>
-                            <p>Pelayanan yang kurang optimal dan masa tunggu yang panjang, dapat menjadikan citra rumah
-                                sakit kurang baik dalam masyarakat. Untungnya, saat ini sudah banyak teknologi digital
-                                berupa aplikasi pelayanan kesehatan yang bisa digunakan Rumah Sakit...</p>
+                        <div class="image">
+                            <img src="{{ asset('assets/img/blog1.png') }}" alt="">
                         </div>
-                        <a href="#">Pelajari Lanjut</a>
+                        <div class="description">
+                            <h3>Optimalkan Pelayanan, RS Suaka Insan Terapkan Pendaftaran Pasien Secara Online
+                            </h3>
+                            <p>Pelayanan yang kurang optimal dan masa tunggu yang panjang, dapat menjadikan
+                                citra rumah sakit kurang baik dalam masyarakat. Untungnya, saat ini sudah banyak
+                                teknologi digital berupa aplikasi pelayanan kesehatan yang bisa digunakan Rumah
+                                Sakit...
+                            </p>
+                        </div>
+                        <div class="button">
+                            <a href="#">Pelajari Lanjut</a>
+                        </div>
                     </div>
 
                     <div class="card">
-                        <img src="" alt="">
-                        <div class="description">
-                            <h3>Optimalkan Pelayanan, RS Suaka Insan Terapkan Pendaftaran Pasien Secara Online</h3>
-                            <p>Pelayanan yang kurang optimal dan masa tunggu yang panjang, dapat menjadikan citra rumah
-                                sakit kurang baik dalam masyarakat. Untungnya, saat ini sudah banyak teknologi digital
-                                berupa aplikasi pelayanan kesehatan yang bisa digunakan Rumah Sakit...</p>
+                        <div class="image">
+                            <img src="{{ asset('assets/img/blog2.png') }}" alt="">
                         </div>
-                        <a href="#">Pelajari Lanjut</a>
+                        <div class="description">
+                            <h3>Uji Coba Implementasi Rekam Medis Elektronik di RS Bolaang
+                            </h3>
+                            <p>
+                                Pada hari Senin (03/07/2023), RS Bolaang telah menyelesaikan periode uji coba
+                                implementasi Rekam Medis Elektronik dengan baik. Inisiasi uji coba ini dilatar
+                                belakangi dengan adanya peraturan pemerintah yang mewajibkan pemakaian Rekam Medis
+                                Elektronik yang..
+                            </p>
+                        </div>
+                        <div class="button">
+                            <a href="#">Pelajari Lanjut</a>
+                        </div>
                     </div>
 
                     <div class="card">
-                        <img src="" alt="">
-                        <div class="description">
-                            <h3>Optimalkan Pelayanan, RS Suaka Insan Terapkan Pendaftaran Pasien Secara Online</h3>
-                            <p>Pelayanan yang kurang optimal dan masa tunggu yang panjang, dapat menjadikan citra rumah
-                                sakit kurang baik dalam masyarakat. Untungnya, saat ini sudah banyak teknologi digital
-                                berupa aplikasi pelayanan kesehatan yang bisa digunakan Rumah Sakit...</p>
+                        <div class="image">
+                            <img src="{{ asset('assets/img/blog3.png') }}" alt="">
                         </div>
-                        <a href="#">Pelajari Lanjut</a>
+                        <div class="description">
+                            <h3>Mengenal Orthorexia Nervosa, Obsesi Terhadap Makanan Sehat
+                            </h3>
+                            <p>
+                                Makanan sehat adalah hal yang penting untuk menjaga kesehatan tubuh. Karena itu
+                                mengkonsumsi makanan sehat adalah keharusan untuk setiap orang. Namun keinginan kuat
+                                yang berujung menjadi obsesi terhadap makanan sehat justru mengindikasikan suatu
+                                kelainan....
+                            </p>
+                        </div>
+                        <div class="button">
+                            <a href="#">Pelajari Lanjut</a>
+                        </div>
                     </div>
                 </div>
             </div>

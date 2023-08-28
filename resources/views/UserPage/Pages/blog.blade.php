@@ -125,7 +125,9 @@
             <div class="container">
                 <div class="wrapper">
                     <div class="card">
-                        <img src="{{ asset('assets/img/blog3.png') }}" alt="">
+                        <div class="image">
+                            <img src="{{ asset('assets/img/blog3.png') }}" alt="">
+                        </div>
                         <div class="description">
                             <h3>Mengenal Orthorexia Nervosa, Obsesi Terhadap Makanan Sehat</h3>
                             <p>Makanan sehat adalah hal yang penting untuk menjaga kesehatan tubuh. Karena itu
@@ -137,7 +139,9 @@
                     </div>
 
                     <div class="card">
-                        <img src="{{ asset('assets/img/blog3.png') }}" alt="">
+                        <div class="image">
+                            <img src="{{ asset('assets/img/blog3.png') }}" alt="">
+                        </div>
                         <div class="description">
                             <h3>Mengenal Orthorexia Nervosa, Obsesi Terhadap Makanan Sehat</h3>
                             <p>Makanan sehat adalah hal yang penting untuk menjaga kesehatan tubuh. Karena itu
@@ -149,7 +153,9 @@
                     </div>
 
                     <div class="card">
-                        <img src="{{ asset('assets/img/blog3.png') }}" alt="">
+                        <div class="image">
+                            <img src="{{ asset('assets/img/blog3.png') }}" alt="">
+                        </div>
                         <div class="description">
                             <h3>Mengenal Orthorexia Nervosa, Obsesi Terhadap Makanan Sehat</h3>
                             <p>Makanan sehat adalah hal yang penting untuk menjaga kesehatan tubuh. Karena itu
@@ -161,7 +167,51 @@
                     </div>
 
                     <div class="card">
-                        <img src="{{ asset('assets/img/blog3.png') }}" alt="">
+                        <div class="image">
+                            <img src="{{ asset('assets/img/blog3.png') }}" alt="">
+                        </div>
+                        <div class="description">
+                            <h3>Mengenal Orthorexia Nervosa, Obsesi Terhadap Makanan Sehat</h3>
+                            <p>Makanan sehat adalah hal yang penting untuk menjaga kesehatan tubuh. Karena itu
+                                mengkonsumsi makanan sehat adalah keharusan untuk setiap orang. Namun keinginan kuat
+                                yang berujung menjadi obsesi terhadap makanan sehat justru mengindikasikan suatu
+                                kelainan....</p>
+                            <a href="#">Pelajari Lanjut</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="image">
+                            <img src="{{ asset('assets/img/blog3.png') }}" alt="">
+                        </div>
+                        <div class="description">
+                            <h3>Mengenal Orthorexia Nervosa, Obsesi Terhadap Makanan Sehat</h3>
+                            <p>Makanan sehat adalah hal yang penting untuk menjaga kesehatan tubuh. Karena itu
+                                mengkonsumsi makanan sehat adalah keharusan untuk setiap orang. Namun keinginan kuat
+                                yang berujung menjadi obsesi terhadap makanan sehat justru mengindikasikan suatu
+                                kelainan....</p>
+                            <a href="#">Pelajari Lanjut</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="image">
+                            <img src="{{ asset('assets/img/blog3.png') }}" alt="">
+                        </div>
+                        <div class="description">
+                            <h3>Mengenal Orthorexia Nervosa, Obsesi Terhadap Makanan Sehat</h3>
+                            <p>Makanan sehat adalah hal yang penting untuk menjaga kesehatan tubuh. Karena itu
+                                mengkonsumsi makanan sehat adalah keharusan untuk setiap orang. Namun keinginan kuat
+                                yang berujung menjadi obsesi terhadap makanan sehat justru mengindikasikan suatu
+                                kelainan....</p>
+                            <a href="#">Pelajari Lanjut</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="image">
+                            <img src="{{ asset('assets/img/blog3.png') }}" alt="">
+                        </div>
                         <div class="description">
                             <h3>Mengenal Orthorexia Nervosa, Obsesi Terhadap Makanan Sehat</h3>
                             <p>Makanan sehat adalah hal yang penting untuk menjaga kesehatan tubuh. Karena itu
@@ -197,13 +247,13 @@
     document.addEventListener('DOMContentLoaded', function() {
         let loadMoreBtn = document.querySelector('.btn-load');
         let loadLessBtn = document.querySelector('.btn-less');
-        let currentItem = 2;
+        let currentItem = 3;
 
         loadMoreBtn.addEventListener('click', () => {
-            let boxes = document.querySelectorAll('.section-testimoni .content .wrapper .card');
+            let boxes = document.querySelectorAll('.section-article .article .card');
 
             for (var i = currentItem; i < currentItem + 2 && i < boxes.length; i++) {
-                boxes[i].style.display = 'block';
+                boxes[i].style.display = 'flex';
             }
 
             currentItem += 2;
@@ -215,7 +265,7 @@
         });
 
         // loadLessBtn.addEventListener('click', () => {
-        //     let boxes = document.querySelectorAll('.section-testimoni .content .wrapper .card');
+        //     let boxes = document.querySelectorAll('.section-article .article .card');
 
         //     for (var i = boxes.length - 1; i >= currentItem - 3; i--) {
         //         boxes[i].style.display = 'none';

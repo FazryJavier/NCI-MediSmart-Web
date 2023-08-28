@@ -40,12 +40,108 @@ a {
 }
 
 /* Article */
+.section-article .article article {
+    padding: 50px 0;
+}
+
+.section-article .article img {
+    width: 100%;
+    max-width: 1200px;
+    overflow: hidden;
+}
+
+.section-article .article .content {
+    padding: 30px 10px;
+}
+
+.section-article .article .content .title h1 {
+    font-size: 40px;
+    color: #242424;
+    margin-bottom: 30px;
+}
+
+.section-article .article .content .posting {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.section-article .article .content .posting .admin {
+    font-size: 18px;
+    color: #242424;
+    margin-right: 20px;
+}
+
+.section-article .article .content .posting .date {
+    font-size: 18px;
+    color: #B9B9B9;
+}
+
+.section-article .article .content .text p {
+    font-size: 20px;
+    color: #707070;
+    letter-spacing: 2px;
+    text-align: justify;
+}
 /* End Article */
 
 /* Rekomendasi */
+.section-rekomendasi .rekomendasi {
+    margin-top: 50px;
+    border-bottom: 1px solid #707070;
+}
+
 .section-rekomendasi .rekomendasi .wrapper {
-    display: flex;
-}   
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 60px 50px;
+}
+
+.section-rekomendasi .rekomendasi .wrapper .card {
+    padding: 20px;
+}
+
+.section-rekomendasi .rekomendasi .wrapper .card .image {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.section-rekomendasi .rekomendasi .wrapper .card img {
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 10px;
+}
+
+.section-rekomendasi .rekomendasi .wrapper .card .description {
+    padding: 10px 10px;
+}
+
+.section-rekomendasi .rekomendasi .wrapper .card .description h3 {
+    color: #242424;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.section-rekomendasi .rekomendasi .wrapper .card .description p {
+    color: #707070;
+    font-size: 16px;
+    text-align: justify;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.section-rekomendasi .rekomendasi .wrapper .card .button {
+    text-align: right;
+}
+
+.section-rekomendasi .rekomendasi .wrapper .card a {
+    color: #079d48;
+    font-size: 18px;
+}
 /* End Rekomendasi */
 
 /* Media Queries */
@@ -56,6 +152,13 @@ a {
 }
 
 @media screen and (max-width: 1200px) {
+    /* Rekomendasi */
+    .section-rekomendasi .rekomendasi .wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 20px 30px;
+    }
+    /* End Rekomendasi */
 }
 
 @media screen and (max-width: 991px) {
@@ -71,6 +174,27 @@ a {
 }
 
 @media screen and (max-width: 580px) {
+    /* Rekomendasi */
+    .section-rekomendasi .rekomendasi .wrapper .card {
+        padding: 10px;
+    }
+
+    .section-rekomendasi .rekomendasi .wrapper .card .description {
+        padding: 10px 5px;
+    }
+
+    .section-rekomendasi .rekomendasi .wrapper .card .description h3 {
+        font-size: 16px;
+    }
+
+    .section-rekomendasi .rekomendasi .wrapper .card .description p {
+        font-size: 12px;
+    }
+
+    .section-rekomendasi .rekomendasi .wrapper .card a {
+        font-size: 14px;
+    }
+    /* End Rekomendasi */
 }
 
 @media screen and (max-width: 500px) {
