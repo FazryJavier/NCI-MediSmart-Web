@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('UserPage/Pages/home');
 });
 
+Route::get('/Product', function () {
+    return view('UserPage/Pages/product');
+});
+
 Route::get('/Modul', function () {
     return view('UserPage/Pages/modul');
 });
