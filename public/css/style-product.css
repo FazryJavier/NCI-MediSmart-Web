@@ -46,7 +46,6 @@ a {
     align-items: center;
     text-align: center;
     padding: 50px 0;
-    height: 70vh;
 }
 
 .section-home .home .title .image {
@@ -63,10 +62,6 @@ a {
     color: #242424;
     letter-spacing: 2px;
     margin-bottom: 20px;
-}
-
-.section-home .home .title .button {
-    margin-bottom: 50px;
 }
 
 .section-home .home .title .button a {
@@ -97,27 +92,51 @@ a {
     color: #fff;
     border-color: #015028;
 }
+/* End Home */
 
-.section-home .home .screen .video {
+/* Video */
+.section-video .video {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        to bottom,
+        #f1f5f9,
+        #f1f5f9 50%,
+        transparent 50%,
+        transparent
+    );
+}
+
+.section-video .video::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to right, #1bad4b, #28b88d);
+}
+
+.section-video .video .screen {
+    position: relative;
     aspect-ratio: 16 / 9;
     max-width: 800px;
     margin: 0 auto;
+    z-index: 10;
 }
 
-.section-home .home .screen .video iframe {
+.section-video .video .screen iframe {
     width: 100%;
     height: 100%;
     border: 20px solid black;
     border-radius: 20px;
 }
-/* End Home */
+/* End Video */
 
 /* Client */
 .section-client .client {
     background: linear-gradient(to right, #1bad4b, #28b88d);
     text-align: center;
     padding: 20px 0;
-    padding-top: 250px;
 }
 
 .section-client .client .title h1 {
@@ -457,6 +476,28 @@ a {
 }
 
 @media screen and (max-width: 580px) {
+    /* Home */
+    .section-home .home {
+        padding: 20px 0;
+    }
+
+    .section-home .home .title .text p {
+        font-size: 14px;
+    }
+
+    .section-home .home .title .button a {
+        padding: 15px 15px;
+        font-size: 14px;
+        margin-top: 15px;
+    }
+    /* End Home */
+
+    /* Client */
+    .section-client .client .title h1 {
+        font-size: 24px;
+    }
+    /* End Client */
+
     /* Modul */
     .section-modul .modul .title h1 {
         font-size: 28px;
@@ -498,9 +539,30 @@ a {
 }
 
 @media screen and (max-width: 360px) {
+    /* Home */
+    .section-home .home {
+        padding: 10px 0;
+    }
+
+    .section-home .home .title .text p {
+        font-size: 14px;
+    }
+
+    .section-home .home .title .button a {
+        padding: 10px 10px;
+        font-size: 12px;
+    }
+    /* End Home */
+
+    /* Client */
+    .section-client .client .title h1 {
+        font-size: 18px;
+    }
+    /* End Client */
+
     /* Advantage */
     .section-advantage .advantage .title h1 {
-        font-size: 26px;
+        font-size: 24px;
     }
 
     .section-advantage .advantage .wrapper .card .description h3 {
@@ -512,6 +574,16 @@ a {
     }
     /* End Advantage */
 
+    /* Modul */
+    .section-modul .modul .title h1 {
+        font-size: 24px;
+    }
+
+    .section-modul .modul .title p {
+        font-size: 14px;
+    }
+    /* End Modul */
+
     /* Testimoni */
     .section-testimoni .text {
         font-size: 20px;
@@ -520,7 +592,7 @@ a {
     .section-testimoni .content .wrapper .card h3 {
         font-size: 18px;
     }
-    
+
     .section-testimoni .content .wrapper .card p {
         font-size: 14px;
     }

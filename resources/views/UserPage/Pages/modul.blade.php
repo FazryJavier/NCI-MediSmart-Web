@@ -25,7 +25,7 @@
             <div class="container">
                 <div class="first-page">
                     <div class="description">
-                        <h1><b>V-Claim / BPJS Claim.</b></h1>
+                        <h1><b>V-Claim / BPJS Claim</b></h1>
                         <p>BPJS Claim System merupakan Software Aplikasi Bridging antara SIM RS dengan Aplikasi INA CBGs
                             untuk claim BPJS, membantu RS memberikan kemudahan melakukan bridging SIM RS dengan aplikasi
                             claim BPJS.</p>

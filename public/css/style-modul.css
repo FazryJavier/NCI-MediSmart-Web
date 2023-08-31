@@ -305,9 +305,45 @@ a {
 }
 
 @media screen and (max-width: 991px) {
+    /* Modul Description */
+    .section-modul .modul .first-page {
+        flex-direction: column;
+    }
+
+    .section-modul .modul .first-page .description {
+        padding-right: 0;
+    }
+
+    .section-modul .modul .first-page .image {
+        order: -1;
+        margin-bottom: 20px;
+    }
+
+    .section-modul .modul .first-page img {
+        width: 100%;
+        max-width: 500px;
+    }
+    /* End Modul Description */
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 900px) {
+    /* Testimoni */
+    .section-testimoni .swiper-button-next {
+        display: none;
+    }
+
+    .section-testimoni .swiper-button-prev {
+        display: none;
+    }
+    /* End Testimoni */
+}
+
+@media screen and (max-width: 800px) {
+    /* Testimoni */
+    .section-testimoni .text {
+        font-size: 28px;
+    }
+    /* End Testimoni */
 }
 
 @media screen and (max-width: 720px) {
@@ -362,8 +398,8 @@ a {
 
 @media screen and (max-width: 580px) {
     /* Testimoni */
-    .section-testimoni .nav-btn {
-        display: none;
+    .section-testimoni .text {
+        font-size: 24px;
     }
     /* End Testimoni */
 }
@@ -391,4 +427,20 @@ a {
         font-size: 12px;
     }
     /* End Advantage */
+}
+
+@media screen and (max-width: 360px) {
+    /* Testimoni */
+    .section-testimoni .text {
+        font-size: 20px;
+    }
+
+    .section-testimoni .content .wrapper .card h3 {
+        font-size: 18px;
+    }
+
+    .section-testimoni .content .wrapper .card p {
+        font-size: 14px;
+    }
+    /* End Testimoni */
 }

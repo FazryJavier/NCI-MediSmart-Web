@@ -41,18 +41,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="screen">
-                    <div class="video">
-                        <iframe width="1000" height="700" src="https://www.youtube.com/embed/65pOIFtQUyg"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen controls muted></iframe>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
     {{-- End Home --}}
+
+    {{-- Video --}}
+    <section class="section-video">
+        <div class="video">
+            <div class="container">
+                <div class="screen">
+                    <iframe width="1000" height="700" src="https://www.youtube.com/embed/65pOIFtQUyg"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen controls muted></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- End Video --}}
 
     {{-- Client --}}
     <section class="section-client">
