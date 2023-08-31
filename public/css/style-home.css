@@ -365,13 +365,15 @@ body {
 .section-product .product .wrapper .card .layer ul li {
     list-style: none;
     font-size: 20px;
-    margin-bottom: 2%;
+    margin-bottom: 10px;
     color: #242424;
     font-weight: 400;
+    display: flex;
 }
 
 .section-product .product .wrapper .card .layer ul li i {
     margin-right: 10px;
+    flex-shrink: 0;
 }
 
 .section-product .product .wrapper .card .bottom {

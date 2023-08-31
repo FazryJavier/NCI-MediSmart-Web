@@ -46,6 +46,7 @@ a {
     align-items: center;
     text-align: center;
     padding: 50px 0;
+    height: 70vh;
 }
 
 .section-home .home .title .image {
@@ -96,6 +97,19 @@ a {
     color: #fff;
     border-color: #015028;
 }
+
+.section-home .home .screen .video {
+    aspect-ratio: 16 / 9;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-home .home .screen .video iframe {
+    width: 100%;
+    height: 100%;
+    border: 20px solid black;
+    border-radius: 20px;
+}
 /* End Home */
 
 /* Client */
@@ -103,6 +117,7 @@ a {
     background: linear-gradient(to right, #1bad4b, #28b88d);
     text-align: center;
     padding: 20px 0;
+    padding-top: 250px;
 }
 
 .section-client .client .title h1 {
@@ -157,9 +172,20 @@ a {
     margin-bottom: 10px;
 }
 
+.section-advantage .advantage .wrapper .card .description ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .section-advantage .advantage .wrapper .card .description ul li {
+    display: flex;
     font-size: 18px;
-    margin-bottom: 10px;
+}
+
+.section-advantage .advantage .wrapper .card .description ul li i {
+    flex-shrink: 0;
+    margin-right: 10px;
 }
 /* End Advantage */
 
@@ -384,13 +410,44 @@ a {
 @media screen and (max-width: 1350px) {
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1280px) {
+    /* Modul */
+    .section-modul .modul .title p {
+        padding: 0 100px;
+    }
+    /* End Modul */
 }
 
 @media screen and (max-width: 991px) {
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 900px) {
+    /* Testimoni */
+    .section-testimoni .swiper-button-next {
+        display: none;
+    }
+
+    .section-testimoni .swiper-button-prev {
+        display: none;
+    }
+    /* End Testimoni */
+}
+
+@media screen and (max-width: 800px) {
+    /* Modul */
+    .section-modul .modul .title p {
+        padding: 0 50px;
+    }
+    /* End Modul */
+
+    /* Testimoni */
+    .section-testimoni .text {
+        font-size: 28px;
+    }
+    /* End Testimoni */
+}
+
+@media screen and (max-width: 780px) {
 }
 
 @media screen and (max-width: 720px) {
@@ -400,7 +457,72 @@ a {
 }
 
 @media screen and (max-width: 580px) {
+    /* Modul */
+    .section-modul .modul .title h1 {
+        font-size: 28px;
+    }
+
+    .section-modul .modul .title p {
+        font-size: 16px;
+        padding: 0;
+    }
+
+    .section-modul .modul .wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .section-modul .modul .wrapper .card .title h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .section-modul .modul .wrapper .card .description p {
+        font-size: 14px;
+    }
+
+    .section-modul .modul .wrapper .card .btn-more a {
+        font-size: 14px;
+    }
+
+    .section-modul .modul .btn-load {
+        padding: 15px 50px;
+        font-size: 16px;
+    }
+    /* End Modul */
+
+    /* Testimoni */
+    .section-testimoni .text {
+        font-size: 24px;
+    }
+    /* End Testimoni */
 }
 
 @media screen and (max-width: 360px) {
+    /* Advantage */
+    .section-advantage .advantage .title h1 {
+        font-size: 26px;
+    }
+
+    .section-advantage .advantage .wrapper .card .description h3 {
+        font-size: 20px;
+    }
+
+    .section-advantage .advantage .wrapper .card .description ul li {
+        font-size: 16px;
+    }
+    /* End Advantage */
+
+    /* Testimoni */
+    .section-testimoni .text {
+        font-size: 20px;
+    }
+
+    .section-testimoni .content .wrapper .card h3 {
+        font-size: 18px;
+    }
+    
+    .section-testimoni .content .wrapper .card p {
+        font-size: 14px;
+    }
+    /* End Testimoni */
 }

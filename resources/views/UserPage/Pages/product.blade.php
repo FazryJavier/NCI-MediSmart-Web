@@ -84,10 +84,14 @@
                         <div class="description">
                             <h3>Teknologi</h3>
                             <ul>
-                                <li>Multi Operating System (Windows, Linux)</li>
-                                <li>Multiplatform (Dekstop, Web based, Android)</li>
-                                <li>Teknologi LIS dan PACS</li>
-                                <li>Teknologi Barcode & RFID</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Multi Operating
+                                    System (Windows, Linux)</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Multiplatform
+                                    (Dekstop, Web based, Android)</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Teknologi LIS dan
+                                    PACS</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Teknologi Barcode &
+                                    RFID</li>
                             </ul>
                         </div>
                     </div>
@@ -99,12 +103,18 @@
                         <div class="description">
                             <h3>Integrasi</h3>
                             <ul>
-                                <li>Integrasi modul layanan front office - Back Office</li>
-                                <li>Integrasi BPJS & V-Claim</li>
-                                <li>Integrasi LIS dab PACS</li>
-                                <li>Integrasi Pendaftaran Online Mandiri - SIMRS</li>
-                                <li>Integrasi Aplikasi</li>
-                                <li>KEMENKES (SISRUTE, SIRANAP)</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi modul
+                                    layanan front office - Back Office</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi BPJS &
+                                    V-Claim</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi LIS dab
+                                    PACS</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi
+                                    Pendaftaran Online Mandiri - SIMRS</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi Aplikasi
+                                </li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>KEMENKES (SISRUTE,
+                                    SIRANAP)</li>
                             </ul>
                         </div>
                     </div>
@@ -116,10 +126,14 @@
                         <div class="description">
                             <h3>Modular</h3>
                             <ul>
-                                <li>Multi Operating System (Windows, Linux)</li>
-                                <li>Multiplatform (Dekstop, Web based, Android)</li>
-                                <li>Teknologi LIS dan PACS</li>
-                                <li>Teknologi Barcode & RFID</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Multi Operating
+                                    System (Windows, Linux)</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Multiplatform
+                                    (Dekstop, Web based, Android)</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Teknologi LIS dan
+                                    PACS</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Teknologi Barcode &
+                                    RFID</li>
                             </ul>
                         </div>
                     </div>
@@ -131,10 +145,14 @@
                         <div class="description">
                             <h3>Purna Jual</h3>
                             <ul>
-                                <li>Multi Operating System (Windows, Linux)</li>
-                                <li>Multiplatform (Dekstop, Web based, Android)</li>
-                                <li>Teknologi LIS dan PACS</li>
-                                <li>Teknologi Barcode & RFID</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Multi Operating
+                                    System (Windows, Linux)</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Multiplatform
+                                    (Dekstop, Web based, Android)</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Teknologi LIS dan
+                                    PACS</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Teknologi Barcode
+                                    & RFID</li>
                             </ul>
                         </div>
                     </div>
