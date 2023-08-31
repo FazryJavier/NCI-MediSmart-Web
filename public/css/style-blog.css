@@ -309,54 +309,10 @@ a {
 
 @media screen and (max-width: 991px) {
     /* Article */
-    .section-article .article .card {
+    .section-article .article .card:nth-child(1),
+    .section-article .article .card:nth-child(2),
+    .section-article .article .card:nth-child(3) {
         display: block;
-    }
-
-    .section-article .article {
-        padding: 10px 0;
-    }
-
-    .section-article .article .card .image {
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    .section-article .article .card img {
-        width: 100%;
-        max-width: 500px;
-    }
-
-    .section-article .article .card h3 {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-
-    .section-article .article .card p {
-        font-size: 16px;
-        margin-bottom: 20px;
-    }
-
-    .section-article .article .card a {
-        font-size: 16px;
-    }
-
-    .section-article .btn-load {
-        padding: 10px 40px;
-        font-size: 16px;
-    }
-
-    .section-article .btn-less {
-        padding: 10px 40px;
-        font-size: 16px;
-        display: none;
-    }
-
-    .section-article .btn-less:hover,
-    .section-article .btn-load:hover {
-        background-color: #1bad4b;
-        color: #fff;
     }
     /* End Article */
 }
@@ -462,4 +418,12 @@ a {
         color: #fff;
     }
     /* End Article */
+}
+
+@media screen and (max-width: 360px) {
+    /* Blog */
+    .section-blog .blog .bottom-card .wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    /* End Blog */
 }

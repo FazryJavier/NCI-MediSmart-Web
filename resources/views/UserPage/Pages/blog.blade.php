@@ -249,20 +249,32 @@
         let loadLessBtn = document.querySelector('.btn-less');
         let currentItem = 3;
 
-        loadMoreBtn.addEventListener('click', () => {
+        function updateCardDisplay() {
             let boxes = document.querySelectorAll('.section-article .article .card');
 
-            for (var i = currentItem; i < currentItem + 2 && i < boxes.length; i++) {
-                boxes[i].style.display = 'flex';
+            for (var i = 0; i < boxes.length; i++) {
+                if (i < currentItem) {
+                    boxes[i].style.display = window.innerWidth <= 991 ? 'block' : 'flex';
+                } else {
+                    boxes[i].style.display = 'none';
+                }
             }
-
-            currentItem += 2;
 
             if (currentItem >= boxes.length) {
                 loadMoreBtn.style.display = 'none';
-                // loadLessBtn.style.display = 'inline-block';
+            } else {
+                loadMoreBtn.style.display = 'inline-block';
             }
+        }
+
+        loadMoreBtn.addEventListener('click', () => {
+            currentItem += 2;
+            updateCardDisplay();
         });
+
+        window.addEventListener('resize', updateCardDisplay);
+
+        updateCardDisplay();
 
         // loadLessBtn.addEventListener('click', () => {
         //     let boxes = document.querySelectorAll('.section-article .article .card');
