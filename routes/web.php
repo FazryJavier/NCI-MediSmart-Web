@@ -44,3 +44,4 @@ Route::get('/DetailBlog', function () {
 Route::get('/Demo', function () {
     return view('UserPage/Pages/demo');
 });
+
