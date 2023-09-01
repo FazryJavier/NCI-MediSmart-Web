@@ -168,10 +168,12 @@ a {
     color: #242424;
     margin-bottom: 20px;
     white-space: nowrap;
+    display: flex;
 }
 
 .section-fasilitas .fasilitas .content ul li i {
-    margin-right: 2%;
+    margin-right: 10px;
+    flex-shrink: 0;
 }
 
 .section-fasilitas .fasilitas .content .description-1 {
@@ -324,6 +326,46 @@ a {
         max-width: 500px;
     }
     /* End Modul Description */
+
+    /* Fasilitas */
+    .section-fasilitas .fasilitas .content .list {
+        padding: 0 20px;
+    }
+
+    .section-fasilitas .fasilitas .content ul li {
+        white-space: wrap;
+    }
+
+    .section-fasilitas .fasilitas .content .description-1 {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+        flex-direction: column;
+    }
+
+    .section-fasilitas .fasilitas .content .description-1 .list {
+        order: 2;
+    }
+
+    .section-fasilitas .fasilitas .content .description-2 {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .section-fasilitas .fasilitas .content .description-2 .list {
+        order: 2;
+    }
+
+    .section-fasilitas .fasilitas .content .image {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .section-fasilitas .fasilitas .content img {
+        max-width: 500px;
+    }
+    /* End Fasilitas */
 }
 
 @media screen and (max-width: 900px) {
@@ -347,6 +389,11 @@ a {
 }
 
 @media screen and (max-width: 720px) {
+    /* Advantage */
+    .section-advantage .advantage {
+        padding: 0;
+    }
+    /* End Advantage */
 }
 
 @media screen and (max-width: 680px) {
@@ -394,6 +441,16 @@ a {
         font-size: 16px;
     }
     /* End Advantage */
+
+    /* Fasilitas */
+    .section-fasilitas .fasilitas .title {
+        font-size: 24px;
+    }
+
+    .section-fasilitas .fasilitas .content ul li {
+        font-size: 18px;
+    }
+    /* End Fasilitas */
 }
 
 @media screen and (max-width: 580px) {
@@ -427,14 +484,38 @@ a {
         font-size: 12px;
     }
     /* End Advantage */
+
+    /* Fasilitas */
+    .section-fasilitas .fasilitas .title {
+        font-size: 18px;
+    }
+
+    .section-fasilitas .fasilitas .content ul li {
+        font-size: 16px;
+    }
+
+    .section-fasilitas .fasilitas .content .image {
+        margin-bottom: 20px;
+    }
+    /* End Fasilitas */
+
+    /* Testimoni */
+    .section-testimoni .text {
+        font-size: 18px;
+    }
+
+    .section-testimoni .content .wrapper .card h3 {
+        font-size: 18px;
+    }
+
+    .section-testimoni .content .wrapper .card p {
+        font-size: 14px;
+    }
+    /* End Testimoni */
 }
 
 @media screen and (max-width: 360px) {
     /* Testimoni */
-    .section-testimoni .text {
-        font-size: 20px;
-    }
-
     .section-testimoni .content .wrapper .card h3 {
         font-size: 18px;
     }
