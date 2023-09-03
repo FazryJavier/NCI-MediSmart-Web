@@ -20,7 +20,8 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="#"><b>NCI</b> MediSmart</a>
+            <a href="/" class="logo"><img src="{{ asset('assets/img/Logo Medismart.png') }}" alt="Medismart"class="logo" style="max-width: 200px;"/></a>
+            {{-- <a href="/"><b>NCI</b> MediSmart</a> --}}
         </div>
         <!-- /.login-logo -->
         <div class="card">
