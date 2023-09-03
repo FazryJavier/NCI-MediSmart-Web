@@ -48,5 +48,5 @@ Route::get('/Demo', function () {
 
 // Admin Page
 Route::get('/Admin', function () {
-    return view('AdminPage/Pages/login');
+    return view('AdminPage/Layouts/master');
 });
