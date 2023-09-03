@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Landing Page
 Route::get('/', function () {
     return view('UserPage/Pages/home');
 });
@@ -45,3 +46,7 @@ Route::get('/Demo', function () {
     return view('UserPage/Pages/demo');
 });
 
+// Admin Page
+Route::get('/Admin', function () {
+    return view('AdminPage/Pages/login');
+});
