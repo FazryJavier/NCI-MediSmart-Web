@@ -1,7 +1,7 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Home - Section Header
+    Create - Section Header
 @endsection
 
 @section('content')

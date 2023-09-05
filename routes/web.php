@@ -54,6 +54,9 @@ Route::get('/Admin', function () {
 Route::get('/LandingPage-Header', function () {
     return view('AdminPage/Pages/Home/Header/index');
 });
+Route::get('/LandingPage-Header/create', function () {
+    return view('AdminPage/Pages/Home/Header/create');
+});
 
 Route::get('/LandingPage-Client', function () {
     return view('AdminPage/Pages/Home/Client/index');
