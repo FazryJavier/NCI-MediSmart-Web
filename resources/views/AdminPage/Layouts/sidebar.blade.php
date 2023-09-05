@@ -1,9 +1,8 @@
-<!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/admin" class="brand-link">
-        <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" -->
-        <!-- style="opacity: .8"> -->
+    <a href="#" class="brand-link">
+        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
         <span class="brand-text font-weight-light">Admin NCI-Medismart</span>
     </a>
 
@@ -15,8 +14,9 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                 <li class="nav-header">HALAMAN</li>
+
                 {{-- Landing Page --}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item menu-open">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
@@ -26,13 +26,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="admin" class="nav-link">
+                            <a href="/LandingPage-Header" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Header</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/boxed.html" class="nav-link">
+                            <a href="/LandingPage-Client" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Client</p>
                             </a>
@@ -72,7 +72,7 @@
                 {{-- End Landing Page --}}
 
                 {{-- Product --}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
@@ -122,7 +122,7 @@
                 {{-- End Product --}}
 
                 {{-- Healthcare Solution --}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
                         <p>
@@ -154,7 +154,7 @@
                 {{-- End Healthcare Solution --}}
 
                 {{-- Detail Modul --}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
@@ -192,7 +192,7 @@
                 {{-- End Detail Modul --}}
 
                 {{-- Testimoni --}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
@@ -218,7 +218,7 @@
                 {{-- End Testimoni --}}
 
                 {{-- Blog --}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -250,7 +250,7 @@
                 {{-- End Blog --}}
 
                 {{-- Detail Blog --}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-plus-square"></i>
                         <p>
@@ -276,7 +276,7 @@
                 {{-- End Detail Blog --}}
 
                 {{-- Header --}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-plus-square"></i>
                         <p>
@@ -302,7 +302,7 @@
                 {{-- End Header --}}
 
                 {{-- Footer --}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-plus-square"></i>
                         <p>
@@ -328,7 +328,7 @@
                 {{-- End Footer --}}
 
                 {{-- CTA --}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-plus-square"></i>
                         <p>

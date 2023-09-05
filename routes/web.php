@@ -51,6 +51,10 @@ Route::get('/Admin', function () {
     return view('AdminPage/Pages/login');
 });
 
-Route::get('/Dashboard', function () {
-    return view('AdminPage/Layouts/master');
+Route::get('/LandingPage-Header', function () {
+    return view('AdminPage/Pages/Home/Header/index');
+});
+
+Route::get('/LandingPage-Client', function () {
+    return view('AdminPage/Pages/Home/Client/index');
 });
