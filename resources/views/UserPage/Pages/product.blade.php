@@ -383,6 +383,142 @@
                             <a href="/Modul">Pelajari Lebih Lanjut...</a>
                         </div>
                     </div>
+
+                    <div class="card">
+                        <div class="title">
+                            <h3>Modul Rawat Jalan (Pendaftaran dan Kasir)</h3>
+                        </div>
+                        <div class="image">
+                            <img src="{{ asset('assets/img/modul1.png') }}" alt="">
+                        </div>
+                        <div class="description">
+                            <p>Aplikasi pelayanan rawat darurat yang bisa membantu pelayanan UGD mulai dari proses
+                                pendaftaran dan kasir
+                            </p>
+                        </div>
+                        <div class="btn-more">
+                            <a href="/Modul">Pelajari Lebih Lanjut...</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="title">
+                            <h3>Modul Rawat Jalan (Pendaftaran dan Kasir)</h3>
+                        </div>
+                        <div class="image">
+                            <img src="{{ asset('assets/img/modul1.png') }}" alt="">
+                        </div>
+                        <div class="description">
+                            <p>Aplikasi pelayanan rawat darurat yang bisa membantu pelayanan UGD mulai dari proses
+                                pendaftaran dan kasir
+                            </p>
+                        </div>
+                        <div class="btn-more">
+                            <a href="/Modul">Pelajari Lebih Lanjut...</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="title">
+                            <h3>Modul Rawat Jalan (Pendaftaran dan Kasir)</h3>
+                        </div>
+                        <div class="image">
+                            <img src="{{ asset('assets/img/modul1.png') }}" alt="">
+                        </div>
+                        <div class="description">
+                            <p>Aplikasi pelayanan rawat darurat yang bisa membantu pelayanan UGD mulai dari proses
+                                pendaftaran dan kasir
+                            </p>
+                        </div>
+                        <div class="btn-more">
+                            <a href="/Modul">Pelajari Lebih Lanjut...</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="title">
+                            <h3>Modul Rawat Jalan (Pendaftaran dan Kasir)</h3>
+                        </div>
+                        <div class="image">
+                            <img src="{{ asset('assets/img/modul1.png') }}" alt="">
+                        </div>
+                        <div class="description">
+                            <p>Aplikasi pelayanan rawat darurat yang bisa membantu pelayanan UGD mulai dari proses
+                                pendaftaran dan kasir
+                            </p>
+                        </div>
+                        <div class="btn-more">
+                            <a href="/Modul">Pelajari Lebih Lanjut...</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="title">
+                            <h3>Modul Rawat Jalan (Pendaftaran dan Kasir)</h3>
+                        </div>
+                        <div class="image">
+                            <img src="{{ asset('assets/img/modul1.png') }}" alt="">
+                        </div>
+                        <div class="description">
+                            <p>Aplikasi pelayanan rawat darurat yang bisa membantu pelayanan UGD mulai dari proses
+                                pendaftaran dan kasir
+                            </p>
+                        </div>
+                        <div class="btn-more">
+                            <a href="/Modul">Pelajari Lebih Lanjut...</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="title">
+                            <h3>Modul Rawat Jalan (Pendaftaran dan Kasir)</h3>
+                        </div>
+                        <div class="image">
+                            <img src="{{ asset('assets/img/modul1.png') }}" alt="">
+                        </div>
+                        <div class="description">
+                            <p>Aplikasi pelayanan rawat darurat yang bisa membantu pelayanan UGD mulai dari proses
+                                pendaftaran dan kasir
+                            </p>
+                        </div>
+                        <div class="btn-more">
+                            <a href="/Modul">Pelajari Lebih Lanjut...</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="title">
+                            <h3>Modul Rawat Jalan (Pendaftaran dan Kasir)</h3>
+                        </div>
+                        <div class="image">
+                            <img src="{{ asset('assets/img/modul1.png') }}" alt="">
+                        </div>
+                        <div class="description">
+                            <p>Aplikasi pelayanan rawat darurat yang bisa membantu pelayanan UGD mulai dari proses
+                                pendaftaran dan kasir
+                            </p>
+                        </div>
+                        <div class="btn-more">
+                            <a href="/Modul">Pelajari Lebih Lanjut...</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="title">
+                            <h3>Modul Rawat Jalan (Pendaftaran dan Kasir)</h3>
+                        </div>
+                        <div class="image">
+                            <img src="{{ asset('assets/img/modul1.png') }}" alt="">
+                        </div>
+                        <div class="description">
+                            <p>Aplikasi pelayanan rawat darurat yang bisa membantu pelayanan UGD mulai dari proses
+                                pendaftaran dan kasir
+                            </p>
+                        </div>
+                        <div class="btn-more">
+                            <a href="/Modul">Pelajari Lebih Lanjut...</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="btn">
                     <div class="btn-load">Lihat Semua Modul</div>
@@ -506,16 +642,16 @@
     document.addEventListener('DOMContentLoaded', function() {
         let loadMoreBtn = document.querySelector('.btn-load');
         let loadLessBtn = document.querySelector('.btn-less');
-        let currentItem = 8;
+        let currentItem = 15;
 
         loadMoreBtn.addEventListener('click', () => {
             let boxes = document.querySelectorAll('.section-modul .modul .wrapper .card');
 
-            for (var i = currentItem; i < currentItem + 4 && i < boxes.length; i++) {
+            for (var i = currentItem; i < currentItem + 5 && i < boxes.length; i++) {
                 boxes[i].style.display = 'block';
             }
 
-            currentItem += 4;
+            currentItem += 5;
 
             if (currentItem >= boxes.length) {
                 loadMoreBtn.style.display = 'none';
