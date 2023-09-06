@@ -14,7 +14,8 @@
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    {{-- <link rel="stylesheet" href="../../dist/css/adminlte.min.css"> --}}
+    <link rel="stylesheet" href="{{ asset('/adminlte/dist/css/adminlte.min.css') }}">
 </head>
 
 <body class="hold-transition login-page">
@@ -29,7 +30,7 @@
                 <p class="login-box-msg">Sign in to start your session</p>
                 <form action="/LandingPage-Header" method="GET">
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="text" class="form-control" placeholder="Username">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>

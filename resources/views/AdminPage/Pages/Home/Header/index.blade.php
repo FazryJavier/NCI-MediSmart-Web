@@ -28,7 +28,7 @@
                 <td>Mark</td>
                 <td>Otto</td>
                 <td>@mdo</td>
-                <td> <a type="button" class="btn btn-warning" href="admin-update"><i
+                <td> <a type="button" class="btn btn-warning" href="/LandingPage-Header/update"><i
                             class="fa-solid fa-pen-to-square"></i></a>
                     <a type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                 </td>

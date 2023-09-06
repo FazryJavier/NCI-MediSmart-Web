@@ -1,7 +1,7 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Create - Section Header
+    Update - Section Client
 @endsection
 
 @section('content')
@@ -10,10 +10,6 @@
             <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Judul</label>
                 <input type="text" class="form-control" id="formGroupExampleInput">
-            </div>
-            <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Sub Judul</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2">
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Image File</label>
@@ -40,8 +36,8 @@
                 </div>
             </div>
             <div class="mb-3">
-                <button type="submit" class="btn btn-success">Create</button>
-                <a href="/LandingPage-Header" type="button" class="btn btn-secondary">Back</a>
+                <button type="submit" class="btn btn-success">Update</button>
+                <a href="/LandingPage-Client" type="button" class="btn btn-secondary">Back</a>
             </div>
         </form>
     </section>

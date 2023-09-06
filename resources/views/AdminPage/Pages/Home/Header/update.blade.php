@@ -1,7 +1,7 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Create - Section Header
+    Update - Section Header
 @endsection
 
 @section('content')
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="mb-3">
-                <button type="submit" class="btn btn-success">Create</button>
+                <button type="submit" class="btn btn-success">Update</button>
                 <a href="/LandingPage-Header" type="button" class="btn btn-secondary">Back</a>
             </div>
         </form>

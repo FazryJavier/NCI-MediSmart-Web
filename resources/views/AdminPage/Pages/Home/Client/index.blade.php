@@ -19,7 +19,7 @@
                 <th scope="row">1</th>
                 <td>Layanan kesehatan yang bekerja sama dengan kami</td>
                 <td>/Image/client.png</td>
-                <td> <a type="button" class="btn btn-warning" href="admin-update"><i class="fa-solid fa-pen-to-square"></i></a>
+                <td> <a type="button" class="btn btn-warning" href="/LandingPage-Client/update"><i class="fa-solid fa-pen-to-square"></i></a>
                 </td>
             </tr>
         </tbody>

@@ -57,7 +57,13 @@ Route::get('/LandingPage-Header', function () {
 Route::get('/LandingPage-Header/create', function () {
     return view('AdminPage/Pages/Home/Header/create');
 });
+Route::get('/LandingPage-Header/update', function () {
+    return view('AdminPage/Pages/Home/Header/update');
+});
 
 Route::get('/LandingPage-Client', function () {
     return view('AdminPage/Pages/Home/Client/index');
+});
+Route::get('/LandingPage-Client/update', function () {
+    return view('AdminPage/Pages/Home/Client/update');
 });
