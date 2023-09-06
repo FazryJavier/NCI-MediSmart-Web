@@ -31,12 +31,12 @@
             <div class="mb-3">
                 <label>Tampilkan ?</label>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label" for="inlineCheckbox1">Yes</label>
+                    <input class="form-check-input" type="radio" name="inlineRadio" id="radioYes" value="yes">
+                    <label class="form-check-label" for="radioYes">Yes</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">No</label>
+                    <input class="form-check-input" type="radio" name="inlineRadio" id="radioNo" value="no">
+                    <label class="form-check-label" for="radioNo">No</label>
                 </div>
             </div>
             <div class="mb-3">

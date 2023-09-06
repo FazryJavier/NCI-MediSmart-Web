@@ -67,3 +67,10 @@ Route::get('/LandingPage-Client', function () {
 Route::get('/LandingPage-Client/update', function () {
     return view('AdminPage/Pages/Home/Client/update');
 });
+
+Route::get('/LandingPage-Map', function () {
+    return view('AdminPage/Pages/Home/Map/index');
+});
+Route::get('/LandingPage-Map/update', function () {
+    return view('AdminPage/Pages/Home/Map/update');
+});
