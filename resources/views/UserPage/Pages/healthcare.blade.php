@@ -30,7 +30,8 @@
                 <div class="content">
                     <div class="video">
                         @foreach ($videoView as $video)
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $video }}" title="YouTube video player"
+                            <iframe width="560" height="315"
+                                src="https://www.youtube.com/embed/{{ $video }}" title="YouTube video player"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen controls muted></iframe>
@@ -47,7 +48,9 @@
         <div class="visimisi">
             <div class="container">
                 <div class="content">
-                    <img src="{{ asset('assets/img/Logo Medismart.png') }}" alt="">
+                    @foreach ($imageView as $image)
+                        <img src="{{ asset('storage/' . $image) }}" alt="">
+                    @endforeach
                     @foreach ($healthcareDescription as $data)
                         <p>{{ $data }}</p>
                     @endforeach

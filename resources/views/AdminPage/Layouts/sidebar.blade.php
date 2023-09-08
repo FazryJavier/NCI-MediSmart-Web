@@ -132,7 +132,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/TentangKami" class="nav-link">
+                            <a href="/AboutUs" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>About Us</p>
                             </a>
