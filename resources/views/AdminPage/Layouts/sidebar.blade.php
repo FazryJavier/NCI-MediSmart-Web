@@ -28,43 +28,25 @@
                         <li class="nav-item">
                             <a href="/LandingPage-Header" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Header</p>
+                                <p>Landing Slider</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/LandingPage-Client" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Client</p>
+                                <p>Landing Video</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                            <a href="/LandingPage-Map" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Experience</p>
+                                <p>Client</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/LandingPage-Map" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Map</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/boxed.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/boxed.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Video</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/boxed.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>News & Update</p>
                             </a>
                         </li>
                     </ul>
@@ -192,7 +174,7 @@
                         <li class="nav-item">
                             <a href="admin-home" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Testimoni</p>
+                                <p>Feedback</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -218,50 +200,12 @@
                         <li class="nav-item">
                             <a href="admin-home" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Headline</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/boxed.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Top 3</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>News</p>
+                                <p>Article</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 {{-- End Blog --}}
-
-                {{-- Detail Blog --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-plus-square"></i>
-                        <p>
-                            Detail Blog
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="admin-home" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>News</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Rekomendasi</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End Detail Blog --}}
 
                 {{-- Header --}}
                 <li class="nav-item">
