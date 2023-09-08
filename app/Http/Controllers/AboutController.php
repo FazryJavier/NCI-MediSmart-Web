@@ -21,8 +21,10 @@ class AboutController extends Controller
     {
         $videoView = About::pluck('video');
         $healthcareDescription = About::pluck('description');
+        $visiView = About::pluck('visi');
+        $misiView = About::pluck('misi');
 
-        return view('Userpage.Pages.healthcare', compact('videoView', 'healthcareDescription'));
+        return view('Userpage.Pages.healthcare', compact('videoView', 'healthcareDescription', 'visiView', 'misiView'));
     }
 
     /**

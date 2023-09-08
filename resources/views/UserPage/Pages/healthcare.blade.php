@@ -29,11 +29,11 @@
                 </div>
                 <div class="content">
                     <div class="video">
-                        @foreach($videoView as $video)
-                        <iframe width="560" height="315" src="{{ $video }}"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen controls muted></iframe>
+                        @foreach ($videoView as $video)
+                            <iframe width="560" height="315" src="{{ $video }}" title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen controls muted></iframe>
                         @endforeach
                     </div>
                 </div>
@@ -56,17 +56,18 @@
                     <div class="columns">
                         <div class="card">
                             <h1>Visi</h1>
-                            <p>Menjadi Perusahaan IT Terbaik, Bermanfaat dan Berskala Nasional</p>
+                            @foreach ($visiView as $visi)
+                                <p>{{ $visi }}</p>
+                            @endforeach
                         </div>
                     </div>
 
                     <div class="columns">
                         <div class="card">
                             <h1>Misi</h1>
-                            <p>Menciptakan produk yang mudah digunakan, berkualitas dan mengikuti trend teknologi.</p>
-                            <p>Memberikan pelayanan prima dengan menerapkan prosedur kerja standar dan dukungan sumber
-                                daya manusia yang handal,berkualitas dan kompeten.</p>
-                            <p>Memberikan manfaat bagi semua pihak.</p>
+                            @foreach ($misiView as $misi)
+                                <p>{{ $misi }}</p>
+                            @endforeach
                         </div>
                     </div>
                 </div>
