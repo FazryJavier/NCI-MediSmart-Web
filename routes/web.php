@@ -74,7 +74,7 @@ Route::get('/LandingPage-Map/update', function () {
     return view('AdminPage/Pages/Home/Map/update');
 });
 
-// Tentang Kami
+// About Us
 Route::get('/AboutUs', [AboutController::class, 'index']);
 Route::get('/AboutUs/create', [AboutController::class, 'create']);
 Route::post('/AboutUs', [AboutController::class, 'store']);

@@ -18,7 +18,7 @@
 
         <div class="mb-3">
             <label for="image" class="form-label">Upload Image</label>
-            <img class="img-preview img-fluid mb-3 mt-3">
+            <input type="hidden" name="oldImage" value="{{ $aboutUpdate->image }}">
             @if ($aboutUpdate->image)
                 <img src="{{ asset('storage/' . $aboutUpdate->image) }}" alt="image"
                     class="img-preview img-fluid mb-3 d-block">

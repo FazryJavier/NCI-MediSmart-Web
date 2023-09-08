@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
 {
@@ -83,28 +84,27 @@ class AboutController extends Controller
     public function update(Request $request, $id)
     {
         $content = [
-            'video'=>'required',
-            'image'=>'image|file|max:2048',
-            'description'=>'required',
-            'visi'=>'required',
-            'misi'=>'required',
+            'video' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required',
+            'visi' => 'required',
+            'misi' => 'required',
         ];
-        // $validatedData = $filmEdit=Film::where('id', $id)->update([
-        //     'judul'=>'required',
-        //     'ringkasan'=>'required',
-        //     'tahun'=>'required',
-        //     'poster'=>'image|file|max:2048',
-        // ]);
-
-        if($request->file('image')) {
-            $content['image'] = $request->file('image')->store('file-image');
+    
+        $validatedData = $request->validate($content);
+    
+        $about = About::find($id);
+    
+        if ($request->hasFile('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+    
+            $validatedData['image'] = $request->file('image')->store('file-image');
         }
 
-        $validatedData = $request->validate($content);
-        
-        About::where('id', $id)
-            ->update($validatedData);
-
+        $about->update($validatedData);
+    
         return redirect('/AboutUs');
     }
 
