@@ -29,10 +29,12 @@
                 </div>
                 <div class="content">
                     <div class="video">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/65pOIFtQUyg"
+                        @foreach($videoView as $video)
+                        <iframe width="560" height="315" src="{{ $video }}"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen controls muted></iframe>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -46,9 +48,9 @@
             <div class="container">
                 <div class="content">
                     <img src="{{ asset('assets/img/Logo Medismart.png') }}" alt="">
-                    <p><b>NCI-MediSmart</b> memberikan solusi bagi fasilitas kesehatan Indonesia untuk bertransformasi
-                        dengan layanan digital dan teknologi terbarukan untuk mendukung fasilitas kesehatan mencapai
-                        hasil terbaik dengan skala yang besar.</p>
+                    @foreach ($healthcareDescription as $data)
+                        <p>{{ $data }}</p>
+                    @endforeach
                 </div>
                 <div class="text">
                     <div class="columns">
@@ -69,7 +71,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
     {{-- End Visi Misi --}}

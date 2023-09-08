@@ -132,21 +132,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="admin-home" class="nav-link">
+                            <a href="/TentangKami" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Video</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/boxed.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Description</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Visi Misi</p>
+                                <p>About Us</p>
                             </a>
                         </li>
                     </ul>

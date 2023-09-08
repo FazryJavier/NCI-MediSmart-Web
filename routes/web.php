@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,9 +27,7 @@ Route::get('/Modul', function () {
     return view('UserPage/Pages/modul');
 });
 
-Route::get('/HealthcareSolution', function () {
-    return view('UserPage/Pages/healthcare');
-});
+Route::get('/HealthcareSolution', [AboutController::class, 'showContent']);
 
 Route::get('/Testimoni', function () {
     return view('UserPage/Pages/testimoni');
@@ -74,3 +73,20 @@ Route::get('/LandingPage-Map', function () {
 Route::get('/LandingPage-Map/update', function () {
     return view('AdminPage/Pages/Home/Map/update');
 });
+
+// Tentang Kami
+Route::get('/AboutUs', [AboutController::class, 'index']);
+Route::get('/AboutUs/create', [AboutController::class, 'create']);
+Route::post('/AboutUs', [AboutController::class, 'store']);
+Route::get('/AboutUs/{id}/update', [AboutController::class, 'edit']);
+Route::put('/AboutUs/{id}', [AboutController::class, 'update']);
+Route::delete('/AboutUs/{id}', [AboutController::class, 'destroy']);
+
+// Show Image
+Route::get('/storage/file-image/{filename}', function ($filename) {
+    $path = storage_path("app/file-image/{$filename}");
+    if (!file_exists($path)) {
+        abort(404);
+    }
+    return response()->file($path);
+})->where('filename', '.*');
