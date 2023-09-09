@@ -16,11 +16,6 @@
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror --}}
 
-        {{-- <div class="mb-3">
-            <label for="image" class="form-label">Upload Image</label>
-            <img class="img-preview img-fluid mb-3">
-            <input type="file" class="form-control" id="image" name="image" onchange="previewImage()">
-        </div> --}}
         <div class="mb-3">
             <label for="image" class="form-label">Upload Image</label>
             <img class="img-preview img-fluid mb-3 mt-3">

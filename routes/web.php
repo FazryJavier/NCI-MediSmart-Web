@@ -51,31 +51,6 @@ Route::get('/Admin', function () {
     return view('AdminPage/Pages/login');
 });
 
-// Route::get('/LandingPage-Header', function () {
-//     return view('AdminPage/Pages/Home/Header/index');
-// });
-// Route::get('/LandingPage-Header/create', function () {
-//     return view('AdminPage/Pages/Home/Header/create');
-// });
-// Route::get('/Home', [LandingSliderController::class, 'showContent']);
-Route::get('/LandingPage-Header/update', function () {
-    return view('AdminPage/Pages/Home/Header/update');
-});
-
-Route::get('/LandingPage-Client', function () {
-    return view('AdminPage/Pages/Home/Client/index');
-});
-Route::get('/LandingPage-Client/update', function () {
-    return view('AdminPage/Pages/Home/Client/update');
-});
-
-Route::get('/LandingPage-Map', function () {
-    return view('AdminPage/Pages/Home/Map/index');
-});
-Route::get('/LandingPage-Map/update', function () {
-    return view('AdminPage/Pages/Home/Map/update');
-});
-
 // About Us
 Route::get('/AboutUs', [AboutController::class, 'index']);
 Route::get('/AboutUs/create', [AboutController::class, 'create']);
@@ -84,17 +59,7 @@ Route::get('/AboutUs/{id}/update', [AboutController::class, 'edit']);
 Route::put('/AboutUs/{id}', [AboutController::class, 'update']);
 Route::delete('/AboutUs/{id}', [AboutController::class, 'destroy']);
 
-// Show Image
-Route::get('/storage/file-image/{filename}', function ($filename) {
-    $path = storage_path("app/file-image/{$filename}");
-    if (!file_exists($path)) {
-        abort(404);
-    }
-    return response()->file($path);
-})->where('filename', '.*');
-
 // Landing Slider
-
 Route::get('/LandingSlider', [LandingSliderController::class, 'index']);
 Route::get('/LandingSlider/create', [LandingSliderController::class, 'create']);
 Route::post('/LandingSlider', [LandingSliderController::class, 'store']);

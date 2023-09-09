@@ -115,7 +115,13 @@ class AboutController extends Controller
     {
         $about = About::findOrFail($id);
 
+        $imagePath = $about->image;
+
         $about->delete();
+
+        if ($imagePath && Storage::disk('local')->exists($imagePath)) {
+            Storage::disk('local')->delete($imagePath);
+        }
 
         return redirect('/AboutUs');
     }

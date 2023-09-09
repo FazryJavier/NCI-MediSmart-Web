@@ -16,7 +16,7 @@ class LandingSliderController extends Controller
         //
         $landing = LandingSlider::all();
 
-        return view('AdminPage.Pages.Home.Header.index', compact('landing'));
+        return view('AdminPage.Pages.Home.LandingSlider.index', compact('landing'));
     }
 
     public function showContent()
@@ -36,7 +36,7 @@ class LandingSliderController extends Controller
     public function create()
     {
         //
-        return view('AdminPage.Pages.Home.Header.create');
+        return view('AdminPage.Pages.Home.LandingSlider.create');
     }
 
     /**
@@ -44,7 +44,6 @@ class LandingSliderController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $validatedData = $request->validate([
             'title' => 'required',
             'caption' => 'required',
@@ -53,7 +52,6 @@ class LandingSliderController extends Controller
 
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('file-image');
-            // $validatedData['image'] = $request->file('image')->store('');
         }
 
         LandingSlider::create($validatedData);
@@ -68,7 +66,8 @@ class LandingSliderController extends Controller
     {
         //
         $landingShow = LandingSlider::find($id);
-        return view('AdminPage.Pages.Home.Header.index', compact('landingShow'));
+
+        return view('AdminPage.Pages.Home.LandingSlider.index', compact('landingShow'));
     }
 
     /**
@@ -78,7 +77,7 @@ class LandingSliderController extends Controller
     {
         $slider = LandingSlider::where('id', $id)->firstorfail();
 
-        return view('AdminPage.Pages.Home.Header.update', compact('slider'));
+        return view('AdminPage.Pages.Home.LandingSlider.update', compact('slider'));
     }
 
     /**
@@ -115,7 +114,14 @@ class LandingSliderController extends Controller
     public function destroy($id)
     {
         $slider = LandingSlider::findOrFail($id);
+        
+        $imagePath = $slider->image;
+
         $slider->delete();
+
+        if ($imagePath && Storage::disk('local')->exists($imagePath)) {
+            Storage::disk('local')->delete($imagePath);
+        }
 
         return redirect('/LandingSlider');
     }
