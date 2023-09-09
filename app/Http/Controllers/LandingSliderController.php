@@ -13,14 +13,29 @@ class LandingSliderController extends Controller
     public function index()
     {
         //
+        $landing = LandingSlider::all();
+
+        return view('AdminPage.Pages.Home.Header.index', compact('landing'));
     }
 
+    public function showContent()
+    {
+        $titleView = LandingSlider::pluck('title');
+        $captionView = LandingSlider::pluck('caption');
+        $imageView = LandingSlider::pluck('image');
+
+        $home = LandingSlider::all();
+
+        // return view('UserPage.Pages.home', compact('titleView', 'captionView', 'imageView'));
+        return view('UserPage.Pages.home', compact('home'));
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         //
+        return view('AdminPage.Pages.Home.Header.create');
     }
 
     /**
@@ -28,15 +43,30 @@ class LandingSliderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'caption' => 'required',
+            'image' => 'image|file',
+        ]);
+
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('file-image');
+        }
+
+        LandingSlider::create($validatedData);
+
+        return redirect('/LandingSlider');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(LandingSlider $landingSlider)
+    public function show(LandingSlider $id)
     {
         //
+        $landingShow = LandingSlider::find($id);
+        return view('AdminPage.Pages.Home.Header.index', compact('landingShow'));
     }
 
     /**

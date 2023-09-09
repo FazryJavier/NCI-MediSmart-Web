@@ -42,15 +42,15 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request -> validate([
-            'video'=>'required',
-            'image'=>'image|file|max:2048',
-            'description'=>'required',
-            'visi'=>'required',
-            'misi'=>'required',
+        $validatedData = $request->validate([
+            'video' => 'required',
+            'image' => 'image|file|max:2048',
+            'description' => 'required',
+            'visi' => 'required',
+            'misi' => 'required',
         ]);
 
-        if($request->file('image')) {
+        if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('file-image');
         }
 
@@ -73,7 +73,7 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
-        $aboutUpdate=About::where('id', $id)->firstorfail();
+        $aboutUpdate = About::where('id', $id)->firstorfail();
 
         return view('AdminPage.Pages.About.update', compact('aboutUpdate'));
     }
@@ -90,21 +90,21 @@ class AboutController extends Controller
             'visi' => 'required',
             'misi' => 'required',
         ];
-    
+
         $validatedData = $request->validate($content);
-    
+
         $about = About::find($id);
-    
+
         if ($request->hasFile('image')) {
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-    
+
             $validatedData['image'] = $request->file('image')->store('file-image');
         }
 
         $about->update($validatedData);
-    
+
         return redirect('/AboutUs');
     }
 
@@ -115,7 +115,7 @@ class AboutController extends Controller
     {
         $about = About::findOrFail($id);
 
-        $about -> delete();
+        $about->delete();
 
         return redirect('/AboutUs');
     }

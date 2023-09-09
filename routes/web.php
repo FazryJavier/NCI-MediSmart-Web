@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\LandingSliderController;
+use App\Models\LandingSlider;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Landing Page
-Route::get('/', function () {
-    return view('UserPage/Pages/home');
-});
+Route::get('/', [LandingSliderController::class, 'showContent']);
 
 Route::get('/Product', function () {
     return view('UserPage/Pages/product');
@@ -50,12 +50,13 @@ Route::get('/Admin', function () {
     return view('AdminPage/Pages/login');
 });
 
-Route::get('/LandingPage-Header', function () {
-    return view('AdminPage/Pages/Home/Header/index');
-});
-Route::get('/LandingPage-Header/create', function () {
-    return view('AdminPage/Pages/Home/Header/create');
-});
+// Route::get('/LandingPage-Header', function () {
+//     return view('AdminPage/Pages/Home/Header/index');
+// });
+// Route::get('/LandingPage-Header/create', function () {
+//     return view('AdminPage/Pages/Home/Header/create');
+// });
+// Route::get('/Home', [LandingSliderController::class, 'showContent']);
 Route::get('/LandingPage-Header/update', function () {
     return view('AdminPage/Pages/Home/Header/update');
 });
@@ -81,6 +82,22 @@ Route::post('/AboutUs', [AboutController::class, 'store']);
 Route::get('/AboutUs/{id}/update', [AboutController::class, 'edit']);
 Route::put('/AboutUs/{id}', [AboutController::class, 'update']);
 Route::delete('/AboutUs/{id}', [AboutController::class, 'destroy']);
+
+// Show Image
+Route::get('/storage/file-image/{filename}', function ($filename) {
+    $path = storage_path("app/file-image/{$filename}");
+    if (!file_exists($path)) {
+        abort(404);
+    }
+    return response()->file($path);
+})->where('filename', '.*');
+
+// Landing Slider
+
+Route::get('/LandingSlider', [LandingSliderController::class, 'index']);
+Route::get('/LandingSlider/create', [LandingSliderController::class, 'create']);
+Route::post('/LandingSlider', [LandingSliderController::class, 'store']);
+
 
 // Show Image
 Route::get('/storage/file-image/{filename}', function ($filename) {

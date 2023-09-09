@@ -23,7 +23,29 @@
     {{-- Home --}}
     <section class="section-header swiper mySwiper">
         <div class="wrapper swiper-wrapper">
+            @foreach ($home as $home)
             <div class="slide swiper-slide">
+                {{-- @foreach ($imageView as $image) --}}
+                <img src="{{ asset('storage/' . $home->image) }}" alt="" class="image">
+                {{-- @endforeach --}}
+                <div class="image-date">
+                    {{-- @foreach($titleView as $title) --}}
+                    <h1>
+                        {!! $home->title !!}
+                        {{-- {{ $title }} --}}
+                        {{-- Solusi Teknologi Penunjang Fasilitas <br> Pelayanan Kesehatan <br> Sejak 1991 --}}
+                    </h1>
+                    {{-- @endforeach --}}
+                    {{-- @foreach($captionView as $caption) --}}
+                    <h3>{{ $home->caption }}</h3>
+                    {{-- @endforeach --}}
+                    <a href="" class="button-1">Hubungi Kami</a>
+                    <a href="" class="button-2">Pelajari Lanjut</a>
+                </div>
+            </div>
+            @endforeach
+
+            {{-- <div class="slide swiper-slide">
                 <img src="{{ asset('assets/img/background.png') }}" alt="" class="image">
                 <div class="image-date">
                     <h1>
@@ -31,7 +53,6 @@
                     </h1>
                     <h3>Caption dari Judul Utama Per slider</h3>
                     <a href="" class="button-1">Hubungi Kami</a>
-                    <a href="" class="button-2">Pelajari Lanjut</a>
                 </div>
             </div>
 
@@ -42,20 +63,9 @@
                         Solusi Teknologi Penunjang Fasilitas <br> Pelayanan Kesehatan <br> Sejak 1991
                     </h1>
                     <h3>Caption dari Judul Utama Per slider</h3>
-                    <a href="" class="button-1">Hubungi Kami</a>
-                </div>
-            </div>
-
-            <div class="slide swiper-slide">
-                <img src="{{ asset('assets/img/background.png') }}" alt="" class="image">
-                <div class="image-date">
-                    <h1>
-                        Solusi Teknologi Penunjang Fasilitas <br> Pelayanan Kesehatan <br> Sejak 1991
-                    </h1>
-                    <h3>Caption dari Judul Utama Per slider</h3>
                     <a href="" class="button-2">Pelajari Lanjut</a>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="swiper-button-next nav-btn"></div>

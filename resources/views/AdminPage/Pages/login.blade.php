@@ -28,7 +28,7 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <form action="/LandingPage-Header" method="GET">
+                <form action="/LandingSlider" method="GET">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Username">
                         <div class="input-group-append">

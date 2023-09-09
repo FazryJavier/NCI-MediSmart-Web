@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class LandingSlider extends Model
 {
     use HasFactory;
-    protected $table='landing_sliders';
-    protected $guarded=[];
+    protected $table = 'landing_sliders';
+    protected $guarded = [];
 }
