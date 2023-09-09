@@ -3,7 +3,6 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
-use App\Models\LandingSlider;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +17,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Landing Page
-Route::get('/', [LandingSliderController::class, 'showContent']);
+// Route::get('/', [LandingSliderController::class, 'showContent']);
+Route::get('/', function() {
+    $sliderController = app()->make(LandingSliderController::class);
+    $sliderContent = $sliderController->showContent();
+
+    $videoController = app()->make(LandingVideoController::class);
+    $videoContent = $videoController->showContent();
+
+    return view('UserPage/Pages/home', [
+        'sliderContent' => $sliderContent,
+        'videoContent' => $videoContent,
+    ]);
+});
+
 
 Route::get('/Product', function () {
     return view('UserPage/Pages/product');
@@ -66,6 +78,14 @@ Route::post('/LandingSlider', [LandingSliderController::class, 'store']);
 Route::get('/LandingSlider/{id}/update', [LandingSliderController::class, 'edit']);
 Route::put('/LandingSlider/{id}', [LandingSliderController::class, 'update']);
 Route::delete('/LandingSlider/{id}', [LandingSliderController::class, 'destroy']);
+
+// Landing Video
+Route::get('/LandingVideo', [LandingVideoController::class, 'index']);
+Route::get('/LandingVideo/create', [LandingVideoController::class, 'create']);
+Route::post('/LandingVideo', [LandingVideoController::class, 'store']);
+Route::get('/LandingVideo/{id}/update', [LandingVideoController::class, 'edit']);
+Route::put('/LandingVideo/{id}', [LandingVideoController::class, 'update']);
+Route::delete('/LandingVideo/{id}', [LandingVideoController::class, 'destroy']);
 
 // Show Image
 Route::get('/storage/file-image/{filename}', function ($filename) {

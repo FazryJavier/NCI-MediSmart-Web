@@ -23,49 +23,19 @@
     {{-- Home --}}
     <section class="section-header swiper mySwiper">
         <div class="wrapper swiper-wrapper">
-            @foreach ($home as $home)
-            <div class="slide swiper-slide">
-                {{-- @foreach ($imageView as $image) --}}
-                <img src="{{ asset('storage/' . $home->image) }}" alt="" class="image">
-                {{-- @endforeach --}}
-                <div class="image-date">
-                    {{-- @foreach($titleView as $title) --}}
-                    <h1>
-                        {!! $home->title !!}
-                        {{-- {{ $title }} --}}
-                        {{-- Solusi Teknologi Penunjang Fasilitas <br> Pelayanan Kesehatan <br> Sejak 1991 --}}
-                    </h1>
-                    {{-- @endforeach --}}
-                    {{-- @foreach($captionView as $caption) --}}
-                    <h3>{{ $home->caption }}</h3>
-                    {{-- @endforeach --}}
-                    <a href="" class="button-1">Hubungi Kami</a>
-                    <a href="" class="button-2">Pelajari Lanjut</a>
-                </div>
+            <div class="wrapper swiper-wrapper">
+                @foreach ($sliderContent['home'] as $home)
+                    <div class="slide swiper-slide">
+                        <img src="{{ asset('storage/' . $home->image) }}" alt="" class="image">
+                        <div class="image-date">
+                            <h1>{!! $home->title !!}</h1>
+                            <h3>{{ $home->caption }}</h3>
+                            <a href="" class="button-1">Hubungi Kami</a>
+                            <a href="" class="button-2">Pelajari Lanjut</a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            @endforeach
-
-            {{-- <div class="slide swiper-slide">
-                <img src="{{ asset('assets/img/background.png') }}" alt="" class="image">
-                <div class="image-date">
-                    <h1>
-                        Solusi Teknologi Penunjang Fasilitas <br> Pelayanan Kesehatan <br> Sejak 1991
-                    </h1>
-                    <h3>Caption dari Judul Utama Per slider</h3>
-                    <a href="" class="button-1">Hubungi Kami</a>
-                </div>
-            </div>
-
-            <div class="slide swiper-slide">
-                <img src="{{ asset('assets/img/background.png') }}" alt="" class="image">
-                <div class="image-date">
-                    <h1>
-                        Solusi Teknologi Penunjang Fasilitas <br> Pelayanan Kesehatan <br> Sejak 1991
-                    </h1>
-                    <h3>Caption dari Judul Utama Per slider</h3>
-                    <a href="" class="button-2">Pelajari Lanjut</a>
-                </div>
-            </div> --}}
         </div>
 
         <div class="swiper-button-next nav-btn"></div>
@@ -265,11 +235,13 @@
                                 Back Office, menghasilkan pelaporan secara lengkap dan cepat
                             </p>
                             <ul>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>SIMRS NCI-MediSmart
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>SIMRS
+                                    NCI-MediSmart
                                 </li>
                                 <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi BPJS &
                                     V-Claim</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Keuangan & Akuntansi
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Keuangan &
+                                    Akuntansi
                                 </li>
                                 <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Picture Archiving
                                     and Communication System (PACS)</li>
@@ -347,18 +319,21 @@
             <div class="container">
                 <div class="content">
                     <div class="text">
-                        <h1>Bersama Membangun Layanan Kesehatan Dalam Era Revolusi Industri 4.0</h1>
-                        <p>NCI-MediSmart memberikan solusi bagi fasilitas kesehatan Indonesia untuk bertransformasi
-                            dengan layanan digital dan teknologi terbarukan untuk mendukung fasilitas kesehatan mencapai
-                            hasil terbaik dengan skala yang besar.
-                        </p>
+                        @foreach ($videoContent['titleView'] as $title)
+                            <h1>{{ $title }}</h1>
+                        @endforeach
+                        @foreach ($videoContent['descriptionView'] as $description)
+                        <p>{{ $description }}</p>
+                        @endforeach
                     </div>
 
                     <div class="video">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/65pOIFtQUyg"
+                        @foreach ($videoContent['videoView'] as $video)
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $video }}"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen controls muted></iframe>
+                        @endforeach
                     </div>
                 </div>
             </div>

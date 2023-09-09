@@ -1,7 +1,7 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Page About Us
+    Page Home - Landing Video
 @endsection
 
 @push('script')
@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right mb-2">
-                <a class="btn btn-success" href="/AboutUs/create"> Create </a>
+                <a class="btn btn-success" href="/LandingVideo/create"> Create </a>
             </div>
         </div>
     </div>
@@ -31,26 +31,22 @@
         <thead>
             <tr>
                 <th class="col-sm-1">Id</th>
+                <th class="col-sm-3">Title</th>
+                <th class="col-sm-4">Description</th>
                 <th class="col-sm-2">Video</th>
-                <th class="col-sm-2">Image</th>
-                <th class="col-sm-3">Description</th>
-                <th class="col-sm-2">Visi</th>
-                <th class="col-sm-2">Misi</th>
-                <th class="col-sm-1">Action</th>
+                <th class="col-sm-2">Action</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($about as $key => $item)
+            @forelse ($video as $vd => $item)
                 <tr>
-                    <td>{{ $key + 1 }}</td>
-                    <td>{{ $item->video }}</td>
-                    <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
+                    <td>{{ $vd + 1 }}</td>
+                    <td>{{ $item->title }}</td>
                     <td>{{ $item->description }}</td>
-                    <td>{{ $item->visi }}</td>
-                    <td>{{ $item->misi }}</td>
+                    <td>{{ $item->video }}</td>
                     <td>
-                        <form action="/AboutUs/{{ $item->id }}" method="POST">
-                            <a href="/AboutUs/{{ $item->id }}/update" type="button" class="btn btn-warning"><i
+                        <form action="/LandingVideo/{{ $item->id }}" method="POST">
+                            <a href="/LandingVideo/{{ $item->id }}/update" type="button" class="btn btn-warning"><i
                                     class="fa-solid fa-pen-to-square"></i></a>
                             @csrf
                             @method('delete')

@@ -27,15 +27,19 @@ class LandingSliderController extends Controller
 
         $home = LandingSlider::all();
 
-        // return view('UserPage.Pages.home', compact('titleView', 'captionView', 'imageView'));
-        return view('UserPage.Pages.home', compact('home', 'imageView'));
+        return [
+            'titleView' => $titleView,
+            'captionView' => $captionView,
+            'imageView' => $imageView,
+            'home' => $home,
+        ];
     }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
         return view('AdminPage.Pages.Home.LandingSlider.create');
     }
 
@@ -64,7 +68,6 @@ class LandingSliderController extends Controller
      */
     public function show(LandingSlider $id)
     {
-        //
         $landingShow = LandingSlider::find($id);
 
         return view('AdminPage.Pages.Home.LandingSlider.index', compact('landingShow'));

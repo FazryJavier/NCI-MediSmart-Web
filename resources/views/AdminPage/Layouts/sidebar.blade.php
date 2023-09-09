@@ -32,19 +32,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/LandingPage-Client" class="nav-link">
+                            <a href="/LandingVideo" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Landing Video</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/LandingPage-Map" class="nav-link">
+                            <a href="/LandingClient" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Client</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/LandingPage-Map" class="nav-link">
+                            <a href="/LandingMap" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Map</p>
                             </a>
