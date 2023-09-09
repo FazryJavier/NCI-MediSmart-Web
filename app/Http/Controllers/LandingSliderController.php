@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LandingSlider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class LandingSliderController extends Controller
 {
@@ -27,7 +28,7 @@ class LandingSliderController extends Controller
         $home = LandingSlider::all();
 
         // return view('UserPage.Pages.home', compact('titleView', 'captionView', 'imageView'));
-        return view('UserPage.Pages.home', compact('home'));
+        return view('UserPage.Pages.home', compact('home', 'imageView'));
     }
     /**
      * Show the form for creating a new resource.
@@ -52,6 +53,7 @@ class LandingSliderController extends Controller
 
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('file-image');
+            // $validatedData['image'] = $request->file('image')->store('');
         }
 
         LandingSlider::create($validatedData);
@@ -72,24 +74,49 @@ class LandingSliderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(LandingSlider $landingSlider)
+    public function edit($id)
     {
-        //
+        $slider = LandingSlider::where('id', $id)->firstorfail();
+
+        return view('AdminPage.Pages.Home.Header.update', compact('slider'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, LandingSlider $landingSlider)
+    public function update(Request $request, $id)
     {
-        //
+        $content = [
+            'title' => 'required',
+            'caption' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
+        ];
+
+        $validatedData = $request->validate($content);
+
+        $slider = LandingSlider::find($id);
+
+        if ($request->hasFile('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+
+            $validatedData['image'] = $request->file('image')->store('file-image');
+        }
+
+        $slider->update($validatedData);
+
+        return redirect('/LandingSlider');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(LandingSlider $landingSlider)
+    public function destroy($id)
     {
-        //
+        $slider = LandingSlider::findOrFail($id);
+        $slider->delete();
+
+        return redirect('/LandingSlider');
     }
 }

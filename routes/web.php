@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\LandingSliderController;
+use App\Http\Controllers\LandingVideoController;
 use App\Models\LandingSlider;
 use Illuminate\Support\Facades\Route;
 
@@ -97,7 +98,9 @@ Route::get('/storage/file-image/{filename}', function ($filename) {
 Route::get('/LandingSlider', [LandingSliderController::class, 'index']);
 Route::get('/LandingSlider/create', [LandingSliderController::class, 'create']);
 Route::post('/LandingSlider', [LandingSliderController::class, 'store']);
-
+Route::get('/LandingSlider/{id}/update', [LandingSliderController::class, 'edit']);
+Route::put('/LandingSlider/{id}', [LandingSliderController::class, 'update']);
+Route::delete('/LandingSlider/{id}', [LandingSliderController::class, 'destroy']);
 
 // Show Image
 Route::get('/storage/file-image/{filename}', function ($filename) {
