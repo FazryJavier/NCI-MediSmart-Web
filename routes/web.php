@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AllClientController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
 use App\Http\Controllers\MapController;
@@ -26,12 +27,16 @@ Route::get('/', function() {
     $videoController = app()->make(LandingVideoController::class);
     $videoContent = $videoController->showContent();
 
+    $clientController = app()->make(AllClientController::class);
+    $clientContent = $clientController->showContent();
+
     $mapController = app()->make(MapController::class);
     $mapContent = $mapController->showContent();
 
     return view('UserPage/Pages/home', [
         'sliderContent' => $sliderContent,
         'videoContent' => $videoContent,
+        'clientContent' => $clientContent,
         'mapContent' => $mapContent,
     ]);
 });
@@ -92,7 +97,15 @@ Route::get('/LandingVideo/{id}/update', [LandingVideoController::class, 'edit'])
 Route::put('/LandingVideo/{id}', [LandingVideoController::class, 'update']);
 Route::delete('/LandingVideo/{id}', [LandingVideoController::class, 'destroy']);
 
-// Map
+// Landing Client
+Route::get('/LandingClient', [AllClientController::class, 'index']);
+Route::get('/LandingClient/create', [AllClientController::class, 'create']);
+Route::post('/LandingClient', [AllClientController::class, 'store']);
+Route::get('/LandingClient/{id}/update', [AllClientController::class, 'edit']);
+Route::put('/LandingClient/{id}', [AllClientController::class, 'update']);
+Route::delete('/LandingClient/{id}', [AllClientController::class, 'destroy']);
+
+// Landing Map
 Route::get('/LandingMap', [MapController::class, 'index']);
 Route::get('/LandingMap/create', [MapController::class, 'create']);
 Route::post('/LandingMap', [MapController::class, 'store']);

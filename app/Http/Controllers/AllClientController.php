@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AllClient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AllClientController extends Controller
 {
@@ -12,7 +13,20 @@ class AllClientController extends Controller
      */
     public function index()
     {
-        //
+        $client = AllClient::all();
+
+        return view('AdminPage.Pages.Home.LandingClient.index', compact('client'));
+    }
+
+    public function showContent()
+    {
+        $titleView = AllClient::pluck('title');
+        $imageView = AllClient::pluck('image');
+
+        return [
+            'titleView' => $titleView,
+            'imageView' => $imageView,
+        ];
     }
 
     /**
@@ -20,7 +34,7 @@ class AllClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('AdminPage.Pages.Home.LandingClient.create');
     }
 
     /**
@@ -28,38 +42,82 @@ class AllClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'image' => 'image|file',
+        ]);
+
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('file-image');
+        }
+
+        AllClient::create($validatedData);
+
+        return redirect('/LandingClient');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(AllClient $allClient)
+    public function show(AllClient $id)
     {
-        //
+        $clientShow = AllClient::find($id);
+
+        return view('AdminPage.Pages.Home.LandingClient.index', compact('clientShow'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(AllClient $allClient)
+    public function edit($id)
     {
-        //
+        $client = AllClient::where('id', $id)->firstorfail();
+
+        return view('AdminPage.Pages.Home.LandingClient.update', compact('client'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AllClient $allClient)
+    public function update(Request $request, $id)
     {
-        //
+        $content = [
+            'title' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
+        ];
+
+        $validatedData = $request->validate($content);
+
+        $client = AllClient::find($id);
+
+        if ($request->hasFile('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+
+            $validatedData['image'] = $request->file('image')->store('file-image');
+        }
+
+        $client->update($validatedData);
+
+        return redirect('/LandingClient');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(AllClient $allClient)
+    public function destroy($id)
     {
-        //
+        $client = AllClient::findOrFail($id);
+        
+        $imagePath = $client->image;
+
+        $client->delete();
+
+        if ($imagePath && Storage::disk('local')->exists($imagePath)) {
+            Storage::disk('local')->delete($imagePath);
+        }
+
+        return redirect('/LandingClient');
     }
 }

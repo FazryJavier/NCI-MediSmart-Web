@@ -48,13 +48,17 @@
         <div class="client">
             <div class="container">
                 <div class="title">
-                    <h3><b>Layanan kesehatan yang bekerja sama dengan kami</b></h3>
+                    @foreach ($clientContent['titleView'] as $title)
+                        <h3><b>{{ $title }}</b></h3>
+                    @endforeach
                 </div>
                 <div class="container-line">
                     <div class="center-line"></div>
                 </div>
                 <div class="image">
-                    <img src="{{ asset('assets/img/Client.png') }}" alt="Client">
+                    @foreach ($clientContent['imageView'] as $image)
+                        <img src="{{ asset('storage/' . $image) }}" alt="Client">
+                    @endforeach
                 </div>
             </div>
 
@@ -121,12 +125,12 @@
                 <div class="client-map">
                     <div class="content">
                         @foreach ($mapContent['titleView'] as $title)
-                        <p><b>{{ $title }}</b></p>
+                            <p><b>{{ $title }}</b></p>
                         @endforeach
                     </div>
                     <div class="maps">
                         @foreach ($mapContent['imageView'] as $image)
-                        <img src="{{ asset('storage/' . $image) }}" alt="Indonesia" width="780">
+                            <img src="{{ asset('storage/' . $image) }}" alt="Indonesia" width="780">
                         @endforeach
                     </div>
                 </div>

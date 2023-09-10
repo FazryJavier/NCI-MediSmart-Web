@@ -15,6 +15,7 @@ class CreateAllClientsTable extends Migration
     {
         Schema::create('all_clients', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->string('image');
             $table->timestamps();
         });
