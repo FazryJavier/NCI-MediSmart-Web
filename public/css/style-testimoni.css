@@ -60,15 +60,19 @@ a {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     grid-gap: 0 50px;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 50px; */
 }
 
 .section-testimoni .content .wrapper .card {
-    /* border: 1px solid #bcbcbc;
-    border-color: #bcbcbc;
-    border-radius: 10px; */
     margin-bottom: 50px;
     padding: 20px;
     display: none;
+    /* margin-bottom: 50px;
+    padding: 20px;
+    max-width: 400px; */
 }
 
 .section-testimoni .content .wrapper .card:nth-child(1),
@@ -178,6 +182,14 @@ a {
 /* End Client */
 
 /* Media Queries */
+@media screen and (max-width: 1080px) {
+    /* Testimoni */
+    /* .section-testimoni .content .wrapper .card {
+        max-width: 300px;
+    } */
+    /* End Testimoni */
+}
+
 @media screen and (max-width: 950px) {
     /* Testimoni */
     .section-testimoni .text {

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AllClientController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
 use App\Http\Controllers\MapController;
@@ -19,7 +20,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Landing Page
-// Route::get('/', [LandingSliderController::class, 'showContent']);
 Route::get('/', function() {
     $sliderController = app()->make(LandingSliderController::class);
     $sliderContent = $sliderController->showContent();
@@ -52,8 +52,13 @@ Route::get('/Modul', function () {
 
 Route::get('/HealthcareSolution', [AboutController::class, 'showContent']);
 
-Route::get('/Testimoni', function () {
-    return view('UserPage/Pages/testimoni');
+Route::get('/Testimoni', function() {
+    $feedbackController = app()->make(FeedbackController::class);
+    $feedbackContent = $feedbackController->showContent();
+
+    return view('UserPage/Pages/testimoni', [
+        'feedbackContent' => $feedbackContent,
+    ]);
 });
 
 Route::get('/Blog', function () {
@@ -72,14 +77,6 @@ Route::get('/Demo', function () {
 Route::get('/Admin', function () {
     return view('AdminPage/Pages/login');
 });
-
-// About Us
-Route::get('/AboutUs', [AboutController::class, 'index']);
-Route::get('/AboutUs/create', [AboutController::class, 'create']);
-Route::post('/AboutUs', [AboutController::class, 'store']);
-Route::get('/AboutUs/{id}/update', [AboutController::class, 'edit']);
-Route::put('/AboutUs/{id}', [AboutController::class, 'update']);
-Route::delete('/AboutUs/{id}', [AboutController::class, 'destroy']);
 
 // Landing Slider
 Route::get('/LandingSlider', [LandingSliderController::class, 'index']);
@@ -112,6 +109,22 @@ Route::post('/LandingMap', [MapController::class, 'store']);
 Route::get('/LandingMap/{id}/update', [MapController::class, 'edit']);
 Route::put('/LandingMap/{id}', [MapController::class, 'update']);
 Route::delete('/LandingMap/{id}', [MapController::class, 'destroy']);
+
+// About Us
+Route::get('/AboutUs', [AboutController::class, 'index']);
+Route::get('/AboutUs/create', [AboutController::class, 'create']);
+Route::post('/AboutUs', [AboutController::class, 'store']);
+Route::get('/AboutUs/{id}/update', [AboutController::class, 'edit']);
+Route::put('/AboutUs/{id}', [AboutController::class, 'update']);
+Route::delete('/AboutUs/{id}', [AboutController::class, 'destroy']);
+
+// Feedback
+Route::get('/Feedback', [FeedbackController::class, 'index']);
+Route::get('/Feedback/create', [FeedbackController::class, 'create']);
+Route::post('/Feedback', [FeedbackController::class, 'store']);
+Route::get('/Feedback/{id}/update', [FeedbackController::class, 'edit']);
+Route::put('/Feedback/{id}', [FeedbackController::class, 'update']);
+Route::delete('/Feedback/{id}', [FeedbackController::class, 'destroy']);
 
 // Show Image
 Route::get('/storage/file-image/{filename}', function ($filename) {

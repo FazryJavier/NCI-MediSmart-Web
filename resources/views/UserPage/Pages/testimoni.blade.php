@@ -28,86 +28,13 @@
                 </div>
                 <div class="content">
                     <div class="wrapper">
-                        <div class="card">
-                            <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                            <h3>RSU Bhaksi Asih</h3>
-                            <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
-                                membantu
-                                rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                            <h3>RSU Bhaksi Asih</h3>
-                            <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
-                                membantu
-                                rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                            <h3>RSU Bhaksi Asih</h3>
-                            <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
-                                membantu
-                                rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                            <h3>RSU Bhaksi Asih</h3>
-                            <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
-                                membantu
-                                rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                            <h3>RSU Bhaksi Asih</h3>
-                            <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
-                                membantu
-                                rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                            <h3>RSU Bhaksi Asih</h3>
-                            <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
-                                membantu
-                                rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                            <h3>RSU Bhaksi Asih</h3>
-                            <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
-                                membantu
-                                rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                            <h3>RSU Bhaksi Asih</h3>
-                            <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
-                                membantu
-                                rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
-                        </div>
-
-                        <div class="card">
-                            <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                            <h3>RSU Bhaksi Asih</h3>
-                            <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian dan
-                                pelaporan. Support personil site dan dukungan purna jual dari kantor pusat, sangat
-                                membantu
-                                rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"</p>
-                        </div>
+                        @foreach ($feedbackContent['imageView'] as $index => $image)
+                            <div class="card">
+                                <img src="{{ asset('storage/' . $feedbackContent['imageView'][$index]) }}" alt="">
+                                <h3>{{ $feedbackContent['nameView'][$index] }}</h3>
+                                <p>{{ $feedbackContent['descriptionView'][$index] }}</p>
+                            </div>
+                        @endforeach
                     </div>
                     <div class="btn-load">load More</div>
                     <div class="btn-less">load Less</div>

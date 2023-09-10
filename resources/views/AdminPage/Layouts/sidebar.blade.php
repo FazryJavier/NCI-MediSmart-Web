@@ -172,13 +172,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="admin-home" class="nav-link">
+                            <a href="/Feedback" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Feedback</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/boxed.html" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Map</p>
                             </a>
