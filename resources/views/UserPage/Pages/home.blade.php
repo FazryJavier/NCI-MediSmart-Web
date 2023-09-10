@@ -23,19 +23,18 @@
     {{-- Home --}}
     <section class="section-header swiper mySwiper">
         <div class="wrapper swiper-wrapper">
-            <div class="wrapper swiper-wrapper">
-                @foreach ($sliderContent['home'] as $home)
-                    <div class="slide swiper-slide">
-                        <img src="{{ asset('storage/' . $home->image) }}" alt="" class="image">
-                        <div class="image-date">
-                            <h1>{!! $home->title !!}</h1>
-                            <h3>{{ $home->caption }}</h3>
-                            <a href="" class="button-1">Hubungi Kami</a>
-                            <a href="" class="button-2">Pelajari Lanjut</a>
-                        </div>
+            @foreach ($sliderContent['titleView'] as $index => $title)
+                <div class="slide swiper-slide">
+                    <img src="{{ asset('storage/' . $sliderContent['imageView'][$index]) }}" alt=""
+                        class="image">
+                    <div class="image-date">
+                        <h1>{{ $title }}</h1>
+                        <h3>{{ $sliderContent['captionView'][$index] }}</h3>
+                        <a href="" class="button-1">Hubungi Kami</a>
+                        <a href="" class="button-2">Pelajari Lanjut</a>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
 
         <div class="swiper-button-next nav-btn"></div>

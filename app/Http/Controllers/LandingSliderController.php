@@ -25,13 +25,10 @@ class LandingSliderController extends Controller
         $captionView = LandingSlider::pluck('caption');
         $imageView = LandingSlider::pluck('image');
 
-        $home = LandingSlider::all();
-
         return [
             'titleView' => $titleView,
             'captionView' => $captionView,
             'imageView' => $imageView,
-            'home' => $home,
         ];
     }
 

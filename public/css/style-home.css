@@ -74,6 +74,7 @@ body {
 .section-header .slide .image-date h1 {
     font-size: 48px;
     color: #242424;
+    padding-right: 1000px;
 }
 
 .section-header .slide .image-date h3 {
@@ -532,6 +533,12 @@ body {
 
 /* Media Queries */
 @media screen and (max-width: 1500px) {
+    /* Header */
+    .section-header .slide .image-date h1 {
+        padding-right: 800px;
+    }
+    /* End Header */
+
     /* Experience */
     .section-experience .experience .text {
         margin: 0 180px;
@@ -540,6 +547,12 @@ body {
 }
 
 @media screen and (max-width: 1350px) {
+    /* Header */
+    .section-header .slide .image-date h1 {
+        padding-right: 600px;
+    }
+    /* End Header */
+
     /* Product */
     .section-product .product .wrapper {
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -555,6 +568,12 @@ body {
 }
 
 @media screen and (max-width: 1200px) {
+    /* Header */
+    .section-header .slide .image-date h1 {
+        padding-right: 400px;
+    }
+    /* End Header */
+
     /* Experience */
     .section-experience .experience .text {
         margin: 0 50px;
@@ -563,6 +582,12 @@ body {
 }
 
 @media screen and (max-width: 991px) {
+    /* Header */
+    .section-header .slide .image-date h1 {
+        padding-right: 200px;
+    }
+    /* End Header */
+
     /* Experience */
     #experience .client-map .maps img {
         margin-top: -25px;
@@ -581,6 +606,10 @@ body {
     /* Header Text */
     .section-header .slide .image-date {
         top: 20%;
+    }
+
+    .section-header .slide .image-date h1 {
+        padding-right: 0;
     }
     /* End Header Text */
 
