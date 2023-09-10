@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
+use App\Http\Controllers\MapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,9 +26,13 @@ Route::get('/', function() {
     $videoController = app()->make(LandingVideoController::class);
     $videoContent = $videoController->showContent();
 
+    $mapController = app()->make(MapController::class);
+    $mapContent = $mapController->showContent();
+
     return view('UserPage/Pages/home', [
         'sliderContent' => $sliderContent,
         'videoContent' => $videoContent,
+        'mapContent' => $mapContent,
     ]);
 });
 
@@ -86,6 +91,14 @@ Route::post('/LandingVideo', [LandingVideoController::class, 'store']);
 Route::get('/LandingVideo/{id}/update', [LandingVideoController::class, 'edit']);
 Route::put('/LandingVideo/{id}', [LandingVideoController::class, 'update']);
 Route::delete('/LandingVideo/{id}', [LandingVideoController::class, 'destroy']);
+
+// Map
+Route::get('/LandingMap', [MapController::class, 'index']);
+Route::get('/LandingMap/create', [MapController::class, 'create']);
+Route::post('/LandingMap', [MapController::class, 'store']);
+Route::get('/LandingMap/{id}/update', [MapController::class, 'edit']);
+Route::put('/LandingMap/{id}', [MapController::class, 'update']);
+Route::delete('/LandingMap/{id}', [MapController::class, 'destroy']);
 
 // Show Image
 Route::get('/storage/file-image/{filename}', function ($filename) {

@@ -296,6 +296,7 @@ body {
 
 .section-experience .experience .client-map .maps {
     margin: auto;
+    overflow: hidden;
 }
 
 .section-experience .experience .client-map .maps img {

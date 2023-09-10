@@ -120,10 +120,14 @@
 
                 <div class="client-map">
                     <div class="content">
-                        <p><b>100+ Jumlah client di Indonesia</b></p>
+                        @foreach ($mapContent['titleView'] as $title)
+                        <p><b>{{ $title }}</b></p>
+                        @endforeach
                     </div>
                     <div class="maps">
-                        <img src="{{ asset('assets/img/indonesia.png') }}" alt="Indonesia" width="780">
+                        @foreach ($mapContent['imageView'] as $image)
+                        <img src="{{ asset('storage/' . $image) }}" alt="Indonesia" width="780">
+                        @endforeach
                     </div>
                 </div>
             </div>

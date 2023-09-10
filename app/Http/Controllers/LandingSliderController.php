@@ -13,7 +13,6 @@ class LandingSliderController extends Controller
      */
     public function index()
     {
-        //
         $landing = LandingSlider::all();
 
         return view('AdminPage.Pages.Home.LandingSlider.index', compact('landing'));
