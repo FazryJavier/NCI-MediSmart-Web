@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AllClientController;
+use App\Http\Controllers\CTAController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ExperienceListController;
 use App\Http\Controllers\FeedbackController;
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Landing Page
-Route::get('/', function() {
+Route::get('/', function () {
     $sliderController = app()->make(LandingSliderController::class);
     $sliderContent = $sliderController->showContent();
 
@@ -51,7 +52,7 @@ Route::get('/', function() {
     ]);
 });
 
-Route::get('/Product', function() {
+Route::get('/Product', function () {
     $feedbackController = app()->make(FeedbackController::class);
     $feedbackContent = $feedbackController->showContent();
 
@@ -66,7 +67,7 @@ Route::get('/Modul', function () {
 
 Route::get('/HealthcareSolution', [AboutController::class, 'showContent']);
 
-Route::get('/Testimoni', function() {
+Route::get('/Testimoni', function () {
     $feedbackController = app()->make(FeedbackController::class);
     $feedbackContent = $feedbackController->showContent();
 
@@ -144,6 +145,13 @@ Route::get('/ExperienceList/{id}/update', [ExperienceListController::class, 'edi
 Route::put('/ExperienceList/{id}', [ExperienceListController::class, 'update']);
 Route::delete('/ExperienceList/{id}', [ExperienceListController::class, 'destroy']);
 
+// CTA 
+Route::get('CTA', [CTAController::class, 'index']);
+Route::get('/CTA/create', [CTAController::class, 'create']);
+Route::post('/CTA', [CTAController::class, 'store']);
+Route::get('/CTA/{id}/update', [CTAController::class, 'edit']);
+Route::put('/CTA/{id}', [CTAController::class, 'update']);
+Route::delete('/CTA/{id}', [CTAController::class, 'destroy']);
 // About Us
 Route::get('/AboutUs', [AboutController::class, 'index']);
 Route::get('/AboutUs/create', [AboutController::class, 'create']);

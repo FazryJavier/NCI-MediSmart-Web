@@ -1,22 +1,14 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Page Home - Landing Slider
+    Page Home - CTA
 @endsection
 
 @section('content')
     <section class="content">
-        <form action="/LandingSlider" method="POST" enctype="multipart/form-data">
+        <form action="/CTA" method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
-            <div class="mb-3">
-                <label for="title" class="form-label">Judul</label>
-                <input type="text" name="title" class="form-control" id="formGroupExampleInput">
-            </div>
-            <div class="mb-3">
-                <label for="caption" class="form-label">Sub Judul</label>
-                <input type="text" name="caption" class="form-control" id="formGroupExampleInput2">
-            </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
                 <img class="img-preview img-fluid mb-3 mt-3">
@@ -31,8 +23,16 @@
                 </div>
             </div>
             <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" class="form-control" id="formGroupExampleInput">
+            </div>
+            <div class="mb-3">
+                <label for="caption" class="form-label">Description</label>
+                <input type="text" name="description" class="form-control" id="formGroupExampleInput2">
+            </div>
+            <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
-                <a href="/LandingSlider" type="button" class="btn btn-secondary">Back</a>
+                <a href="/CTA" type="button" class="btn btn-secondary">Back</a>
             </div>
         </form>
     </section>
