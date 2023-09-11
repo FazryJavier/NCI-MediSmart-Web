@@ -41,9 +41,13 @@ Route::get('/', function() {
     ]);
 });
 
+Route::get('/Product', function() {
+    $feedbackController = app()->make(FeedbackController::class);
+    $feedbackContent = $feedbackController->showContent();
 
-Route::get('/Product', function () {
-    return view('UserPage/Pages/product');
+    return view('UserPage/Pages/product', [
+        'feedbackContent' => $feedbackContent,
+    ]);
 });
 
 Route::get('/Modul', function () {
@@ -56,8 +60,12 @@ Route::get('/Testimoni', function() {
     $feedbackController = app()->make(FeedbackController::class);
     $feedbackContent = $feedbackController->showContent();
 
+    $mapController = app()->make(MapController::class);
+    $mapContent = $mapController->showContent();
+
     return view('UserPage/Pages/testimoni', [
         'feedbackContent' => $feedbackContent,
+        'mapContent' => $mapContent,
     ]);
 });
 

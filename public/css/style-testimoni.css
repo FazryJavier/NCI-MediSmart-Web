@@ -145,7 +145,7 @@ a {
     font-size: 32px;
 }
 
-/* .section-client .image {
+.section-client .image {
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -154,9 +154,9 @@ a {
 .section-client .image img {
     width: 100%;
     max-width: 1280px;
-} */
+}
 
-.section-client .maps {
+/* .section-client .maps {
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -176,9 +176,8 @@ a {
 .section-client svg path:hover {
     fill: #015028;
     transform: translateY(-10px);
-    /* transform: scale(1.5); */
     transition: all 0.3s ease 0.1s;
-}
+} */
 /* End Client */
 
 /* Media Queries */

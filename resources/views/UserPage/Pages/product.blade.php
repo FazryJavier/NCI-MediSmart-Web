@@ -537,57 +537,18 @@
                 </div>
                 <div class="content swiper mySwiper">
                     <div class="wrapper swiper-wrapper">
-                        <div class="card swiper-slide">
-                            <div class="image">
-                                <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
+                        @foreach ($feedbackContent['imageView'] as $index => $image)
+                            <div class="card swiper-slide">
+                                <div class="image">
+                                    <img src="{{ asset('storage/' . $feedbackContent['imageView'][$index]) }}"
+                                        alt="Logo">
+                                </div>
+                                <div class="description">
+                                    <h3>{{ $feedbackContent['nameView'][$index] }}</h3>
+                                    <p>{{ $feedbackContent['descriptionView'][$index] }}</p>
+                                </div>
                             </div>
-                            <div class="description">
-                                <h3>RSU Bhaksi Asih</h3>
-                                <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian
-                                    dan pelaporan. Support personil site dan dukungan purna jual dari kantor pusat,
-                                    sangat membantu rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="card swiper-slide">
-                            <div class="image">
-                                <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                            </div>
-                            <div class="description">
-                                <h3>RSU Bhaksi Asih</h3>
-                                <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian
-                                    dan pelaporan. Support personil site dan dukungan purna jual dari kantor pusat,
-                                    sangat membantu rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="card swiper-slide">
-                            <div class="image">
-                                <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                            </div>
-                            <div class="description">
-                                <h3>RSU Bhaksi Asih</h3>
-                                <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian
-                                    dan pelaporan. Support personil site dan dukungan purna jual dari kantor pusat,
-                                    sangat membantu rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="card swiper-slide">
-                            <div class="image">
-                                <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                            </div>
-                            <div class="description">
-                                <h3>RSU Bhaksi Asih</h3>
-                                <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan, pencarian
-                                    dan pelaporan. Support personil site dan dukungan purna jual dari kantor pusat,
-                                    sangat membantu rumah sakit dalam memberikan usulan solusi dari setiap permasalahan"
-                                </p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="swiper-button-next nav-btn"></div>
                     <div class="swiper-button-prev nav-btn"></div>
