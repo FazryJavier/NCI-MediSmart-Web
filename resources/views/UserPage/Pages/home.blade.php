@@ -80,16 +80,14 @@
             <div class="container">
                 <div class="text">
                     <div class="title">
-                        <p><b>Pengalaman</b> lebih dari <b>30 Tahun</b> di Dunia <b>Teknologi Informasi</b>.
-                            <b>Lebih</b> dari <b>100 Fasilitas Kesehatan</b> di Wilayah <b>Indonesia</b> telah Bekerja
-                            Sama dengan Kami
-                        </p>
+                        @foreach ($experienceContent['titleView'] as $title)
+                            <p><b>{{ $title }}</b></p>
+                        @endforeach
                     </div>
                     <div class="description">
-                        <p>Kami telah menciptakan pola kemitraan dalam pengembangan sistem informasi untuk menggantikan
-                            pola konvesional penjual - pembeli yang selama ini menjadi sumber utama kegagalan
-                            pengembangan sistem informasi
-                        </p>
+                        @foreach ($experienceContent['descriptionView'] as $description)
+                            <p>{{ $description }}</p>
+                        @endforeach
                     </div>
                 </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Experience;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ExperienceController extends Controller
 {
@@ -12,7 +13,20 @@ class ExperienceController extends Controller
      */
     public function index()
     {
-        //
+        $experience = Experience::all();
+
+        return view('AdminPage.Pages.Home.Experience.Experience.index', compact('experience'));
+    }
+
+    public function showContent()
+    {
+        $titleView = Experience::pluck('title');
+        $descriptionView = Experience::pluck('description');
+    
+        return [
+            'titleView' => $titleView,
+            'descriptionView' => $descriptionView,
+        ];
     }
 
     /**
@@ -20,7 +34,7 @@ class ExperienceController extends Controller
      */
     public function create()
     {
-        //
+        return view('AdminPage.Pages.Home.Experience.Experience.create');
     }
 
     /**
@@ -28,38 +42,64 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        Experience::create($validatedData);
+
+        return redirect('/Experience');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Experience $experience)
+    public function show(Experience $id)
     {
-        //
+        $experienceShow = Experience::find($id);
+
+        return view('AdminPage.Pages.Home.Experience.Experience.index', compact('experienceShow'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Experience $experience)
+    public function edit($id)
     {
-        //
+        $experienceUpdate = Experience::where('id', $id)->firstorfail();
+
+        return view('AdminPage.Pages.Home.Experience.Experience.update', compact('experienceUpdate'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Experience $experience)
+    public function update(Request $request, $id)
     {
-        //
+        $content = [
+            'title' => 'required',
+            'description' => 'required',
+        ];
+
+        $validatedData = $request->validate($content);
+
+        $experience = Experience::find($id);
+
+        $experience->update($validatedData);
+
+        return redirect('/Experience');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Experience $experience)
+    public function destroy($id)
     {
-        //
+        $experience = Experience::findOrFail($id);
+
+        $experience->delete();
+
+        return redirect('/Experience');
     }
 }
