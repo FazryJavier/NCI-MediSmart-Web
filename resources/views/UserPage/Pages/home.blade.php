@@ -94,32 +94,14 @@
                 </div>
 
                 <div class="advantage">
-                    <div class="experience-list">
-                        <img src="{{ asset('assets/img/warning_shield.png') }}" alt="Icon">
-                        <h2>Integrasi SatuSehat</h2>
-                        <p>
-                            Seluruh produk NCI-MediSmart siap diintegrasikan dengan aplikasi nasional Satu Sehat untuk
-                            mendukung kinerja Fasyankes Anda.
-                        </p>
-                    </div>
-
-                    <div class="experience-list">
-                        <img src="{{ asset('assets/img/professional.png') }}" alt="Icon">
-                        <h2>Profesional</h2>
-                        <p>
-                            Tim NCI-MediSmart terdiri dari SDM yang handal dan berpengalaman untuk menjamin standar
-                            kualitas layanan kami
-                        </p>
-                    </div>
-
-                    <div class="experience-list">
-                        <img src="{{ asset('assets/img/chess.png') }}" alt="Icon">
-                        <h2>Jaminan Keberhasilan</h2>
-                        <p>
-                            Dukungan NCI-MediSmart tidak terbatas pada penyediaan solusi terbaik tapi juga keberhasilan
-                            implementasinya.
-                        </p>
-                    </div>
+                    @foreach ($experiencelistContent['imageView'] as $index => $image)
+                        <div class="experience-list">
+                            <img src="{{ asset('storage/' . $experiencelistContent['imageView'][$index]) }}"
+                                alt="Icon">
+                            <h2>{{ $experiencelistContent['nameView'][$index] }}</h2>
+                            <p>{{ $experiencelistContent['descriptionView'][$index] }}</p>
+                        </div>
+                    @endforeach
                 </div>
 
                 <div class="client-map">

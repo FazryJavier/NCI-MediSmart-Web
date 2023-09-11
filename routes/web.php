@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AllClientController;
+use App\Http\Controllers\ExperienceListController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
@@ -30,6 +31,9 @@ Route::get('/', function() {
     $clientController = app()->make(AllClientController::class);
     $clientContent = $clientController->showContent();
 
+    $experiencelistController = app()->make(ExperienceListController::class);
+    $experiencelistContent = $experiencelistController->showContent();
+
     $mapController = app()->make(MapController::class);
     $mapContent = $mapController->showContent();
 
@@ -37,6 +41,7 @@ Route::get('/', function() {
         'sliderContent' => $sliderContent,
         'videoContent' => $videoContent,
         'clientContent' => $clientContent,
+        'experiencelistContent' => $experiencelistContent,
         'mapContent' => $mapContent,
     ]);
 });
@@ -117,6 +122,14 @@ Route::post('/LandingMap', [MapController::class, 'store']);
 Route::get('/LandingMap/{id}/update', [MapController::class, 'edit']);
 Route::put('/LandingMap/{id}', [MapController::class, 'update']);
 Route::delete('/LandingMap/{id}', [MapController::class, 'destroy']);
+
+// Landing Experience List
+Route::get('/ExperienceList', [ExperienceListController::class, 'index']);
+Route::get('/ExperienceList/create', [ExperienceListController::class, 'create']);
+Route::post('/ExperienceList', [ExperienceListController::class, 'store']);
+Route::get('/ExperienceList/{id}/update', [ExperienceListController::class, 'edit']);
+Route::put('/ExperienceList/{id}', [ExperienceListController::class, 'update']);
+Route::delete('/ExperienceList/{id}', [ExperienceListController::class, 'destroy']);
 
 // About Us
 Route::get('/AboutUs', [AboutController::class, 'index']);

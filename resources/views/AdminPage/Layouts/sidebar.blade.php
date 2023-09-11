@@ -49,6 +49,12 @@
                                 <p>Map</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/ExperienceList" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Experience List</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 {{-- End Landing Page --}}
