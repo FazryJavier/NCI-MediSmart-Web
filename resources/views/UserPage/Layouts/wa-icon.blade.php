@@ -12,7 +12,10 @@
 
 <body>
     <div class="wa-button">
-        <a href=""><img src="{{ asset('assets/img/whatsapp.png') }}" alt=""></a>
+        @foreach ($whatsappContent['whatsappView'] as $phone_number)
+            <a href="https://api.whatsapp.com/send?phone={{ $phone_number }}"><img
+                    src="{{ asset('assets/img/whatsapp.png') }}" alt=""></a>
+        @endforeach
     </div>
 </body>
 <script src="{{ asset('Js/swiper-bundle.min.js') }}"></script>

@@ -9,6 +9,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\WhatsappController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,9 @@ Route::get('/', function () {
     $mapController = app()->make(MapController::class);
     $mapContent = $mapController->showContent();
 
+    $whatsappController = app()->make(WhatsappController::class);
+    $whatsappContent = $whatsappController->showContent();
+
     return view('UserPage/Pages/home', [
         'sliderContent' => $sliderContent,
         'videoContent' => $videoContent,
@@ -49,6 +53,7 @@ Route::get('/', function () {
         'experienceContent' => $experienceContent,
         'experiencelistContent' => $experiencelistContent,
         'mapContent' => $mapContent,
+        'whatsappContent' => $whatsappContent,
     ]);
 });
 
@@ -56,8 +61,12 @@ Route::get('/Product', function () {
     $feedbackController = app()->make(FeedbackController::class);
     $feedbackContent = $feedbackController->showContent();
 
+    $whatsappController = app()->make(WhatsappController::class);
+    $whatsappContent = $whatsappController->showContent();
+
     return view('UserPage/Pages/product', [
         'feedbackContent' => $feedbackContent,
+        'whatsappContent' => $whatsappContent,
     ]);
 });
 
@@ -167,6 +176,14 @@ Route::post('/Feedback', [FeedbackController::class, 'store']);
 Route::get('/Feedback/{id}/update', [FeedbackController::class, 'edit']);
 Route::put('/Feedback/{id}', [FeedbackController::class, 'update']);
 Route::delete('/Feedback/{id}', [FeedbackController::class, 'destroy']);
+
+// Whatsapp
+Route::get('/Whatsapp', [WhatsappController::class, 'index']);
+Route::get('/Whatsapp/create', [WhatsappController::class, 'create']);
+Route::post('/Whatsapp', [WhatsappController::class, 'store']);
+Route::get('/Whatsapp/{id}/update', [WhatsappController::class, 'edit']);
+Route::put('/Whatsapp/{id}', [WhatsappController::class, 'update']);
+Route::delete('/Whatsapp/{id}', [WhatsappController::class, 'destroy']);
 
 // Show Image
 Route::get('/storage/file-image/{filename}', function ($filename) {
