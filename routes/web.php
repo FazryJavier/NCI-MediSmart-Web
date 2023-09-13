@@ -61,12 +61,8 @@ Route::get('/Product', function () {
     $feedbackController = app()->make(FeedbackController::class);
     $feedbackContent = $feedbackController->showContent();
 
-    $whatsappController = app()->make(WhatsappController::class);
-    $whatsappContent = $whatsappController->showContent();
-
     return view('UserPage/Pages/product', [
         'feedbackContent' => $feedbackContent,
-        'whatsappContent' => $whatsappContent,
     ]);
 });
 
@@ -75,18 +71,6 @@ Route::get('/Modul', function () {
 });
 
 Route::get('/HealthcareSolution', [AboutController::class, 'showContent']);
-// Route::get('/HealthcareSolution', function () {
-//     $aboutController = app()->make(AboutController::class);
-//     $aboutContent = $aboutController->showContent();
-
-//     $whatsappController = app()->make(WhatsappController::class);
-//     $whatsappContent = $whatsappController->showContent();
-
-//     return view('UserPage/Pages/healthcare', [
-//         'aboutContent' => $aboutContent,
-//         'whatsappContent' => $whatsappContent,
-//     ]);
-// });
 
 Route::get('/Testimoni', function () {
     $feedbackController = app()->make(FeedbackController::class);
@@ -95,13 +79,9 @@ Route::get('/Testimoni', function () {
     $mapController = app()->make(MapController::class);
     $mapContent = $mapController->showContent();
 
-    // $whatsappController = app()->make(WhatsappController::class);
-    // $whatsappContent = $whatsappController->showContent();
-
     return view('UserPage/Pages/testimoni', [
         'feedbackContent' => $feedbackContent,
         'mapContent' => $mapContent,
-        // 'whatsappContent' => $whatsappContent
     ]);
 });
 
@@ -170,13 +150,6 @@ Route::get('/ExperienceList/{id}/update', [ExperienceListController::class, 'edi
 Route::put('/ExperienceList/{id}', [ExperienceListController::class, 'update']);
 Route::delete('/ExperienceList/{id}', [ExperienceListController::class, 'destroy']);
 
-// CTA 
-Route::get('CTA', [CTAController::class, 'index']);
-Route::get('/CTA/create', [CTAController::class, 'create']);
-Route::post('/CTA', [CTAController::class, 'store']);
-Route::get('/CTA/{id}/update', [CTAController::class, 'edit']);
-Route::put('/CTA/{id}', [CTAController::class, 'update']);
-Route::delete('/CTA/{id}', [CTAController::class, 'destroy']);
 // About Us
 Route::get('/AboutUs', [AboutController::class, 'index']);
 Route::get('/AboutUs/create', [AboutController::class, 'create']);
@@ -192,6 +165,14 @@ Route::post('/Feedback', [FeedbackController::class, 'store']);
 Route::get('/Feedback/{id}/update', [FeedbackController::class, 'edit']);
 Route::put('/Feedback/{id}', [FeedbackController::class, 'update']);
 Route::delete('/Feedback/{id}', [FeedbackController::class, 'destroy']);
+
+// CTA 
+Route::get('CTA', [CTAController::class, 'index']);
+Route::get('/CTA/create', [CTAController::class, 'create']);
+Route::post('/CTA', [CTAController::class, 'store']);
+Route::get('/CTA/{id}/update', [CTAController::class, 'edit']);
+Route::put('/CTA/{id}', [CTAController::class, 'update']);
+Route::delete('/CTA/{id}', [CTAController::class, 'destroy']);
 
 // Whatsapp
 Route::get('/Whatsapp', [WhatsappController::class, 'index']);

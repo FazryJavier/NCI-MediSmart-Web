@@ -17,7 +17,7 @@
     {{-- End Header --}}
 
     {{-- WhatsApp Button --}}
-    {{-- @include('UserPage.Layouts.wa-icon') --}}
+    @include('UserPage.Layouts.wa-icon')
 
     {{-- Blog --}}
     <section class="section-blog">

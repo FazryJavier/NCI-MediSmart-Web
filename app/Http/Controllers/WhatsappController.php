@@ -17,7 +17,7 @@ class WhatsappController extends Controller
         return view('AdminPage.Pages.Whatsapp.index', compact('whatsapp'));
     }
 
-    public function showContent()
+    public static function showContent()
     {
         $whatsappView = Whatsapp::pluck('phone_number');
 
