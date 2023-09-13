@@ -17,7 +17,7 @@
     {{-- End Header --}}
 
     {{-- WhatsApp Button --}}
-    @include('UserPage.Layouts.wa-icon')
+    {{-- @include('UserPage.Layouts.wa-icon') --}}
 
     {{-- Modul Description --}}
     <section class="section-modul">

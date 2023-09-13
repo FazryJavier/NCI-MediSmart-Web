@@ -18,7 +18,7 @@
     {{-- End Header --}}
 
     {{-- WhatsApp Button --}}
-    @include('UserPage.Layouts.wa-icon')
+    {{-- @include('UserPage.Layouts.wa-icon') --}}
 
     {{-- Video Views --}}
     <section class="section-video">
@@ -30,8 +30,9 @@
                 <div class="content">
                     <div class="video">
                         @foreach ($videoView as $video)
+                        {{-- @foreach ($aboutContent['video'] as $index => $video) --}}
                             <iframe width="560" height="315"
-                                src="https://www.youtube.com/embed/{{ $video }}" title="YouTube video player"
+                                src="https://www.youtube.com/embed/{{ $video}}" title="YouTube video player"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen controls muted></iframe>
@@ -49,6 +50,7 @@
             <div class="container">
                 <div class="content">
                     @foreach ($imageView as $image)
+                    {{-- @foreach ($aboutContent['imageView'] as $image) --}}
                         <img src="{{ asset('storage/' . $image) }}" alt="">
                     @endforeach
                     @foreach ($healthcareDescription as $data)
@@ -59,6 +61,7 @@
                     <div class="columns">
                         <div class="card">
                             <h1>Visi</h1>
+                            {{-- @foreach ($visiView as $visi) --}}
                             @foreach ($visiView as $visi)
                                 <p>{{ $visi }}</p>
                             @endforeach

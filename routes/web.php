@@ -75,6 +75,18 @@ Route::get('/Modul', function () {
 });
 
 Route::get('/HealthcareSolution', [AboutController::class, 'showContent']);
+// Route::get('/HealthcareSolution', function () {
+//     $aboutController = app()->make(AboutController::class);
+//     $aboutContent = $aboutController->showContent();
+
+//     $whatsappController = app()->make(WhatsappController::class);
+//     $whatsappContent = $whatsappController->showContent();
+
+//     return view('UserPage/Pages/healthcare', [
+//         'aboutContent' => $aboutContent,
+//         'whatsappContent' => $whatsappContent,
+//     ]);
+// });
 
 Route::get('/Testimoni', function () {
     $feedbackController = app()->make(FeedbackController::class);
@@ -83,9 +95,13 @@ Route::get('/Testimoni', function () {
     $mapController = app()->make(MapController::class);
     $mapContent = $mapController->showContent();
 
+    // $whatsappController = app()->make(WhatsappController::class);
+    // $whatsappContent = $whatsappController->showContent();
+
     return view('UserPage/Pages/testimoni', [
         'feedbackContent' => $feedbackContent,
         'mapContent' => $mapContent,
+        // 'whatsappContent' => $whatsappContent
     ]);
 });
 
