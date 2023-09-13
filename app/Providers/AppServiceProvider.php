@@ -23,8 +23,15 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('*', function ($view) {
             $whatsappContent = WhatsappController::showContent();
-    
+
             $view->with('whatsappContent', $whatsappContent);
         });
+    }
+
+    public function boot2(\Illuminate\Http\Request $request)
+    {
+        if (!empty(env('NGROK_URL')) && $request->server->has('HTTP_X_ORIGINAL_HOST')) {
+            $this->app['url']->forceRootUrl(env('NGROK_URL'));
+        }
     }
 }
