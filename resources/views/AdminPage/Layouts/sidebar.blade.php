@@ -82,39 +82,51 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="admin-home" class="nav-link">
+                            <a href="/Product" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Header</p>
+                                <p>Product</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/layout/boxed.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Video</p>
+                                <p>Modul Product</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/layout/fixed-sidebar.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Client</p>
+                                <p>Advantage Modul</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/layout/fixed-topnav.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Kelebihan</p>
+                                <p>Fasilities Modul</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/layout/fixed-footer.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Modul</p>
+                                <p>Image Modul</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Testimoni</p>
+                                <p>Client Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Advantage Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Advantage List Product</p>
                             </a>
                         </li>
                     </ul>

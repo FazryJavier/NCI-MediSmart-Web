@@ -57,7 +57,7 @@
                             <li class="nav-item"><a href="#" class="nav-link">Produk <span>&#x25BE;</span></a>
                                 <ul class="nav-list-2">
                                     <li class="nav-item-2">
-                                        <a href="/Product" class="nav-link">
+                                        <a href="/ProductView" class="nav-link">
                                             <img src="{{ asset('assets/img/simrs.png') }}" alt="">
                                             <div class="text">
                                                 <h5>SIMRS NCI MEDISMART</h5>
@@ -66,7 +66,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item-2">
-                                        <a href="/Product" class="nav-link">
+                                        <a href="/ProductView" class="nav-link">
                                             <img src="{{ asset('assets/img/rme.png') }}" alt="">
                                             <div class="text">
                                                 <h5>RME NCI MEDISMART</h5>

@@ -9,6 +9,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WhatsappController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,7 +58,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/Product', function () {
+Route::get('/ProductView/{id}', function () {
     $feedbackController = app()->make(FeedbackController::class);
     $feedbackContent = $feedbackController->showContent();
 
@@ -149,6 +150,14 @@ Route::post('/ExperienceList', [ExperienceListController::class, 'store']);
 Route::get('/ExperienceList/{id}/update', [ExperienceListController::class, 'edit']);
 Route::put('/ExperienceList/{id}', [ExperienceListController::class, 'update']);
 Route::delete('/ExperienceList/{id}', [ExperienceListController::class, 'destroy']);
+
+// Product
+Route::get('/Product', [ProductController::class, 'index']);
+Route::get('/Product/create', [ProductController::class, 'create']);
+Route::post('/Product', [ProductController::class, 'store']);
+Route::get('/Product/{id}/update', [ProductController::class, 'edit']);
+Route::put('/Product/{id}', [ProductController::class, 'update']);
+Route::delete('/Product/{id}', [ProductController::class, 'destroy']);
 
 // About Us
 Route::get('/AboutUs', [AboutController::class, 'index']);
