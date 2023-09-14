@@ -47,9 +47,7 @@ a {
 
 .section-question .border {
     padding: 100px 0;
-    /* background-color: #015028; */
     border-radius: 40px;
-    background-image: url("../assets/img/konsultasi.png");
     background-position: center;
     background-size: cover;
 }

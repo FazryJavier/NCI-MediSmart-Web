@@ -17,16 +17,15 @@
     <section class="section-question">
         <div class="question">
             <div class="container">
-                <div class="border">
-                    {{-- <div class="image">
-                        <img src="{{ asset('assets/img/img-question.png') }}" alt="">
-                    </div> --}}
-                    <div class="text">
-                        <h1>Memiliki pertanyaan terkait SIMRS NCI - Medismart?</h1>
-                        <p>Diisi copyright menarik</p>
-                        <a href="" class="btn-konsul">Konsultasi</a>
+                @foreach ($ctaContent['imageView'] as $index => $image)
+                    <div class="border" style="background-image: url('{{ $ctaContent['imageView'][$index] }}')">
+                        <div class="text">
+                            <h1>{{ $ctaContent['titleView'][$index] }}</h1>
+                            <p>{{ $ctaContent['descriptionView'][$index] }}</p>
+                            <a href="" class="btn-konsul">Konsultasi</a>
+                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

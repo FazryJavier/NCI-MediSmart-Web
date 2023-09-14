@@ -44,9 +44,6 @@ Route::get('/', function () {
     $mapController = app()->make(MapController::class);
     $mapContent = $mapController->showContent();
 
-    $whatsappController = app()->make(WhatsappController::class);
-    $whatsappContent = $whatsappController->showContent();
-
     return view('UserPage/Pages/home', [
         'sliderContent' => $sliderContent,
         'videoContent' => $videoContent,
@@ -54,7 +51,6 @@ Route::get('/', function () {
         'experienceContent' => $experienceContent,
         'experiencelistContent' => $experiencelistContent,
         'mapContent' => $mapContent,
-        'whatsappContent' => $whatsappContent,
     ]);
 });
 

@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\CTA;
-use App\Http\Requests\StoreCTARequest;
-use App\Http\Requests\UpdateCTARequest;
-use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,6 +16,23 @@ class CTAController extends Controller
         $cta = CTA::all();
 
         return view('AdminPage.Pages.Home.CTA.index', compact('cta'));
+    }
+
+    public static function showContent()
+    {
+        $images = CTA::pluck('image')->all();
+        $titles = CTA::pluck('title')->all();
+        $descriptions = CTA::pluck('description')->all();
+
+        $imageUrls = array_map(function($image) {
+            return asset("storage/$image");
+        }, $images);
+
+        return [
+            'imageView' => $imageUrls,
+            'titleView' => $titles,
+            'descriptionView' => $descriptions,
+        ];
     }
 
     /**

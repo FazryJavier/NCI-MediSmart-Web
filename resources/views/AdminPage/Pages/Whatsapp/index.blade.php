@@ -1,7 +1,7 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Page whatsapp
+    Page Whatsapp
 @endsection
 
 @push('script')
