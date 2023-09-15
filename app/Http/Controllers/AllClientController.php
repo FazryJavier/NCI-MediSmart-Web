@@ -20,12 +20,21 @@ class AllClientController extends Controller
 
     public function showContent()
     {
-        $titleView = AllClient::pluck('title');
-        $imageView = AllClient::pluck('image');
+        $client = AllClient::latest('id')->first();
+
+        if ($client) {
+            $title = $client->title;
+            $image = asset("storage/{$client->image}");
+            
+            return [
+                'titleView' => $title,
+                'imageView' => $image,
+            ];
+        }
 
         return [
-            'titleView' => $titleView,
-            'imageView' => $imageView,
+            'titleView' => null,
+            'imageView' => null,
         ];
     }
 

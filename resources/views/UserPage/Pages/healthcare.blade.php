@@ -29,13 +29,11 @@
                 </div>
                 <div class="content">
                     <div class="video">
-                        @foreach ($videoView as $video)
-                            <iframe width="560" height="315"
-                                src="https://www.youtube.com/embed/{{ $video }}" title="YouTube video player"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen controls muted></iframe>
-                        @endforeach
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/{{ $aboutContent['videoView'] }}"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen controls muted></iframe>
                     </div>
                 </div>
             </div>
@@ -48,30 +46,21 @@
         <div class="visimisi">
             <div class="container">
                 <div class="content">
-                    @foreach ($imageView as $image)
-                        <img src="{{ asset('storage/' . $image) }}" alt="">
-                    @endforeach
-                    @foreach ($healthcareDescription as $data)
-                        <p>{{ $data }}</p>
-                    @endforeach
+                    <img src="{{ $aboutContent['imageView'] }}" alt="Logo">
+                    <p>{{ $aboutContent['descriptionView'] }}</p>
                 </div>
                 <div class="text">
                     <div class="columns">
                         <div class="card">
                             <h1>Visi</h1>
-                            {{-- @foreach ($visiView as $visi) --}}
-                            @foreach ($visiView as $visi)
-                                <p>{{ $visi }}</p>
-                            @endforeach
+                            <p>{{ $aboutContent['visiView'] }}</p>
                         </div>
                     </div>
 
                     <div class="columns">
                         <div class="card">
                             <h1>Misi</h1>
-                            @foreach ($misiView as $misi)
-                                <p>{{ $misi }}</p>
-                            @endforeach
+                            <p>{{ $aboutContent['misiView'] }}</p>
                         </div>
                     </div>
                 </div>

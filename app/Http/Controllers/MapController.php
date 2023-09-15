@@ -20,12 +20,21 @@ class MapController extends Controller
 
     public function showContent()
     {
-        $titleView = Map::pluck('title');
-        $imageView = Map::pluck('image');
+        $map = Map::latest('id')->first();
+
+        if ($map) {
+            $title = $map->title;
+            $image = asset("storage/{$map->image}");
+            
+            return [
+                'titleView' => $title,
+                'imageView' => $image,
+            ];
+        }
 
         return [
-            'titleView' => $titleView,
-            'imageView' => $imageView,
+            'titleView' => null,
+            'imageView' => null,
         ];
     }
 

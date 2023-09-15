@@ -20,12 +20,21 @@ class ExperienceController extends Controller
 
     public function showContent()
     {
-        $titleView = Experience::pluck('title');
-        $descriptionView = Experience::pluck('description');
-    
+        $experience = Experience::latest('id')->first();
+
+        if ($experience) {
+            $title = $experience->title;
+            $description = $experience->description;
+            
+            return [
+                'titleView' => $title,
+                'descriptionView' => $description,
+            ];
+        }
+
         return [
-            'titleView' => $titleView,
-            'descriptionView' => $descriptionView,
+            'titleView' => null,
+            'descriptionView' => null,
         ];
     }
 

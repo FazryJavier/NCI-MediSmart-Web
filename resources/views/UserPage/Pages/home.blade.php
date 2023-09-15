@@ -48,17 +48,13 @@
         <div class="client">
             <div class="container">
                 <div class="title">
-                    @foreach ($clientContent['titleView'] as $title)
-                        <h3><b>{{ $title }}</b></h3>
-                    @endforeach
+                    <h3><b>{{ $clientContent['titleView'] }}</b></h3>
                 </div>
                 <div class="container-line">
                     <div class="center-line"></div>
                 </div>
                 <div class="image">
-                    @foreach ($clientContent['imageView'] as $image)
-                        <img src="{{ asset('storage/' . $image) }}" alt="Client">
-                    @endforeach
+                    <img src="{{ $clientContent['imageView'] }}" alt="Client">
                 </div>
             </div>
 
@@ -80,14 +76,10 @@
             <div class="container">
                 <div class="text">
                     <div class="title">
-                        @foreach ($experienceContent['titleView'] as $title)
-                            <p><b>{{ $title }}</b></p>
-                        @endforeach
+                        <p><b>{{ $experienceContent['titleView'] }}</b></p>
                     </div>
                     <div class="description">
-                        @foreach ($experienceContent['descriptionView'] as $description)
-                            <p>{{ $description }}</p>
-                        @endforeach
+                        <p>{{ $experienceContent['descriptionView'] }}</p>
                     </div>
                 </div>
 
@@ -104,14 +96,10 @@
 
                 <div class="client-map">
                     <div class="content">
-                        @foreach ($mapContent['titleView'] as $title)
-                            <p><b>{{ $mapContent['titleView'] }}</b></p>
-                        @endforeach
+                        <p><b>{{ $mapContent['titleView'] }}</b></p>
                     </div>
                     <div class="maps">
-                        @foreach ($mapContent['imageView'] as $image)
-                            <img src="{{ asset('storage/' . $image) }}" alt="Indonesia" width="780">
-                        @endforeach
+                        <img src="{{ $mapContent['imageView'] }}" alt="Indonesia" width="780">
                     </div>
                 </div>
             </div>

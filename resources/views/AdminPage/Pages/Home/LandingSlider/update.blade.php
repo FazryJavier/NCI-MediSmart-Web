@@ -21,7 +21,7 @@
 
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
-                <span class="description">*Ukuran gambar 5756x3644px dan ukuran maksimal 2MB</span>
+                <span class="description">*Ukuran gambar 5756x3644px atau 16:9 dan ukuran maksimal 2MB</span>
                 <input type="hidden" name="oldImage" value="{{ $slider->image }}">
                 @if ($slider->image)
                     <img src="{{ asset('storage/' . $slider->image) }}" alt="image"

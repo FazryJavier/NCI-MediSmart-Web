@@ -67,7 +67,14 @@ Route::get('/Modul', function () {
     return view('UserPage/Pages/modul');
 });
 
-Route::get('/HealthcareSolution', [AboutController::class, 'showContent']);
+Route::get('/HealthcareSolution', function () {
+    $aboutController = app()->make(AboutController::class);
+    $aboutContent = $aboutController->showContent();
+
+    return view('UserPage/Pages/healthcare', [
+        'aboutContent' => $aboutContent,
+    ]);
+});
 
 Route::get('/Testimoni', function () {
     $feedbackController = app()->make(FeedbackController::class);

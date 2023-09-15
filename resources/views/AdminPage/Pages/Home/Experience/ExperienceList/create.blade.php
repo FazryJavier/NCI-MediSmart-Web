@@ -10,7 +10,8 @@
             @csrf
             @method('POST')
             <div class="mb-3">
-                <label for="image" class="form-label">Image File</label>
+                <label for="image" class="form-label">Icon File</label>
+                <span class="description">*Ukuran gambar 236x236px atau 1:1 dan ukuran maksimal 2MB</span>
                 <img class="img-preview img-fluid mb-3 mt-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -18,7 +19,8 @@
                     </div>
                     <div class="custom-file">
                         <input type="file" class="form-control" id="image" name="image" onchange="previewImage()">
-                        <label class="custom-file-label" for="image">Choose file</label>
+                        <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg,
+                            *.png, *.jpg)</label>
                     </div>
                 </div>
             </div>
@@ -30,23 +32,20 @@
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="5"></textarea>
             </div>
-            {{-- <div class="mb-3">
-                <label>Tampilkan ?</label>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadio" id="radioYes" value="yes">
-                    <label class="form-check-label" for="radioYes">Yes</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadio" id="radioNo" value="no">
-                    <label class="form-check-label" for="radioNo">No</label>
-                </div>
-            </div> --}}
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
                 <a href="/ExperienceList" type="button" class="btn btn-secondary">Back</a>
             </div>
         </form>
     </section>
+
+    <style>
+        .description {
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+
     <script>
         function previewImage() {
             const image = document.querySelector('#image');

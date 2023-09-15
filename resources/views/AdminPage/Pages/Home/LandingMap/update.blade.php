@@ -16,7 +16,7 @@
             
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
-                <span class="description">*Ukuran gambar 1920x765px dan ukuran maksimal 2MB</span>
+                <span class="description">*Ukuran gambar 1920x765px atau 16:9 dan ukuran maksimal 2MB</span>
                 <input type="hidden" name="oldImage" value="{{ $map->image }}">
                 @if ($map->image)
                     <img src="{{ asset('storage/' . $map->image) }}" alt="image"

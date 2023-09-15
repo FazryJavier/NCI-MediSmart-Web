@@ -11,7 +11,7 @@
             @method('PUT')
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
-                <span class="description">*Ukuran gambar 4980x1452px dan ukuran maksimal 2MB</span>
+                <span class="description">*Ukuran gambar 4980x1452px atau 16:9 dan ukuran maksimal 2MB</span>
                 <input type="hidden" name="oldImage" value="{{ $cta->image }}">
                 @if ($cta->image)
                     <img src="{{ asset('storage/' . $cta->image) }}" alt="image"

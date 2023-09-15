@@ -10,14 +10,14 @@
         @method('POST')
         <div class="mb-3">
             <label for="video" class="form-label">Video</label>
+            <span class="description">*Masukkan token yang ada pada link youtube. Ex :
+                https://www.youtube.com/watch?v=<b>JzmHxafphj0</b>&ab_channel=SIMRSNCIMediSmart = <b>Token :
+                    JzmHxafphj0</b></span>
             <input type="text" name="video" class="form-control">
         </div>
-        {{-- @error('judul')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror --}}
-
         <div class="mb-3">
             <label for="image" class="form-label">Upload Image</label>
+            <span class="description">*Ukuran gambar 600x312px atau 2:1 dan ukuran maksimal 2MB</span>
             <img class="img-preview img-fluid mb-3 mt-3">
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -25,41 +25,33 @@
                 </div>
                 <div class="custom-file">
                     <input type="file" class="form-control" id="image" name="image" onchange="previewImage()">
-                    <label class="custom-file-label" for="image">Choose file</label>
+                    <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg,
+                            *.png, *.jpg)</label>
                 </div>
             </div>
         </div>
-        {{-- @error('poster')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror --}}
-
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <textarea name="description" class="form-control" rows="5"></textarea>
         </div>
-        {{-- @error('ringkasan')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror --}}
-
         <div class="mb-3">
             <label for="visi" class="form-label">Visi</label>
             <input type="text" name="visi" class="form-control">
         </div>
-        {{-- @error('tahun')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror --}}
-
         <div class="mb-3">
             <label for="misi" class="form-label">Misi</label>
             <input type="text" name="misi" class="form-control">
         </div>
-        {{-- @error('tahun')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror --}}
-        
         <button type="submit" class="btn btn-success">Create</button>
         <a href="/AboutUs" type="button" class="btn btn-secondary">Back</a>
     </form>
+
+    <style>
+        .description {
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
 
     <script>
         function previewImage() {
