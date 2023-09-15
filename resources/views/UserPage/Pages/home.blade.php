@@ -105,7 +105,7 @@
                 <div class="client-map">
                     <div class="content">
                         @foreach ($mapContent['titleView'] as $title)
-                            <p><b>{{ $title }}</b></p>
+                            <p><b>{{ $mapContent['titleView'] }}</b></p>
                         @endforeach
                     </div>
                     <div class="maps">
