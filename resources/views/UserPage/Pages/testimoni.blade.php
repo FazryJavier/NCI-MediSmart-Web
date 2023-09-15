@@ -52,9 +52,9 @@
                 <div class="text">
                     <h1>Sebaran klient kami di Provinsi Indonesia</h1>
                 </div>
-                @foreach ($mapContent['imageView'] as $image)
-                    <img src="{{ asset('storage/' . $image) }}" alt="Indonesia">
-                @endforeach
+                <div class="image">
+                    <img src="{{ $mapContent['imageView'] }}" alt="Indonesia">
+                </div>
             </div>
         </div>
     </section>
