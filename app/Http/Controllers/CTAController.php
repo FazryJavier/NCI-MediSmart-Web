@@ -20,18 +20,24 @@ class CTAController extends Controller
 
     public static function showContent()
     {
-        $images = CTA::pluck('image')->all();
-        $titles = CTA::pluck('title')->all();
-        $descriptions = CTA::pluck('description')->all();
+        $latestCTA = CTA::latest('id')->first();
 
-        $imageUrls = array_map(function($image) {
-            return asset("storage/$image");
-        }, $images);
+        if ($latestCTA) {
+            $image = asset("storage/{$latestCTA->image}");
+            $title = $latestCTA->title;
+            $description = $latestCTA->description;
+            
+            return [
+                'imageView' => $image,
+                'titleView' => $title,
+                'descriptionView' => $description,
+            ];
+        }
 
         return [
-            'imageView' => $imageUrls,
-            'titleView' => $titles,
-            'descriptionView' => $descriptions,
+            'imageView' => null,
+            'titleView' => null,
+            'descriptionView' => null,
         ];
     }
 
@@ -49,7 +55,7 @@ class CTAController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'image' => 'image|file',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
             'title' => 'required',
             'description' => 'required',
         ]);

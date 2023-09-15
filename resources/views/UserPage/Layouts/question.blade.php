@@ -17,15 +17,13 @@
     <section class="section-question">
         <div class="question">
             <div class="container">
-                @foreach ($ctaContent['imageView'] as $index => $image)
-                    <div class="border" style="background-image: url('{{ $ctaContent['imageView'][$index] }}')">
-                        <div class="text">
-                            <h1>{{ $ctaContent['titleView'][$index] }}</h1>
-                            <p>{{ $ctaContent['descriptionView'][$index] }}</p>
-                            <a href="" class="btn-konsul">Konsultasi</a>
-                        </div>
+                <div class="border" style="background-image: url('{{ $ctaContent['imageView'] }}')">
+                    <div class="text">
+                        <h1>{{ $ctaContent['titleView'] }}</h1>
+                        <p>{{ $ctaContent['descriptionView'] }}</p>
+                        <a href="" class="btn-konsul">Konsultasi</a>
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
     </section>

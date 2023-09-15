@@ -11,6 +11,7 @@
             @method('PUT')
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
+                <span class="description">*Ukuran gambar 4980x1452px dan ukuran maksimal 2MB</span>
                 <input type="hidden" name="oldImage" value="{{ $cta->image }}">
                 @if ($cta->image)
                     <img src="{{ asset('storage/' . $cta->image) }}" alt="image"
@@ -25,7 +26,8 @@
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image" name="image"
                             onchange="previewImage()">
-                        <label class="custom-file-label" for="label">Choose file</label>
+                        <label class="custom-file-label" for="label">Choose file <span class="description">(*.jpeg,
+                                *.png, *.jpg)</span></label>
                     </div>
                 </div>
             </div>
@@ -43,6 +45,14 @@
                 <a href="/CTA" type="button" class="btn btn-secondary">Back</a>
             </div>
         </form>
+
+        <style>
+            .description {
+                font-size: 14px;
+                color: #888;
+            }
+        </style>
+
         <script>
             function previewImage() {
                 const image = document.querySelector('#image');
