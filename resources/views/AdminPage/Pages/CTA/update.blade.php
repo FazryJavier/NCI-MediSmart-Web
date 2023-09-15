@@ -1,7 +1,7 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Page Home - CTA
+    Page CTA
 @endsection
 
 @section('content')
@@ -38,18 +38,6 @@
                 <label for="caption" class="form-label">Description</label>
                 <input type="text" value="{{ $cta->description }}" name="description" class="form-control">
             </div>
-            
-            {{-- <div class="mb-3">
-                <label>Tampilkan ?</label>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadio" id="radioYes" value="yes">
-                    <label class="form-check-label" for="radioYes">Yes</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadio" id="radioNo" value="no">
-                    <label class="form-check-label" for="radioNo">No</label>
-                </div>
-            </div> --}}
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/CTA" type="button" class="btn btn-secondary">Back</a>

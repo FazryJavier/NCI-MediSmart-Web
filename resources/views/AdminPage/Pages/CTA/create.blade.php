@@ -1,7 +1,7 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Page Home - CTA
+    Page CTA
 @endsection
 
 @section('content')

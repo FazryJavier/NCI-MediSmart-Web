@@ -1,7 +1,7 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Page HOME - CTA
+    Page CTA
 @endsection
 
 @push('script')
@@ -41,13 +41,9 @@
             @forelse ($cta as $cta => $item)
                 <tr>
                     <td>{{ $cta + 1 }}</td>
-                    {{-- <td>1</td> --}}
                     <td>{{ $item->title }}</td>
-                    {{-- <td>Test</td> --}}
                     <td>{{ $item->description }}</td>
-                    {{-- <td>Test</td> --}}
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
-                    {{-- <td><img src="{{ asset('assets/img/vector1.png') }}" alt="Image" class="img-fluid mt-3"></td> --}}
                     <td>
                         <form action="/CTA/{{ $item->id }}" method="POST">
                             <a href="/CTA/{{ $item->id }}/update" type="button" class="btn btn-warning"><i

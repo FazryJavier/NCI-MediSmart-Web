@@ -15,7 +15,7 @@ class CTAController extends Controller
     {
         $cta = CTA::all();
 
-        return view('AdminPage.Pages.Home.CTA.index', compact('cta'));
+        return view('AdminPage.Pages.CTA.index', compact('cta'));
     }
 
     public static function showContent()
@@ -40,7 +40,7 @@ class CTAController extends Controller
      */
     public function create()
     {
-        return view('AdminPage.Pages.Home.CTA.create');
+        return view('AdminPage.Pages.CTA.create');
     }
 
     /**
@@ -70,7 +70,7 @@ class CTAController extends Controller
     {
         $ctaShow = CTA::find($id);
 
-        return view('AdminPage.Pages.Home.CTA.index', compact('ctaShow'));
+        return view('AdminPage.Pages.CTA.index', compact('ctaShow'));
     }
 
     /**
@@ -80,7 +80,7 @@ class CTAController extends Controller
     {
         $cta = CTA::where('id', $id)->firstorfail();
 
-        return view('AdminPage.Pages.Home.CTA.update', compact('cta'));
+        return view('AdminPage.Pages.CTA.update', compact('cta'));
     }
 
     /**
