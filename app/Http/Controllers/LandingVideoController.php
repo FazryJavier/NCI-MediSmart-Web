@@ -20,14 +20,24 @@ class LandingVideoController extends Controller
 
     public function showContent()
     {
-        $titleView = LandingVideo::pluck('title');
-        $descriptionView = LandingVideo::pluck('description');
-        $videoView = LandingVideo::pluck('video');
-    
+        $landingVideo = LandingVideo::latest('id')->first();
+
+        if ($landingVideo) {
+            $title = $landingVideo->title;
+            $description = $landingVideo->description;
+            $video = $landingVideo->video;
+            
+            return [
+                'titleView' => $title,
+                'descriptionView' => $description,
+                'videoView' => $video,
+            ];
+        }
+
         return [
-            'titleView' => $titleView,
-            'descriptionView' => $descriptionView,
-            'videoView' => $videoView,
+            'titleView' => null,
+            'descriptionView' => null,
+            'videoView' => null,
         ];
     }
 

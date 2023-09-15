@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-use App\Http\Controllers\WhatsappController;
+use App\Http\Controllers\LandingVideoController;
 use App\Http\Controllers\CTAController;
+use App\Http\Controllers\WhatsappController;
+use App\Models\LandingVideo;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,14 +25,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('*', function ($view) {
-            $whatsappContent = WhatsappController::showContent();
-
-            $view->with('whatsappContent', $whatsappContent);
+            $ctaContent = CTAController::showContent();
+            $view->with('ctaContent', $ctaContent);
         });
 
         View::composer('*', function ($view) {
-            $ctaContent = CTAController::showContent();
-            $view->with('ctaContent', $ctaContent);
+            $whatsappContent = WhatsappController::showContent();
+            $view->with('whatsappContent', $whatsappContent);
         });
     }
 

@@ -19,23 +19,22 @@
             </div>
             <div class="mb-3">
                 <label for="video" class="form-label">Video</label>
+                <span class="description">*Masukkan token yang ada pada link youtube. Ex :
+                    https://www.youtube.com/watch?v=<b>JzmHxafphj0</b>&ab_channel=SIMRSNCIMediSmart = <b>Token :
+                        JzmHxafphj0</b></span>
                 <input type="text" name="video" class="form-control">
             </div>
-            {{-- <div class="mb-3">
-                <label>Tampilkan ?</label>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadio" id="radioYes" value="yes">
-                    <label class="form-check-label" for="radioYes">Yes</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadio" id="radioNo" value="no">
-                    <label class="form-check-label" for="radioNo">No</label>
-                </div>
-            </div> --}}
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
                 <a href="/LandingVideo" type="button" class="btn btn-secondary">Back</a>
             </div>
         </form>
     </section>
+
+    <style>
+        .description {
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
 @endsection

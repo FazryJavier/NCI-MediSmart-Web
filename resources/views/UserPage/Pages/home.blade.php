@@ -306,22 +306,16 @@
             <div class="container">
                 <div class="content">
                     <div class="text">
-                        @foreach ($videoContent['titleView'] as $title)
-                            <h1>{{ $title }}</h1>
-                        @endforeach
-                        @foreach ($videoContent['descriptionView'] as $description)
-                            <p>{{ $description }}</p>
-                        @endforeach
+                        <h1>{{ $videoContent['titleView'] }}</h1>
+                        <p>{{ $videoContent['descriptionView'] }}</p>
                     </div>
 
                     <div class="video">
-                        @foreach ($videoContent['videoView'] as $video)
-                            <iframe width="560" height="315"
-                                src="https://www.youtube.com/embed/{{ $video }}" title="YouTube video player"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen controls muted></iframe>
-                        @endforeach
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/{{ $videoContent['videoView'] }}"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen controls muted></iframe>
                     </div>
                 </div>
             </div>
