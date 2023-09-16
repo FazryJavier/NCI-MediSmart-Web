@@ -82,25 +82,25 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/boxed.html" class="nav-link">
+                            <a href="/ModulProduct" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Modul Product</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                            <a href="/AdvantageModul" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Advantage Modul</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/fixed-topnav.html" class="nav-link">
+                            <a href="/FasilitiesModul" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Fasilities Modul</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/fixed-footer.html" class="nav-link">
+                            <a href="/ImageModul" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Image Modul</p>
                             </a>
@@ -118,7 +118,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
+                            <a href="/AdvantageListProduct" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Advantage List Product</p>
                             </a>

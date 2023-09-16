@@ -19,6 +19,7 @@ class CreateModulProductsTable extends Migration
             $table->string('title');
             $table->string('subTitle');
             $table->text('description');
+            $table->string('icon');
             $table->string('image_main');
             $table->timestamps();
         });

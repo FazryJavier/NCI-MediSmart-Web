@@ -11,6 +11,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\ModulProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WhatsappController;
 use Illuminate\Support\Facades\Route;
@@ -163,6 +164,14 @@ Route::post('/Product', [ProductController::class, 'store']);
 Route::get('/Product/{id}/update', [ProductController::class, 'edit']);
 Route::put('/Product/{id}', [ProductController::class, 'update']);
 Route::delete('/Product/{id}', [ProductController::class, 'destroy']);
+
+// Product Modul
+Route::get('/ModulProduct', [ModulProductController::class, 'index']);
+Route::get('/ModulProduct/create', [ModulProductController::class, 'create']);
+Route::post('/ModulProduct', [ModulProductController::class, 'store']);
+Route::get('/ModulProduct/{id}/update', [ModulProductController::class, 'edit']);
+Route::put('/ModulProduct/{id}', [ModulProductController::class, 'update']);
+Route::delete('/ModulProduct/{id}', [ModulProductController::class, 'destroy']);
 
 // Product Client
 Route::get('/ClientProduct', [ClientProductController::class, 'index']);

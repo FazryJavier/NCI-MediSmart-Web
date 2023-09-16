@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ModulProduct;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ModulProductController extends Controller
 {
@@ -12,7 +14,9 @@ class ModulProductController extends Controller
      */
     public function index()
     {
-        //
+        $modulProduct = ModulProduct::all();
+
+        return view('AdminPage.Pages.Product.ModulProduct.index', compact('modulProduct'));
     }
 
     /**
@@ -20,7 +24,9 @@ class ModulProductController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+
+        return view('AdminPage.Pages.Product.ModulProduct.create', compact('products'));
     }
 
     /**
@@ -28,38 +34,97 @@ class ModulProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'productId' => 'required',
+            'title' => 'required',
+            'subTitle' => 'required',
+            'description' => 'required',
+            'icon' => 'image|mimes:jpeg,png,jpg,gif',
+            'image_main' => 'image|mimes:jpeg,png,jpg,gif',
+        ]);
+
+        if ($request->file('icon')) {
+            $validatedData['icon'] = $request->file('icon')->store('file-image');
+        }
+
+        if ($request->file('image_main')) {
+            $validatedData['image_main'] = $request->file('image_main')->store('file-image');
+        }
+
+        ModulProduct::create($validatedData);
+
+        return redirect('/ModulProduct');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(ModulProduct $modulProduct)
+    public function show(ModulProduct $id)
     {
-        //
+        $modulProductShow = ModulProduct::find($id);
+
+        return view('AdminPage.Pages.Product.ModulProduct.index', compact('modulProductShow'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ModulProduct $modulProduct)
+    public function edit($id)
     {
-        //
+        $modulProduct = ModulProduct::where('id', $id)->firstorfail();
+
+        $products = Product::all();
+
+        return view('AdminPage.Pages.Product.ModulProduct.update', compact('modulProduct', 'products'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ModulProduct $modulProduct)
+    public function update(Request $request, $id)
     {
-        //
+        $content = [
+            'productId' => 'required',
+            'title' => 'required',
+            'subTitle' => 'required',
+            'description' => 'required',
+            'icon' => 'image|mimes:jpeg,png,jpg,gif',
+            'image_main' => 'image|mimes:jpeg,png,jpg,gif',
+        ];
+
+        $validatedData = $request->validate($content);
+
+        $modulProduct = ModulProduct::find($id);
+
+        if ($request->hasFile('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+
+            $validatedData['icon'] = $request->file('image')->store('file-image');
+            $validatedData['image_main'] = $request->file('image')->store('file-image');
+        }
+
+        $modulProduct->update($validatedData);
+
+        return redirect('/ModulProduct');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ModulProduct $modulProduct)
+    public function destroy($id)
     {
-        //
+        $modulProduct = ModulProduct::findOrFail($id);
+
+        $imagepath = $modulProduct->image;
+
+        $modulProduct->delete();
+
+        if ($imagepath && Storage::disk('local')->exists($imagepath)) {
+            Storage::disk('local')->delete($imagepath);
+        }
+
+        return redirect('/ModulProduct');
     }
 }

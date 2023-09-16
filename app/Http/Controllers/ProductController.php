@@ -123,8 +123,8 @@ class ProductController extends Controller
                 Storage::delete($request->oldImage);
             }
 
-            $validatedData['image_title'] = $request->file('image')->store('file-image');
-            $validatedData['image_show'] = $request->file('image')->store('file-image');
+            $validatedData['image_title'] = $request->file('image_title')->store('file-image');
+            $validatedData['image_show'] = $request->file('image_show')->store('file-image');
         }
 
         $product->update($validatedData);
