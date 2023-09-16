@@ -106,7 +106,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
+                            <a href="/ClientProduct" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Client Product</p>
                             </a>

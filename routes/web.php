@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AllClientController;
+use App\Http\Controllers\ClientProductController;
 use App\Http\Controllers\CTAController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ExperienceListController;
@@ -161,6 +162,14 @@ Route::post('/Product', [ProductController::class, 'store']);
 Route::get('/Product/{id}/update', [ProductController::class, 'edit']);
 Route::put('/Product/{id}', [ProductController::class, 'update']);
 Route::delete('/Product/{id}', [ProductController::class, 'destroy']);
+
+// Product Client
+Route::get('/ClientProduct', [ClientProductController::class, 'index']);
+Route::get('/ClientProduct/create', [ClientProductController::class, 'create']);
+Route::post('/ClientProduct', [ClientProductController::class, 'store']);
+Route::get('/ClientProduct/{id}/update', [ClientProductController::class, 'edit']);
+Route::put('/ClientProduct/{id}', [ClientProductController::class, 'update']);
+Route::delete('/ClientProduct/{id}', [ClientProductController::class, 'destroy']);
 
 // About Us
 Route::get('/AboutUs', [AboutController::class, 'index']);

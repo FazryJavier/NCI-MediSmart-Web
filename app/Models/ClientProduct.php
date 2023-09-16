@@ -10,4 +10,9 @@ class ClientProduct extends Model
     use HasFactory;
     protected $table='client_products';
     protected $guarded=[];
+
+    public function products()
+    {
+        return $this->belongsTo(Product::class, 'productId');
+    }
 }

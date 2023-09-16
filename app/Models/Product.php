@@ -10,4 +10,9 @@ class Product extends Model
     use HasFactory;
     protected $table='products';
     protected $guarded=[];
+
+    public function clientProducts()
+    {
+        return $this->hasMany(ClientProduct::class, 'productId')->cascadeDeletes();
+    }
 }
