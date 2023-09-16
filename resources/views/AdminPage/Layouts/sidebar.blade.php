@@ -112,7 +112,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
+                            <a href="/AdvantageProduct" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Advantage Product</p>
                             </a>

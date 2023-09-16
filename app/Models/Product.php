@@ -15,4 +15,9 @@ class Product extends Model
     {
         return $this->hasMany(ClientProduct::class, 'productId')->cascadeDeletes();
     }
+
+    public function advantageProducts()
+    {
+        return $this->hasMany(AdvantageProduct::class, 'productId')->cascadeDeletes();
+    }
 }

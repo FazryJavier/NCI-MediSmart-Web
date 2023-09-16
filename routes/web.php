@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdvantageProductController;
 use App\Http\Controllers\AllClientController;
 use App\Http\Controllers\ClientProductController;
 use App\Http\Controllers\CTAController;
@@ -170,6 +171,14 @@ Route::post('/ClientProduct', [ClientProductController::class, 'store']);
 Route::get('/ClientProduct/{id}/update', [ClientProductController::class, 'edit']);
 Route::put('/ClientProduct/{id}', [ClientProductController::class, 'update']);
 Route::delete('/ClientProduct/{id}', [ClientProductController::class, 'destroy']);
+
+// Product Advantage
+Route::get('/AdvantageProduct', [AdvantageProductController::class, 'index']);
+Route::get('/AdvantageProduct/create', [AdvantageProductController::class, 'create']);
+Route::post('/AdvantageProduct', [AdvantageProductController::class, 'store']);
+Route::get('/AdvantageProduct/{id}/update', [AdvantageProductController::class, 'edit']);
+Route::put('/AdvantageProduct/{id}', [AdvantageProductController::class, 'update']);
+Route::delete('/AdvantageProduct/{id}', [AdvantageProductController::class, 'destroy']);
 
 // About Us
 Route::get('/AboutUs', [AboutController::class, 'index']);
