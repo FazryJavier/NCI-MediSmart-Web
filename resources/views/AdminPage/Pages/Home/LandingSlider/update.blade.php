@@ -40,7 +40,17 @@
                                 *.png, *.jpg)</span></label>
                     </div>
                 </div>
-            </div>
+                {{-- @if ($slider ->status ==0) --}}
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox"  name="status" id="status">
+                        <label class="form-check-label" for="status">
+                            Tampilkan Data
+                        </label>
+                    </div>
+                </div>
+                {{-- @endif --}}
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/LandingSlider" type="button" class="btn btn-secondary">Back</a>
@@ -68,6 +78,18 @@
                     imgPreview.src = oFREvent.target.result;
                 }
             }
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function (){
+               const statusCheckBox =  document.getElementById("status");
+               const statusValue = "{{ $slider->status }}";
+               
+               if (statusValue == 1){
+                statusCheckBox.checked = true;
+               }else{
+                statusCheckBox.checked = false;
+               }
+            });
         </script>
     </section>
 @endsection

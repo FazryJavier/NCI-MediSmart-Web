@@ -23,11 +23,12 @@ class LandingSliderController extends Controller
         $titleView = LandingSlider::pluck('title');
         $captionView = LandingSlider::pluck('caption');
         $imageView = LandingSlider::pluck('image');
-
+        $statusView = LandingSlider::pluck('status');
         return [
             'titleView' => $titleView,
             'captionView' => $captionView,
             'imageView' => $imageView,
+            'statusView' => $statusView,
         ];
     }
 
@@ -48,6 +49,7 @@ class LandingSliderController extends Controller
             'title' => 'required',
             'caption' => 'required',
             'image' => 'image|file',
+            'status' => 'nullable|boolean',
         ]);
 
         if ($request->file('image')) {
@@ -88,6 +90,7 @@ class LandingSliderController extends Controller
             'title' => 'required',
             'caption' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'status' => 'required',
         ];
 
         $validatedData = $request->validate($content);
@@ -102,6 +105,11 @@ class LandingSliderController extends Controller
             $validatedData['image'] = $request->file('image')->store('file-image');
         }
 
+        if ($request->has('status') && $request->input('status') == '0') {
+            $validatedData['status'] = 0;
+        } else {
+            $validatedData['status'] = 1;
+        }
         $slider->update($validatedData);
 
         return redirect('/LandingSlider');
@@ -113,7 +121,7 @@ class LandingSliderController extends Controller
     public function destroy($id)
     {
         $slider = LandingSlider::findOrFail($id);
-        
+
         $imagePath = $slider->image;
 
         $slider->delete();

@@ -18,6 +18,7 @@ class CreateLandingSlidersTable extends Migration
             $table->string('title');
             $table->string('caption');
             $table->string('image');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

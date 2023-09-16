@@ -34,6 +34,7 @@
                 <th class="col-sm-4">Title</th>
                 <th class="col-sm-4">Caption</th>
                 <th class="col-sm-2">Image</th>
+                <th class="col-sm-1">Status</th>
                 <th class="col-sm-1">Action</th>
             </tr>
         </thead>
@@ -43,6 +44,7 @@
                     <td>{{ $ld + 1 }}</td>
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->caption }}</td>
+                    <td>{{ $item->status ? 'Tampil':'Sembunyikan' }}</td>
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
                     <td>
                         <form action="/LandingSlider/{{ $item->id }}" method="POST">

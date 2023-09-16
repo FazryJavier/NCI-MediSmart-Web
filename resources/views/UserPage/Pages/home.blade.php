@@ -24,16 +24,20 @@
     <section class="section-header swiper mySwiper">
         <div class="wrapper swiper-wrapper">
             @foreach ($sliderContent['titleView'] as $index => $title)
+            @if($sliderContent['statusView'][$index] == 1)
                 <div class="slide swiper-slide">
                     <img src="{{ asset('storage/' . $sliderContent['imageView'][$index]) }}" alt=""
                         class="image">
+                    {{-- @endif --}}
                     <div class="image-date">
+                        {{-- @if ($sliderContent['statusView'][$index]==1) --}}
                         <h1>{{ $title }}</h1>
                         <h3>{{ $sliderContent['captionView'][$index] }}</h3>
                         <a href="" class="button-1">Hubungi Kami</a>
                         <a href="" class="button-2">Pelajari Lanjut</a>
                     </div>
                 </div>
+                @endif
             @endforeach
         </div>
 

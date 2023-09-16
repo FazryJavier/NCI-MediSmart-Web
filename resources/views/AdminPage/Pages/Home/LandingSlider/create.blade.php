@@ -31,6 +31,14 @@
                                 *.png, *.jpg)</span></label>
                     </div>
                 </div>
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="1" name="status" id="status">
+                        <label class="form-check-label" for="status">
+                            Tampilkan Data
+                        </label>
+                    </div>
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
