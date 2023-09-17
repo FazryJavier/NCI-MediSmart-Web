@@ -33,8 +33,10 @@
                         {{-- @if ($sliderContent['statusView'][$index]==1) --}}
                         <h1>{{ $title }}</h1>
                         <h3>{{ $sliderContent['captionView'][$index] }}</h3>
-                        <a href="" class="button-1">Hubungi Kami</a>
-                        <a href="" class="button-2">Pelajari Lanjut</a>
+                        {{-- <a href="" class="button-1">Hubungi Kami</a>
+                        <a href="" class="button-2">Pelajari Lanjut</a> --}}
+                        <a href="" class="button-1" data-index="{{ $index }}">Hubungi Kami</a>
+                        <a href="" class="button-2" data-index="{{ $index }}">Pelajari Lanjut</a>
                     </div>
                 </div>
                 @endif
@@ -480,6 +482,32 @@
                 spaceBetween: 20,
             },
         },
+    });
+</script>
+<script>
+    function showButtons(){
+        const buttons = document.querySelectorAll('data-index="${index}"');
+        buttons.forEach(button => {
+            button.style.display = 'block';
+        });
+    }
+
+    function hideButtons(index){
+        const buttons =document.querySelectorAll('[data-index]="${index}"');
+        buttons.forEach(button => {
+            button.style.display = 'none';
+        });
+    
+    }
+        
+    const slides = document.querySelectorAll('.slide');
+    slides.forEach((slide, index) =>{
+        slide.addEventListener('mouseenter', () => {
+            showButtons(index);
+        });
+        slide.addEventListener('mouseleave', () => {
+            hideButtons(index);
+        });
     });
 </script>
 

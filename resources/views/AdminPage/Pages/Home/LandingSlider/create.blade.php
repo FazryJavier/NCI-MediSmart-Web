@@ -31,15 +31,32 @@
                                 *.png, *.jpg)</span></label>
                     </div>
                 </div>
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="status" class="form-label">Status</label>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="1" name="status" id="status">
                         <label class="form-check-label" for="status">
                             Tampilkan Data
                         </label>
-                    </div>
+                    </div> --}}
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="1" name="status" id="show" checked>
+                            <label class="form-check-label" for="show">
+                                Show Data
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="0" name="status" id="hide">
+                            <label class="form-check-label" for="hide">
+                                Hide Data
+                            </label>
+                        </div>
+                    </div> 
             </div>
+               <!-- Add a hidden input to send the selected status value to the server -->
+            <input type="hidden" name="status" id="selected_status" value="1">
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
                 <a href="/LandingSlider" type="button" class="btn btn-secondary">Back</a>
@@ -68,5 +85,17 @@
                 imgPreview.src = oFREvent.target.result;
             }
         }
+
+           // JavaScript function to update the hidden input with the selected status
+        function updateStatus() {
+             var selectedStatus = document.querySelector('input[name="status"]:checked').value;
+             document.getElementById('selected_status').value = selectedStatus;
+    }
+    
+    // Attach the updateStatus function to the radio buttons' onchange event
+        document.querySelectorAll('input[name="status"]').forEach(function (radio) {
+        radio.addEventListener('change', updateStatus);
+    });
+
     </script>
 @endsection

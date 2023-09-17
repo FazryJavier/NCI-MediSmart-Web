@@ -44,8 +44,8 @@
                     <td>{{ $ld + 1 }}</td>
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->caption }}</td>
-                    <td>{{ $item->status ? 'Tampil':'Sembunyikan' }}</td>
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
+                    <td>{{ $item->status ? 'Tampil':'Sembunyikan' }}</td>
                     <td>
                         <form action="/LandingSlider/{{ $item->id }}" method="POST">
                             <a href="/LandingSlider/{{ $item->id }}/update" type="button" class="btn btn-warning"><i
