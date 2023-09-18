@@ -251,6 +251,26 @@
                 </li>
                 {{-- End Footer --}}
 
+                {{-- Demo --}}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon far fa-plus-square"></i>
+                        <p>
+                            Demo
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/DemoList" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Demo</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- End Demo --}}
+
                 {{-- CTA --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -261,7 +281,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                    <li class="nav-item">
+                        <li class="nav-item">
                             <a href="/CTA" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>CTA</p>

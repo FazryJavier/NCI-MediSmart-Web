@@ -19,7 +19,8 @@
     {{-- Header --}}
     <header>
         <nav class="navbar">
-            <a href="/" class="btn-back"><i class="fa-solid fa-arrow-left" style="color: #707070;"></i> Kembali</a>
+            <a href="/" class="btn-back"><i class="fa-solid fa-arrow-left" style="color: #707070;"></i>
+                Kembali</a>
             <a href="/"><img src="{{ asset('assets/img/Logo Medismart.png') }}" alt="MediSmart"></a>
             </div>
         </nav>
@@ -41,33 +42,35 @@
                     </div>
                 </div>
 
-                <form action="" class="form-demo">
+                <form action="/DemoList" class="form-demo" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
                     <div class="input-form mb-4">
-                        <label for="nama" class="form-label"><span>*</span> Nama</label>
-                        <input type="text" name="nama" class="form-control" id="nama">
+                        <label for="name" class="form-label"><span>*</span> Nama</label>
+                        <input type="text" name="name" class="form-control" id="name">
                     </div>
                     <div class="input-form mb-4">
-                        <label for="jabatan" class="form-label"><span>*</span> Jabatan</label>
-                        <input type="text" name="jabatan" class="form-control" id="jabatan">
+                        <label for="position" class="form-label"><span>*</span> Jabatan</label>
+                        <input type="text" name="position" class="form-control" id="position">
                     </div>
                     <div class="input-form mb-4">
-                        <label for="nama-instansi" class="form-label"><span>*</span> Nama Instansi / Faskes</label>
-                        <input type="text" name="nama-instansi" class="form-control" id="nama-instansi">
+                        <label for="instance_name" class="form-label"><span>*</span> Nama Instansi / Faskes</label>
+                        <input type="text" name="instance_name" class="form-control" id="instance_name">
                     </div>
                     <div class="input-form mb-4">
-                        <label for="alamat-instansi" class="form-label"><span>*</span> Alamat Instansi / Faskes</label>
-                        <input type="text" name="alamat-instansi" class="form-control" id="alamat-instansi">
+                        <label for="instance_address" class="form-label"><span>*</span> Alamat Instansi / Faskes</label>
+                        <textarea name="instance_address" class="form-control" rows="5"></textarea>
                     </div>
                     <div class="input-form mb-4">
                         <label for="email" class="form-label"><span>*</span> Email</label>
                         <input type="email" name="email" class="form-control" id="email">
                     </div>
                     <div class="input-form mb-4">
-                        <label for="no-telpon" class="form-label"><span>*</span> No Telpon</label>
-                        <input type="text" name="no-telpon" class="form-control" id="no-telpon">
+                        <label for="phone_number" class="form-label"><span>*</span> No Telpon</label>
+                        <input type="text" name="phone_number" class="form-control" id="phone_number">
                     </div>
                     <div class="input-form mb-4 btn-submit">
-                        <input type="submit" value="Jadwal Demo" />
+                        <button type="submit" class="btn btn-success">Jadwal Demo</button>
                     </div>
                 </form>
             </div>

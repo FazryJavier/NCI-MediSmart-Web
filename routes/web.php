@@ -6,6 +6,7 @@ use App\Http\Controllers\AdvantageProductController;
 use App\Http\Controllers\AllClientController;
 use App\Http\Controllers\ClientProductController;
 use App\Http\Controllers\CTAController;
+use App\Http\Controllers\DemoController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ExperienceListController;
@@ -222,6 +223,14 @@ Route::post('/Feedback', [FeedbackController::class, 'store']);
 Route::get('/Feedback/{id}/update', [FeedbackController::class, 'edit']);
 Route::put('/Feedback/{id}', [FeedbackController::class, 'update']);
 Route::delete('/Feedback/{id}', [FeedbackController::class, 'destroy']);
+
+// Demo 
+Route::get('DemoList', [DemoController::class, 'index']);
+Route::get('/DemoList/create', [DemoController::class, 'create']);
+Route::post('/DemoList', [DemoController::class, 'store']);
+Route::get('/DemoList/{id}/update', [DemoController::class, 'edit']);
+Route::put('/DemoList/{id}', [DemoController::class, 'update']);
+Route::delete('/DemoList/{id}', [DemoController::class, 'destroy']);
 
 // CTA 
 Route::get('CTA', [CTAController::class, 'index']);
