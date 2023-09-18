@@ -153,44 +153,6 @@
                 </li>
                 {{-- End Healthcare Solution --}}
 
-                {{-- Detail Modul --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Detail Modul
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="admin-home" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Header</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/boxed.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Kelebihan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Fasilitas</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Testimoni</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End Detail Modul --}}
-
                 {{-- Testimoni --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
