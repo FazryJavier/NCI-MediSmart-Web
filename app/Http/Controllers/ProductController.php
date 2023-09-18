@@ -28,8 +28,8 @@ class ProductController extends Controller
         return [
             'titleView' => $titleView,
             'subtitleView' => $subtitleView,
-            'imageView' => $imageView,
             'descriptionView' => $descriptionView,
+            'imageView' => $imageView,
         ];
     }
 

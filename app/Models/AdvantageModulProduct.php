@@ -10,4 +10,9 @@ class AdvantageModulProduct extends Model
     use HasFactory;
     protected $table='advantage_modul_products';
     protected $guarded=[];
+
+    public function modulProducts()
+    {
+        return $this->belongsTo(ModulProduct::class, 'modulId');
+    }
 }

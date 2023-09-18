@@ -24,21 +24,21 @@
     <section class="section-header swiper mySwiper">
         <div class="wrapper swiper-wrapper">
             @foreach ($sliderContent['titleView'] as $index => $title)
-            @if($sliderContent['statusView'][$index] == 1)
-                <div class="slide swiper-slide">
-                    <img src="{{ asset('storage/' . $sliderContent['imageView'][$index]) }}" alt=""
-                        class="image">
-                    {{-- @endif --}}
-                    <div class="image-date">
-                        {{-- @if ($sliderContent['statusView'][$index]==1) --}}
-                        <h1>{{ $title }}</h1>
-                        <h3>{{ $sliderContent['captionView'][$index] }}</h3>
-                        {{-- <a href="" class="button-1">Hubungi Kami</a>
+                @if ($sliderContent['statusView'][$index] == 1)
+                    <div class="slide swiper-slide">
+                        <img src="{{ asset('storage/' . $sliderContent['imageView'][$index]) }}" alt=""
+                            class="image">
+                        {{-- @endif --}}
+                        <div class="image-date">
+                            {{-- @if ($sliderContent['statusView'][$index] == 1) --}}
+                            <h1>{{ $title }}</h1>
+                            <h3>{{ $sliderContent['captionView'][$index] }}</h3>
+                            {{-- <a href="" class="button-1">Hubungi Kami</a>
                         <a href="" class="button-2">Pelajari Lanjut</a> --}}
-                        <a href="" class="button-1" data-index="{{ $index }}">Hubungi Kami</a>
-                        <a href="" class="button-2" data-index="{{ $index }}">Pelajari Lanjut</a>
+                            <a href="" class="button-1" data-index="{{ $index }}">Hubungi Kami</a>
+                            <a href="" class="button-2" data-index="{{ $index }}">Pelajari Lanjut</a>
+                        </div>
                     </div>
-                </div>
                 @endif
             @endforeach
         </div>
@@ -121,173 +121,34 @@
                     <h1>Produk Kami</h1>
                 </div>
                 <div class="wrapper">
-                    <div class="card">
-                        <div class="image">
-                            <img src="{{ asset('assets/img/produk-1.png') }}" alt="Product" />
-                        </div>
-                        <div class="layer">
-                            <h1>SIM-RS NCI MediSmart</h1>
-                            <h3>Sistem Informasi Manajemen Rumah Sakit</h3>
-                            <p>Dikembangkan dengan sistem modular, proses implementasi dilakukan bertahap dan
-                                terintegrasi antar modul.Mengelola aktivitas kegiatan dari Front Office sampai dengan
-                                Back Office, menghasilkan pelaporan secara lengkap dan cepat
-                            </p>
-                            <ul>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>SIMRS NCI-MediSmart
-                                </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi BPJS &
-                                    V-Claim</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Keuangan & Akuntansi
-                                </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Picture Archiving
-                                    and Communication System (PACS)</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Pendaftaran Online
-                                </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laboratorium
-                                    Informasi System (LIS)</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Pendaftaran Pasien
-                                    Online Mandiri</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Pencegahan dan
-                                    Pengendalian Infeksi (PPI)</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Perbaikan Mutu dan
-                                    Keselamatan Pasien (PMKP)</li>
-                            </ul>
-                        </div>
-                        <div class="bottom">
-                            <div class="container-line">
-                                <div class="center-line"></div>
+                    @foreach ($productContent['imageView'] as $index => $image)
+                        <div class="card">
+                            <div class="image">
+                                <img src="{{ asset('storage/' . $productContent['imageView'][$index]) }}"
+                                    alt="Product" />
                             </div>
-                            <div class="button">
-                                <a href="#"><i class="fa-solid fa-arrow-right"
-                                        style="color: #ffffff;"></i>Pelajari Lanjut</a>
+                            <div class="layer">
+                                <h1>{{ $productContent['titleView'][$index] }}</h1>
+                                <h3>{{ $productContent['subtitleView'][$index] }}</h3>
+                                <p>{{ $productContent['descriptionView'][$index] }}</p>
+                                <ul>
+                                    @foreach ($listView as $listItem)
+                                        <li><i class="fa-solid fa-circle-check"
+                                                style="color: #1bad4b;"></i>{{ $listItem['list'] }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="bottom">
+                                <div class="container-line">
+                                    <div class="center-line"></div>
+                                </div>
+                                <div class="button">
+                                    <a href="#"><i class="fa-solid fa-arrow-right"
+                                            style="color: #ffffff;"></i>Pelajari Lanjut</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="image">
-                            <img src="{{ asset('assets/img/produk-2.png') }}" alt="Product" />
-                        </div>
-                        <div class="layer">
-                            <h1>RME NCI MediSmart</h1>
-                            <h3>Rekam Medis Elektronik</h3>
-                            <p>
-                                Dikembangkan dengan sistem modular, proses implementasi dilakukan bertahap dan
-                                terintegrasi antar modul.Mengelola aktivitas kegiatan dari Front Office sampai
-                                dengan Back Office, menghasilkan pelaporan secara lengkap dan cepat
-                            </p>
-                            <ul>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Terintegrasi
-                                    dengan SIMRS</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Sistem berbasis
-                                    web dan mobile</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Kesesuaian dengan
-                                    PMK No 24 Tahun 2022</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Siap integrasi
-                                    dengan sistem SatuSehat</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Fitur pelayanan
-                                    medis dan keperawatan</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Sistem pelaporan
-                                    lengkap </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Tanda tangan
-                                    digital </li>
-                            </ul>
-                        </div>
-                        <div class="bottom">
-                            <div class="container-line">
-                                <div class="center-line"></div>
-                            </div>
-                            <div class="button">
-                                <a href="#"><i class="fa-solid fa-arrow-right"
-                                        style="color: #ffffff;"></i>Pelajari Lanjut</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="image">
-                            <img src="{{ asset('assets/img/produk-1.png') }}" alt="Product" />
-                        </div>
-                        <div class="layer">
-                            <h1>SIM-RS NCI MediSmart</h1>
-                            <h3>Sistem Informasi Manajemen Rumah Sakit</h3>
-                            <p>Dikembangkan dengan sistem modular, proses implementasi dilakukan bertahap dan
-                                terintegrasi antar modul.Mengelola aktivitas kegiatan dari Front Office sampai dengan
-                                Back Office, menghasilkan pelaporan secara lengkap dan cepat
-                            </p>
-                            <ul>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>SIMRS
-                                    NCI-MediSmart
-                                </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi BPJS &
-                                    V-Claim</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Keuangan &
-                                    Akuntansi
-                                </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Picture Archiving
-                                    and Communication System (PACS)</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Pendaftaran Online
-                                </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laboratorium
-                                    Informasi System (LIS)</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Pendaftaran Pasien
-                                    Online Mandiri</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Pencegahan dan
-                                    Pengendalian Infeksi (PPI)</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Perbaikan Mutu dan
-                                    Keselamatan Pasien (PMKP)</li>
-                            </ul>
-                        </div>
-                        <div class="bottom">
-                            <div class="container-line">
-                                <div class="center-line"></div>
-                            </div>
-                            <div class="button">
-                                <a href="#"><i class="fa-solid fa-arrow-right"
-                                        style="color: #ffffff;"></i>Pelajari Lanjut</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="image">
-                            <img src="{{ asset('assets/img/produk-2.png') }}" alt="Product" />
-                        </div>
-                        <div class="layer">
-                            <h1>RME NCI MediSmart</h1>
-                            <h3>Rekam Medis Elektronik</h3>
-                            <p>
-                                Dikembangkan dengan sistem modular, proses implementasi dilakukan bertahap dan
-                                terintegrasi antar modul.Mengelola aktivitas kegiatan dari Front Office sampai
-                                dengan Back Office, menghasilkan pelaporan secara lengkap dan cepat
-                            </p>
-                            <ul>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Terintegrasi
-                                    dengan SIMRS</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Sistem berbasis
-                                    web dan mobile</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Kesesuaian dengan
-                                    PMK No 24 Tahun 2022</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Siap integrasi
-                                    dengan sistem SatuSehat</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Fitur pelayanan
-                                    medis dan keperawatan</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Sistem pelaporan
-                                    lengkap </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Tanda tangan
-                                    digital </li>
-                            </ul>
-                        </div>
-                        <div class="bottom">
-                            <div class="container-line">
-                                <div class="center-line"></div>
-                            </div>
-                            <div class="button">
-                                <a href="#"><i class="fa-solid fa-arrow-right"
-                                        style="color: #ffffff;"></i>Pelajari Lanjut</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -485,23 +346,23 @@
     });
 </script>
 <script>
-    function showButtons(){
+    function showButtons() {
         const buttons = document.querySelectorAll('data-index="${index}"');
         buttons.forEach(button => {
             button.style.display = 'block';
         });
     }
 
-    function hideButtons(index){
-        const buttons =document.querySelectorAll('[data-index]="${index}"');
+    function hideButtons(index) {
+        const buttons = document.querySelectorAll('[data-index]="${index}"');
         buttons.forEach(button => {
             button.style.display = 'none';
         });
-    
+
     }
-        
+
     const slides = document.querySelectorAll('.slide');
-    slides.forEach((slide, index) =>{
+    slides.forEach((slide, index) => {
         slide.addEventListener('mouseenter', () => {
             showButtons(index);
         });

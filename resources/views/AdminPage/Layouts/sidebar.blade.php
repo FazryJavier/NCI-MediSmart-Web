@@ -82,6 +82,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/ProductList" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Product List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/DetailProduct" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Detail Product</p>
@@ -94,19 +100,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/AdvantageModul" class="nav-link">
+                            <a href="/AdvantageModulProduct" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Advantage Modul</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/FasilitiesModul" class="nav-link">
+                            <a href="/FasilitiesModulProduct" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Fasilities Modul</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/ImageModul" class="nav-link">
+                            <a href="/ImageModulProduct" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Image Modul</p>
                             </a>

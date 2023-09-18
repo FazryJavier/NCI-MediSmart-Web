@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdvantageListProductController;
+use App\Http\Controllers\AdvantageModulProductController;
 use App\Http\Controllers\AdvantageProductController;
 use App\Http\Controllers\AllClientController;
 use App\Http\Controllers\ClientProductController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\LandingVideoController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\ModulProductController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\WhatsappController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,9 +37,6 @@ Route::get('/', function () {
     $sliderController = app()->make(LandingSliderController::class);
     $sliderContent = $sliderController->showContent();
 
-    $videoController = app()->make(LandingVideoController::class);
-    $videoContent = $videoController->showContent();
-
     $clientController = app()->make(AllClientController::class);
     $clientContent = $clientController->showContent();
 
@@ -50,13 +49,25 @@ Route::get('/', function () {
     $mapController = app()->make(MapController::class);
     $mapContent = $mapController->showContent();
 
+    $productController = app()->make(ProductController::class);
+    $productContent = $productController->showContent();
+
+    $productlistController = app()->make(ProductListController::class);
+    $listView = $productlistController->showContent();
+
+    $videoController = app()->make(LandingVideoController::class);
+    $videoContent = $videoController->showContent();
+
     return view('UserPage/Pages/home', [
         'sliderContent' => $sliderContent,
-        'videoContent' => $videoContent,
         'clientContent' => $clientContent,
         'experienceContent' => $experienceContent,
         'experiencelistContent' => $experiencelistContent,
         'mapContent' => $mapContent,
+        'productContent' => $productContent,
+        // 'productlistContent' => $productlistContent,
+        'videoContent' => $videoContent,
+        'listView' => $listView,
     ]);
 });
 
@@ -168,6 +179,14 @@ Route::get('/Product/{id}/update', [ProductController::class, 'edit']);
 Route::put('/Product/{id}', [ProductController::class, 'update']);
 Route::delete('/Product/{id}', [ProductController::class, 'destroy']);
 
+// Product List
+Route::get('/ProductList', [ProductListController::class, 'index']);
+Route::get('/ProductList/create', [ProductListController::class, 'create']);
+Route::post('/ProductList', [ProductListController::class, 'store']);
+Route::get('/ProductList/{id}/update', [ProductListController::class, 'edit']);
+Route::put('/ProductList/{id}', [ProductListController::class, 'update']);
+Route::delete('/ProductList/{id}', [ProductListController::class, 'destroy']);
+
 // Product Detail
 Route::get('/DetailProduct', [DetailProductController::class, 'index']);
 Route::get('/DetailProduct/create', [DetailProductController::class, 'create']);
@@ -183,6 +202,14 @@ Route::post('/ModulProduct', [ModulProductController::class, 'store']);
 Route::get('/ModulProduct/{id}/update', [ModulProductController::class, 'edit']);
 Route::put('/ModulProduct/{id}', [ModulProductController::class, 'update']);
 Route::delete('/ModulProduct/{id}', [ModulProductController::class, 'destroy']);
+
+// Product Modul Advantage
+Route::get('/AdvantageModulProduct', [AdvantageModulProductController::class, 'index']);
+Route::get('/AdvantageModulProduct/create', [AdvantageModulProductController::class, 'create']);
+Route::post('/AdvantageModulProduct', [AdvantageModulProductController::class, 'store']);
+Route::get('/AdvantageModulProduct/{id}/update', [AdvantageModulProductController::class, 'edit']);
+Route::put('/AdvantageModulProduct/{id}', [AdvantageModulProductController::class, 'update']);
+Route::delete('/AdvantageModulProduct/{id}', [AdvantageModulProductController::class, 'destroy']);
 
 // Product Client
 Route::get('/ClientProduct', [ClientProductController::class, 'index']);

@@ -5,19 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ModulProduct extends Model
+class ProductList extends Model
 {
     use HasFactory;
-    protected $table='modul_products';
+    protected $table='product_lists';
     protected $guarded=[];
 
     public function products()
     {
         return $this->belongsTo(Product::class, 'productId');
-    }
-
-    public function advantageModulProducts()
-    {
-        return $this->hasMany(AdvantageModulProduct::class, 'modulId')->cascadeDeletes();
     }
 }
