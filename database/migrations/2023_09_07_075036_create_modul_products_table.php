@@ -17,10 +17,8 @@ class CreateModulProductsTable extends Migration
             $table->id();
             $table->foreignId('productId')->constrained('products')->onDelete('cascade')->onUpdate('cascade');
             $table->string('title');
-            $table->string('subTitle');
             $table->text('description');
             $table->string('icon');
-            $table->string('image_main');
             $table->timestamps();
         });
     }

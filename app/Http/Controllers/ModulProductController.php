@@ -37,18 +37,12 @@ class ModulProductController extends Controller
         $validatedData = $request->validate([
             'productId' => 'required',
             'title' => 'required',
-            'subTitle' => 'required',
             'description' => 'required',
             'icon' => 'image|mimes:jpeg,png,jpg,gif',
-            'image_main' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
         if ($request->file('icon')) {
             $validatedData['icon'] = $request->file('icon')->store('file-image');
-        }
-
-        if ($request->file('image_main')) {
-            $validatedData['image_main'] = $request->file('image_main')->store('file-image');
         }
 
         ModulProduct::create($validatedData);
@@ -86,23 +80,20 @@ class ModulProductController extends Controller
         $content = [
             'productId' => 'required',
             'title' => 'required',
-            'subTitle' => 'required',
             'description' => 'required',
             'icon' => 'image|mimes:jpeg,png,jpg,gif',
-            'image_main' => 'image|mimes:jpeg,png,jpg,gif',
         ];
 
         $validatedData = $request->validate($content);
 
         $modulProduct = ModulProduct::find($id);
 
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('icon')) {
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
 
-            $validatedData['icon'] = $request->file('image')->store('file-image');
-            $validatedData['image_main'] = $request->file('image')->store('file-image');
+            $validatedData['icon'] = $request->file('icon')->store('file-image');
         }
 
         $modulProduct->update($validatedData);

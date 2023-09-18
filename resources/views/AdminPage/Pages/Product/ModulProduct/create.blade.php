@@ -23,38 +23,21 @@
                 <input type="text" name="title" class="form-control" id="formGroupExampleInput">
             </div>
             <div class="mb-3">
-                <label for="subTitle" class="form-label">Sub Title</label>
-                <input type="text" name="subTitle" class="form-control" id="formGroupExampleInput">
-            </div>
-            <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="5"></textarea>
             </div>
             <div class="mb-3">
-                <label for="icon" class="form-label">Icon File</label>
-                <img class="img-preview1 img-fluid mb-3 mt-3">
+                <label for="icon" class="form-label">Image File</label>
+                <span class="description">*Ukuran gambar 4320x948px atau 16:9 dan ukuran maksimal 2MB</span>
+                <img class="img-preview img-fluid mb-3 mt-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                     </div>
                     <div class="custom-file">
-                        <input type="file" class="form-control" id="image1" name="icon"
-                            onchange="previewImage(1)">
-                        <label class="custom-file-label" for="image1">Choose file</label>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="image_main" class="form-label">Image File</label>
-                <img class="img-preview2 img-fluid mb-3 mt-3">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
-                    </div>
-                    <div class="custom-file">
-                        <input type="file" class="form-control" id="image2" name="image_main"
-                            onchange="previewImage(2)">
-                        <label class="custom-file-label" for="image2">Choose file</label>
+                        <input type="file" class="form-control" id="image" name="icon" onchange="previewImage()">
+                        <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg,
+                                *.png, *.jpg)</label>
                     </div>
                 </div>
             </div>
@@ -73,14 +56,14 @@
     </style>
 
     <script>
-        function previewImage(imageNumber) {
-            const imageInput = document.querySelector(`#image${imageNumber}`);
-            const imgPreview = document.querySelector(`.img-preview${imageNumber}`);
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
 
             imgPreview.style.display = 'block';
 
             const oFReader = new FileReader();
-            oFReader.readAsDataURL(imageInput.files[0]);
+            oFReader.readAsDataURL(image.files[0]);
 
             oFReader.onload = function(oFREvent) {
                 imgPreview.src = oFREvent.target.result;

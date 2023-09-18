@@ -25,16 +25,12 @@
                     id="formGroupExampleInput">
             </div>
             <div class="mb-3">
-                <label for="subTitle" class="form-label">Sub Title</label>
-                <input type="text" value="{{ $modulProduct->subTitle }}" name="subTitle" class="form-control"
-                    id="formGroupExampleInput">
-            </div>
-            <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="5">{{ $modulProduct->description }}"</textarea>
             </div>
             <div class="mb-3">
-                <label for="icon" class="form-label">Image Title File</label>
+                <label for="icon" class="form-label">Image File</label>
+                <span class="description">*Ukuran gambar 4320x948px atau 16:9 dan ukuran maksimal 2MB</span>
                 <input type="hidden" name="oldImage" value="{{ $modulProduct->icon }}">
                 @if ($modulProduct->icon)
                     <img src="{{ asset('storage/' . $modulProduct->icon) }}" alt="image"
@@ -47,29 +43,10 @@
                         <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                     </div>
                     <div class="custom-file">
-                        <input type="file" class="form-control" id="image1" name="icon"
-                            onchange="previewImage(1)">
-                        <label class="custom-file-label" for="image1">Choose file</label>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="image_main" class="form-label">Image Show File</label>
-                <input type="hidden" name="oldImage" value="{{ $modulProduct->image_main }}">
-                @if ($modulProduct->image_main)
-                    <img src="{{ asset('storage/' . $modulProduct->image_main) }}" alt="image"
-                        class="img-preview img-fluid mb-3 d-block">
-                @else
-                    <img class="img-preview img-fluid mb-3 mt-3">
-                @endif
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
-                    </div>
-                    <div class="custom-file">
-                        <input type="file" class="form-control" id="image2" name="image_main"
-                            onchange="previewImage(2)">
-                        <label class="custom-file-label" for="image2">Choose file</label>
+                        <input type="file" class="custom-file-input" id="image" name="icon"
+                            onchange="previewImage()">
+                        <label class="custom-file-label" for="label">Choose file <span class="description">(*.jpeg,
+                                *.png, *.jpg)</label>
                     </div>
                 </div>
             </div>

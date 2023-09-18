@@ -32,12 +32,10 @@
             <tr>
                 <th class="col-sm-1">Id</th>
                 <th class="col-sm-2">Product Name</th>
-                <th class="col-sm-1">Title</th>
-                <th class="col-sm-1">Sub Title</th>
+                <th class="col-sm-2">Title</th>
                 <th class="col-sm-2">Description</th>
-                <th class="col-sm-2">Icon</th>
-                <th class="col-sm-2">Image Main</th>
-                <th class="col-sm-1">Action</th>
+                <th class="col-sm-3">Icon</th>
+                <th class="col-sm-2">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -46,10 +44,8 @@
                     <td>{{ $modulProduct + 1 }}</td>
                     <td>{{ $item->products->title }}</td>
                     <td>{{ $item->title }}</td>
-                    <td>{{ $item->subTitle }}</td>
                     <td>{{ $item->description }}</td>
                     <td><img src="{{ asset('storage/' . $item->icon) }}" alt="Image" class="img-fluid mt-3"></td>
-                    <td><img src="{{ asset('storage/' . $item->image_main) }}" alt="Image" class="img-fluid mt-3"></td>
                     <td>
                         <form action="/ModulProduct/{{ $item->id }}" method="POST">
                             <a href="/ModulProduct/{{ $item->id }}/update" type="button" class="btn btn-warning"><i
