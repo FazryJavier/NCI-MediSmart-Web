@@ -16,8 +16,8 @@ class CreateAdvantageProductsTable extends Migration
         Schema::create('advantage_products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('productId')->constrained('products')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('icon');
             $table->string('title');
+            $table->string('icon');
             $table->timestamps();
         });
     }

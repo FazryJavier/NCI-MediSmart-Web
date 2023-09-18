@@ -19,6 +19,10 @@
                 </select>
             </div>
             <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" class="form-control" id="formGroupExampleInput">
+            </div>
+            <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
                 <span class="description">*Ukuran gambar 228x228px atau 1:1 dan ukuran maksimal 2MB</span>
                 <img class="img-preview img-fluid mb-3 mt-3">
@@ -32,10 +36,6 @@
                                 *.png, *.jpg)</label>
                     </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" name="title" class="form-control" id="formGroupExampleInput">
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>

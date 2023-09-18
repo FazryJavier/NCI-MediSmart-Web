@@ -32,8 +32,8 @@
             <tr>
                 <th class="col-sm-2">Id</th>
                 <th class="col-sm-2">Product Name</th>
-                <th class="col-sm-4">Icon</th>
                 <th class="col-sm-2">Title</th>
+                <th class="col-sm-4">Icon</th>
                 <th class="col-sm-2">Action</th>
             </tr>
         </thead>
@@ -42,8 +42,8 @@
                 <tr>
                     <td>{{ $advantageProduct + 1 }}</td>
                     <td>{{ $item->products->title }}</td>
-                    <td><img src="{{ asset('storage/' . $item->icon) }}" alt="Image" class="img-fluid mt-3"></td>
                     <td>{{ $item->title }}</td>
+                    <td><img src="{{ asset('storage/' . $item->icon) }}" alt="Image" class="img-fluid mt-3"></td>
                     <td>
                         <form action="/AdvantageProduct/{{ $item->id }}" method="POST">
                             <a href="/AdvantageProduct/{{ $item->id }}/update" type="button" class="btn btn-warning"><i
