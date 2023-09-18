@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdvantageListProduct;
+use App\Models\AdvantageProduct;
 use Illuminate\Http\Request;
 
 class AdvantageListProductController extends Controller
@@ -12,7 +13,9 @@ class AdvantageListProductController extends Controller
      */
     public function index()
     {
-        //
+        $advantageListProduct = AdvantageListProduct::all();
+
+        return view('AdminPage.Pages.Product.AdvantageListProduct.index', compact('advantageListProduct'));
     }
 
     /**
@@ -20,7 +23,9 @@ class AdvantageListProductController extends Controller
      */
     public function create()
     {
-        //
+        $advantageProducts = AdvantageProduct::all();
+
+        return view('AdminPage.Pages.Product.AdvantageListProduct.create', compact('advantageProducts'));
     }
 
     /**
@@ -28,38 +33,66 @@ class AdvantageListProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'advantageId' => 'required',
+            'name' => 'required',
+        ]);
+
+        AdvantageListProduct::create($validatedData);
+
+        return redirect('/AdvantageListProduct');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(AdvantageListProduct $advantageListProduct)
+    public function show(AdvantageListProduct $id)
     {
-        //
+        $advantageListProductShow = AdvantageListProduct::find($id);
+
+        return view('AdminPage.Pages.Product.AdvantageListProduct.index', compact('advantageListProductShow'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(AdvantageListProduct $advantageListProduct)
+    public function edit($id)
     {
-        //
+        $advantageListProduct = AdvantageListProduct::where('id', $id)->firstorfail();
+
+        $advantageProducts = AdvantageProduct::all();
+
+        return view('AdminPage.Pages.Product.AdvantageListProduct.update', compact('advantageListProduct', 'advantageProducts'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AdvantageListProduct $advantageListProduct)
+    public function update(Request $request, $id)
     {
-        //
+        $content = [
+            'advantageId' => 'required',
+            'name' => 'required',
+        ];
+
+        $validatedData = $request->validate($content);
+
+        $advantageListProduct = AdvantageListProduct::find($id);
+
+        $advantageListProduct->update($validatedData);
+
+        return redirect('/AdvantageListProduct');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(AdvantageListProduct $advantageListProduct)
+    public function destroy($id)
     {
-        //
+        $advantageListProduct = AdvantageListProduct::findOrFail($id);
+
+        $advantageListProduct->delete();
+
+        return redirect('/AdvantageListProduct');
     }
 }

@@ -47,10 +47,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
             'title' => 'required',
             'subTitle' => 'required',
             'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
 
         if ($request->file('image')) {
@@ -88,10 +88,10 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $content = [
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
             'title' => 'required',
             'subTitle' => 'required',
             'description' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
         ];
 
         $validatedData = $request->validate($content);

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdvantageListProductController;
 use App\Http\Controllers\AdvantageProductController;
 use App\Http\Controllers\AllClientController;
 use App\Http\Controllers\ClientProductController;
@@ -197,6 +198,14 @@ Route::post('/AdvantageProduct', [AdvantageProductController::class, 'store']);
 Route::get('/AdvantageProduct/{id}/update', [AdvantageProductController::class, 'edit']);
 Route::put('/AdvantageProduct/{id}', [AdvantageProductController::class, 'update']);
 Route::delete('/AdvantageProduct/{id}', [AdvantageProductController::class, 'destroy']);
+
+// Product Advantage List
+Route::get('/AdvantageListProduct', [AdvantageListProductController::class, 'index']);
+Route::get('/AdvantageListProduct/create', [AdvantageListProductController::class, 'create']);
+Route::post('/AdvantageListProduct', [AdvantageListProductController::class, 'store']);
+Route::get('/AdvantageListProduct/{id}/update', [AdvantageListProductController::class, 'edit']);
+Route::put('/AdvantageListProduct/{id}', [AdvantageListProductController::class, 'update']);
+Route::delete('/AdvantageListProduct/{id}', [AdvantageListProductController::class, 'destroy']);
 
 // About Us
 Route::get('/AboutUs', [AboutController::class, 'index']);

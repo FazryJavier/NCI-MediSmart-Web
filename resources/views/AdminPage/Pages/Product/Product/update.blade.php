@@ -10,6 +10,20 @@
             @csrf
             @method('PUT')
             <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" value="{{ $productUpdate->title }}" name="title" class="form-control"
+                    id="formGroupExampleInput">
+            </div>
+            <div class="mb-3">
+                <label for="subTitle" class="form-label">Sub Title</label>
+                <input type="text" value="{{ $productUpdate->subTitle }}" name="subTitle" class="form-control"
+                    id="formGroupExampleInput">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="description" class="form-control" rows="5">{{ $productUpdate->description }}"</textarea>
+            </div>
+            <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
                 <span class="description">*Ukuran gambar 4320x948px atau 16:9 dan ukuran maksimal 2MB</span>
                 <input type="hidden" name="oldImage" value="{{ $productUpdate->image }}">
@@ -32,25 +46,11 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" value="{{ $productUpdate->title }}" name="title" class="form-control"
-                    id="formGroupExampleInput">
-            </div>
-            <div class="mb-3">
-                <label for="subTitle" class="form-label">Sub Title</label>
-                <input type="text" value="{{ $productUpdate->subTitle }}" name="subTitle" class="form-control"
-                    id="formGroupExampleInput">
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea name="description" class="form-control" rows="5">{{ $productUpdate->description }}"</textarea>
-            </div>
-            <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/Product" type="button" class="btn btn-secondary">Back</a>
             </div>
         </form>
-        
+
         <style>
             .description {
                 font-size: 14px;

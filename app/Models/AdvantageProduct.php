@@ -15,4 +15,9 @@ class AdvantageProduct extends Model
     {
         return $this->belongsTo(Product::class, 'productId');
     }
+
+    public function advantageListProducts()
+    {
+        return $this->hasMany(AdvantageListProduct::class, 'advantageId')->cascadeDeletes();
+    }
 }

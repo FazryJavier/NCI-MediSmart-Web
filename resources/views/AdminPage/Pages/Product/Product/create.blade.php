@@ -10,6 +10,18 @@
             @csrf
             @method('POST')
             <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" class="form-control" id="formGroupExampleInput">
+            </div>
+            <div class="mb-3">
+                <label for="subTitle" class="form-label">Sub Title</label>
+                <input type="text" name="subTitle" class="form-control" id="formGroupExampleInput">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="description" class="form-control" rows="5"></textarea>
+            </div>
+            <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
                 <span class="description">*Ukuran gambar 4320x948px atau 16:9 dan ukuran maksimal 2MB</span>
                 <img class="img-preview img-fluid mb-3 mt-3">
@@ -23,18 +35,6 @@
                                 *.png, *.jpg)</label>
                     </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" name="title" class="form-control" id="formGroupExampleInput">
-            </div>
-            <div class="mb-3">
-                <label for="subTitle" class="form-label">Sub Title</label>
-                <input type="text" name="subTitle" class="form-control" id="formGroupExampleInput">
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea name="description" class="form-control" rows="5"></textarea>
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>

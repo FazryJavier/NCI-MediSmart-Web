@@ -10,4 +10,9 @@ class AdvantageListProduct extends Model
     use HasFactory;
     protected $table='advantage_list_products';
     protected $guarded=[];
+
+    public function advantageProducts()
+    {
+        return $this->belongsTo(AdvantageProduct::class, 'advantageId');
+    }
 }

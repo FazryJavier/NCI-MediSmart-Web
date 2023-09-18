@@ -1,7 +1,7 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Page Product - Product List
+    Page Product - Advantage List
 @endsection
 
 @push('script')
@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right mb-2">
-                <a class="btn btn-success" href="/Product/create"> Create </a>
+                <a class="btn btn-success" href="/AdvantageListProduct/create"> Create </a>
             </div>
         </div>
     </div>
@@ -30,26 +30,22 @@
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th class="col-sm-1">Id</th>
-                <th class="col-sm-2">Title</th>
-                <th class="col-sm-2">Sub Title</th>
-                <th class="col-sm-3">Description</th>
-                <th class="col-sm-2">Image</th>
-                <th class="col-sm-2">Action</th>
+                <th class="col-sm-2">Id</th>
+                <th class="col-sm-3">Advantage Name</th>
+                <th class="col-sm-4">Name</th>
+                <th class="col-sm-3">Action</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($product as $product => $item)
+            @forelse ($advantageListProduct as $advantageListProduct => $item)
                 <tr>
-                    <td>{{ $product + 1 }}</td>
-                    <td>{{ $item->title }}</td>
-                    <td>{{ $item->subTitle }}</td>
-                    <td>{{ $item->description }}</td>
-                    <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
+                    <td>{{ $advantageListProduct + 1 }}</td>
+                    <td>{{ $item->advantageProducts->title }}</td>
+                    <td>{{ $item->name }}</td>
                     <td>
-                        <form action="/Product/{{ $item->id }}" method="POST">
-                            <a href="/Product/{{ $item->id }}/update" type="button" class="btn btn-warning"><i
-                                    class="fa-solid fa-pen-to-square"></i></a>
+                        <form action="/AdvantageListProduct/{{ $item->id }}" method="POST">
+                            <a href="/AdvantageListProduct/{{ $item->id }}/update" type="button"
+                                class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
                             @csrf
                             @method('delete')
                             <input type="submit" value='Delete' class="btn btn-danger mt-1"
