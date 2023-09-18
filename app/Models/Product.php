@@ -11,6 +11,11 @@ class Product extends Model
     protected $table='products';
     protected $guarded=[];
 
+    public function detailProducts()
+    {
+        return $this->hasMany(DetailProduct::class, 'productId')->cascadeDeletes();
+    }
+
     public function clientProducts()
     {
         return $this->hasMany(ClientProduct::class, 'productId')->cascadeDeletes();

@@ -82,6 +82,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/DetailProduct" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Detail Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/ModulProduct" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Modul Product</p>

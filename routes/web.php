@@ -5,6 +5,7 @@ use App\Http\Controllers\AdvantageProductController;
 use App\Http\Controllers\AllClientController;
 use App\Http\Controllers\ClientProductController;
 use App\Http\Controllers\CTAController;
+use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ExperienceListController;
 use App\Http\Controllers\FeedbackController;
@@ -164,6 +165,14 @@ Route::post('/Product', [ProductController::class, 'store']);
 Route::get('/Product/{id}/update', [ProductController::class, 'edit']);
 Route::put('/Product/{id}', [ProductController::class, 'update']);
 Route::delete('/Product/{id}', [ProductController::class, 'destroy']);
+
+// Product Detail
+Route::get('/DetailProduct', [DetailProductController::class, 'index']);
+Route::get('/DetailProduct/create', [DetailProductController::class, 'create']);
+Route::post('/DetailProduct', [DetailProductController::class, 'store']);
+Route::get('/DetailProduct/{id}/update', [DetailProductController::class, 'edit']);
+Route::put('/DetailProduct/{id}', [DetailProductController::class, 'update']);
+Route::delete('/DetailProduct/{id}', [DetailProductController::class, 'destroy']);
 
 // Product Modul
 Route::get('/ModulProduct', [ModulProductController::class, 'index']);

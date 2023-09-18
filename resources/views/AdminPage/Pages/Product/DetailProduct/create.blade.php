@@ -1,16 +1,25 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Page Product - Product View
+    Page Product - Detail Product
 @endsection
 
 @section('content')
     <section class="content">
-        <form action="/Product" method="POST" enctype="multipart/form-data">
+        <form action="/DetailProduct" method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
             <div class="mb-3">
-                <label for="image" class="form-label">Image File</label>
+                <label for="productId" class="form-label">Product Id</label>
+                <select name="productId" class="custom-select rounded-0" id="productId">
+                    <option value="">Select a Product</option>
+                    @foreach ($products as $product)
+                        <option value="{{ $product->id }}">{{ $product->title }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="logo" class="form-label">Image File</label>
                 <span class="description">*Ukuran gambar 4320x948px atau 16:9 dan ukuran maksimal 2MB</span>
                 <img class="img-preview img-fluid mb-3 mt-3">
                 <div class="input-group">
@@ -18,27 +27,27 @@
                         <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                     </div>
                     <div class="custom-file">
-                        <input type="file" class="form-control" id="image" name="image" onchange="previewImage()">
+                        <input type="file" class="form-control" id="image" name="logo" onchange="previewImage()">
                         <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg,
                                 *.png, *.jpg)</label>
                     </div>
                 </div>
             </div>
             <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" name="title" class="form-control" id="formGroupExampleInput">
-            </div>
-            <div class="mb-3">
-                <label for="subTitle" class="form-label">Sub Title</label>
-                <input type="text" name="subTitle" class="form-control" id="formGroupExampleInput">
-            </div>
-            <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="5"></textarea>
             </div>
             <div class="mb-3">
+                <label for="flyer" class="form-label">Link Flyer</label>
+                <input type="text" name="flyer" class="form-control" id="formGroupExampleInput">
+            </div>
+            <div class="mb-3">
+                <label for="video" class="form-label">Video</label>
+                <input type="text" name="video" class="form-control" id="formGroupExampleInput">
+            </div>
+            <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
-                <a href="/Product" type="button" class="btn btn-secondary">Back</a>
+                <a href="/DetailProduct" type="button" class="btn btn-secondary">Back</a>
             </div>
         </form>
     </section>

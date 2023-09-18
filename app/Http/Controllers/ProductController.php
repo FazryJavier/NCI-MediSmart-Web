@@ -20,24 +20,16 @@ class ProductController extends Controller
 
     public function showContent()
     {
+        $imageView = Product::pluck('image');
         $titleView = Product::pluck('title');
         $subtitleView = Product::pluck('subTitle');
-        $image_titleView = Product::pluck('image_title');
-        $image_showView = Product::pluck('image_show');
-        $description_showView = Product::pluck('description_show');
-        $description_detailView = Product::pluck('description_detail');
-        $flyerView = Product::pluck('flyer');
-        $videoView = Product::pluck('video');
+        $descriptionView = Product::pluck('description');
 
         return [
             'titleView' => $titleView,
             'subtitleView' => $subtitleView,
-            'image_titleView' => $image_titleView,
-            'image_showView' => $image_showView,
-            'description_showView' => $description_showView,
-            'description_detailView' => $description_detailView,
-            'flyerView' => $flyerView,
-            'videoView' => $videoView,
+            'imageView' => $imageView,
+            'descriptionView' => $descriptionView,
         ];
     }
 
@@ -55,22 +47,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
             'title' => 'required',
             'subTitle' => 'required',
-            'image_title' => 'required|image|file',
-            'image_show' => 'required|image|file',
-            'description_show' => 'required',
-            'description_detail' => 'required',
-            'flyer' => 'required',
-            'video' => 'required',
+            'description' => 'required',
         ]);
 
-        if ($request->file('image_title')) {
-            $validatedData['image_title'] = $request->file('image_title')->store('file-image');
-        }
-
-        if ($request->file('image_show')) {
-            $validatedData['image_show'] = $request->file('image_show')->store('file-image');
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('file-image');
         }
 
         Product::create($validatedData);
@@ -104,14 +88,10 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $content = [
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
             'title' => 'required',
             'subTitle' => 'required',
-            'image_title' => 'image|mimes:jpeg,png,jpg,gif',
-            'image_show' => 'image|mimes:jpeg,png,jpg,gif',
-            'description_show' => 'required',
-            'description_detail' => 'required',
-            'flyer' => 'required',
-            'video' => 'required',
+            'description' => 'required',
         ];
 
         $validatedData = $request->validate($content);
@@ -123,8 +103,7 @@ class ProductController extends Controller
                 Storage::delete($request->oldImage);
             }
 
-            $validatedData['image_title'] = $request->file('image_title')->store('file-image');
-            $validatedData['image_show'] = $request->file('image_show')->store('file-image');
+            $validatedData['image'] = $request->file('image')->store('file-image');
         }
 
         $product->update($validatedData);
