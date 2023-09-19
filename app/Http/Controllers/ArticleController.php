@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ArticleController extends Controller
 {
@@ -12,7 +13,20 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles = Article::all();
+
+        return view('AdminPage.Pages.Blog.index', compact('articles'));
+    }
+
+    public function showContentBlog1()
+    {
+    }
+
+    public function showContentBlog2()
+    {
+    }
+    public function showContentBlog3()
+    {
     }
 
     /**
@@ -20,7 +34,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+
+        return view('AdminPage.Pages.Blog.create', compact('users'));
+        // return view('AdminPage.Pages.Blog.create');
     }
 
     /**
@@ -28,15 +45,31 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'adminId' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'prioritize' => 'nullable',
+        ]);
+
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('file-image');
+        }
+        // dd($validatedData);
+        Article::create($validatedData);
+        return redirect('/Article');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Article $article)
+    public function show(Article $id)
     {
-        //
+
+        $articleShow = Article::find($id);
+
+        return view('AdminPage.Pages.Blog.index', compact('articleShow'));
     }
 
     /**

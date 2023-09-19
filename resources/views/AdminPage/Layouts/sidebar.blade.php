@@ -196,7 +196,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="admin-home" class="nav-link">
+                            <a href="/Article" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Article</p>
                             </a>

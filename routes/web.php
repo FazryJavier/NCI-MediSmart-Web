@@ -5,6 +5,7 @@ use App\Http\Controllers\AdvantageListProductController;
 use App\Http\Controllers\AdvantageModulProductController;
 use App\Http\Controllers\AdvantageProductController;
 use App\Http\Controllers\AllClientController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ClientProductController;
 use App\Http\Controllers\CTAController;
 use App\Http\Controllers\DemoController;
@@ -275,6 +276,13 @@ Route::get('/Whatsapp/{id}/update', [WhatsappController::class, 'edit']);
 Route::put('/Whatsapp/{id}', [WhatsappController::class, 'update']);
 Route::delete('/Whatsapp/{id}', [WhatsappController::class, 'destroy']);
 
+// Blog 
+Route::get('/Article', [ArticleController::class, 'index']);
+Route::get('/Article/create', [ArticleController::class, 'create']);
+Route::post('/Article', [ArticleController::class, 'store']);
+Route::get('/Article/{id}/update', [ArticleController::class, 'edit']);
+Route::put('/Article/{id}', [ArticleController::class, 'update']);
+Route::delete('/Article/{id}', [ArticleController::class, 'destroy']);
 // Show Image
 Route::get('/storage/file-image/{filename}', function ($filename) {
     $path = storage_path("app/file-image/{$filename}");
