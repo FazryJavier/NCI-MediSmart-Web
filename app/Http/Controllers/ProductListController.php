@@ -20,15 +20,13 @@ class ProductListController extends Controller
 
     public function showContent()
     {
-        $products = Product::all(); // Ambil semua data Product
+        $products = Product::all();
 
-        $listView = []; // Inisialisasi $listView sebagai array kosong
+        $listView = [];
 
         foreach ($products as $product) {
-            // Ambil ProductList yang sesuai dengan Product saat ini
             $productLists = ProductList::where('productId', $product->id)->get();
             
-            // Simpan hasilnya dalam array
             $listView[$product->id] = $productLists;
         }
 
