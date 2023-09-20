@@ -13,7 +13,7 @@ class Product extends Model
 
     public function productLists()
     {
-        return $this->hasMany(ProductList::class, 'productId')->cascadeDeletes();
+        return $this->hasMany(ProductList::class, 'productId', 'id')->cascadeDeletes();
     }
 
     public function detailProducts()
