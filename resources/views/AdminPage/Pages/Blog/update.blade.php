@@ -43,7 +43,7 @@
                         <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                     </div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="image" name="icon"
+                        <input type="file" class="custom-file-input" id="image" name="image"
                             onchange="previewImage()">
                         <label class="custom-file-label" for="label">Choose file <span class="description">(*.jpeg,
                                 *.png, *.jpg)</label>

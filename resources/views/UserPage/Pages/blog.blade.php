@@ -30,21 +30,19 @@
                 <div class="top-card">
                     <div class="content">
                         <div class="image">
-                            <img src="{{ asset('assets/img/blog.png') }}" alt="">
+                            <img src="{{ asset('storage/' . $articles->image) }}" alt="">
                         </div>
                         <div class="description">
-                            <h3>Pengalaman Kami menggunakan SIM-RS NCI MediSmart</h3>
-                            <p>Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam Bandung dengan
-                                penggunaan SIMRS NCI-MediSmart diantaranya adalah kecepatan dalam pengambilan
-                                keputusan, akurasi dalam mengidentifikasi masalah, kemudahan menyusun strategi...
+                            <h3>{{ $articles->title }}</h3>
+                            <p>{!! $articles->description !!}
                             </p>
-                            <a href="/DetailBlog">Pelajari Lanjut...</a>
+                            <a href={{ url('/DetailBlog/'.$articles->id)}}>Pelajari Lanjut...</a>
                             <div class="update">
                                 <div class="name">
-                                    <p class="admin">Admin</p>
+                                    <p class="admin">{{ $articles->Users->level }}</p>
                                 </div>
                                 <div class="date">
-                                    <p class="admin">25/07/2023</p>
+                                    <p class="admin">{{$articles->created_at }}</p>
                                 </div>
                             </div>
                         </div>
@@ -53,25 +51,23 @@
 
                 <div class="bottom-card">
                     <div class="wrapper">
+                        @foreach ($articles2 as $ar2)
                         <div class="card">
                             <div class="image">
-                                <img src="{{ asset('assets/img/blog1.png') }}" alt="">
+                                <img src="{{ asset('storage/' . $ar2->image) }}" alt="">
                             </div>
                             <div class="description">
-                                <h3>Optimalkan Pelayanan, RS Suaka Insan Terapkan Pendaftaran Pasien Secara Online
+                                <h3>{{ $ar2->title }}
                                 </h3>
-                                <p>Pelayanan yang kurang optimal dan masa tunggu yang panjang, dapat menjadikan
-                                    citra rumah sakit kurang baik dalam masyarakat. Untungnya, saat ini sudah banyak
-                                    teknologi digital berupa aplikasi pelayanan kesehatan yang bisa digunakan Rumah
-                                    Sakit...
+                                <p>{!! $ar2->description !!}
                                 </p>
                             </div>
                             <div class="button">
-                                <a href="#">Pelajari Lanjut</a>
+                                <a href={{ url('/DetailBlog/'.$ar2->id)}}>Pelajari Lanjut</a>
                             </div>
                         </div>
 
-                        <div class="card">
+                        {{-- <div class="card">
                             <div class="image">
                                 <img src="{{ asset('assets/img/blog2.png') }}" alt="">
                             </div>
@@ -107,7 +103,8 @@
                             <div class="button">
                                 <a href="#">Pelajari Lanjut</a>
                             </div>
-                        </div>
+                        </div> --}}
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -124,7 +121,19 @@
         <div class="article">
             <div class="container">
                 <div class="wrapper">
+                    @foreach ($articles3 as $ar3)
                     <div class="card">
+                        <div class="image">
+                            <img src="{{ asset('storage/' . $ar3->image) }}" alt="">
+                        </div>
+                        <div class="description">
+                            <h3>{{ $ar3->title }}</h3>
+                            <p>{!! $ar3->description !!}</p>
+                            <a href={{ url('/DetailBlog/'.$ar3->id)}}>Pelajari Lanjut</a>
+                        </div>
+                    </div>
+                    @endforeach
+                    {{-- <div class="card">
                         <div class="image">
                             <img src="{{ asset('assets/img/blog3.png') }}" alt="">
                         </div>
@@ -207,21 +216,7 @@
                             <a href="#">Pelajari Lanjut</a>
                         </div>
                     </div>
-
-                    <div class="card">
-                        <div class="image">
-                            <img src="{{ asset('assets/img/blog3.png') }}" alt="">
-                        </div>
-                        <div class="description">
-                            <h3>Mengenal Orthorexia Nervosa, Obsesi Terhadap Makanan Sehat</h3>
-                            <p>Makanan sehat adalah hal yang penting untuk menjaga kesehatan tubuh. Karena itu
-                                mengkonsumsi makanan sehat adalah keharusan untuk setiap orang. Namun keinginan kuat
-                                yang berujung menjadi obsesi terhadap makanan sehat justru mengindikasikan suatu
-                                kelainan....</p>
-                            <a href="#">Pelajari Lanjut</a>
-                        </div>
-                    </div>
-                </div>
+                </div> --}}
 
                 <div class="button">
                     <div class="btn-load">load More</div>

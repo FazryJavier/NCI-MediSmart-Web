@@ -25,28 +25,25 @@
             <div class="container">
                 <article>
                     <div class="image">
-                        <img src="{{ asset('assets/img/blog3.png') }}" alt="">
+                        <img src="{{ asset('storage/' . $articles->image) }}" alt="">
                     </div>
                     <div class="content">
                         <div class="title">
-                            <h1><b>Mengenal Orthorexia Nervosa, Obsesi Terhadap Makanan Sehat</b></h1>
+                            <h1><b>{{ $articles->title }}</b></h1>
                         </div>
 
                         <div class="posting">
                             <div class="admin">
-                                <p><b>Admin</b></p>
+                                <p><b>{{ $articles->Users->level }}</b></p>
                             </div>
                             <div class="date">
-                                <p>25/07/2023</p>
+                                <p>{{$articles->created_at }}</p>
                             </div>
                         </div>
 
                         <div class="text">
                             <p>
-                                Di era modern ini, semakin banyak orang yang mulai peduli dengan kesehatan dan pola
-                                makan yang sehat. Hal ini merupakan langkah positif untuk mencapai gaya hidup sehat dan
-                                menjaga keseimbangan tubuh. Namun, ada juga kondisi yang mengkhawatirkan yang dapat
-                                berkembang dari obsesi terhadap makanan sehat, yaitu Orthorexia Nervosa.
+                                {!! $articles->description !!}
                             </p>
                         </div>
                     </div>
@@ -66,25 +63,24 @@
             <div class="container">
                 <h1>Rekomendasi</h1>
                 <div class="wrapper">
+                    @foreach ($articles2 as $ar2)
                     <div class="card">
                         <div class="image">
-                            <img src="{{ asset('assets/img/blog1.png') }}" alt="">
+                            <img src="{{ asset('storage/' . $ar2->image) }}" alt="">
                         </div>
                         <div class="description">
-                            <h3>Optimalkan Pelayanan, RS Suaka Insan Terapkan Pendaftaran Pasien Secara Online
+                            <h3>{{ $ar2->title }}
                             </h3>
-                            <p>Pelayanan yang kurang optimal dan masa tunggu yang panjang, dapat menjadikan
-                                citra rumah sakit kurang baik dalam masyarakat. Untungnya, saat ini sudah banyak
-                                teknologi digital berupa aplikasi pelayanan kesehatan yang bisa digunakan Rumah
-                                Sakit...
+                            <p>{!! $ar2->description !!}
                             </p>
                         </div>
                         <div class="button">
-                            <a href="#">Pelajari Lanjut</a>
+                            <a href={{ url('/DetailBlog/'.$ar2->id)}}>Pelajari Lanjut</a>
                         </div>
                     </div>
+                    @endforeach
 
-                    <div class="card">
+                    {{-- <div class="card">
                         <div class="image">
                             <img src="{{ asset('assets/img/blog2.png') }}" alt="">
                         </div>
@@ -120,7 +116,7 @@
                         <div class="button">
                             <a href="#">Pelajari Lanjut</a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

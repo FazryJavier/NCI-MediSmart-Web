@@ -107,9 +107,14 @@ Route::get('/Testimoni', function () {
     ]);
 });
 
-Route::get('/Blog', function () {
-    return view('UserPage/Pages/blog');
-});
+// Route::get('/Blog', function () {
+//     $articleController = app()->make(ArticleController::class);
+//     $articleContent = $articleController->showContentBlog1();
+
+// });
+Route::get('/Blog', [ArticleController::class, 'showContentBlog1']);
+Route::get('/DetailBlog/{id}', [ArticleController::class, 'showContentdetailBlog']);
+
 
 Route::get('/DetailBlog', function () {
     return view('UserPage/Pages/detail');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -20,10 +21,22 @@ class ArticleController extends Controller
 
     public function showContentBlog1()
     {
+
+        $articles = Article::where('prioritize', 1)->first();
+        $articles2 = Article::where('prioritize', 2)->take(3)->get();
+        $articles3 = Article::where('prioritize', 3)->get();
+        // dd($articles2);
+
+        return view('UserPage.Pages.blog', compact('articles', 'articles2', 'articles3'));
     }
 
-    public function showContentBlog2()
+    public function showContentdetailBlog($id)
     {
+        $articles = Article::where('id', $id)->first();
+        $articles2 = Article::where('prioritize', 2)->take(3)->get();
+
+        return view('UserPage.Pages.detail', compact('articles', 'articles2'));
+        // dd($id);
     }
     public function showContentBlog3()
     {
@@ -89,6 +102,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $content = [
             'adminId' => 'required',
             'title' => 'required',
@@ -98,7 +112,16 @@ class ArticleController extends Controller
         ];
 
         $validatedData = $request->validate($content);
+
         $articles = Article::find($id);
+
+        if ($request->hasFile('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+
+            $validatedData['image'] = $request->file('image')->store('file-image');
+        }
         // dd($validatedData);
         $articles->update($validatedData);
         return redirect('/Article');
