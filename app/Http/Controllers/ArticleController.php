@@ -75,9 +75,13 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
-        //
+        $articles = Article::where('id', $id)->firstorfail();
+
+        $users = User::all();
+
+        return view('AdminPage.Pages.Blog.update', compact('articles', 'users'));
     }
 
     /**
@@ -85,7 +89,6 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
     }
 
     /**

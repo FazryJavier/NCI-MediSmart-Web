@@ -52,8 +52,8 @@
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
                     <td>{{ $item->prioritize }}</td>
                     <td>
-                        <form action="/Article" method="POST">
-                            <a href="/Article" type="button" class="btn btn-warning"><i
+                        <form action="/Article/{{ $item->id }}" method="POST">
+                            <a href="/Article/{{ $item->id }}/update" type="button" class="btn btn-warning"><i
                                     class="fa-solid fa-pen-to-square"></i></a>
                             @csrf
                             @method('delete')
