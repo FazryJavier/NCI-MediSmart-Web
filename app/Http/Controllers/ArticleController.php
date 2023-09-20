@@ -87,15 +87,31 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, $id)
     {
-    }
+        $content = [
+            'adminId' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'prioritize' => 'nullable',
+        ];
 
+        $validatedData = $request->validate($content);
+        $articles = Article::find($id);
+        // dd($validatedData);
+        $articles->update($validatedData);
+        return redirect('/Article');
+    }
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Article $article)
+    public function destroy($id)
     {
-        //
+        $articles = Article::findOrFail($id);
+
+        $articles->delete();
+
+        return redirect('/Article');
     }
 }
