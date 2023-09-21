@@ -199,7 +199,9 @@
                                         <h3>{{ $articleContent['titleView'][$index] }}</h3>
                                         <p>{!! $articleContent['descriptionView'][$index] !!}</p>
                                         <div class="button">
-                                            <a href="#">Pelajari Lanjut</a>
+                                            <a
+                                                href={{ route('detail.show', ['id' => $articleContent['idView'][$index]]) }}>Pelajari
+                                                Lanjut</a>
                                         </div>
                                     </div>
                                 </div>
@@ -209,7 +211,6 @@
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
-        </div>
     </section>
     {{-- End Blog --}}
 

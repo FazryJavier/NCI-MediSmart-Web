@@ -41,14 +41,17 @@ class ArticleController extends Controller
 
     public function showContentHome()
     {
-        $titleView = Article::pluck('title');
-        $descriptionView = Article::pluck('description');
-        $imageView = Article::pluck('image');
+        $articles = Article::latest('id')->take(12)->get();
 
+        $titleView = $articles->pluck('title');
+        $descriptionView = $articles->pluck('description');
+        $imageView = $articles->pluck('image');
+        $idView = $articles->pluck('id');
         return [
             'titleView' => $titleView,
             'descriptionView' => $descriptionView,
             'imageView' => $imageView,
+            'idView' => $idView,
         ];
     }
 
@@ -95,6 +98,16 @@ class ArticleController extends Controller
         return view('AdminPage.Pages.Blog.index', compact('articleShow'));
     }
 
+    public function showContent(Article $id)
+    {
+        $articleShow = Article::find($id);
+
+        if (!$articleShow) {
+            abort(404);
+        }
+
+        return view('UserPage.Pages.detail', compact('articleShow'));
+    }
     /**
      * Show the form for editing the specified resource.
      */

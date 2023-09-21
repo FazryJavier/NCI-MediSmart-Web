@@ -64,6 +64,7 @@ Route::get('/', function () {
     $articleController = app()->make(ArticleController::class);
     $articleContent = $articleController->showContentHome();
 
+
     return view('UserPage/Pages/home', [
         'sliderContent' => $sliderContent,
         'clientContent' => $clientContent,
@@ -77,6 +78,9 @@ Route::get('/', function () {
         'articleContent' => $articleContent,
     ]);
 });
+
+Route::get('/detail/{id}', [ArticleController::class, 'showContentdetailBlog'])->name('detail.show');
+
 
 Route::get('/ProductView/{id}', function () {
     $feedbackController = app()->make(FeedbackController::class);
