@@ -13,8 +13,8 @@
                 <select name="adminId" class="custom-select rounded-0" id="adminId">
                     <option value="">Select Admin ID </option>
                     @foreach ($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->level }}</option>
-                @endforeach
+                        <option value="{{ $user->id }}">{{ $user->level }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="mb-3">
@@ -26,7 +26,7 @@
                 <div id="editor"></div>
                 <textarea name="description" id="description" style="display: none;"></textarea>
             </div>
-            
+
             {{-- <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <div id="editor"></div>
@@ -74,35 +74,35 @@
             color: #888;
         }
     </style>
-   
- <script>
-    function previewImage() {
-        const image = document.querySelector('#image');
-        const imgPreview = document.querySelector('.img-preview');
 
-        imgPreview.style.display = 'block';
+    <script>
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
 
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(image.files[0]);
+            imgPreview.style.display = 'block';
 
-        oFReader.onload = function(oFREvent) {
-            imgPreview.src = oFREvent.target.result;
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
         }
-    }
-</script>
-<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .then(editor => {
-            editor.model.document.on('change:data', () => {
-                const description = editor.getData();
-                document.querySelector('#description').value = description;
+    </script>
+    
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                editor.model.document.on('change:data', () => {
+                    const description = editor.getData();
+                    document.querySelector('#description').value = description;
+                });
+            })
+            .catch(error => {
+                console.error(error);
             });
-        })
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-
+    </script>
 @endsection

@@ -59,6 +59,9 @@ Route::get('/', function () {
     $videoController = app()->make(LandingVideoController::class);
     $videoContent = $videoController->showContent();
 
+    $articleController = app()->make(ArticleController::class);
+    $articleContent = $articleController->showContentHome();
+
     return view('UserPage/Pages/home', [
         'sliderContent' => $sliderContent,
         'clientContent' => $clientContent,
@@ -69,6 +72,7 @@ Route::get('/', function () {
         // 'productlistContent' => $productlistContent,
         'videoContent' => $videoContent,
         'listView' => $listView,
+        'articleContent' => $articleContent,
     ]);
 });
 
@@ -107,18 +111,9 @@ Route::get('/Testimoni', function () {
     ]);
 });
 
-// Route::get('/Blog', function () {
-//     $articleController = app()->make(ArticleController::class);
-//     $articleContent = $articleController->showContentBlog1();
-
-// });
 Route::get('/Blog', [ArticleController::class, 'showContentBlog1']);
+
 Route::get('/DetailBlog/{id}', [ArticleController::class, 'showContentdetailBlog']);
-
-
-Route::get('/DetailBlog', function () {
-    return view('UserPage/Pages/detail');
-});
 
 Route::get('/Demo', function () {
     return view('UserPage/Pages/demo');
@@ -257,6 +252,14 @@ Route::get('/Feedback/{id}/update', [FeedbackController::class, 'edit']);
 Route::put('/Feedback/{id}', [FeedbackController::class, 'update']);
 Route::delete('/Feedback/{id}', [FeedbackController::class, 'destroy']);
 
+// Blog 
+Route::get('/Article', [ArticleController::class, 'index']);
+Route::get('/Article/create', [ArticleController::class, 'create']);
+Route::post('/Article', [ArticleController::class, 'store']);
+Route::get('/Article/{id}/update', [ArticleController::class, 'edit']);
+Route::put('/Article/{id}', [ArticleController::class, 'update']);
+Route::delete('/Article/{id}', [ArticleController::class, 'destroy']);
+
 // Demo 
 Route::get('DemoList', [DemoController::class, 'index']);
 Route::get('/DemoList/create', [DemoController::class, 'create']);
@@ -281,13 +284,6 @@ Route::get('/Whatsapp/{id}/update', [WhatsappController::class, 'edit']);
 Route::put('/Whatsapp/{id}', [WhatsappController::class, 'update']);
 Route::delete('/Whatsapp/{id}', [WhatsappController::class, 'destroy']);
 
-// Blog 
-Route::get('/Article', [ArticleController::class, 'index']);
-Route::get('/Article/create', [ArticleController::class, 'create']);
-Route::post('/Article', [ArticleController::class, 'store']);
-Route::get('/Article/{id}/update', [ArticleController::class, 'edit']);
-Route::put('/Article/{id}', [ArticleController::class, 'update']);
-Route::delete('/Article/{id}', [ArticleController::class, 'destroy']);
 // Show Image
 Route::get('/storage/file-image/{filename}', function ($filename) {
     $path = storage_path("app/file-image/{$filename}");

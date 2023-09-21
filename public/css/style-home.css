@@ -509,6 +509,10 @@ body {
     font-size: 16px;
     color: #707070;
     text-align: justify;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
 }
 
 .section-blog .blog .content .wrapper .card .button {

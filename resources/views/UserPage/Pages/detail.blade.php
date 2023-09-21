@@ -37,7 +37,7 @@
                                 <p><b>{{ $articles->Users->level }}</b></p>
                             </div>
                             <div class="date">
-                                <p>{{$articles->created_at }}</p>
+                                <p>{{ $articles->created_at }}</p>
                             </div>
                         </div>
 
@@ -64,20 +64,20 @@
                 <h1>Rekomendasi</h1>
                 <div class="wrapper">
                     @foreach ($articles2 as $ar2)
-                    <div class="card">
-                        <div class="image">
-                            <img src="{{ asset('storage/' . $ar2->image) }}" alt="">
+                        <div class="card">
+                            <div class="image">
+                                <img src="{{ asset('storage/' . $ar2->image) }}" alt="">
+                            </div>
+                            <div class="description">
+                                <h3>{{ $ar2->title }}
+                                </h3>
+                                <p>{!! $ar2->description !!}
+                                </p>
+                            </div>
+                            <div class="button">
+                                <a href={{ url('/DetailBlog/' . $ar2->id) }}>Pelajari Lanjut</a>
+                            </div>
                         </div>
-                        <div class="description">
-                            <h3>{{ $ar2->title }}
-                            </h3>
-                            <p>{!! $ar2->description !!}
-                            </p>
-                        </div>
-                        <div class="button">
-                            <a href={{ url('/DetailBlog/'.$ar2->id)}}>Pelajari Lanjut</a>
-                        </div>
-                    </div>
                     @endforeach
 
                     {{-- <div class="card">

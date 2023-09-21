@@ -38,8 +38,18 @@ class ArticleController extends Controller
         return view('UserPage.Pages.detail', compact('articles', 'articles2'));
         // dd($id);
     }
-    public function showContentBlog3()
+
+    public function showContentHome()
     {
+        $titleView = Article::pluck('title');
+        $descriptionView = Article::pluck('description');
+        $imageView = Article::pluck('image');
+
+        return [
+            'titleView' => $titleView,
+            'descriptionView' => $descriptionView,
+            'imageView' => $imageView,
+        ];
     }
 
     /**

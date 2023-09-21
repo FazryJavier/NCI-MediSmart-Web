@@ -188,100 +188,23 @@
 
                 <div class="content swiper mySwiper-2">
                     <div class="wrapper swiper-wrapper">
-                        <div class="card swiper-slide">
-                            <div class="line">
-                                <div class="image">
-                                    <img src="{{ asset('assets/img/blog1.png') }}" alt="">
-                                </div>
-                                <div class="description">
-                                    <h3>Pengalaman Kami menggunakan SIM-RS NCI MediSmart</h3>
-                                    <p>Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam Bandung dengan
-                                        penggunaan SIMRS NCI-MediSmart diantaranya adalah kecepatan dalam pengambilan
-                                        keputusan, akurasi dalam mengidentifikasi masalah, kemudahan menyusun
-                                        strategi...
-                                    </p>
-                                    <div class="button">
-                                        <a href="#">Pelajari Lanjut</a>
+                        @foreach ($articleContent['imageView'] as $index => $image)
+                            <div class="card swiper-slide">
+                                <div class="line">
+                                    <div class="image">
+                                        <img src="{{ asset('storage/' . $articleContent['imageView'][$index]) }}"
+                                            alt="Image">
+                                    </div>
+                                    <div class="description">
+                                        <h3>{{ $articleContent['titleView'][$index] }}</h3>
+                                        <p>{!! $articleContent['descriptionView'][$index] !!}</p>
+                                        <div class="button">
+                                            <a href="#">Pelajari Lanjut</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="card swiper-slide">
-                            <div class="line">
-                                <div class="image">
-                                    <img src="{{ asset('assets/img/blog1.png') }}" alt="">
-                                </div>
-                                <div class="description">
-                                    <h3>Pengalaman Kami menggunakan SIM-RS NCI MediSmart</h3>
-                                    <p>Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam Bandung dengan
-                                        penggunaan SIMRS NCI-MediSmart diantaranya adalah kecepatan dalam pengambilan
-                                        keputusan, akurasi dalam mengidentifikasi masalah, kemudahan menyusun
-                                        strategi...
-                                    </p>
-                                    <div class="button">
-                                        <a href="#">Pelajari Lanjut</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card swiper-slide">
-                            <div class="line">
-                                <div class="image">
-                                    <img src="{{ asset('assets/img/blog1.png') }}" alt="">
-                                </div>
-                                <div class="description">
-                                    <h3>Pengalaman Kami menggunakan SIM-RS NCI MediSmart</h3>
-                                    <p>Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam Bandung dengan
-                                        penggunaan SIMRS NCI-MediSmart diantaranya adalah kecepatan dalam pengambilan
-                                        keputusan, akurasi dalam mengidentifikasi masalah, kemudahan menyusun
-                                        strategi...
-                                    </p>
-                                    <div class="button">
-                                        <a href="#">Pelajari Lanjut</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card swiper-slide">
-                            <div class="line">
-                                <div class="image">
-                                    <img src="{{ asset('assets/img/blog1.png') }}" alt="">
-                                </div>
-                                <div class="description">
-                                    <h3>Pengalaman Kami menggunakan SIM-RS NCI MediSmart</h3>
-                                    <p>Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam Bandung dengan
-                                        penggunaan SIMRS NCI-MediSmart diantaranya adalah kecepatan dalam pengambilan
-                                        keputusan, akurasi dalam mengidentifikasi masalah, kemudahan menyusun
-                                        strategi...
-                                    </p>
-                                    <div class="button">
-                                        <a href="#">Pelajari Lanjut</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card swiper-slide">
-                            <div class="line">
-                                <div class="image">
-                                    <img src="{{ asset('assets/img/blog1.png') }}" alt="">
-                                </div>
-                                <div class="description">
-                                    <h3>Pengalaman Kami menggunakan SIM-RS NCI MediSmart</h3>
-                                    <p>Manfaat yang saya rasakan sebagai Direktur Rumah Sakit Al-Islam Bandung dengan
-                                        penggunaan SIMRS NCI-MediSmart diantaranya adalah kecepatan dalam pengambilan
-                                        keputusan, akurasi dalam mengidentifikasi masalah, kemudahan menyusun
-                                        strategi...
-                                    </p>
-                                    <div class="button">
-                                        <a href="#">Pelajari Lanjut</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>

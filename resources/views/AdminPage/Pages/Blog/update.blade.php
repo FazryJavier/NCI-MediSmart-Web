@@ -13,10 +13,10 @@
                 <select name="adminId" class="custom-select rounded-0" id="adminId">
                     <option value="">Select Admin ID </option>
                     @foreach ($users as $user)
-                    <option value="{{ $user->id }}" @if ($user->id == $articles->adminId) seleted @endif>
-                    {{ $user->level }}
-                </option>
-                @endforeach
+                        <option value="{{ $user->id }}" @if ($user->id == $articles->adminId) seleted @endif>
+                            {{ $user->level }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
             <div class="mb-3">
@@ -55,7 +55,7 @@
                 <input type="text" name="prioritize" class="form-control" value="{{ $articles->prioritize }}">
             </div>
             <div class="mb-3">
-                <button type="submit" class="btn btn-success">Create</button>
+                <button type="submit" class="btn btn-success">Update</button>
                 <a href="/Article" type="button" class="btn btn-secondary">Back</a>
             </div>
         </form>
@@ -66,38 +66,37 @@
             color: #888;
         }
     </style>
-   
- <script>
-    function previewImage() {
-        const image = document.querySelector('#image');
-        const imgPreview = document.querySelector('.img-preview');
 
-        imgPreview.style.display = 'block';
+    <script>
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
 
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(image.files[0]);
+            imgPreview.style.display = 'block';
 
-        oFReader.onload = function(oFREvent) {
-            imgPreview.src = oFREvent.target.result;
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
         }
-    }
-</script>
-<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .then(editor => {
-            editor.model.document.on('change:data', () => {
-                const description = editor.getData();
-                document.querySelector('#description').value = description;
+    </script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                editor.model.document.on('change:data', () => {
+                    const description = editor.getData();
+                    document.querySelector('#description').value = description;
+                });
+
+                const initalDescription = "{!! addslashes($articles->description) !!}";
+                editor.setData(initalDescription);
+            })
+            .catch(error => {
+                console.error(error);
             });
-
-            const initalDescription = "{!! addslashes($articles->description) !!}";
-            editor.setData(initalDescription);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-
+    </script>
 @endsection
