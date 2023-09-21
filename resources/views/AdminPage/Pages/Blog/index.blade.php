@@ -31,22 +31,20 @@
         <thead>
             <tr>
                 <th class="col-sm-1">Id</th>
-                <th class="col-sm-2">ID Admin</th>
+                <th class="col-sm-2">Id Admin</th>
                 <th class="col-sm-2">Title</th>
                 <th class="col-sm-3">Description</th>
                 <th class="col-sm-2">image</th>
                 <th class="col-sm-1">Priority</th>
                 <th class="col-sm-1">Action</th>
-                
+
             </tr>
         </thead>
         <tbody>
             @forelse ($articles as $article => $item)
                 <tr>
-                    <td>{{ $article+ 1 }}</td>
-                    {{-- <td>1</td> --}}
+                    <td>{{ $article + 1 }}</td>
                     <td>{{ $item->users->level }}</td>
-                    {{-- <td>1</td> --}}
                     <td>{{ $item->title }}</td>
                     <td class="des">{!! $item->description !!}</td>
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
@@ -67,14 +65,13 @@
             @endforelse
         </tbody>
     </table>
-    <style>
-        .des{
-            display: -webkit-box;
-            -webkit-line-clamp: 6;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            height: auto;
-        }
-</style>
 
+    <style>
+        .des {
+            display: -webkit-box;
+            overflow: hidden;
+            max-height: 200px;
+            overflow-y: scroll
+        }
+    </style>
 @endsection
