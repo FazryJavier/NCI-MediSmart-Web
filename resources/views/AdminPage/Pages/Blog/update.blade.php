@@ -1,7 +1,7 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Page CTA | Update
+    Page Blog - Article
 @endsection
 @section('content')
     <section class="content">

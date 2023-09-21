@@ -1,7 +1,7 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Articel
+    Page Blog - Article
 @endsection
 
 @push('script')

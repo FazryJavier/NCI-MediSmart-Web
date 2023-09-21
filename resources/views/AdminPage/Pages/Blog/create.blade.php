@@ -1,7 +1,7 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Page Blog - Create Blog
+    Page Blog - Article
 @endsection
 @section('content')
     <section class="content">
