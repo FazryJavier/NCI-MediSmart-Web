@@ -10,4 +10,9 @@ class ImageModulProduct extends Model
     use HasFactory;
     protected $table='image_modul_products';
     protected $guarded=[];
+
+    public function modulProducts()
+    {
+        return $this->belongsTo(ModulProduct::class, 'modulId');
+    }
 }

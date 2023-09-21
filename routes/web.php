@@ -14,6 +14,7 @@ use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ExperienceListController;
 use App\Http\Controllers\FacilitiesModulProductController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ImageModulProductController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
 use App\Http\Controllers\MapController;
@@ -220,6 +221,14 @@ Route::post('/FasilitiesModulProduct', [FacilitiesModulProductController::class,
 Route::get('/FasilitiesModulProduct/{id}/update', [FacilitiesModulProductController::class, 'edit']);
 Route::put('/FasilitiesModulProduct/{id}', [FacilitiesModulProductController::class, 'update']);
 Route::delete('/FasilitiesModulProduct/{id}', [FacilitiesModulProductController::class, 'destroy']);
+
+// Product Modul Image
+Route::get('/ImageModulProduct', [ImageModulProductController::class, 'index']);
+Route::get('/ImageModulProduct/create', [ImageModulProductController::class, 'create']);
+Route::post('/ImageModulProduct', [ImageModulProductController::class, 'store']);
+Route::get('/ImageModulProduct/{id}/update', [ImageModulProductController::class, 'edit']);
+Route::put('/ImageModulProduct/{id}', [ImageModulProductController::class, 'update']);
+Route::delete('/ImageModulProduct/{id}', [ImageModulProductController::class, 'destroy']);
 
 // Product Client
 Route::get('/ClientProduct', [ClientProductController::class, 'index']);

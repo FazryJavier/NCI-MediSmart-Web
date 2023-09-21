@@ -25,4 +25,9 @@ class ModulProduct extends Model
     {
         return $this->hasMany(FacilitiesModulProduct::class, 'modulId')->cascadeDeletes();
     }
+
+    public function imageModulProducts()
+    {
+        return $this->hasMany(ImageModulProduct::class, 'modulId')->cascadeDeletes();
+    }
 }
