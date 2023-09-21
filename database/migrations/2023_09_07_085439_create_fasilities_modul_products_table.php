@@ -17,7 +17,7 @@ class CreateFasilitiesModulProductsTable extends Migration
             $table->id();
             $table->foreignId('modulId')->constrained('modul_products')->onDelete('cascade')->onUpdate('cascade');
             $table->string('description');
-            $table->enum('list', ['1', '2']);
+            $table->integer('list');
             $table->timestamps();
         });
     }

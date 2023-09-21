@@ -12,6 +12,7 @@ use App\Http\Controllers\DemoController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ExperienceListController;
+use App\Http\Controllers\FacilitiesModulProductController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
@@ -211,6 +212,14 @@ Route::post('/AdvantageModulProduct', [AdvantageModulProductController::class, '
 Route::get('/AdvantageModulProduct/{id}/update', [AdvantageModulProductController::class, 'edit']);
 Route::put('/AdvantageModulProduct/{id}', [AdvantageModulProductController::class, 'update']);
 Route::delete('/AdvantageModulProduct/{id}', [AdvantageModulProductController::class, 'destroy']);
+
+// Product Modul Fasilities
+Route::get('/FasilitiesModulProduct', [FacilitiesModulProductController::class, 'index']);
+Route::get('/FasilitiesModulProduct/create', [FacilitiesModulProductController::class, 'create']);
+Route::post('/FasilitiesModulProduct', [FacilitiesModulProductController::class, 'store']);
+Route::get('/FasilitiesModulProduct/{id}/update', [FacilitiesModulProductController::class, 'edit']);
+Route::put('/FasilitiesModulProduct/{id}', [FacilitiesModulProductController::class, 'update']);
+Route::delete('/FasilitiesModulProduct/{id}', [FacilitiesModulProductController::class, 'destroy']);
 
 // Product Client
 Route::get('/ClientProduct', [ClientProductController::class, 'index']);

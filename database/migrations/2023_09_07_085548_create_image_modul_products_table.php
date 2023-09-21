@@ -17,7 +17,7 @@ class CreateImageModulProductsTable extends Migration
             $table->id();
             $table->foreignId('modulId')->constrained('modul_products')->onDelete('cascade')->onUpdate('cascade');
             $table->string('image');
-            $table->enum('list', ['1', '2', '3']);
+            $table->integer('list');
             $table->timestamps();
         });
     }

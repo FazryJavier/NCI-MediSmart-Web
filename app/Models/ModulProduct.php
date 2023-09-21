@@ -20,4 +20,9 @@ class ModulProduct extends Model
     {
         return $this->hasMany(AdvantageModulProduct::class, 'modulId')->cascadeDeletes();
     }
+
+    public function facilitiesModulProducts()
+    {
+        return $this->hasMany(FacilitiesModulProduct::class, 'modulId')->cascadeDeletes();
+    }
 }

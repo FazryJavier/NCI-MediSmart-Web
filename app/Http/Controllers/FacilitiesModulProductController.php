@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FacilitiesModulProduct;
+use App\Models\ModulProduct;
 use Illuminate\Http\Request;
 
 class FacilitiesModulProductController extends Controller
@@ -12,7 +13,9 @@ class FacilitiesModulProductController extends Controller
      */
     public function index()
     {
-        //
+        $facilitiesModulProduct = FacilitiesModulProduct::all();
+
+        return view('AdminPage.Pages.Product.FasilitiesModul.index', compact('facilitiesModulProduct'));
     }
 
     /**
@@ -20,7 +23,9 @@ class FacilitiesModulProductController extends Controller
      */
     public function create()
     {
-        //
+        $modulProducts = ModulProduct::all();
+
+        return view('AdminPage.Pages.Product.FasilitiesModul.create', compact('modulProducts'));
     }
 
     /**
@@ -28,38 +33,76 @@ class FacilitiesModulProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'modulId' => 'required',
+            'description' => 'required',
+            'list' => 'required',
+        ]);
+
+        $descriptions = explode(',', $request->input('description'));
+
+        foreach ($descriptions as $description) {
+            FacilitiesModulProduct::create([
+                'modulId' => $request->input('modulId'),
+                'description' => trim($description),
+                'list' => $request->input('list'),
+            ]);
+        }
+
+        return redirect('/FasilitiesModulProduct');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(FacilitiesModulProduct $facilitiesModulProduct)
+    public function show(FacilitiesModulProduct $id)
     {
-        //
+        $facilitiesModulProductShow = FacilitiesModulProduct::find($id);
+
+        return view('AdminPage.Pages.Product.FasilitiesModul.index', compact('facilitiesModulProductShow'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(FacilitiesModulProduct $facilitiesModulProduct)
+    public function edit($id)
     {
-        //
+        $facilitiesModulProduct = FacilitiesModulProduct::where('id', $id)->firstorfail();
+
+        $modulProducts = ModulProduct::all();
+
+        return view('AdminPage.Pages.Product.FasilitiesModul.update', compact('facilitiesModulProduct', 'modulProducts'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, FacilitiesModulProduct $facilitiesModulProduct)
+    public function update(Request $request, $id)
     {
-        //
+        $content = [
+            'modulId' => 'required',
+            'description' => 'required',
+            'list' => 'required',
+        ];
+
+        $validatedData = $request->validate($content);
+
+        $facilitiesModulProduct = FacilitiesModulProduct::find($id);
+
+        $facilitiesModulProduct->update($validatedData);
+
+        return redirect('/FasilitiesModulProduct');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(FacilitiesModulProduct $facilitiesModulProduct)
+    public function destroy($id)
     {
-        //
+        $facilitiesModulProduct = FacilitiesModulProduct::findOrFail($id);
+
+        $facilitiesModulProduct->delete();
+
+        return redirect('/FasilitiesModulProduct');
     }
 }
