@@ -13,7 +13,7 @@
                 <select name="adminId" class="custom-select rounded-0" id="adminId">
                     <option value="">Select Admin ID </option>
                     @foreach ($users as $user)
-                        <option value="{{ $user->id }}" @if ($user->id == $articles->adminId) seleted @endif>
+                        <option value="{{ $user->id }}" @if ($user->id == $articles->adminId) selected @endif>
                             {{ $user->level }}
                         </option>
                     @endforeach
