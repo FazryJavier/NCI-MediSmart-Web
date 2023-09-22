@@ -20,6 +20,12 @@
 
 <body class="hold-transition login-page">
     <div class="login-box">
+        <!-- @if(session()->has('loginError'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('loginError') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+            </div>
+        @endif -->
         <div class="login-logo">
             <a href="/" class="logo"><img src="{{ asset('assets/img/Logo Medismart.png') }}" alt="Medismart"class="logo" style="max-width: 200px;"/></a>
             {{-- <a href="/"><b>NCI</b> MediSmart</a> --}}
@@ -28,17 +34,25 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <form action="/LandingSlider" method="GET">
+                <form action="/Admin" method="post">
+                    {{ csrf_field() }}
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Username">
+                        <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
+                        name="username" placeholder="Username" autofocus required value="{{ old ('username')}}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
+                        <!-- @error('username')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror -->
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" id="password"
+                        name="password" placeholder="Password" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>

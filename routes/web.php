@@ -22,6 +22,7 @@ use App\Http\Controllers\ModulProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\WhatsappController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -126,12 +127,22 @@ Route::get('/Demo', function () {
 });
 
 // Admin Page
-Route::get('/Admin', function () {
-    return view('AdminPage/Pages/login');
-});
+// Route::get('/Admin', function () {
+//     return view('AdminPage/Pages/login');
+// });
+
+Route::get('/Admin', [UserController::class, 'index'])->name('Admin');
+Route::post('/Admin', [UserController::class, 'authenticate']);
+Route::post('/logout', [UserController::class, 'logout']);
+// Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+// Route::group(['middleware' => ['auth']], function () {
+
+    
+// });
 
 // Landing Slider
-Route::get('/LandingSlider', [LandingSliderController::class, 'index']);
+Route::get('/LandingSlider', [LandingSliderController::class, 'index'])->middleware('auth');
 Route::get('/LandingSlider/create', [LandingSliderController::class, 'create']);
 Route::post('/LandingSlider', [LandingSliderController::class, 'store']);
 Route::get('/LandingSlider/{id}/update', [LandingSliderController::class, 'edit']);

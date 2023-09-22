@@ -18,7 +18,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <form action="/Admin" method="GET">
+            <form action="/logout" method="POST">
+                @csrf
                 <button type="submit" class="btn btn-danger">Logout</button>
             </form>
         </li>
