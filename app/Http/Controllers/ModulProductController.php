@@ -19,6 +19,13 @@ class ModulProductController extends Controller
         return view('AdminPage.Pages.Product.ModulProduct.index', compact('modulProduct'));
     }
 
+    public function showContent($productId)
+    {
+        $modulProducts = ModulProduct::where('productId', $productId)->get();
+
+        return $modulProducts;
+    }
+
     /**
      * Show the form for creating a new resource.
      */

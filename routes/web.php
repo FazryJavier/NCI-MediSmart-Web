@@ -80,11 +80,19 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/ProductView/{id}', function () {
+Route::get('/ProductView/{id}', function ($productId) {
+    $detailproductController = app()->make(DetailProductController::class);
+    $detailproductContent = $detailproductController->showContent($productId);
+
+    $modulproductController = app()->make(ModulProductController::class);
+    $modulproductContent = $modulproductController->showContent($productId);
+
     $feedbackController = app()->make(FeedbackController::class);
     $feedbackContent = $feedbackController->showContent();
 
     return view('UserPage/Pages/product', [
+        'detailproductContent' => $detailproductContent,
+        'modulproductContent' => $modulproductContent,
         'feedbackContent' => $feedbackContent,
     ]);
 });

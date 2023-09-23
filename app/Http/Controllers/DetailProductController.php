@@ -19,6 +19,22 @@ class DetailProductController extends Controller
         return view('AdminPage.Pages.Product.DetailProduct.index', compact('detailProduct'));
     }
 
+    public function showContent($productId)
+    {
+        $detailProduct = DetailProduct::where('productId', $productId)->first();
+
+        if (!$detailProduct) {
+            abort(404);
+        }
+
+        return [
+            'logoView' => $detailProduct->logo,
+            'descriptionView' => $detailProduct->description,
+            'flyerView' => $detailProduct->flyer,
+            'videoView' => $detailProduct->video,
+        ];
+    }
+
     /**
      * Show the form for creating a new resource.
      */
