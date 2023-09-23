@@ -46,7 +46,7 @@
                     <td>{{ $article + 1 }}</td>
                     <td>{{ $item->users->level }}</td>
                     <td>{{ $item->title }}</td>
-                    <td class="des">{!! $item->description !!}</td>
+                    <td class="des">{{ strip_tags($item->description) }}</td>
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
                     <td>{{ $item->prioritize }}</td>
                     <td>

@@ -197,7 +197,7 @@
                                     </div>
                                     <div class="description">
                                         <h3>{{ $articleContent['titleView'][$index] }}</h3>
-                                        <p>{!! $articleContent['descriptionView'][$index] !!}</p>
+                                        <p>{{ strip_tags($articleContent['descriptionView'][$index]) }}</p>
                                         <div class="button">
                                             <a
                                                 href={{ route('detail.show', ['id' => $articleContent['idView'][$index]]) }}>Pelajari
