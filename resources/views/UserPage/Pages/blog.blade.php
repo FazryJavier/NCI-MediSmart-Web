@@ -90,7 +90,7 @@
                             </div>
                             <div class="description">
                                 <h3>{{ $ar3->title }}</h3>
-                                <p>{!! $ar3->description !!}</p>
+                                <p>{{ strip_tags($ar3->description) }}</p>
                                 <a href={{ url('/DetailBlog/' . $ar3->id) }}>Pelajari Lanjut</a>
                             </div>
                         </div>

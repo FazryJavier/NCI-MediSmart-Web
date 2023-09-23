@@ -67,6 +67,14 @@
                     <li><a href="/Blog">Blog</a></li>
                     <li><a href="">Syarat & Ketentuan</a></li>
                 </ul>
+                <div class="image">
+                    <a href="https://pse.kominfo.go.id/" target=”_blank”><img src="{{ asset('assets/img/pse.png') }}"
+                            alt="PSE Logo"></a>
+                </div>
+                <div class="image">
+                    <a href="https://e-katalog.lkpp.go.id/" target=”_blank”><img
+                            src="{{ asset('assets/img/lkpp.png') }}" alt="LKPP Logo"></a>
+                </div>
             </div>
         </div>
     </footer>

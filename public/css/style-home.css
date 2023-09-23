@@ -487,6 +487,7 @@ body {
     width: auto;
     height: auto;
     border-radius: 20px;
+    overflow: hidden;
 }
 
 .section-blog .blog .content .wrapper .card img {

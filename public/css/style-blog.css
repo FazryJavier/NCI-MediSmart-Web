@@ -195,9 +195,8 @@ a {
     display: flex;
 }
 
-.section-article .article .card img {
-    width: 100%;
-    max-width: 1000px;
+.section-article .article .card .image img {
+    max-width: 500px;
 }
 
 .section-article .article .card .description {
@@ -313,6 +312,11 @@ a {
     .section-article .article .card:nth-child(2),
     .section-article .article .card:nth-child(3) {
         display: block;
+    }
+
+    .section-article .article .card .image img {
+        max-width: 500px;
+        width: 100%;
     }
     /* End Article */
 }
