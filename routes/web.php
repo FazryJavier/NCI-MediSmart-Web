@@ -80,9 +80,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/detail/{id}', [ArticleController::class, 'showContentdetailBlog'])->name('detail.show');
-
-
 Route::get('/ProductView/{id}', function () {
     $feedbackController = app()->make(FeedbackController::class);
     $feedbackContent = $feedbackController->showContent();
@@ -122,26 +119,15 @@ Route::get('/Testimoni', function () {
 
 Route::get('/Blog', [ArticleController::class, 'showContentBlog1']);
 
-Route::get('/DetailBlog/{id}', [ArticleController::class, 'showContentdetailBlog']);
+Route::get('/DetailBlog/{id}', [ArticleController::class, 'showContentdetailBlog'])->name('detail.show');
 
 Route::get('/Demo', function () {
     return view('UserPage/Pages/demo');
 });
 
-// Admin Page
-// Route::get('/Admin', function () {
-//     return view('AdminPage/Pages/login');
-// });
-
 Route::get('/Admin', [UserController::class, 'index'])->name('Admin');
 Route::post('/Admin', [UserController::class, 'authenticate']);
 Route::post('/logout', [UserController::class, 'logout']);
-// Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-
-// Route::group(['middleware' => ['auth']], function () {
-
-
-// });
 
 // Landing Slider
 Route::get('/LandingSlider', [LandingSliderController::class, 'index'])->middleware('auth');
