@@ -13,7 +13,7 @@
                 <select name="adminId" class="custom-select rounded-0" id="adminId">
                     <option value="">Select Admin ID </option>
                     @foreach ($users as $user)
-                        <option value="{{ $user->id }}">{{ $user->level }}</option>
+                        <option value="{{ $user->id }}">{{ $user->username }}</option>
                     @endforeach
                 </select>
             </div>
@@ -26,23 +26,6 @@
                 <div id="editor"></div>
                 <textarea name="description" id="description" style="display: none;"></textarea>
             </div>
-
-            {{-- <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <div id="editor"></div>
-                <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-                <script>
-                    ClassicEditor
-                        .create(document.querySelector('#editor'))
-                        .catch(error => {
-                            console.error(error);
-                        }); 
-                </script>         
-            </div> --}}
-            {{-- <div class="mb-3">
-                <label for="description" class="form-label"> Description</label>
-                <input type="text" name="description" class="form-control" id="formGroupExampleInput">
-            </div> --}}
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
                 <span class="description">*Ukuran gambar 4980x1452px atau 16:9 dan ukuran maksimal 2MB</span>

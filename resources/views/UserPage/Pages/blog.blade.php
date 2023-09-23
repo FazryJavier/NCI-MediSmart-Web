@@ -39,7 +39,7 @@
                             <a href={{ url('/DetailBlog/' . $articles->id) }}>Pelajari Lanjut...</a>
                             <div class="update">
                                 <div class="name">
-                                    <p class="admin">{{ $articles->Users->level }}</p>
+                                    <p class="admin">{{ $articles->Users->username }}</p>
                                 </div>
                                 <div class="date">
                                     <p class="admin">{{ $articles->created_at }}</p>

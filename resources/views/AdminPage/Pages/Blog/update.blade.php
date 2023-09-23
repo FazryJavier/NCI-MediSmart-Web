@@ -14,7 +14,7 @@
                     <option value="">Select Admin ID </option>
                     @foreach ($users as $user)
                         <option value="{{ $user->id }}" @if ($user->id == $articles->adminId) selected @endif>
-                            {{ $user->level }}
+                            {{ $user->username }}
                         </option>
                     @endforeach
                 </select>

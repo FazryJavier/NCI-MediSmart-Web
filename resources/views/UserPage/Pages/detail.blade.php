@@ -34,7 +34,7 @@
 
                         <div class="posting">
                             <div class="admin">
-                                <p><b>{{ $articles->Users->level }}</b></p>
+                                <p><b>{{ $articles->Users->username }}</b></p>
                             </div>
                             <div class="date">
                                 <p>{{ $articles->created_at }}</p>
