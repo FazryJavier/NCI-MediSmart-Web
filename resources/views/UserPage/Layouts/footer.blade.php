@@ -64,13 +64,13 @@
                 <h4><b>Perusahaan</b></h4>
                 <ul>
                     <li><a href="">Informasi Perusahaan</a></li>
-                    <li><a href="">Blog</a></li>
+                    <li><a href="/Blog">Blog</a></li>
                     <li><a href="">Syarat & Ketentuan</a></li>
                 </ul>
             </div>
         </div>
     </footer>
-    
+
     <div class="copyright">
         <div class="col-1">
             <img src="{{ asset('assets/img/Logo NCI.png') }}" alt="Logo">

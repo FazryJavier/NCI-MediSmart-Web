@@ -79,44 +79,6 @@
                             </div>
                         </div>
                     @endforeach
-
-                    {{-- <div class="card">
-                        <div class="image">
-                            <img src="{{ asset('assets/img/blog2.png') }}" alt="">
-                        </div>
-                        <div class="description">
-                            <h3>Uji Coba Implementasi Rekam Medis Elektronik di RS Bolaang
-                            </h3>
-                            <p>
-                                Pada hari Senin (03/07/2023), RS Bolaang telah menyelesaikan periode uji coba
-                                implementasi Rekam Medis Elektronik dengan baik. Inisiasi uji coba ini dilatar
-                                belakangi dengan adanya peraturan pemerintah yang mewajibkan pemakaian Rekam Medis
-                                Elektronik yang..
-                            </p>
-                        </div>
-                        <div class="button">
-                            <a href="#">Pelajari Lanjut</a>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="image">
-                            <img src="{{ asset('assets/img/blog3.png') }}" alt="">
-                        </div>
-                        <div class="description">
-                            <h3>Mengenal Orthorexia Nervosa, Obsesi Terhadap Makanan Sehat
-                            </h3>
-                            <p>
-                                Makanan sehat adalah hal yang penting untuk menjaga kesehatan tubuh. Karena itu
-                                mengkonsumsi makanan sehat adalah keharusan untuk setiap orang. Namun keinginan kuat
-                                yang berujung menjadi obsesi terhadap makanan sehat justru mengindikasikan suatu
-                                kelainan....
-                            </p>
-                        </div>
-                        <div class="button">
-                            <a href="#">Pelajari Lanjut</a>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>

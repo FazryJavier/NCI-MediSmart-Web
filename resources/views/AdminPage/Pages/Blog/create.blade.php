@@ -60,6 +60,7 @@
             </div>
             <div class="mb-3">
                 <label for="prioritize" class="form-label"> Priority</label>
+                <span class="description">*Prioritas Diisi dengan 1-3</span>
                 <input type="text" name="prioritize" class="form-control" id="formGroupExampleInput">
             </div>
             <div class="mb-3">
@@ -90,7 +91,7 @@
             }
         }
     </script>
-    
+
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     <script>
         ClassicEditor

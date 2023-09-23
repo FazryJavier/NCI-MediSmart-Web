@@ -52,6 +52,7 @@
             </div>
             <div class="mb-3">
                 <label for="prioritize" class="form-label"> Priority</label>
+                <span class="description">*Prioritas Diisi dengan 1-3</span>
                 <input type="text" name="prioritize" class="form-control" value="{{ $articles->prioritize }}">
             </div>
             <div class="mb-3">

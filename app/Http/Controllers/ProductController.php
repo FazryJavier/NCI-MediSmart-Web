@@ -33,6 +33,11 @@ class ProductController extends Controller
         ];
     }
 
+    // public function SimRS()
+    // {
+    //     return view('UserPage.Pages.product');
+    // }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -117,7 +122,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-        
+
         $imagePath = $product->image;
 
         $product->delete();

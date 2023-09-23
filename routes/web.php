@@ -91,6 +91,8 @@ Route::get('/ProductView/{id}', function () {
         'feedbackContent' => $feedbackContent,
     ]);
 });
+// Route::get('/Product', [ProductController::class, 'SimRS'])->name('product.show');
+
 
 Route::get('/Modul', function () {
     return view('UserPage/Pages/modul');
@@ -138,7 +140,7 @@ Route::post('/logout', [UserController::class, 'logout']);
 
 // Route::group(['middleware' => ['auth']], function () {
 
-    
+
 // });
 
 // Landing Slider
