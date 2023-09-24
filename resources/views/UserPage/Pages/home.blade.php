@@ -30,7 +30,6 @@
                             class="image">
                         {{-- @endif --}}
                         <div class="image-date">
-                            {{-- @if ($sliderContent['statusView'][$index] == 1) --}}
                             <h1>{{ $title }}</h1>
                             <h3>{{ $sliderContent['captionView'][$index] }}</h3>
                             {{-- <a href="" class="button-1">Hubungi Kami</a>
@@ -131,12 +130,15 @@
                                 <h1>{{ $productContent['titleView'][$index] }}</h1>
                                 <h3>{{ $productContent['subtitleView'][$index] }}</h3>
                                 <p>{{ $productContent['descriptionView'][$index] }}</p>
-                                {{-- @foreach ($modulProduct->modulProducts as $modulProduct)
-                                    <ul>
-                                        <li><i class="fa-solid fa-circle-check"
-                                                style="color: #1bad4b;"></i>{{ $modulProduct->title }}</li>
-                                    </ul>
-                                @endforeach --}}
+                                @foreach ($productContent['modulView'] as $modul)
+                                    @if ($modul->productId == $productContent['idView'][$index])
+                                        <ul>
+                                            <li><i class="fa-solid fa-circle-check"
+                                                    style="color: #1bad4b;"></i>{{ $modul->title }}
+                                            </li>
+                                        </ul>
+                                    @endif
+                                @endforeach
                             </div>
                             <div class="bottom">
                                 <div class="container-line">

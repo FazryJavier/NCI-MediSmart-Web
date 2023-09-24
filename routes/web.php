@@ -65,6 +65,9 @@ Route::get('/', function () {
     $articleController = app()->make(ArticleController::class);
     $articleContent = $articleController->showContentHome();
 
+    // dd($productContent);
+    // dd($sliderContent);
+
 
     return view('UserPage/Pages/home', [
         'sliderContent' => $sliderContent,
@@ -151,7 +154,7 @@ Route::post('/Admin', [UserController::class, 'authenticate']);
 Route::post('/logout', [UserController::class, 'logout']);
 
 // Landing Slider
-Route::get('/LandingSlider', [LandingSliderController::class, 'index'])->middleware('auth');
+Route::get('/LandingSlider', [LandingSliderController::class, 'index']);
 Route::get('/LandingSlider/create', [LandingSliderController::class, 'create']);
 Route::post('/LandingSlider', [LandingSliderController::class, 'store']);
 Route::get('/LandingSlider/{id}/update', [LandingSliderController::class, 'edit']);
