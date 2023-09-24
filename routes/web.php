@@ -56,8 +56,8 @@ Route::get('/', function () {
     $productController = app()->make(ProductController::class);
     $productContent = $productController->showContent();
 
-    $productlistController = app()->make(ProductListController::class);
-    $listView = $productlistController->showContent();
+    // $productlistController = app()->make(ProductListController::class);
+    // $listView = $productlistController->showContent();
 
     $videoController = app()->make(LandingVideoController::class);
     $videoContent = $videoController->showContent();
@@ -75,7 +75,7 @@ Route::get('/', function () {
         'productContent' => $productContent,
         // 'productlistContent' => $productlistContent,
         'videoContent' => $videoContent,
-        'listView' => $listView,
+        // 'listView' => $listView,
         'articleContent' => $articleContent,
     ]);
 });
@@ -87,6 +87,12 @@ Route::get('/ProductView/{id}', function ($productId) {
     $clientproductController = app()->make(ClientProductController::class);
     $clientproductContent = $clientproductController->showContent($productId);
 
+    $advantageproductController = app()->make(AdvantageProductController::class);
+    $advantageproductContent = $advantageproductController->showContent($productId);
+
+    // $advantagelistproductController = app()->make(AdvantageListProductController::class);
+    // $advantagelistproductContent = $advantagelistproductController->showContent();
+
     $modulproductController = app()->make(ModulProductController::class);
     $modulproductContent = $modulproductController->showContent($productId);
 
@@ -96,9 +102,12 @@ Route::get('/ProductView/{id}', function ($productId) {
     return view('UserPage/Pages/product', [
         'detailproductContent' => $detailproductContent,
         'clientproductContent' => $clientproductContent,
+        'advantageproductContent' => $advantageproductContent,
+        // 'advantagelistproductContent' => $advantagelistproductContent,
         'modulproductContent' => $modulproductContent,
         'feedbackContent' => $feedbackContent,
     ]);
+    
 });
 // Route::get('/Product', [ProductController::class, 'SimRS'])->name('product.show');
 

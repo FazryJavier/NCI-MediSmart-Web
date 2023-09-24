@@ -19,6 +19,17 @@ class AdvantageProductController extends Controller
         return view('AdminPage.Pages.Product.AdvantageProduct.index', compact('advantageProduct'));
     }
 
+    public function showContent($productId)
+    {
+        $advantageProducts = AdvantageProduct::where('productId', $productId)->get();
+
+        foreach ($advantageProducts as $advantageProduct) {
+            $advantageProduct->load('advantageListProducts');
+        }
+
+        return $advantageProducts;
+    }
+
     /**
      * Show the form for creating a new resource.
      */

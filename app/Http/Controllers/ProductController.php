@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ModulProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,6 +25,8 @@ class ProductController extends Controller
         $titleView = Product::pluck('title');
         $subtitleView = Product::pluck('subTitle');
         $descriptionView = Product::pluck('description');
+        // $modulProducts = Product::where('id', $id)->get();
+
 
         return [
             'titleView' => $titleView,
@@ -33,9 +36,13 @@ class ProductController extends Controller
         ];
     }
 
-    // public function SimRS()
+    // public function showContent()
     // {
-    //     return view('UserPage.Pages.product');
+    //     $products = Product::with('modulProducts')->get();
+    
+    //     return view('UserPage.Pages.home', [
+    //         'products' => $products,
+    //     ]);
     // }
 
     /**

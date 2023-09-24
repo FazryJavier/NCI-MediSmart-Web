@@ -95,85 +95,22 @@
                     <h1>Kelebihan SIMRS NCI - Medismart</h1>
                 </div>
                 <div class="wrapper">
-                    <div class="card">
-                        <div class="icon">
-                            <img src="{{ asset('assets/img/icon1.png') }}" alt="Icon">
+                    @foreach ($advantageproductContent as $advantageProduct)
+                        <div class="card">
+                            <div class="icon">
+                                <img src="{{ asset('storage/' . $advantageProduct->icon) }}" alt="Icon">
+                            </div>
+                            <div class="description">
+                                <h3>{{ $advantageProduct->title }}</h3>
+                                @foreach ($advantageProduct->advantageListProducts as $advantageList)
+                                    <ul>
+                                        <li><i class="fa-solid fa-circle-check"
+                                                style="color: #1bad4b;"></i>{{ $advantageList->name }}</li>
+                                    </ul>
+                                @endforeach
+                            </div>
                         </div>
-                        <div class="description">
-                            <h3>Teknologi</h3>
-                            <ul>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Multi Operating
-                                    System (Windows, Linux)</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Multiplatform
-                                    (Dekstop, Web based, Android)</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Teknologi LIS dan
-                                    PACS</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Teknologi Barcode &
-                                    RFID</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon">
-                            <img src="{{ asset('assets/img/icon2.png') }}" alt="Icon">
-                        </div>
-                        <div class="description">
-                            <h3>Integrasi</h3>
-                            <ul>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi modul
-                                    layanan front office - Back Office</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi BPJS &
-                                    V-Claim</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi LIS dab
-                                    PACS</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi
-                                    Pendaftaran Online Mandiri - SIMRS</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi Aplikasi
-                                </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>KEMENKES (SISRUTE,
-                                    SIRANAP)</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon">
-                            <img src="{{ asset('assets/img/icon3.png') }}" alt="Icon">
-                        </div>
-                        <div class="description">
-                            <h3>Modular</h3>
-                            <ul>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Multi Operating
-                                    System (Windows, Linux)</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Multiplatform
-                                    (Dekstop, Web based, Android)</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Teknologi LIS dan
-                                    PACS</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Teknologi Barcode &
-                                    RFID</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon">
-                            <img src="{{ asset('assets/img/icon4.png') }}" alt="Icon">
-                        </div>
-                        <div class="description">
-                            <h3>Purna Jual</h3>
-                            <ul>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Multi Operating
-                                    System (Windows, Linux)</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Multiplatform
-                                    (Dekstop, Web based, Android)</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Teknologi LIS dan
-                                    PACS</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Teknologi Barcode
-                                    & RFID</li>
-                            </ul>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

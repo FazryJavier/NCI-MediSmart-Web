@@ -33,6 +33,6 @@ class Product extends Model
 
     public function modulProducts()
     {
-        return $this->hasMany(ModulProduct::class, 'productId')->cascadeDeletes();
+        return $this->hasMany(ModulProduct::class, 'productId');
     }
 }

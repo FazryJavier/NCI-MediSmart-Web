@@ -131,12 +131,12 @@
                                 <h1>{{ $productContent['titleView'][$index] }}</h1>
                                 <h3>{{ $productContent['subtitleView'][$index] }}</h3>
                                 <p>{{ $productContent['descriptionView'][$index] }}</p>
-                                {{-- <ul>
-                                    @foreach ($listView as $listItem)
+                                {{-- @foreach ($modulProduct->modulProducts as $modulProduct)
+                                    <ul>
                                         <li><i class="fa-solid fa-circle-check"
-                                                style="color: #1bad4b;"></i>{{ $listItem['list'] }}</li>
-                                    @endforeach
-                                </ul> --}}
+                                                style="color: #1bad4b;"></i>{{ $modulProduct->title }}</li>
+                                    </ul>
+                                @endforeach --}}
                             </div>
                             <div class="bottom">
                                 <div class="container-line">
