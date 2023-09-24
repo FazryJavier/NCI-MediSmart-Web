@@ -82,12 +82,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/ProductList" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Product List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="/DetailProduct" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Detail Product</p>
@@ -176,7 +170,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/MapFeedback" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Map</p>
                             </a>

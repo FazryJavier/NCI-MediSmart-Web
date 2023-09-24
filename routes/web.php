@@ -18,6 +18,7 @@ use App\Http\Controllers\ImageModulProductController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\MapFeedbackController;
 use App\Http\Controllers\ModulProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductListController;
@@ -116,12 +117,12 @@ Route::get('/Testimoni', function () {
     $feedbackController = app()->make(FeedbackController::class);
     $feedbackContent = $feedbackController->showContent();
 
-    $mapController = app()->make(MapController::class);
-    $mapContent = $mapController->showContent();
+    $mapfeedbackController = app()->make(MapFeedbackController::class);
+    $mapfeedbackContent = $mapfeedbackController->showContent();
 
     return view('UserPage/Pages/testimoni', [
         'feedbackContent' => $feedbackContent,
-        'mapContent' => $mapContent,
+        'mapfeedbackContent' => $mapfeedbackContent,
     ]);
 });
 
@@ -280,6 +281,14 @@ Route::post('/Feedback', [FeedbackController::class, 'store']);
 Route::get('/Feedback/{id}/update', [FeedbackController::class, 'edit']);
 Route::put('/Feedback/{id}', [FeedbackController::class, 'update']);
 Route::delete('/Feedback/{id}', [FeedbackController::class, 'destroy']);
+
+// Map
+Route::get('/MapFeedback', [MapFeedbackController::class, 'index']);
+Route::get('/MapFeedback/create', [MapFeedbackController::class, 'create']);
+Route::post('/MapFeedback', [MapFeedbackController::class, 'store']);
+Route::get('/MapFeedback/{id}/update', [MapFeedbackController::class, 'edit']);
+Route::put('/MapFeedback/{id}', [MapFeedbackController::class, 'update']);
+Route::delete('/MapFeedback/{id}', [MapFeedbackController::class, 'destroy']);
 
 // Blog 
 Route::get('/Article', [ArticleController::class, 'index']);

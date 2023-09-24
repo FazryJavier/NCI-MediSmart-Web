@@ -48,6 +48,7 @@ a {
     margin-bottom: 40px;
     text-align: center;
     font-size: 40px;
+    color: #242424;
 }
 
 .section-testimoni .content {
@@ -137,14 +138,13 @@ a {
 /* Client */
 .section-client .client {
     padding: 50px 0;
-    background-color: #165E70;
 }
 
 .section-client .client .text {
     margin-bottom: 50px;
     text-align: center;
     font-size: 32px;
-    color: #fff;
+    color: #242424;
 }
 
 .section-client .client .image {

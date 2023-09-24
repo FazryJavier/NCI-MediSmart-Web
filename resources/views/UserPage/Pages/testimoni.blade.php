@@ -50,10 +50,10 @@
         <div class="client">
             <div class="container">
                 <div class="text">
-                    <h1>Sebaran klient kami di Provinsi Indonesia</h1>
+                    <h1>{{ $mapfeedbackContent['titleView'] }}</h1>
                 </div>
                 <div class="image">
-                    <img src="{{ $mapContent['imageView'] }}" alt="Indonesia">
+                    <img src="{{ $mapfeedbackContent['imageView'] }}" alt="Indonesia">
                 </div>
             </div>
         </div>
