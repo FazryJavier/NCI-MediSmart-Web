@@ -26,7 +26,7 @@ class ProductListController extends Controller
 
         foreach ($products as $product) {
             $productLists = ProductList::where('productId', $product->id)->get();
-            
+
             $listView[$product->id] = $productLists;
         }
 

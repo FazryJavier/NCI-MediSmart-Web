@@ -113,7 +113,7 @@ class FeedbackController extends Controller
     public function destroy($id)
     {
         $feedback = Feedback::findOrFail($id);
-        
+
         $imagePath = $feedback->image;
 
         $feedback->delete();

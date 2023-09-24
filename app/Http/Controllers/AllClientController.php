@@ -25,7 +25,7 @@ class AllClientController extends Controller
         if ($client) {
             $title = $client->title;
             $image = asset("storage/{$client->image}");
-            
+
             return [
                 'titleView' => $title,
                 'imageView' => $image,
@@ -118,7 +118,7 @@ class AllClientController extends Controller
     public function destroy($id)
     {
         $client = AllClient::findOrFail($id);
-        
+
         $imagePath = $client->image;
 
         $client->delete();

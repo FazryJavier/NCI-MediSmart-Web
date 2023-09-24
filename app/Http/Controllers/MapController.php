@@ -25,7 +25,7 @@ class MapController extends Controller
         if ($map) {
             $title = $map->title;
             $image = asset("storage/{$map->image}");
-            
+
             return [
                 'titleView' => $title,
                 'imageView' => $image,
@@ -118,7 +118,7 @@ class MapController extends Controller
     public function destroy($id)
     {
         $map = Map::findOrFail($id);
-        
+
         $imagePath = $map->image;
 
         $map->delete();

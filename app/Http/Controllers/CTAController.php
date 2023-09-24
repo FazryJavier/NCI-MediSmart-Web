@@ -26,7 +26,7 @@ class CTAController extends Controller
             $image = asset("storage/{$latestCTA->image}");
             $title = $latestCTA->title;
             $description = $latestCTA->description;
-            
+
             return [
                 'imageView' => $image,
                 'titleView' => $title,

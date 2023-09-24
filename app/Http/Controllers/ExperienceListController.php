@@ -113,7 +113,7 @@ class ExperienceListController extends Controller
     public function destroy($id)
     {
         $experienceList = ExperienceList::findOrFail($id);
-        
+
         $imagePath = $experienceList->image;
 
         $experienceList->delete();

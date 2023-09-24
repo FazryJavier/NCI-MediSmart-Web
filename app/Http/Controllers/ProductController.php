@@ -19,23 +19,6 @@ class ProductController extends Controller
         return view('AdminPage.Pages.Product.Product.index', compact('product'));
     }
 
-    // public function showContent()
-    // {
-    //     $imageView = Product::pluck('image');
-    //     $titleView = Product::pluck('title');
-    //     $subtitleView = Product::pluck('subTitle');
-    //     $descriptionView = Product::pluck('description');
-    //     // $modulProducts = Product::where('id', $id)->get();
-
-
-    //     return [
-    //         'titleView' => $titleView,
-    //         'subtitleView' => $subtitleView,
-    //         'descriptionView' => $descriptionView,
-    //         'imageView' => $imageView,
-    //     ];
-    // }
-
     public function showContent()
     {
 
@@ -48,7 +31,6 @@ class ProductController extends Controller
             ->select('products.*', 'modul_products.*')
             ->get();
 
-
         return [
             'idView' => $idView,
             'titleView' => $titleView,
@@ -58,37 +40,6 @@ class ProductController extends Controller
             'modulView' => $productsWithModulProducts,
         ];
     }
-
-
-    // public function showContent()
-    // {
-    //     // Ambil data dengan pluck() dan simpan dalam array terpisah
-    //     $imageView = Product::pluck('image');
-    //     $titleView = Product::pluck('title');
-    //     $subtitleView = Product::pluck('subTitle');
-    //     $descriptionView = Product::pluck('description');
-
-    //     // Ambil data produk beserta modul yang berelasi
-    //     $productContent = Product::leftJoin('modul_products', 'products.id', '=', 'modul_products.productId')
-    //         // ->select(
-    //         //     'products.id as id',
-    //         //     'products.image as image',
-    //         //     'products.title as title',
-    //         //     'products.subTitle as subTitle',
-    //         //     'products.description as description',
-    //         //     'products.modul_products as modul'
-    //         // )
-    //         ->get();
-    //     return view('UserPage.Pages.home', [
-    //         'imageView' => $imageView,
-    //         'titleView' => $titleView,
-    //         'subtitleView' => $subtitleView,
-    //         'descriptionView' => $descriptionView,
-    //         'productContent' => $productContent,
-    //     ]);
-    // }
-
-
 
     /**
      * Show the form for creating a new resource.

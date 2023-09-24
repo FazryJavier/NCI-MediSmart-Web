@@ -26,7 +26,7 @@ class LandingVideoController extends Controller
             $title = $landingVideo->title;
             $description = $landingVideo->description;
             $video = $landingVideo->video;
-            
+
             return [
                 'titleView' => $title,
                 'descriptionView' => $description,

@@ -25,7 +25,7 @@ class ExperienceController extends Controller
         if ($experience) {
             $title = $experience->title;
             $description = $experience->description;
-            
+
             return [
                 'titleView' => $title,
                 'descriptionView' => $description,

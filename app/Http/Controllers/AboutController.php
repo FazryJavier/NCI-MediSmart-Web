@@ -28,7 +28,7 @@ class AboutController extends Controller
             $description = $about->description;
             $visi = $about->visi;
             $misi = $about->misi;
-            
+
             return [
                 'videoView' => $video,
                 'imageView' => $image,
