@@ -19,6 +19,19 @@ class ClientProductController extends Controller
         return view('AdminPage.Pages.Product.ClientProduct.index', compact('clientProduct'));
     }
 
+    public function showContent($productId)
+    {
+        $clientProduct = ClientProduct::where('productId', $productId)->first();
+
+        if (!$clientProduct) {
+            abort(404);
+        }
+
+        return [
+            'imageView' => $clientProduct->image,
+        ];
+    }
+
     /**
      * Show the form for creating a new resource.
      */

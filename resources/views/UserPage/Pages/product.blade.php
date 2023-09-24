@@ -67,7 +67,7 @@
                     <h1><b>Mitra SIMRS NCI - Medismart</b></h1>
                 </div>
                 <div class="image">
-                    <img src="{{ asset('assets/img/Client.png') }}" alt="">
+                    <img src="{{ asset('storage/' . $clientproductContent['imageView']) }}" alt="">
                 </div>
             </div>
         </div>

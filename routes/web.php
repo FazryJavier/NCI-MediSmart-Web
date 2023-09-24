@@ -84,6 +84,9 @@ Route::get('/ProductView/{id}', function ($productId) {
     $detailproductController = app()->make(DetailProductController::class);
     $detailproductContent = $detailproductController->showContent($productId);
 
+    $clientproductController = app()->make(ClientProductController::class);
+    $clientproductContent = $clientproductController->showContent($productId);
+
     $modulproductController = app()->make(ModulProductController::class);
     $modulproductContent = $modulproductController->showContent($productId);
 
@@ -92,6 +95,7 @@ Route::get('/ProductView/{id}', function ($productId) {
 
     return view('UserPage/Pages/product', [
         'detailproductContent' => $detailproductContent,
+        'clientproductContent' => $clientproductContent,
         'modulproductContent' => $modulproductContent,
         'feedbackContent' => $feedbackContent,
     ]);
