@@ -97,7 +97,6 @@ Route::get('/ProductView/{id}', function ($productId) {
         'modulproductContent' => $modulproductContent,
         'feedbackContent' => $feedbackContent,
     ]);
-    
 });
 
 Route::get('/Modul', function () {
