@@ -26,15 +26,21 @@
             <div class="container">
                 <div class="title">
                     <div class="image">
-                        <img src="{{ asset('storage/' . $detailproductContent['logoView']) }}" alt="">
+                        @isset($detailproductContent['logoView'])
+                            <img src="{{ asset('storage/' . $detailproductContent['logoView']) }}" alt="">
+                        @endisset
                     </div>
                     <div class="description">
                         <div class="text">
-                            <p>{{ $detailproductContent['descriptionView'] }}</p>
+                            @isset($detailproductContent['descriptionView'])
+                                <p>{{ $detailproductContent['descriptionView'] }}</p>
+                            @endisset
                         </div>
                         <div class="button">
                             <a href="#" class="btn-call">Hubungi Kami</a>
-                            <a href="{{ $detailproductContent['flyerView'] }}" class="btn-flyer">Download Flyer</a>
+                            @isset($detailproductContent['flyerView'])
+                                <a href="{{ $detailproductContent['flyerView'] }}" class="btn-flyer">Download Flyer</a>
+                            @endisset
                         </div>
                     </div>
                 </div>
@@ -48,16 +54,19 @@
         <div class="video">
             <div class="container">
                 <div class="screen">
-                    <iframe width="1000" height="700"
-                        src="https://www.youtube.com/embed/{{ $detailproductContent['videoView'] }}"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen controls muted></iframe>
+                    @isset($detailproductContent['videoView'])
+                        <iframe width="1000" height="700"
+                            src="https://www.youtube.com/embed/{{ $detailproductContent['videoView'] }}"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen controls muted></iframe>
+                    @endisset
                 </div>
             </div>
         </div>
     </section>
     {{-- End Video --}}
+
 
     {{-- Client --}}
     <section class="section-client">
@@ -67,7 +76,11 @@
                     <h1><b>Mitra SIMRS NCI - Medismart</b></h1>
                 </div>
                 <div class="image">
-                    <img src="{{ asset('storage/' . $clientproductContent['imageView']) }}" alt="">
+                    @if ($clientproductContent['imageView'])
+                        <img src="{{ asset('storage/' . $clientproductContent['imageView']) }}" alt="">
+                    @else
+                        <img src="{{ asset('storage/placeholder.jpg') }}" alt="Placeholder">
+                    @endif
                 </div>
             </div>
         </div>

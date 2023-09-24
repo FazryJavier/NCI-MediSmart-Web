@@ -24,7 +24,12 @@ class DetailProductController extends Controller
         $detailProduct = DetailProduct::where('productId', $productId)->first();
 
         if (!$detailProduct) {
-            abort(404);
+            return [
+                'logoView' => null,
+                'descriptionView' => null,
+                'flyerView' => null,
+                'videoView' => null,
+            ];
         }
 
         return [

@@ -23,12 +23,10 @@ class ClientProductController extends Controller
     {
         $clientProduct = ClientProduct::where('productId', $productId)->first();
 
-        if (!$clientProduct) {
-            abort(404);
-        }
+        $imageView = $clientProduct ? $clientProduct->image : 'path_to_default_image.jpg';
 
         return [
-            'imageView' => $clientProduct->image,
+            'imageView' => $imageView,
         ];
     }
 
