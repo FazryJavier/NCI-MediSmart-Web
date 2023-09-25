@@ -145,7 +145,7 @@
                                     <div class="center-line"></div>
                                 </div>
                                 <div class="button">
-                                    <a href="#"><i class="fa-solid fa-arrow-right"
+                                    <a href={{ url('/ProductView/' . $productContent['idView'][$index]) }}><i class="fa-solid fa-arrow-right"
                                             style="color: #ffffff;"></i>Pelajari Lanjut</a>
                                 </div>
                             </div>
