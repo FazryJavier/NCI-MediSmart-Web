@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
-class UserController extends Controller
+class RegistrationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('AdminPage.Pages.login');
+        return view('AdminPage.Pages.registration');
     }
 
     /**
@@ -29,9 +29,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'username' => 'required|unique:users',
+            'password' => 'required|min:6',
+            'level' => 'required|in:Admin,Editor',
+        ]);
 
+        User::create([
+            'username' => $request->input('username'),
+            'password' => Hash::make($request->input('password')),
+            'level' => $request->input('level'),
+        ]);
+
+        return redirect('/Admin');
+    }
 
     /**
      * Display the specified resource.
@@ -63,30 +74,5 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-
-    public function authenticate(Request $request)
-    {
-        $credentials = $request->validate([
-            'username' => 'required',
-            'password' => 'required'
-        ]);
-
-        if(Auth::attempt($credentials)){
-            $request->session()->regenerate();
-            return redirect()->intended('/LandingSlider');
-        }
-
-        return back()->with('LoginError', 'Login Gagal!');
-    }
-
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('/Admin');
     }
 }

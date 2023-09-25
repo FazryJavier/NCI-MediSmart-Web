@@ -22,6 +22,7 @@ use App\Http\Controllers\MapFeedbackController;
 use App\Http\Controllers\ModulProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductListController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\WhatsappController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -138,8 +139,11 @@ Route::get('/Admin', [UserController::class, 'index'])->name('Admin');
 Route::post('/Admin', [UserController::class, 'authenticate']);
 Route::post('/logout', [UserController::class, 'logout']);
 
+Route::get('/Registration', [RegistrationController::class, 'index']);
+Route::post('/Registration', [RegistrationController::class, 'store']);
+
 // Landing Slider
-Route::get('/LandingSlider', [LandingSliderController::class, 'index']);
+Route::get('/LandingSlider', [LandingSliderController::class, 'index'])->middleware('auth');
 Route::get('/LandingSlider/create', [LandingSliderController::class, 'create']);
 Route::post('/LandingSlider', [LandingSliderController::class, 'store']);
 Route::get('/LandingSlider/{id}/update', [LandingSliderController::class, 'edit']);
@@ -147,7 +151,7 @@ Route::put('/LandingSlider/{id}', [LandingSliderController::class, 'update']);
 Route::delete('/LandingSlider/{id}', [LandingSliderController::class, 'destroy']);
 
 // Landing Video
-Route::get('/LandingVideo', [LandingVideoController::class, 'index']);
+Route::get('/LandingVideo', [LandingVideoController::class, 'index'])->middleware('auth');
 Route::get('/LandingVideo/create', [LandingVideoController::class, 'create']);
 Route::post('/LandingVideo', [LandingVideoController::class, 'store']);
 Route::get('/LandingVideo/{id}/update', [LandingVideoController::class, 'edit']);
