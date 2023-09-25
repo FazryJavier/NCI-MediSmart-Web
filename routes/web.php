@@ -159,7 +159,7 @@ Route::put('/LandingVideo/{id}', [LandingVideoController::class, 'update']);
 Route::delete('/LandingVideo/{id}', [LandingVideoController::class, 'destroy']);
 
 // Landing Client
-Route::get('/LandingClient', [AllClientController::class, 'index']);
+Route::get('/LandingClient', [AllClientController::class, 'index'])->middleware('auth');
 Route::get('/LandingClient/create', [AllClientController::class, 'create']);
 Route::post('/LandingClient', [AllClientController::class, 'store']);
 Route::get('/LandingClient/{id}/update', [AllClientController::class, 'edit']);
@@ -167,7 +167,7 @@ Route::put('/LandingClient/{id}', [AllClientController::class, 'update']);
 Route::delete('/LandingClient/{id}', [AllClientController::class, 'destroy']);
 
 // Landing Map
-Route::get('/LandingMap', [MapController::class, 'index']);
+Route::get('/LandingMap', [MapController::class, 'index'])->middleware('auth');
 Route::get('/LandingMap/create', [MapController::class, 'create']);
 Route::post('/LandingMap', [MapController::class, 'store']);
 Route::get('/LandingMap/{id}/update', [MapController::class, 'edit']);
@@ -175,7 +175,7 @@ Route::put('/LandingMap/{id}', [MapController::class, 'update']);
 Route::delete('/LandingMap/{id}', [MapController::class, 'destroy']);
 
 // Landing Experience
-Route::get('/Experience', [ExperienceController::class, 'index']);
+Route::get('/Experience', [ExperienceController::class, 'index'])->middleware('auth');
 Route::get('/Experience/create', [ExperienceController::class, 'create']);
 Route::post('/Experience', [ExperienceController::class, 'store']);
 Route::get('/Experience/{id}/update', [ExperienceController::class, 'edit']);
@@ -183,7 +183,7 @@ Route::put('/Experience/{id}', [ExperienceController::class, 'update']);
 Route::delete('/Experience/{id}', [ExperienceController::class, 'destroy']);
 
 // Landing Experience List
-Route::get('/ExperienceList', [ExperienceListController::class, 'index']);
+Route::get('/ExperienceList', [ExperienceListController::class, 'index'])->middleware('auth');
 Route::get('/ExperienceList/create', [ExperienceListController::class, 'create']);
 Route::post('/ExperienceList', [ExperienceListController::class, 'store']);
 Route::get('/ExperienceList/{id}/update', [ExperienceListController::class, 'edit']);
@@ -191,7 +191,7 @@ Route::put('/ExperienceList/{id}', [ExperienceListController::class, 'update']);
 Route::delete('/ExperienceList/{id}', [ExperienceListController::class, 'destroy']);
 
 // Product
-Route::get('/Product', [ProductController::class, 'index']);
+Route::get('/Product', [ProductController::class, 'index'])->middleware('auth');
 Route::get('/Product/create', [ProductController::class, 'create']);
 Route::post('/Product', [ProductController::class, 'store']);
 Route::get('/Product/{id}/update', [ProductController::class, 'edit']);
@@ -199,7 +199,7 @@ Route::put('/Product/{id}', [ProductController::class, 'update']);
 Route::delete('/Product/{id}', [ProductController::class, 'destroy']);
 
 // Product List
-Route::get('/ProductList', [ProductListController::class, 'index']);
+Route::get('/ProductList', [ProductListController::class, 'index'])->middleware('auth');
 Route::get('/ProductList/create', [ProductListController::class, 'create']);
 Route::post('/ProductList', [ProductListController::class, 'store']);
 Route::get('/ProductList/{id}/update', [ProductListController::class, 'edit']);
@@ -207,7 +207,7 @@ Route::put('/ProductList/{id}', [ProductListController::class, 'update']);
 Route::delete('/ProductList/{id}', [ProductListController::class, 'destroy']);
 
 // Product Detail
-Route::get('/DetailProduct', [DetailProductController::class, 'index']);
+Route::get('/DetailProduct', [DetailProductController::class, 'index'])->middleware('auth');
 Route::get('/DetailProduct/create', [DetailProductController::class, 'create']);
 Route::post('/DetailProduct', [DetailProductController::class, 'store']);
 Route::get('/DetailProduct/{id}/update', [DetailProductController::class, 'edit']);
@@ -215,7 +215,7 @@ Route::put('/DetailProduct/{id}', [DetailProductController::class, 'update']);
 Route::delete('/DetailProduct/{id}', [DetailProductController::class, 'destroy']);
 
 // Product Modul
-Route::get('/ModulProduct', [ModulProductController::class, 'index']);
+Route::get('/ModulProduct', [ModulProductController::class, 'index'])->middleware('auth');
 Route::get('/ModulProduct/create', [ModulProductController::class, 'create']);
 Route::post('/ModulProduct', [ModulProductController::class, 'store']);
 Route::get('/ModulProduct/{id}/update', [ModulProductController::class, 'edit']);
@@ -223,7 +223,7 @@ Route::put('/ModulProduct/{id}', [ModulProductController::class, 'update']);
 Route::delete('/ModulProduct/{id}', [ModulProductController::class, 'destroy']);
 
 // Product Modul Advantage
-Route::get('/AdvantageModulProduct', [AdvantageModulProductController::class, 'index']);
+Route::get('/AdvantageModulProduct', [AdvantageModulProductController::class, 'index'])->middleware('auth');
 Route::get('/AdvantageModulProduct/create', [AdvantageModulProductController::class, 'create']);
 Route::post('/AdvantageModulProduct', [AdvantageModulProductController::class, 'store']);
 Route::get('/AdvantageModulProduct/{id}/update', [AdvantageModulProductController::class, 'edit']);
@@ -231,7 +231,7 @@ Route::put('/AdvantageModulProduct/{id}', [AdvantageModulProductController::clas
 Route::delete('/AdvantageModulProduct/{id}', [AdvantageModulProductController::class, 'destroy']);
 
 // Product Modul Fasilities
-Route::get('/FasilitiesModulProduct', [FacilitiesModulProductController::class, 'index']);
+Route::get('/FasilitiesModulProduct', [FacilitiesModulProductController::class, 'index'])->middleware('auth');
 Route::get('/FasilitiesModulProduct/create', [FacilitiesModulProductController::class, 'create']);
 Route::post('/FasilitiesModulProduct', [FacilitiesModulProductController::class, 'store']);
 Route::get('/FasilitiesModulProduct/{id}/update', [FacilitiesModulProductController::class, 'edit']);
@@ -239,7 +239,7 @@ Route::put('/FasilitiesModulProduct/{id}', [FacilitiesModulProductController::cl
 Route::delete('/FasilitiesModulProduct/{id}', [FacilitiesModulProductController::class, 'destroy']);
 
 // Product Modul Image
-Route::get('/ImageModulProduct', [ImageModulProductController::class, 'index']);
+Route::get('/ImageModulProduct', [ImageModulProductController::class, 'index'])->middleware('auth');
 Route::get('/ImageModulProduct/create', [ImageModulProductController::class, 'create']);
 Route::post('/ImageModulProduct', [ImageModulProductController::class, 'store']);
 Route::get('/ImageModulProduct/{id}/update', [ImageModulProductController::class, 'edit']);
@@ -247,7 +247,7 @@ Route::put('/ImageModulProduct/{id}', [ImageModulProductController::class, 'upda
 Route::delete('/ImageModulProduct/{id}', [ImageModulProductController::class, 'destroy']);
 
 // Product Client
-Route::get('/ClientProduct', [ClientProductController::class, 'index']);
+Route::get('/ClientProduct', [ClientProductController::class, 'index'])->middleware('auth');
 Route::get('/ClientProduct/create', [ClientProductController::class, 'create']);
 Route::post('/ClientProduct', [ClientProductController::class, 'store']);
 Route::get('/ClientProduct/{id}/update', [ClientProductController::class, 'edit']);
@@ -255,7 +255,7 @@ Route::put('/ClientProduct/{id}', [ClientProductController::class, 'update']);
 Route::delete('/ClientProduct/{id}', [ClientProductController::class, 'destroy']);
 
 // Product Advantage
-Route::get('/AdvantageProduct', [AdvantageProductController::class, 'index']);
+Route::get('/AdvantageProduct', [AdvantageProductController::class, 'index'])->middleware('auth');
 Route::get('/AdvantageProduct/create', [AdvantageProductController::class, 'create']);
 Route::post('/AdvantageProduct', [AdvantageProductController::class, 'store']);
 Route::get('/AdvantageProduct/{id}/update', [AdvantageProductController::class, 'edit']);
@@ -263,7 +263,7 @@ Route::put('/AdvantageProduct/{id}', [AdvantageProductController::class, 'update
 Route::delete('/AdvantageProduct/{id}', [AdvantageProductController::class, 'destroy']);
 
 // Product Advantage List
-Route::get('/AdvantageListProduct', [AdvantageListProductController::class, 'index']);
+Route::get('/AdvantageListProduct', [AdvantageListProductController::class, 'index'])->middleware('auth');
 Route::get('/AdvantageListProduct/create', [AdvantageListProductController::class, 'create']);
 Route::post('/AdvantageListProduct', [AdvantageListProductController::class, 'store']);
 Route::get('/AdvantageListProduct/{id}/update', [AdvantageListProductController::class, 'edit']);
@@ -271,7 +271,7 @@ Route::put('/AdvantageListProduct/{id}', [AdvantageListProductController::class,
 Route::delete('/AdvantageListProduct/{id}', [AdvantageListProductController::class, 'destroy']);
 
 // About Us
-Route::get('/AboutUs', [AboutController::class, 'index']);
+Route::get('/AboutUs', [AboutController::class, 'index'])->middleware('auth');
 Route::get('/AboutUs/create', [AboutController::class, 'create']);
 Route::post('/AboutUs', [AboutController::class, 'store']);
 Route::get('/AboutUs/{id}/update', [AboutController::class, 'edit']);
@@ -279,7 +279,7 @@ Route::put('/AboutUs/{id}', [AboutController::class, 'update']);
 Route::delete('/AboutUs/{id}', [AboutController::class, 'destroy']);
 
 // Feedback
-Route::get('/Feedback', [FeedbackController::class, 'index']);
+Route::get('/Feedback', [FeedbackController::class, 'index'])->middleware('auth');
 Route::get('/Feedback/create', [FeedbackController::class, 'create']);
 Route::post('/Feedback', [FeedbackController::class, 'store']);
 Route::get('/Feedback/{id}/update', [FeedbackController::class, 'edit']);
@@ -287,7 +287,7 @@ Route::put('/Feedback/{id}', [FeedbackController::class, 'update']);
 Route::delete('/Feedback/{id}', [FeedbackController::class, 'destroy']);
 
 // Map
-Route::get('/MapFeedback', [MapFeedbackController::class, 'index']);
+Route::get('/MapFeedback', [MapFeedbackController::class, 'index'])->middleware('auth');
 Route::get('/MapFeedback/create', [MapFeedbackController::class, 'create']);
 Route::post('/MapFeedback', [MapFeedbackController::class, 'store']);
 Route::get('/MapFeedback/{id}/update', [MapFeedbackController::class, 'edit']);
@@ -295,7 +295,7 @@ Route::put('/MapFeedback/{id}', [MapFeedbackController::class, 'update']);
 Route::delete('/MapFeedback/{id}', [MapFeedbackController::class, 'destroy']);
 
 // Blog 
-Route::get('/Article', [ArticleController::class, 'index']);
+Route::get('/Article', [ArticleController::class, 'index'])->middleware('auth');
 Route::get('/Article/create', [ArticleController::class, 'create']);
 Route::post('/Article', [ArticleController::class, 'store']);
 Route::get('/Article/{id}/update', [ArticleController::class, 'edit']);
@@ -303,7 +303,7 @@ Route::put('/Article/{id}', [ArticleController::class, 'update']);
 Route::delete('/Article/{id}', [ArticleController::class, 'destroy']);
 
 // Demo 
-Route::get('DemoList', [DemoController::class, 'index']);
+Route::get('DemoList', [DemoController::class, 'index'])->middleware('auth');
 Route::get('/DemoList/create', [DemoController::class, 'create']);
 Route::post('/DemoList', [DemoController::class, 'store']);
 Route::get('/DemoList/{id}/update', [DemoController::class, 'edit']);
@@ -311,7 +311,7 @@ Route::put('/DemoList/{id}', [DemoController::class, 'update']);
 Route::delete('/DemoList/{id}', [DemoController::class, 'destroy']);
 
 // CTA 
-Route::get('CTA', [CTAController::class, 'index']);
+Route::get('CTA', [CTAController::class, 'index'])->middleware('auth');
 Route::get('/CTA/create', [CTAController::class, 'create']);
 Route::post('/CTA', [CTAController::class, 'store']);
 Route::get('/CTA/{id}/update', [CTAController::class, 'edit']);
@@ -319,7 +319,7 @@ Route::put('/CTA/{id}', [CTAController::class, 'update']);
 Route::delete('/CTA/{id}', [CTAController::class, 'destroy']);
 
 // Whatsapp
-Route::get('/Whatsapp', [WhatsappController::class, 'index']);
+Route::get('/Whatsapp', [WhatsappController::class, 'index'])->middleware('auth');
 Route::get('/Whatsapp/create', [WhatsappController::class, 'create']);
 Route::post('/Whatsapp', [WhatsappController::class, 'store']);
 Route::get('/Whatsapp/{id}/update', [WhatsappController::class, 'edit']);
