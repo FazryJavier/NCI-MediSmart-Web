@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>V-Claim / BPJS Claim</title>
+    <title>Modul NCI Medismart</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style-modul.css') }}">
     {{-- Swiper CSS --}}
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
@@ -51,23 +51,13 @@
                         <h1>
                 </div>
                 <div class="wrapper">
-                    <div class="card">
-                        <img src="{{ asset('assets/img/vector1.png') }}" alt="">
-                        <h3><b>Import data pelayanan dari SIM RS</b></h3>
-                        <p>Terintergrasi dengan data pasien pelayanan dari RWJ, RWI, atau IGD.</p>
-                    </div>
-
-                    <div class="card">
-                        <img src="{{ asset('assets/img/vector2.png') }}" alt="">
-                        <h3><b>Export data ke aplikasi klaim BPJS (INA-CBGs)</b></h3>
-                        <p>Laporan data dengan format .txt untuk di intergrasi ke aplikasi INA-CBGs.</p>
-                    </div>
-
-                    <div class="card">
-                        <img src="{{ asset('assets/img/vector3.png') }}" alt="">
-                        <h3><b>Cek data hasil export pada aplikasi INA-CBGs Kemenkes</b></h3>
-                        <p>Pengecekan data peserta BPJS dan rujukan pasien.</p>
-                    </div>
+                    @foreach ($advantagemodulContent as $advantageModul)
+                        <div class="card">
+                            <img src="{{ asset('storage/' . $advantageModul->icon) }}" alt="">
+                            <h3><b>{{ $advantageModul->title }}</b></h3>
+                            <p>{{ $advantageModul->description }}</p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -88,17 +78,10 @@
                         </div>
                         <div class="list">
                             <ul>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Import data
-                                    pelayanan Pasien</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Integrasi proses,
-                                    grouper tarif dengan software INA-CBGs</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Setup ICD IX</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Rekap Biaya
-                                    Pelayanan vs Tarif INA-CBGs</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan jasa medis
-                                    dan Paramedis</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan perbandingan
-                                    SEP dan Claim</li>
+                                @foreach ($fasilities1 as $fs1)
+                                    <li><i class="fa-solid fa-circle-check"
+                                            style="color: #1bad4b;"></i>{{ $fs1->description }}</li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

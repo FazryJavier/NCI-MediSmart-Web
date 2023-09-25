@@ -18,6 +18,14 @@ class FacilitiesModulProductController extends Controller
         return view('AdminPage.Pages.Product.FasilitiesModul.index', compact('facilitiesModulProduct'));
     }
 
+    public function showContent()
+    {
+        $fasilities1 = FacilitiesModulProduct::where('list', 1)->get();
+        $fasilities2 = FacilitiesModulProduct::where('list', 2)->get();
+
+        return view('UserPage.Pages.modul', compact('fasilities1', 'fasilities2'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -11,9 +11,9 @@
             @csrf
             @method('PUT')
             <div class="mb-3">
-                <label for="modulId" class="form-label">Product Id</label>
+                <label for="modulId" class="form-label">Modul Id</label>
                 <select name="modulId" class="custom-select rounded-0" id="modulId">
-                    <option value="">Select a Product</option>
+                    <option value="">Select a Modul</option>
                     @foreach ($modulProducts as $modulProduct)
                         <option value="{{ $modulProduct->id }}" @if ($modulProduct->id == $advantageModulProduct->modulId) selected @endif>
                             {{ $modulProduct->title }}</option>

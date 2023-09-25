@@ -130,18 +130,20 @@
                 <div class="wrapper">
                     @foreach ($modulproductContent as $modulProduct)
                         <div class="card">
-                            <div class="title">
-                                <h3>{{ $modulProduct->title }}</h3>
-                            </div>
-                            <div class="image">
-                                <img src="{{ asset('storage/' . $modulProduct->icon) }}" alt="">
-                            </div>
-                            <div class="description">
-                                <p>{{ $modulProduct->description }}</p>
-                            </div>
-                            <div class="btn-more">
-                                <a href="#">Pelajari Lebih Lanjut...</a>
-                            </div>
+                            <a href="/">
+                                <div class="title">
+                                    <h3>{{ $modulProduct->title }}</h3>
+                                </div>
+                                <div class="image">
+                                    <img src="{{ asset('storage/' . $modulProduct->icon) }}" alt="">
+                                </div>
+                                <div class="description">
+                                    <p>{{ $modulProduct->description }}</p>
+                                </div>
+                                <div class="btn-more">
+                                    <a href="/">Pelajari Lebih Lanjut...</a>
+                                </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>

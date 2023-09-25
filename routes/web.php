@@ -101,8 +101,17 @@ Route::get('/ProductView/{id}', function ($productId) {
     ]);
 });
 
-Route::get('/Modul', function () {
-    return view('UserPage/Pages/modul');
+Route::get('/Modul/{id}', function ($modulId) {
+    $advantagemodulController = app()->make(AdvantageModulProductController::class);
+    $advantagemodulContent = $advantagemodulController->showContent($modulId);
+
+    $fasilitiesmodulController = app()->make(FacilitiesModulProductController::class);
+    $fasilitiesmodulContent = $fasilitiesmodulController->showContent($modulId);
+
+    return view('UserPage/Pages/modul', [
+        'advantagemodulContent' => $advantagemodulContent,
+        'fasilitiesmodulContent' => $fasilitiesmodulContent,
+    ]);
 });
 
 Route::get('/HealthcareSolution', function () {

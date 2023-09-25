@@ -19,6 +19,13 @@ class AdvantageModulProductController extends Controller
         return view('AdminPage.Pages.Product.AdvantageModulProduct.index', compact('advantageModulProduct'));
     }
 
+    public function showContent($modulId)
+    {
+        $advantageModulProducts = AdvantageModulProduct::where('modulId', $modulId)->get();
+
+        return $advantageModulProducts;
+    }
+
     /**
      * Show the form for creating a new resource.
      */
