@@ -23,7 +23,9 @@ class AdvantageModulProductController extends Controller
     {
         $advantageModulProducts = AdvantageModulProduct::where('modulId', $modulId)->get();
 
-        return $advantageModulProducts;
+        return [
+            'advantageModulProducts' => $advantageModulProducts,
+        ];
     }
 
     /**

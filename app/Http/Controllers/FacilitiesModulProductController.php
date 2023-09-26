@@ -18,12 +18,15 @@ class FacilitiesModulProductController extends Controller
         return view('AdminPage.Pages.Product.FasilitiesModul.index', compact('facilitiesModulProduct'));
     }
 
-    public function showContent()
+    public function showContent($modulId)
     {
-        $fasilities1 = FacilitiesModulProduct::where('list', 1)->get();
-        $fasilities2 = FacilitiesModulProduct::where('list', 2)->get();
+        $fasilities1 = FacilitiesModulProduct::where('list', 1)->where('modulId', $modulId)->get();
+        $fasilities2 = FacilitiesModulProduct::where('list', 2)->where('modulId', $modulId)->get();
 
-        return view('UserPage.Pages.modul', compact('fasilities1', 'fasilities2'));
+        return [
+            'fasilities1' => $fasilities1,
+            'fasilities2' => $fasilities2,
+        ];
     }
 
     /**

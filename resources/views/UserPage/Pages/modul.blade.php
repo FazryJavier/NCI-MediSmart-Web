@@ -47,11 +47,10 @@
         <div class="advantage">
             <div class="container">
                 <div class="title">
-                    <h1><b>V-Claim / BPJS Claim.</b>
-                        <h1>
+                    <h1><b>V-Claim / BPJS Claim.</b></h1>
                 </div>
                 <div class="wrapper">
-                    @foreach ($advantagemodulContent as $advantageModul)
+                    @foreach ($advantageModulProducts as $advantageModul)
                         <div class="card">
                             <img src="{{ asset('storage/' . $advantageModul->icon) }}" alt="">
                             <h3><b>{{ $advantageModul->title }}</b></h3>
@@ -63,6 +62,7 @@
         </div>
     </section>
     {{-- End Advantage --}}
+
 
     {{-- Fasilitas --}}
     <section class="section-fasilitas">
@@ -88,22 +88,10 @@
                     <div class="description-2">
                         <div class="list">
                             <ul>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Verifikasi Data
-                                    Pasien
-                                </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Setup ICD X</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Klaim per
-                                    Pasien
-                                </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Rekap Claim
-                                    BPJS
-                                </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Rekapitulasi
-                                    Tarif Per Pasien</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Rekap Claim
-                                    BPJS-Rawat Jalan</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Individual
-                                    Pasien</li>
+                                @foreach ($fasilities2 as $fs2)
+                                    <li><i class="fa-solid fa-circle-check"
+                                            style="color: #1bad4b;"></i>{{ $fs2->description }}</li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="image">
@@ -115,6 +103,7 @@
         </div>
     </section>
     {{-- End Fasilitas --}}
+
 
     {{-- Testimoni --}}
     <section class="section-testimoni">
