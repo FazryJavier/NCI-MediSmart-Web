@@ -47,10 +47,11 @@
         <div class="advantage">
             <div class="container">
                 <div class="title">
-                    <h1><b>V-Claim / BPJS Claim.</b></h1>
+                    <h1><b>V-Claim / BPJS Claim.</b>
+                        <h1>
                 </div>
                 <div class="wrapper">
-                    @foreach ($advantageModulProducts as $advantageModul)
+                    @foreach ($advantagemodulContent as $advantageModul)
                         <div class="card">
                             <img src="{{ asset('storage/' . $advantageModul->icon) }}" alt="">
                             <h3><b>{{ $advantageModul->title }}</b></h3>
@@ -62,7 +63,6 @@
         </div>
     </section>
     {{-- End Advantage --}}
-
 
     {{-- Fasilitas --}}
     <section class="section-fasilitas">
@@ -78,20 +78,32 @@
                         </div>
                         <div class="list">
                             <ul>
-                                @foreach ($fasilities1 as $fs1)
+                                {{-- @foreach ($fasilities1 as $fs1)
                                     <li><i class="fa-solid fa-circle-check"
                                             style="color: #1bad4b;"></i>{{ $fs1->description }}</li>
-                                @endforeach
+                                @endforeach --}}
                             </ul>
                         </div>
                     </div>
                     <div class="description-2">
                         <div class="list">
                             <ul>
-                                @foreach ($fasilities2 as $fs2)
-                                    <li><i class="fa-solid fa-circle-check"
-                                            style="color: #1bad4b;"></i>{{ $fs2->description }}</li>
-                                @endforeach
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Verifikasi Data
+                                    Pasien
+                                </li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Setup ICD X</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Klaim per
+                                    Pasien
+                                </li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Rekap Claim
+                                    BPJS
+                                </li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Rekapitulasi
+                                    Tarif Per Pasien</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Rekap Claim
+                                    BPJS-Rawat Jalan</li>
+                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Individual
+                                    Pasien</li>
                             </ul>
                         </div>
                         <div class="image">
@@ -103,7 +115,6 @@
         </div>
     </section>
     {{-- End Fasilitas --}}
-
 
     {{-- Testimoni --}}
     <section class="section-testimoni">

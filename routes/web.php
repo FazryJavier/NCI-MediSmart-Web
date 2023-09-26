@@ -105,14 +105,16 @@ Route::get('/Modul/{id}', function ($modulId) {
     $advantagemodulController = app()->make(AdvantageModulProductController::class);
     $advantagemodulContent = $advantagemodulController->showContent($modulId);
 
-    $fasilitiesmodulController = app()->make(FacilitiesModulProductController::class);
-    $fasilitiesmodulContent = $fasilitiesmodulController->showContent($modulId);
+    // $fasilitiesmodulController = app()->make(FacilitiesModulProductController::class);
+    // $fasilitiesmodulContent = $fasilitiesmodulController->showContent($modulId);
 
     return view('UserPage/Pages/modul', [
         'advantagemodulContent' => $advantagemodulContent,
-        'fasilitiesmodulContent' => $fasilitiesmodulContent,
+        // 'fasilitiesmodulContent' => $fasilitiesmodulContent,
     ]);
 });
+
+Route::get('/Modul/{id}', [ModulProductController::class, 'showModul'])->name('modul.show');
 
 Route::get('/HealthcareSolution', function () {
     $aboutController = app()->make(AboutController::class);
@@ -336,7 +338,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Whatsapp/{id}/update', [WhatsappController::class, 'edit']);
     Route::put('/Whatsapp/{id}', [WhatsappController::class, 'update']);
     Route::delete('/Whatsapp/{id}', [WhatsappController::class, 'destroy']);
-
 });
 
 // Show Image

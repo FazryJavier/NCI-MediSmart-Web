@@ -26,6 +26,27 @@ class ModulProductController extends Controller
         return $modulProducts;
     }
 
+    // public function showContentHome()
+    // {
+    //     $modul = ModulProduct::latest('id')->get();
+
+    //     $titleView = $modul->pluck('title');
+    //     $descriptionView = $modul->pluck('description');
+    //     $imageView = $modul->pluck('icon');
+    //     $idView = $modul->pluck('id');
+    //     return [
+    //         'titleView' => $titleView,
+    //         'descriptionView' => $descriptionView,
+    //         'imageView' => $imageView,
+    //         'idView' => $idView,
+    //     ];
+    // }
+    public function showModul($id)
+    {
+        $modulProduct = ModulProduct::where('id', $id)->first();
+
+        return view('UserPage.Pages.modul', compact('modulProduct'));
+    }
     /**
      * Show the form for creating a new resource.
      */

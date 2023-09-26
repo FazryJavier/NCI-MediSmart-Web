@@ -130,7 +130,7 @@
                 <div class="wrapper">
                     @foreach ($modulproductContent as $modulProduct)
                         <div class="card">
-                            <a href="/">
+                            <a href="{{ route('modul.show', ['id' => $modulProduct['id']]) }}">
                                 <div class="title">
                                     <h3>{{ $modulProduct->title }}</h3>
                                 </div>
@@ -141,7 +141,8 @@
                                     <p>{{ $modulProduct->description }}</p>
                                 </div>
                                 <div class="btn-more">
-                                    <a href="/">Pelajari Lebih Lanjut...</a>
+                                    <a href="{{ route('modul.show', ['id' => $modulProduct['id']]) }}">Pelajari
+                                        Lebih Lanjut...</a>
                                 </div>
                             </a>
                         </div>

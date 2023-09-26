@@ -19,6 +19,12 @@ class ProductController extends Controller
         return view('AdminPage.Pages.Product.Product.index', compact('product'));
     }
 
+    public function showModul($id)
+    {
+        $modulProduct = ModulProduct::where('productId', $id)->get();
+
+        return view('AdminPage.Pages.modul', compact('modulProduct'));
+    }
     public function showContent()
     {
 
