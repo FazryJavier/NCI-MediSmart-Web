@@ -20,6 +20,7 @@ use App\Http\Controllers\LandingVideoController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\MapFeedbackController;
 use App\Http\Controllers\ModulProductController;
+use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\RegistrationController;
@@ -302,6 +303,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Article/{id}/update', [ArticleController::class, 'edit']);
     Route::put('/Article/{id}', [ArticleController::class, 'update']);
     Route::delete('/Article/{id}', [ArticleController::class, 'destroy']);
+
+    // Navbar
+    Route::get('/Navbar', [NavbarController::class, 'index']);
+    Route::get('/Navbar/create', [NavbarController::class, 'create']);
+    Route::post('/Navbar', [NavbarController::class, 'store']);
+    Route::get('/Navbar/{id}/update', [NavbarController::class, 'edit']);
+    Route::put('/Navbar/{id}', [NavbarController::class, 'update']);
+    Route::delete('/Navbar/{id}', [NavbarController::class, 'destroy']);
 
     // Demo 
     Route::get('DemoList', [DemoController::class, 'index']);

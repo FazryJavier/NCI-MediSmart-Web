@@ -30,4 +30,9 @@ class Product extends Model
     {
         return $this->hasMany(ModulProduct::class, 'productId');
     }
+
+    public function navbars()
+    {
+        return $this->hasMany(Navbar::class, 'productId')->cascadeDeletes();
+    }
 }

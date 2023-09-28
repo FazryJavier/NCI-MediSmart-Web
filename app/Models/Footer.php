@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Footer extends Model
 {
     use HasFactory;
+    protected $table='footers';
+    protected $guarded=[];
+
+    public function products()
+    {
+        return $this->belongsTo(Product::class, 'productId');
+    }
 }

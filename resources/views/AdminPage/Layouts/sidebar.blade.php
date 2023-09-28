@@ -224,13 +224,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="admin-home" class="nav-link">
+                            <a href="/Navbar" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Top Navbar</p>
+                                <p>Navbar</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Bottom Bar</p>
                             </a>

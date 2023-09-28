@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Navbar;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NavbarController extends Controller
 {
@@ -12,7 +14,16 @@ class NavbarController extends Controller
      */
     public function index()
     {
-        //
+        $navbar = Navbar::all();
+
+        return view('AdminPage.Pages.Navbar.index', compact('navbar'));
+    }
+
+    public static function showContent()
+    {
+        $navbarContent = Navbar::all();
+
+        return $navbarContent;
     }
 
     /**
@@ -20,7 +31,9 @@ class NavbarController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+
+        return view('AdminPage.Pages.Navbar.create', compact('products'));
     }
 
     /**
@@ -28,38 +41,84 @@ class NavbarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'productId' => 'required',
+            'icon' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+        ]);
+
+        if ($request->file('icon')) {
+            $validatedData['icon'] = $request->file('icon')->store('file-image');
+        }
+
+        Navbar::create($validatedData);
+
+        return redirect('/Navbar');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Navbar $navbar)
+    public function show(Navbar $id)
     {
-        //
+        $navbar = Navbar::find($id);
+
+        return view('AdminPage.Pages.Navbar.index', compact('navbar'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Navbar $navbar)
+    public function edit($id)
     {
-        //
+        $navbar = Navbar::where('id', $id)->firstorfail();
+
+        $products = Product::all();
+
+        return view('AdminPage.Pages.Navbar.update', compact('navbar', 'products'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Navbar $navbar)
+    public function update(Request $request, $id)
     {
-        //
+        $content = [
+            'productId' => 'required',
+            'icon' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+        ];
+
+        $validatedData = $request->validate($content);
+
+        $navbar = Navbar::find($id);
+
+        if ($request->hasFile('icon')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+
+            $validatedData['icon'] = $request->file('icon')->store('file-image');
+        }
+
+        $navbar->update($validatedData);
+
+        return redirect('/Navbar');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Navbar $navbar)
+    public function destroy($id)
     {
-        //
+        $navbar = Navbar::findOrFail($id);
+
+        $imagepath = $navbar->image;
+
+        $navbar->delete();
+
+        if ($imagepath && Storage::disk('local')->exists($imagepath)) {
+            Storage::disk('local')->delete($imagepath);
+        }
+
+        return redirect('/Navbar');
     }
 }
