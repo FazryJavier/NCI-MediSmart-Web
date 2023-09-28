@@ -31,7 +31,11 @@ class ArticleController extends Controller
     public function showContentdetailBlog($id)
     {
         $articles = Article::where('id', $id)->first();
-        $articles2 = Article::where('prioritize', 2)->latest('created_at')->take(3)->get();
+        $articles2 = Article::where('id', '!=', $id)
+        ->where('prioritize', 2)
+        ->latest('created_at')
+        ->take(3)
+        ->get();
 
         return view('UserPage.Pages.detail', compact('articles', 'articles2'));
     }
