@@ -50,7 +50,7 @@ class FacilitiesModulProductController extends Controller
             'list' => 'required',
         ]);
 
-        $descriptions = explode(',', $request->input('description'));
+        $descriptions = explode(';', $request->input('description'));
 
         foreach ($descriptions as $description) {
             FacilitiesModulProduct::create([

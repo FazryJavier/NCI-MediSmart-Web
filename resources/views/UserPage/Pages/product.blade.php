@@ -102,10 +102,12 @@
                             </div>
                             <div class="description">
                                 <h3>{{ $advantageProduct->title }}</h3>
+                                <br>
                                 @foreach ($advantageProduct->advantageListProducts as $advantageList)
                                     <ul>
                                         <li><i class="fa-solid fa-circle-check"
                                                 style="color: #1bad4b;"></i>{{ $advantageList->name }}</li>
+                                        <br>
                                     </ul>
                                 @endforeach
                             </div>

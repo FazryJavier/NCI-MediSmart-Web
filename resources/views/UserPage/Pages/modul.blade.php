@@ -86,22 +86,6 @@
                     <div class="description-2">
                         <div class="list">
                             <ul>
-                                {{-- <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Verifikasi Data
-                                    Pasien
-                                </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Setup ICD X</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Klaim per
-                                    Pasien
-                                </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Rekap Claim
-                                    BPJS
-                                </li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Rekapitulasi
-                                    Tarif Per Pasien</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Rekap Claim
-                                    BPJS-Rawat Jalan</li>
-                                <li><i class="fa-solid fa-circle-check" style="color: #1bad4b;"></i>Laporan Individual
-                                    Pasien</li> --}}
                                 @foreach ($listfasilitasModulProducts2 as $fs2)
                                     <li><i class="fa-solid fa-circle-check"
                                             style="color: #1bad4b;"></i>{{ $fs2->description }}</li>
@@ -139,50 +123,6 @@
                                 </div>
                             </div>
                         @endforeach
-                        {{-- <div class="card swiper-slide">
-                                <div class="image">
-                                    <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                                </div>
-                                <div class="description">
-                                    <h3>RSU Bhaksi Asih</h3>
-                                    <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan,
-                                        pencarian
-                                        dan pelaporan. Support personil site dan dukungan purna jual dari kantor pusat,
-                                        sangat membantu rumah sakit dalam memberikan usulan solusi dari setiap
-                                        permasalahan"
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="card swiper-slide">
-                                <div class="image">
-                                    <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                                </div>
-                                <div class="description">
-                                    <h3>RSU Bhaksi Asih</h3>
-                                    <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan,
-                                        pencarian
-                                        dan pelaporan. Support personil site dan dukungan purna jual dari kantor pusat,
-                                        sangat membantu rumah sakit dalam memberikan usulan solusi dari setiap
-                                        permasalahan"
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="card swiper-slide">
-                                <div class="image">
-                                    <img src="{{ asset('assets/img/rumah-sakit.png') }}" alt="">
-                                </div>
-                                <div class="description">
-                                    <h3>RSU Bhaksi Asih</h3>
-                                    <p>"Mudah digunakan (user friendly), sangat membantu dalam proses pencatatan,
-                                        pencarian
-                                        dan pelaporan. Support personil site dan dukungan purna jual dari kantor pusat,
-                                        sangat membantu rumah sakit dalam memberikan usulan solusi dari setiap
-                                        permasalahan"
-                                    </p>
-                                </div>
-                            </div> --}}
                     </div>
                     <div class="swiper-button-next nav-btn"></div>
                     <div class="swiper-button-prev nav-btn"></div>

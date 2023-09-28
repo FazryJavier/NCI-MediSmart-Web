@@ -26,7 +26,7 @@
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
-                <span class="description">*Ukuran gambar 228x228px atau 1:1 dan ukuran maksimal 2MB</span>
+                <span class="description">*Ukuran gambar 300x300px dan ukuran maksimal 5MB</span>
                 <input type="hidden" name="oldImage" value="{{ $advantageProduct->icon }}">
                 @if ($advantageProduct->icon)
                     <img src="{{ asset('storage/' . $advantageProduct->icon) }}" alt="image"
@@ -41,8 +41,8 @@
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image" name="image"
                             onchange="previewImage()">
-                        <label class="custom-file-label" for="label">Choose file <span class="description">(*.jpeg,
-                                *.png, *.jpg)</label>
+                        <label class="custom-file-label" for="label">Choose file <span class="description">(*.jpeg, .png,
+                                .jpg, .gif, .webp)</label>
                     </div>
                 </div>
             </div>

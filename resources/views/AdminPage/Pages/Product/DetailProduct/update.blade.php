@@ -21,7 +21,7 @@
             </div>
             <div class="mb-3">
                 <label for="logo" class="form-label">Image File</label>
-                <span class="description">*Ukuran gambar 4320x948px atau 16:9 dan ukuran maksimal 2MB</span>
+                <span class="description">*Ukuran gambar 1920x347px dan ukuran maksimal 5MB</span>
                 <input type="hidden" name="oldImage" value="{{ $detailProduct->logo }}">
                 @if ($detailProduct->logo)
                     <img src="{{ asset('storage/' . $detailProduct->logo) }}" alt="image"
@@ -36,8 +36,8 @@
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image" name="logo"
                             onchange="previewImage()">
-                        <label class="custom-file-label" for="label">Choose file <span class="description">(*.jpeg,
-                                *.png, *.jpg)</label>
+                        <label class="custom-file-label" for="label">Choose file <span class="description">(*.jpeg, .png,
+                                .jpg, .gif, .webp)</label>
                     </div>
                 </div>
             </div>
@@ -47,11 +47,16 @@
             </div>
             <div class="mb-3">
                 <label for="flyer" class="form-label">Link Flyer</label>
-                <input type="text" value="{{ $detailProduct->flyer }}" name="flyer" class="form-control" id="formGroupExampleInput">
+                <input type="text" value="{{ $detailProduct->flyer }}" name="flyer" class="form-control"
+                    id="formGroupExampleInput">
             </div>
             <div class="mb-3">
                 <label for="video" class="form-label">Video</label>
-                <input type="text" value="{{ $detailProduct->video }}" name="video" class="form-control" id="formGroupExampleInput">
+                <span class="description">*Masukkan token yang ada pada link youtube. Ex :
+                    https://www.youtube.com/watch?v=<b>JzmHxafphj0</b>&ab_channel=SIMRSNCIMediSmart = <b>Token :
+                        JzmHxafphj0</b></span>
+                <input type="text" value="{{ $detailProduct->video }}" name="video" class="form-control"
+                    id="formGroupExampleInput">
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>

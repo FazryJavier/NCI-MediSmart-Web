@@ -57,7 +57,7 @@ class DetailProductController extends Controller
     {
         $validatedData = $request->validate([
             'productId' => 'required',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'description' => 'required',
             'flyer' => 'required',
             'video' => 'required',
@@ -101,7 +101,7 @@ class DetailProductController extends Controller
     {
         $content = [
             'productId' => 'required',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'description' => 'required',
             'flyer' => 'required',
             'video' => 'required',

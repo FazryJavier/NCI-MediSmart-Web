@@ -45,7 +45,7 @@ class AdvantageModulProductController extends Controller
     {
         $validatedData = $request->validate([
             'modulId' => 'required',
-            'icon' => 'image|mimes:jpeg,png,jpg,gif',
+            'icon' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'title' => 'required',
             'description' => 'required',
         ]);
@@ -88,7 +88,7 @@ class AdvantageModulProductController extends Controller
     {
         $content = [
             'modulId' => 'required',
-            'icon' => 'image|mimes:jpeg,png,jpg,gif',
+            'icon' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'title' => 'required',
             'description' => 'required',
         ];

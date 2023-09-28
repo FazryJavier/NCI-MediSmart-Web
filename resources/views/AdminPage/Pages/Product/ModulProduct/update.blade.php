@@ -29,8 +29,8 @@
                 <textarea name="description" class="form-control" rows="5">{{ $modulProduct->description }}"</textarea>
             </div>
             <div class="mb-3">
-                <label for="icon" class="form-label">Image File</label>
-                <span class="description">*Ukuran gambar 4320x948px atau 16:9 dan ukuran maksimal 2MB</span>
+                <label for="icon" class="form-label">Icon File</label>
+                <span class="description">*Ukuran gambar 300x300px dan ukuran maksimal 5MB</span>
                 <input type="hidden" name="oldImage" value="{{ $modulProduct->icon }}">
                 @if ($modulProduct->icon)
                     <img src="{{ asset('storage/' . $modulProduct->icon) }}" alt="image"
@@ -45,8 +45,8 @@
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image" name="icon"
                             onchange="previewImage()">
-                        <label class="custom-file-label" for="label">Choose file <span class="description">(*.jpeg,
-                                *.png, *.jpg)</label>
+                        <label class="custom-file-label" for="label">Choose file <span class="description">(*.jpeg, .png,
+                                .jpg, .gif, .webp)</label>
                     </div>
                 </div>
             </div>

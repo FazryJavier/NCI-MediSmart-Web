@@ -27,8 +27,8 @@
                 <textarea name="description" class="form-control" rows="5"></textarea>
             </div>
             <div class="mb-3">
-                <label for="icon" class="form-label">Image File</label>
-                <span class="description">*Ukuran gambar 4320x948px atau 16:9 dan ukuran maksimal 2MB</span>
+                <label for="icon" class="form-label">Icon File</label>
+                <span class="description">*Ukuran gambar 300x300px dan ukuran maksimal 5MB</span>
                 <img class="img-preview img-fluid mb-3 mt-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -36,8 +36,8 @@
                     </div>
                     <div class="custom-file">
                         <input type="file" class="form-control" id="image" name="icon" onchange="previewImage()">
-                        <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg,
-                                *.png, *.jpg)</label>
+                        <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg, .png,
+                                .jpg, .gif, .webp)</label>
                     </div>
                 </div>
             </div>

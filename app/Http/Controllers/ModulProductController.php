@@ -41,8 +41,8 @@ class ModulProductController extends Controller
         $modulProduct = ModulProduct::where('id', $id)->get();
         $modul = ModulProduct::where('id', $id)->first();
         $advantageModulProducts = AdvantageModulProduct::where('modulId', $id)->get();
-        $listfasilitasModulProducts1 = FacilitiesModulProduct::where('list', 1)->get();
-        $listfasilitasModulProducts2 = FacilitiesModulProduct::where('list', 2)->get();
+        $listfasilitasModulProducts1 = FacilitiesModulProduct::where('list', 1)->where('modulId', $id)->get();
+        $listfasilitasModulProducts2 = FacilitiesModulProduct::where('list', 2)->where('modulId', $id)->get();
         $feedback = Feedback::where('id', $id)->get();
 
         return view('UserPage.Pages.modul', compact('modulProduct', 'advantageModulProducts', 'listfasilitasModulProducts1', 'listfasilitasModulProducts2', 'modul', 'feedback'));
@@ -66,7 +66,7 @@ class ModulProductController extends Controller
             'productId' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'icon' => 'image|mimes:jpeg,png,jpg,gif',
+            'icon' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
 
         if ($request->file('icon')) {
@@ -109,7 +109,7 @@ class ModulProductController extends Controller
             'productId' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'icon' => 'image|mimes:jpeg,png,jpg,gif',
+            'icon' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ];
 
         $validatedData = $request->validate($content);

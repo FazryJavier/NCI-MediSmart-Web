@@ -20,7 +20,9 @@
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <input type="text" name="description" class="form-control" id="formGroupExampleInput">
+                <span class="description">*Pisahkan dengan titik koma (;) jika yang diinputkan ingin langsung seluruh list,
+                    contoh : Satu;Dua;Tiga</span>
+                <textarea name="description" class="form-control" rows="5"></textarea>
             </div>
             <div class="mb-3">
                 <label for="list" class="form-label">List</label>

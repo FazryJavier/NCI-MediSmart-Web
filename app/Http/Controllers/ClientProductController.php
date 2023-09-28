@@ -47,7 +47,7 @@ class ClientProductController extends Controller
     {
         $validatedData = $request->validate([
             'productId' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
 
         if ($request->file('image')) {
@@ -88,7 +88,7 @@ class ClientProductController extends Controller
     {
         $content = [
             'productId' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ];
 
         $validatedData = $request->validate($content);

@@ -88,6 +88,38 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/ClientProduct" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Client Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/AdvantageProduct" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Advantage Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/AdvantageListProduct" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Advantage List Product</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- End Product --}}
+
+                {{-- Modul --}}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Modul
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
                             <a href="/ModulProduct" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Modul Product</p>
@@ -111,27 +143,9 @@
                                 <p>Image Modul</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/ClientProduct" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Client Product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/AdvantageProduct" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Advantage Product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/AdvantageListProduct" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Advantage List Product</p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
-                {{-- End Product --}}
+                {{-- End Modul --}}
 
                 {{-- Healthcare Solution --}}
                 <li class="nav-item">

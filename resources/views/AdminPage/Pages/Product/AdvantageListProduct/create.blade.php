@@ -20,6 +20,8 @@
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
+                <span class="description">*Pisahkan dengan titik koma (;) jika yang diinputkan ingin langsung seluruh list,
+                    contoh : Satu;Dua;Tiga</span>
                 <input type="text" name="name" class="form-control" id="formGroupExampleInput">
             </div>
             <div class="mb-3">

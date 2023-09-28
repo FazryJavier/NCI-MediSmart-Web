@@ -20,7 +20,7 @@
             </div>
             <div class="mb-3">
                 <label for="logo" class="form-label">Image File</label>
-                <span class="description">*Ukuran gambar 4320x948px atau 16:9 dan ukuran maksimal 2MB</span>
+                <span class="description">*Ukuran gambar 1920x347px dan ukuran maksimal 5MB</span>
                 <img class="img-preview img-fluid mb-3 mt-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -28,8 +28,8 @@
                     </div>
                     <div class="custom-file">
                         <input type="file" class="form-control" id="image" name="logo" onchange="previewImage()">
-                        <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg,
-                                *.png, *.jpg)</label>
+                        <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg, .png,
+                                .jpg, .gif, .webp)</label>
                     </div>
                 </div>
             </div>
@@ -43,6 +43,9 @@
             </div>
             <div class="mb-3">
                 <label for="video" class="form-label">Video</label>
+                <span class="description">*Masukkan token yang ada pada link youtube. Ex :
+                    https://www.youtube.com/watch?v=<b>JzmHxafphj0</b>&ab_channel=SIMRSNCIMediSmart = <b>Token :
+                        JzmHxafphj0</b></span>
                 <input type="text" name="video" class="form-control" id="formGroupExampleInput">
             </div>
             <div class="mb-3">

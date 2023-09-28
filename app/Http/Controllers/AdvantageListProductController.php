@@ -38,7 +38,14 @@ class AdvantageListProductController extends Controller
             'name' => 'required',
         ]);
 
-        AdvantageListProduct::create($validatedData);
+        $names = explode(';', $validatedData['name']);
+
+        foreach ($names as $name) {
+            AdvantageListProduct::create([
+                'advantageId' => $validatedData['advantageId'],
+                'name' => trim($name),
+            ]);
+        }
 
         return redirect('/AdvantageListProduct');
     }

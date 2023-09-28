@@ -48,7 +48,7 @@ class AdvantageProductController extends Controller
         $validatedData = $request->validate([
             'productId' => 'required',
             'title' => 'required',
-            'icon' => 'image|mimes:jpeg,png,jpg,gif',
+            'icon' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
 
         if ($request->file('image')) {
@@ -90,7 +90,7 @@ class AdvantageProductController extends Controller
         $content = [
             'productId' => 'required',
             'title' => 'required',
-            'icon' => 'image|mimes:jpeg,png,jpg,gif',
+            'icon' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ];
 
         $validatedData = $request->validate($content);
