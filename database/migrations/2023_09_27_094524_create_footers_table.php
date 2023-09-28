@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('footers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('productId')->constrained('products')->onDelete('cascade')->onUpdate('cascade');
             $table->text('address_head');
             $table->string('phone_head')->nullable();
             $table->string('fax_head')->nullable();

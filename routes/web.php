@@ -14,6 +14,7 @@ use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ExperienceListController;
 use App\Http\Controllers\FacilitiesModulProductController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\ImageModulProductController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
@@ -311,6 +312,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Navbar/{id}/update', [NavbarController::class, 'edit']);
     Route::put('/Navbar/{id}', [NavbarController::class, 'update']);
     Route::delete('/Navbar/{id}', [NavbarController::class, 'destroy']);
+
+    // Footer
+    Route::get('/Footer', [FooterController::class, 'index']);
+    Route::get('/Footer/create', [FooterController::class, 'create']);
+    Route::post('/Footer', [FooterController::class, 'store']);
+    Route::get('/Footer/{id}/update', [FooterController::class, 'edit']);
+    Route::put('/Footer/{id}', [FooterController::class, 'update']);
+    Route::delete('/Footer/{id}', [FooterController::class, 'destroy']);
 
     // Demo 
     Route::get('DemoList', [DemoController::class, 'index']);

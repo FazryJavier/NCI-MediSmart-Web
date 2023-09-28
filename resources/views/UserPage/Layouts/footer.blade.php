@@ -17,16 +17,15 @@
                 <img src="{{ asset('assets/img/white-logo.png') }}" alt="Logo">
                 <div class="text-1">
                     <p><b>HEAD OFFICE</b></p>
-                    <p>Jl. Wayang No.28B, Malabar, Kec. Lengkong,</p>
-                    <p>Kota Bandung, Jawa Barat 40262</p>
-                    <p>Phone. 022-87356050</p>
+                    <p>{{ $footerContent->address_head }}</p>
+                    <p>{{ $footerContent->phone_head }}</p>
+                    <p>{{ $footerContent->fax_head }}</p>
                 </div>
                 <div class="text-2">
                     <p><b>BRANCH OFFICE</b></p>
-                    <p>Jl. Ketintang Baru Selatan I No. 16</p>
-                    <p>Blok D.30 Surabaya</p>
-                    <p>Phone. (031) 8298153</p>
-                    <p>Fax. (031) 82989153</p>
+                    <p>{{ $footerContent->address_branch }}</p>
+                    <p>{{ $footerContent->phone_branch }}</p>
+                    <p>{{ $footerContent->fax_branch }}</p>
                 </div>
                 <div class="text-3">
                     <div class="instagram">
@@ -55,8 +54,12 @@
             <div class="footer-content">
                 <h4><b>Solusi</b></h4>
                 <ul>
-                    <li><a href="">SIMRS NCI MEDISMART</a></li>
-                    <li><a href="">RME NCI MEDISMART</a></li>
+                    @foreach ($navbarContent as $navbarItem)
+                        <li>
+                            <a
+                                href="/ProductView/{{ $navbarItem->products->id }}">{{ $navbarItem->products->title }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 

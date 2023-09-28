@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\CTAController;
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\WhatsappController;
 
@@ -36,6 +37,11 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $navbarContent = NavbarController::showContent();
             $view->with('navbarContent', $navbarContent);
+        });
+
+        View::composer('*', function ($view) {
+            $footerContent = FooterController::showContent();
+            $view->with('footerContent', $footerContent);
         });
     }
 
