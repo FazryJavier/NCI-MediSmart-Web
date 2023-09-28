@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ModulProduct;
 use App\Models\Product;
+use App\Models\ModulProduct;
 use Illuminate\Http\Request;
+use App\Models\AdvantageModulProduct;
+use App\Models\FacilitiesModulProduct;
+use App\Models\Feedback;
 use Illuminate\Support\Facades\Storage;
 
 class ModulProductController extends Controller
@@ -26,26 +29,23 @@ class ModulProductController extends Controller
         return $modulProducts;
     }
 
-    // public function showContentHome()
-    // {
-    //     $modul = ModulProduct::latest('id')->get();
+    public function showContentHome()
+    {
+        $modulProducts = ModulProduct::all();
 
-    //     $titleView = $modul->pluck('title');
-    //     $descriptionView = $modul->pluck('description');
-    //     $imageView = $modul->pluck('icon');
-    //     $idView = $modul->pluck('id');
-    //     return [
-    //         'titleView' => $titleView,
-    //         'descriptionView' => $descriptionView,
-    //         'imageView' => $imageView,
-    //         'idView' => $idView,
-    //     ];
-    // }
+        return view('UserPage.Pages.modul', compact('modulProducts'));
+    }
+
     public function showModul($id)
     {
-        $modulProduct = ModulProduct::where('id', $id)->first();
+        $modulProduct = ModulProduct::where('id', $id)->get();
+        $modul = ModulProduct::where('id', $id)->first();
+        $advantageModulProducts = AdvantageModulProduct::where('modulId', $id)->get();
+        $listfasilitasModulProducts1 = FacilitiesModulProduct::where('list', 1)->get();
+        $listfasilitasModulProducts2 = FacilitiesModulProduct::where('list', 2)->get();
+        $feedback = Feedback::where('id', $id)->get();
 
-        return view('UserPage.Pages.modul', compact('modulProduct'));
+        return view('UserPage.Pages.modul', compact('modulProduct', 'advantageModulProducts', 'listfasilitasModulProducts1', 'listfasilitasModulProducts2', 'modul', 'feedback'));
     }
     /**
      * Show the form for creating a new resource.
