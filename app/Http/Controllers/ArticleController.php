@@ -21,11 +21,9 @@ class ArticleController extends Controller
 
     public function showContentBlog1()
     {
-
         $articles = Article::where('prioritize', 1)->first();
         $articles2 = Article::where('prioritize', 2)->latest('created_at')->take(3)->get();
         $articles3 = Article::where('prioritize', 3)->get();
-        // dd($articles2);
 
         return view('UserPage.Pages.blog', compact('articles', 'articles2', 'articles3'));
     }
@@ -36,7 +34,6 @@ class ArticleController extends Controller
         $articles2 = Article::where('prioritize', 2)->latest('created_at')->take(3)->get();
 
         return view('UserPage.Pages.detail', compact('articles', 'articles2'));
-        // dd($id);
     }
 
     public function showContentHome()

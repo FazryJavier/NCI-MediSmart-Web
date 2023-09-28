@@ -101,18 +101,6 @@ Route::get('/ProductView/{id}', function ($productId) {
     ]);
 });
 
-// Route::get('/Modul/{id}', function ($modulId) {
-//     $advantagemodulController = app()->make(AdvantageModulProductController::class);
-//     $advantagemodulContent = $advantagemodulController->showContent($modulId);
-
-//     // $fasilitiesmodulController = app()->make(FacilitiesModulProductController::class);
-//     // $fasilitiesmodulContent = $fasilitiesmodulController->showContent($modulId);
-
-//     return view('UserPage/Pages/modul', [
-//         'advantagemodulContent' => $advantagemodulContent,
-//         // 'fasilitiesmodulContent' => $fasilitiesmodulContent,
-//     ]);
-// });
 Route::get('/Modul', [ModulProductController::class, 'showContentHome']);
 Route::get('/Modul/{id}', [ModulProductController::class, 'showModul'])->name('modul.show');
 
