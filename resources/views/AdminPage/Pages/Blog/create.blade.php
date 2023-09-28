@@ -28,7 +28,7 @@
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
-                <span class="description">*Ukuran gambar 4980x1452px atau 16:9 dan ukuran maksimal 2MB</span>
+                <span class="description">*Ukuran gambar 1920x900px dan ukuran maksimal 5MB</span>
                 <img class="img-preview img-fluid mb-3 mt-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -37,13 +37,13 @@
                     <div class="custom-file">
                         <input type="file" class="form-control" id="image" name="image" onchange="previewImage()">
                         <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg,
-                                *.png, *.jpg)</span></label>
+                                *.png, *.jpg, *.webp)</span></label>
                     </div>
                 </div>
             </div>
             <div class="mb-3">
                 <label for="prioritize" class="form-label"> Priority</label>
-                <span class="description">*Prioritas Diisi dengan 1-3</span>
+                <span class="description">*Prioritas Diisi dengan 1-3 (1 : Prioritas, 2 : 3 berita terpanas, 3 : berita lainnya)</span>
                 <input type="text" name="prioritize" class="form-control" id="formGroupExampleInput">
             </div>
             <div class="mb-3">

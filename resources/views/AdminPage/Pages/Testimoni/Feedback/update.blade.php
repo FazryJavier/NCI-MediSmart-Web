@@ -11,7 +11,7 @@
             @method('PUT')
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
-                <span class="description">*Ukuran gambar 528x276px atau 1:1 dan ukuran maksimal 2MB</span>
+                <span class="description">*Ukuran gambar 500x500px dan ukuran maksimal 5MB</span>
                 <input type="hidden" name="oldImage" value="{{ $feedbackUpdate->image }}">
                 @if ($feedbackUpdate->image)
                     <img src="{{ asset('storage/' . $feedbackUpdate->image) }}" alt="image"
@@ -27,7 +27,7 @@
                         <input type="file" class="custom-file-input" id="image" name="image"
                             onchange="previewImage()">
                         <label class="custom-file-label" for="label">Choose file <span class="description">(*.jpeg,
-                                *.png, *.jpg)</label>
+                                *.png, *.jpg, *.webp)</label>
                     </div>
                 </div>
             </div>

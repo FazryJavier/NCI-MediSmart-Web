@@ -30,7 +30,7 @@
             </div>
             <div class="mb-3">
                 <label for="icon" class="form-label">Image File</label>
-                <span class="description">*Ukuran gambar 4320x948px atau 16:9 dan ukuran maksimal 2MB</span>
+                <span class="description">*Ukuran gambar 1920x900px dan ukuran maksimal 5MB</span>
                 <input type="hidden" name="oldImage" value="{{ $articles->image }}">
                 @if ($articles->image)
                     <img src="{{ asset('storage/' . $articles->image) }}" alt="image"
@@ -46,13 +46,13 @@
                         <input type="file" class="custom-file-input" id="image" name="image"
                             onchange="previewImage()">
                         <label class="custom-file-label" for="label">Choose file <span class="description">(*.jpeg,
-                                *.png, *.jpg)</label>
+                                *.png, *.jpg, *.webp)</label>
                     </div>
                 </div>
             </div>
             <div class="mb-3">
                 <label for="prioritize" class="form-label"> Priority</label>
-                <span class="description">*Prioritas Diisi dengan 1-3</span>
+                <span class="description">*Prioritas Diisi dengan 1-3 (1 : Prioritas, 2 : 3 berita terpanas, 3 : berita lainnya)</span>
                 <input type="text" name="prioritize" class="form-control" value="{{ $articles->prioritize }}">
             </div>
             <div class="mb-3">

@@ -34,7 +34,7 @@
                         </div>
                         <div class="description">
                             <h3>{{ $articles->title }}</h3>
-                            <p>{!! $articles->description !!}
+                            <p>{{ strip_tags($articles->description) }}
                             </p>
                             <a href={{ url('/DetailBlog/' . $articles->id) }}>Pelajari Lanjut...</a>
                             <div class="update">
@@ -59,7 +59,7 @@
                                 <div class="description">
                                     <h3>{{ $ar2->title }}
                                     </h3>
-                                    <p>{!! $ar2->description !!}
+                                    <p>{{ strip_tags($ar2->description) }}
                                     </p>
                                 </div>
                                 <div class="button">

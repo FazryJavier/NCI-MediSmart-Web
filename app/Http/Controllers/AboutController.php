@@ -62,7 +62,7 @@ class AboutController extends Controller
     {
         $validatedData = $request->validate([
             'video' => 'required',
-            'image' => 'image|file|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'description' => 'required',
             'visi' => 'required',
             'misi' => 'required',
@@ -103,7 +103,7 @@ class AboutController extends Controller
     {
         $content = [
             'video' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'description' => 'required',
             'visi' => 'required',
             'misi' => 'required',

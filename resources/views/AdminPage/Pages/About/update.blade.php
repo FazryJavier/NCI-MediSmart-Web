@@ -17,7 +17,7 @@
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Upload Image</label>
-            <span class="description">*Ukuran gambar 600x312px atau 2:1 dan ukuran maksimal 2MB</span>
+            <span class="description">*Ukuran gambar 600x312px dan ukuran maksimal 5MB</span>
             <input type="hidden" name="oldImage" value="{{ $aboutUpdate->image }}">
             @if ($aboutUpdate->image)
                 <img src="{{ asset('storage/' . $aboutUpdate->image) }}" alt="image"
@@ -32,7 +32,7 @@
                 <div class="custom-file">
                     <input type="file" class="form-control" id="image" name="image" onchange="previewImage()">
                     <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg,
-                            *.png, *.jpg)</label>
+                            *.png, *.jpg, *.webp)</label>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
         </div>
         <div class="mb-3">
             <label for="misi" class="form-label">Misi</label>
-            <input type="text" value="{{ $aboutUpdate->misi }}" name="misi" class="form-control">
+            <textarea name="misi" class="form-control" rows="5">{{ $aboutUpdate->misi }}</textarea>
         </div>
         <button type="submit" class="btn btn-success">Update</button>
         <a href="/AboutUs" type="button" class="btn btn-secondary">Back</a>

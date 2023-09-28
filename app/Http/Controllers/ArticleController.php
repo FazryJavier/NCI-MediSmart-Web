@@ -72,7 +72,7 @@ class ArticleController extends Controller
             'adminId' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'prioritize' => 'nullable',
         ]);
 
@@ -127,7 +127,7 @@ class ArticleController extends Controller
             'adminId' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'prioritize' => 'nullable',
         ];
 

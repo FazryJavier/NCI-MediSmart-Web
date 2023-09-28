@@ -45,7 +45,7 @@ class FeedbackController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'image' => 'image|file',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'name' => 'required',
             'description' => 'required',
         ]);
@@ -85,7 +85,7 @@ class FeedbackController extends Controller
     public function update(Request $request, $id)
     {
         $content = [
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'name' => 'required',
             'description' => 'required',
         ];

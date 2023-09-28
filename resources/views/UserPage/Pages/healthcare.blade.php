@@ -60,7 +60,7 @@
                     <div class="columns">
                         <div class="card">
                             <h1>Misi</h1>
-                            <p>{{ $aboutContent['misiView'] }}</p>
+                            <p>{!! nl2br($aboutContent['misiView']) !!}</p>
                         </div>
                     </div>
                 </div>
