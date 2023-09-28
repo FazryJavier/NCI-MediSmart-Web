@@ -11,7 +11,7 @@
             @method('POST')
             <div class="mb-3">
                 <label for="image" class="form-label">Icon File</label>
-                <span class="description">*Ukuran gambar 236x236px atau 1:1 dan ukuran maksimal 2MB</span>
+                <span class="description">*Ukuran gambar 300x300px dan ukuran maksimal 5MB</span>
                 <img class="img-preview img-fluid mb-3 mt-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -19,8 +19,8 @@
                     </div>
                     <div class="custom-file">
                         <input type="file" class="form-control" id="image" name="image" onchange="previewImage()">
-                        <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg,
-                            *.png, *.jpg)</label>
+                        <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg, .png,
+                                .jpg, .gif, .webp)</label>
                     </div>
                 </div>
             </div>

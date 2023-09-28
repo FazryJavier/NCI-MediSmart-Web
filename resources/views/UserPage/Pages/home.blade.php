@@ -28,12 +28,9 @@
                     <div class="slide swiper-slide">
                         <img src="{{ asset('storage/' . $sliderContent['imageView'][$index]) }}" alt=""
                             class="image">
-                        {{-- @endif --}}
                         <div class="image-date">
                             <h1>{{ $title }}</h1>
                             <h3>{{ $sliderContent['captionView'][$index] }}</h3>
-                            {{-- <a href="" class="button-1">Hubungi Kami</a>
-                        <a href="" class="button-2">Pelajari Lanjut</a> --}}
                             <a href="" class="button-1" data-index="{{ $index }}">Hubungi Kami</a>
                             <a href="" class="button-2" data-index="{{ $index }}">Pelajari Lanjut</a>
                         </div>

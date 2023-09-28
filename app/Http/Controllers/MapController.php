@@ -53,7 +53,7 @@ class MapController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required',
-            'image' => 'image|file',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
 
         if ($request->file('image')) {
@@ -92,7 +92,7 @@ class MapController extends Controller
     {
         $content = [
             'title' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ];
 
         $validatedData = $request->validate($content);

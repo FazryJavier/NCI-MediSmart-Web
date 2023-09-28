@@ -15,7 +15,7 @@
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
-                <span class="description">*Ukuran gambar 1920x765px atau 16:9 dan ukuran maksimal 2MB</span>
+                <span class="description">*Ukuran gambar 1920x765px dan ukuran maksimal 5MB</span>
                 <img class="img-preview img-fluid mb-3 mt-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -23,8 +23,8 @@
                     </div>
                     <div class="custom-file">
                         <input type="file" class="form-control" id="image" name="image" onchange="previewImage()">
-                        <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg,
-                            *.png, *.jpg)</span></label>
+                        <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg, .png,
+                                .jpg, .gif, .webp)</span></label>
                     </div>
                 </div>
             </div>

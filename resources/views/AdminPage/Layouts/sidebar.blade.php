@@ -28,25 +28,13 @@
                         <li class="nav-item">
                             <a href="/LandingSlider" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Landing Slider</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/LandingVideo" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Landing Video</p>
+                                <p>Slider</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/LandingClient" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Client</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/LandingMap" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Map</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -59,6 +47,18 @@
                             <a href="/ExperienceList" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Experience List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/LandingMap" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Map</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/LandingVideo" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Video</p>
                             </a>
                         </li>
                     </ul>

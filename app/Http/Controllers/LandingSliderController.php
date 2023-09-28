@@ -20,10 +20,15 @@ class LandingSliderController extends Controller
 
     public function showContent()
     {
-        $titleView = LandingSlider::pluck('title');
-        $captionView = LandingSlider::pluck('caption');
-        $imageView = LandingSlider::pluck('image');
-        $statusView = LandingSlider::pluck('status');
+        $latestSliderIds = LandingSlider::orderBy('created_at', 'desc')
+            ->limit(8)
+            ->pluck('id');
+
+        $titleView = LandingSlider::whereIn('id', $latestSliderIds)->pluck('title');
+        $captionView = LandingSlider::whereIn('id', $latestSliderIds)->pluck('caption');
+        $imageView = LandingSlider::whereIn('id', $latestSliderIds)->pluck('image');
+        $statusView = LandingSlider::whereIn('id', $latestSliderIds)->pluck('status');
+
         return [
             'titleView' => $titleView,
             'captionView' => $captionView,
@@ -48,7 +53,7 @@ class LandingSliderController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'caption' => 'required',
-            'image' => 'image|file',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'status' => 'nullable|boolean',
         ]);
 
@@ -89,7 +94,7 @@ class LandingSliderController extends Controller
         $content = [
             'title' => 'required',
             'caption' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'status' => 'required',
         ];
 
