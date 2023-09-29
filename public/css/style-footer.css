@@ -53,6 +53,7 @@ body {
 
 .footer p {
     margin-bottom: 2%;
+    word-wrap: break-word;
 }
 
 .footer ul li {
@@ -69,7 +70,9 @@ body {
     color: #015028;
 }
 
-.footer .text-1 {
+.footer .text-1,
+.footer .text-2 {
+    max-width: 350px;
     margin-bottom: 30px;
 }
 
