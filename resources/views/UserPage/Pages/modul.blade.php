@@ -72,7 +72,7 @@
                 <div class="content">
                     <div class="description-1">
                         <div class="image">
-                            <img src="{{ asset('assets/img/bpjs-claim1.png') }}" alt="">
+                            <img src="{{ asset('storage/' . $imageModul1->image) }}" alt="">
                         </div>
                         <div class="list">
                             <ul>
@@ -93,7 +93,7 @@
                             </ul>
                         </div>
                         <div class="image">
-                            <img src="{{ asset('assets/img/bpjs-claim2.png') }}" alt="">
+                            <img src="{{ asset('storage/' . $imageModul2->image) }}" alt="">
                         </div>
                     </div>
                 </div>

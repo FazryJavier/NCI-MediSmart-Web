@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\AdvantageModulProduct;
 use App\Models\FacilitiesModulProduct;
 use App\Models\Feedback;
+use App\Models\ImageModulProduct;
 use Illuminate\Support\Facades\Storage;
 
 class ModulProductController extends Controller
@@ -41,11 +42,13 @@ class ModulProductController extends Controller
         $modulProduct = ModulProduct::where('id', $id)->get();
         $modul = ModulProduct::where('id', $id)->first();
         $advantageModulProducts = AdvantageModulProduct::where('modulId', $id)->get();
+        $imageModul1 = ImageModulProduct::where('list', 1)->where('modulId', $id)->first();
+        $imageModul2 = ImageModulProduct::where('list', 2)->where('modulId', $id)->first();
         $listfasilitasModulProducts1 = FacilitiesModulProduct::where('list', 1)->where('modulId', $id)->get();
         $listfasilitasModulProducts2 = FacilitiesModulProduct::where('list', 2)->where('modulId', $id)->get();
         $feedback = Feedback::where('id', $id)->get();
 
-        return view('UserPage.Pages.modul', compact('modulProduct', 'advantageModulProducts', 'listfasilitasModulProducts1', 'listfasilitasModulProducts2', 'modul', 'feedback'));
+        return view('UserPage.Pages.modul', compact('modulProduct', 'advantageModulProducts', 'listfasilitasModulProducts1', 'listfasilitasModulProducts2', 'modul', 'feedback', 'imageModul1', 'imageModul2'));
     }
     /**
      * Show the form for creating a new resource.
