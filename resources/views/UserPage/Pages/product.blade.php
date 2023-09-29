@@ -73,7 +73,7 @@
         <div class="client">
             <div class="container">
                 <div class="title">
-                    <h1><b>Mitra SIMRS NCI - Medismart</b></h1>
+                    <h1><b>Mitra {{ optional($detailproductContent['products'])->title }}</b></h1>
                 </div>
                 <div class="image">
                     @if ($clientproductContent['imageView'])
@@ -92,7 +92,7 @@
         <div class="advantage">
             <div class="container">
                 <div class="title">
-                    <h1>Kelebihan SIMRS NCI - Medismart</h1>
+                    <h1>Kelebihan {{ optional($detailproductContent['products'])->title }}</h1>
                 </div>
                 <div class="wrapper">
                     @foreach ($advantageproductContent as $advantageProduct)
@@ -124,7 +124,7 @@
         <div class="modul">
             <div class="container">
                 <div class="title">
-                    <h1>Modul SIMRS NCI - Medismart</h1>
+                    <h1>Modul {{ optional($detailproductContent['products'])->title }}</h1>
                     <p>Dikembangkan dengan sistem modular, proses implementasi dilakukan bertahap dan terintegrasi antar
                         modul. Mengelola aktivitas kegiatan dari Front Office sampai dengan Back Office, menghasilkan
                         pelaporan secara lengkap dan cepat</p>

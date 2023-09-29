@@ -25,6 +25,7 @@ class DetailProductController extends Controller
 
         if (!$detailProduct) {
             return [
+                'products' => null,
                 'logoView' => null,
                 'descriptionView' => null,
                 'flyerView' => null,
@@ -33,6 +34,7 @@ class DetailProductController extends Controller
         }
 
         return [
+            'products' => $detailProduct->products,
             'logoView' => $detailProduct->logo,
             'descriptionView' => $detailProduct->description,
             'flyerView' => $detailProduct->flyer,
