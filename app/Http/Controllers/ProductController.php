@@ -35,6 +35,7 @@ class ProductController extends Controller
         $descriptionView = Product::pluck('description');
         $productsWithModulProducts = Product::join('modul_products', 'products.id', '=', 'modul_products.productId')
             ->select('products.*', 'modul_products.*')
+            ->limit(10)
             ->get();
 
         return [
