@@ -22,7 +22,7 @@
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
-                <span class="description">*Ukuran gambar 4320x948px atau 16:9 dan ukuran maksimal 2MB</span>
+                <span class="description">*Ukuran gambar 1600x900px dan ukuran maksimal 5MB</span>
                 <input type="hidden" name="oldImage" value="{{ $imageModulProduct->image }}">
                 @if ($imageModulProduct->image)
                     <img src="{{ asset('storage/' . $imageModulProduct->image) }}" alt="image"
@@ -38,12 +38,13 @@
                         <input type="file" class="custom-file-input" id="image" name="image"
                             onchange="previewImage()">
                         <label class="custom-file-label" for="label">Choose file <span class="description">(*.jpeg,
-                                *.png, *.jpg)</label>
+                                *.png, *.jpg, *.webp)</label>
                     </div>
                 </div>
             </div>
             <div class="mb-3">
                 <label for="list" class="form-label">List</label>
+                <span class="description">*List Diisi dengan 1-2 (1 : Gambar pertama, 2 : Gambar kedua). Gambar akan ditampilkan untuk fasilitas</span>
                 <input type="text" value="{{ $imageModulProduct->list }}" name="list" class="form-control"
                     id="formGroupExampleInput">
             </div>

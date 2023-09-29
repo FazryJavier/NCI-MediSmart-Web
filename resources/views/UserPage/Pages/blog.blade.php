@@ -20,7 +20,7 @@
     @include('UserPage.Layouts.wa-icon')
 
     {{-- Blog --}}
-    <section class="section-blog">
+    <section class="section-blog scroll-section">
         <div class="blog">
             <div class="container">
                 <div class="text">
@@ -79,7 +79,7 @@
     {{-- End Konsultasi --}}
 
     {{-- Article --}}
-    <section class="section-article">
+    <section class="section-article scroll-section">
         <div class="article">
             <div class="container">
                 <div class="wrapper">
@@ -162,6 +162,38 @@
         //         loadLessBtn.style.display = 'none';
         //     }
         // });
+    });
+</script>
+
+{{-- Animation Script --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const scrollSections = document.querySelectorAll(".scroll-section");
+
+        function checkScroll() {
+            scrollSections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionBottom = section.getBoundingClientRect().bottom;
+                const windowHeight = window.innerHeight;
+
+                // Check if the bottom of the section is above the viewport
+                const isAboveViewport = sectionBottom < 0;
+
+                // Check if the top of the section is below the viewport
+                const isBelowViewport = sectionTop > windowHeight;
+
+                if (!isAboveViewport && !isBelowViewport) {
+                    section.classList.add("animated");
+                } else {
+                    section.classList.remove("animated");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", checkScroll);
+        window.addEventListener("resize", checkScroll);
+
+        checkScroll();
     });
 </script>
 

@@ -16,7 +16,7 @@
             <input type="text" value="{{ $aboutUpdate->video }}" name="video" class="form-control">
         </div>
         <div class="mb-3">
-            <label for="image" class="form-label">Upload Image</label>
+            <label for="image" class="form-label">Upload Logo</label>
             <span class="description">*Ukuran gambar 600x312px dan ukuran maksimal 5MB</span>
             <input type="hidden" name="oldImage" value="{{ $aboutUpdate->image }}">
             @if ($aboutUpdate->image)

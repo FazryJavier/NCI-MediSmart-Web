@@ -46,7 +46,7 @@ class ModulProductController extends Controller
         $imageModul2 = ImageModulProduct::where('list', 2)->where('modulId', $id)->first();
         $listfasilitasModulProducts1 = FacilitiesModulProduct::where('list', 1)->where('modulId', $id)->get();
         $listfasilitasModulProducts2 = FacilitiesModulProduct::where('list', 2)->where('modulId', $id)->get();
-        $feedback = Feedback::where('id', $id)->get();
+        $feedback = Feedback::latest()->limit(12)->get();
 
         return view('UserPage.Pages.modul', compact('modulProduct', 'advantageModulProducts', 'listfasilitasModulProducts1', 'listfasilitasModulProducts2', 'modul', 'feedback', 'imageModul1', 'imageModul2'));
     }

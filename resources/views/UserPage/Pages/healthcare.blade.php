@@ -21,7 +21,7 @@
     @include('UserPage.Layouts.wa-icon')
 
     {{-- Video Views --}}
-    <section class="section-video">
+    <section class="section-video scroll-section">
         <div class="video-view">
             <div class="container">
                 <div class="text">
@@ -42,7 +42,7 @@
     {{-- End Video Views --}}
 
     {{-- Visi Misi --}}
-    <section class="section-visimisi">
+    <section class="section-visimisi scroll-section">
         <div class="visimisi">
             <div class="container">
                 <div class="content">
@@ -82,5 +82,37 @@
 <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
 
 <script src="{{ asset('js/Script.js') }}"></script>
+
+{{-- Animation Script --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const scrollSections = document.querySelectorAll(".scroll-section");
+
+        function checkScroll() {
+            scrollSections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionBottom = section.getBoundingClientRect().bottom;
+                const windowHeight = window.innerHeight;
+
+                // Check if the bottom of the section is above the viewport
+                const isAboveViewport = sectionBottom < 0;
+
+                // Check if the top of the section is below the viewport
+                const isBelowViewport = sectionTop > windowHeight;
+
+                if (!isAboveViewport && !isBelowViewport) {
+                    section.classList.add("animated");
+                } else {
+                    section.classList.remove("animated");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", checkScroll);
+        window.addEventListener("resize", checkScroll);
+
+        checkScroll();
+    });
+</script>
 
 </html>

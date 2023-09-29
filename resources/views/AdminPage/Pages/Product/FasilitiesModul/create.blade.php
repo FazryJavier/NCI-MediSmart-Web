@@ -26,6 +26,7 @@
             </div>
             <div class="mb-3">
                 <label for="list" class="form-label">List</label>
+                <span class="description">*List Diisi dengan 1-2 (1 : List bagian atas, 2 : List bagian bawah)</span>
                 <input type="text" name="list" class="form-control" id="formGroupExampleInput">
             </div>
             <div class="mb-3">

@@ -20,7 +20,7 @@
     @include('UserPage.Layouts.wa-icon')
 
     {{-- Modul Description --}}
-    <section class="section-modul">
+    <section class="section-modul scroll-section">
         <div class="modul">
             <div class="container">
                 <div class="first-page">
@@ -41,7 +41,7 @@
     {{-- End Modul Description --}}
 
     {{-- Advantage --}}
-    <section class="section-advantage">
+    <section class="section-advantage scroll-section">
         <div class="advantage">
             <div class="container">
                 <div class="title">
@@ -63,7 +63,7 @@
     {{-- End Advantage --}}
 
     {{-- Fasilitas --}}
-    <section class="section-fasilitas">
+    <section class="section-fasilitas scroll-section">
         <div class="fasilitas">
             <div class="container">
                 <div class="title">
@@ -103,7 +103,7 @@
     {{-- End Fasilitas --}}
 
     {{-- Testimoni --}}
-    <section class="section-testimoni">
+    <section class="section-testimoni scroll-section">
         <div class="testimoni">
             <div class="container">
                 <div class="text">
@@ -169,6 +169,38 @@
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
         },
+    });
+</script>
+
+{{-- Animation Script --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const scrollSections = document.querySelectorAll(".scroll-section");
+
+        function checkScroll() {
+            scrollSections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionBottom = section.getBoundingClientRect().bottom;
+                const windowHeight = window.innerHeight;
+
+                // Check if the bottom of the section is above the viewport
+                const isAboveViewport = sectionBottom < 0;
+
+                // Check if the top of the section is below the viewport
+                const isBelowViewport = sectionTop > windowHeight;
+
+                if (!isAboveViewport && !isBelowViewport) {
+                    section.classList.add("animated");
+                } else {
+                    section.classList.remove("animated");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", checkScroll);
+        window.addEventListener("resize", checkScroll);
+
+        checkScroll();
     });
 </script>
 

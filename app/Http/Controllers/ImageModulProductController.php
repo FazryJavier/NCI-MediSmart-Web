@@ -36,7 +36,7 @@ class ImageModulProductController extends Controller
     {
         $validatedData = $request->validate([
             'modulId' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'list' => 'required',
         ]);
 
@@ -78,7 +78,7 @@ class ImageModulProductController extends Controller
     {
         $content = [
             'modulId' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'list' => 'required',
         ];
 

@@ -25,6 +25,7 @@ html {
 body {
     background: #f5f5f5;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container {
@@ -301,6 +302,10 @@ a {
 .section-modul .modul .wrapper .card .description p {
     font-size: 14px;
     margin-bottom: 20px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .section-modul .modul .wrapper .card .btn-more a {
@@ -428,6 +433,19 @@ a {
     color: #1bad4b;
 }
 /* End Testimoni */
+
+/* Animation */
+.scroll-section {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.scroll-section.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+/* End Animation */
 
 /* Media Queries */
 @media screen and (max-width: 1500px) {

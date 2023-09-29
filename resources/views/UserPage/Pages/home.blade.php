@@ -296,7 +296,7 @@
     });
 </script>
 
-{{-- AnimatioN Script --}}
+{{-- Animation Script --}}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const scrollSections = document.querySelectorAll(".scroll-section");
@@ -304,10 +304,19 @@
         function checkScroll() {
             scrollSections.forEach((section) => {
                 const sectionTop = section.getBoundingClientRect().top;
+                const sectionBottom = section.getBoundingClientRect().bottom;
                 const windowHeight = window.innerHeight;
 
-                if (sectionTop < windowHeight * 0.75) {
+                // Check if the bottom of the section is above the viewport
+                const isAboveViewport = sectionBottom < 0;
+
+                // Check if the top of the section is below the viewport
+                const isBelowViewport = sectionTop > windowHeight;
+
+                if (!isAboveViewport && !isBelowViewport) {
                     section.classList.add("animated");
+                } else {
+                    section.classList.remove("animated");
                 }
             });
         }

@@ -16,7 +16,7 @@
             <input type="text" name="video" class="form-control">
         </div>
         <div class="mb-3">
-            <label for="image" class="form-label">Upload Image</label>
+            <label for="image" class="form-label">Upload Logo</label>
             <span class="description">*Ukuran gambar 600x312px dan ukuran maksimal 5MB</span>
             <img class="img-preview img-fluid mb-3 mt-3">
             <div class="input-group">

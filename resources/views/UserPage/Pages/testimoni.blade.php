@@ -20,7 +20,7 @@
     @include('UserPage.Layouts.wa-icon')
 
     {{-- Testimoni --}}
-    <section class="section-testimoni">
+    <section class="section-testimoni scroll-section">
         <div class="testimoni">
             <div class="container">
                 <div class="text">
@@ -46,7 +46,7 @@
     {{-- End Testimoni --}}
 
     {{-- Client --}}
-    <section class="section-client">
+    <section class="section-client scroll-section">
         <div class="client">
             <div class="container">
                 <div class="text">
@@ -111,6 +111,38 @@
         //         loadLessBtn.style.display = 'none';
         //     }
         // });
+    });
+</script>
+
+{{-- Animation Script --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const scrollSections = document.querySelectorAll(".scroll-section");
+
+        function checkScroll() {
+            scrollSections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionBottom = section.getBoundingClientRect().bottom;
+                const windowHeight = window.innerHeight;
+
+                // Check if the bottom of the section is above the viewport
+                const isAboveViewport = sectionBottom < 0;
+
+                // Check if the top of the section is below the viewport
+                const isBelowViewport = sectionTop > windowHeight;
+
+                if (!isAboveViewport && !isBelowViewport) {
+                    section.classList.add("animated");
+                } else {
+                    section.classList.remove("animated");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", checkScroll);
+        window.addEventListener("resize", checkScroll);
+
+        checkScroll();
     });
 </script>
 
