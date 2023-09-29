@@ -21,7 +21,7 @@
     @include('UserPage.Layouts.wa-icon')
 
     {{-- Home --}}
-    <section class="section-header swiper mySwiper">
+    <section class="section-header swiper mySwiper scroll-section">
         <div class="wrapper swiper-wrapper">
             @foreach ($sliderContent['titleView'] as $index => $title)
                 @if ($sliderContent['statusView'][$index] == 1)
@@ -46,7 +46,7 @@
     {{-- End Home --}}
 
     {{-- Client --}}
-    <section class="section-client">
+    <section class="section-client scroll-section">
         <div class="client">
             <div class="container">
                 <div class="title">
@@ -73,7 +73,7 @@
     {{-- End Client --}}
 
     {{-- Experience --}}
-    <section class="section-experience">
+    <section class="section-experience scroll-section">
         <div class="experience">
             <div class="container">
                 <div class="text">
@@ -110,7 +110,7 @@
     {{-- End Experience --}}
 
     {{-- Product --}}
-    <section class="section-product">
+    <section class="section-product scroll-section">
         <div class="product">
             <div class="container">
                 <div class="title">
@@ -142,8 +142,9 @@
                                     <div class="center-line"></div>
                                 </div>
                                 <div class="button">
-                                    <a href={{ url('/ProductView/' . $productContent['idView'][$index]) }}><i class="fa-solid fa-arrow-right"
-                                            style="color: #ffffff;"></i>Pelajari Lanjut</a>
+                                    <a href={{ url('/ProductView/' . $productContent['idView'][$index]) }}><i
+                                            class="fa-solid fa-arrow-right" style="color: #ffffff;"></i>Pelajari
+                                        Lanjut</a>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +156,7 @@
     {{-- End Product --}}
 
     {{-- Video View --}}
-    <section class="section-video">
+    <section class="section-video scroll-section">
         <div class="video-view">
             <div class="container">
                 <div class="content">
@@ -178,7 +179,7 @@
     {{-- End Video View --}}
 
     {{-- Blog --}}
-    <section class="section-blog">
+    <section class="section-blog scroll-section">
         <div class="blog">
             <div class="container">
                 <div class="title">
@@ -292,6 +293,29 @@
         slide.addEventListener('mouseleave', () => {
             hideButtons(index);
         });
+    });
+</script>
+
+{{-- AnimatioN Script --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const scrollSections = document.querySelectorAll(".scroll-section");
+
+        function checkScroll() {
+            scrollSections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (sectionTop < windowHeight * 0.75) {
+                    section.classList.add("animated");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", checkScroll);
+        window.addEventListener("resize", checkScroll);
+
+        checkScroll();
     });
 </script>
 
