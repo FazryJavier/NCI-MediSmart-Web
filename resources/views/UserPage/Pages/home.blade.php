@@ -24,18 +24,21 @@
     <section class="section-header swiper mySwiper scroll-section">
         <div class="wrapper swiper-wrapper">
             @foreach ($sliderContent['titleView'] as $index => $title)
-                @if ($sliderContent['statusView'][$index] == 1)
-                    <div class="slide swiper-slide">
-                        <img src="{{ asset('storage/' . $sliderContent['imageView'][$index]) }}" alt=""
-                            class="image">
-                        <div class="image-date">
-                            <h1>{{ $title }}</h1>
-                            <h3>{{ $sliderContent['captionView'][$index] }}</h3>
-                            <a href="" class="button-1" data-index="{{ $index }}">Hubungi Kami</a>
-                            <a href="" class="button-2" data-index="{{ $index }}">Pelajari Lanjut</a>
-                        </div>
+                <div class="slide swiper-slide">
+                    <img src="{{ asset('storage/' . $sliderContent['imageView'][$index]) }}" alt=""
+                        class="image">
+                    <div class="image-date">
+                        <h1>{{ $title }}</h1>
+                        <h3>{{ $sliderContent['captionView'][$index] }}</h3>
+                        @foreach ($whatsappContent['whatsappView'] as $phone_number)
+                            <a href="https://api.whatsapp.com/send?phone={{ $phone_number }}" class="button-1"
+                                data-index="{{ $index }}">Hubungi Kami</a>
+                        @endforeach
                     </div>
-                @endif
+                    @if ($sliderContent['statusView'][$index] == 1)
+                        <a href="" class="button-2" data-index="{{ $index }}">Pelajari Lanjut</a>
+                    @endif
+                </div>
             @endforeach
         </div>
 
