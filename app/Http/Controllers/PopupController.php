@@ -16,16 +16,15 @@ class PopupController extends Controller
     }
 
     public static function showContent()
-    {
-        {
+    { {
             $latestPopup = Popup::latest('id')->first();
-    
+
             if ($latestPopup) {
                 $image = asset("storage/{$latestPopup->image}");
                 $status = $latestPopup->status;
                 $tanggalawal = $latestPopup->start_date;
                 $tanggalakhir = $latestPopup->end_date;
-    
+
                 return [
                     'imageView' => $image,
                     'statusView' => $status,
@@ -33,7 +32,7 @@ class PopupController extends Controller
                     'enddateView' => $tanggalakhir,
                 ];
             }
-    
+
             return [
                 'imageView' => null,
                 'statusView' => null,
@@ -50,23 +49,19 @@ class PopupController extends Controller
 
     public function store(Request $request)
     {
-        
         $validatedData = $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'status' => 'required|boolean',
-            'start_date' => 'date', // Validasi untuk tanggal awal yang dapat bernilai NULL
-            'end_date' => 'date',   // Validasi untuk tanggal akhir yang dapat bernilai NULL
+            'start_date' => 'date',
+            'end_date' => 'date',
         ]);
-        dd($validatedData);
 
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('file-image');
         }
-        
-        
+
         Popup::create($validatedData);
 
-       
         return redirect('/Popup');
     }
 
@@ -89,8 +84,8 @@ class PopupController extends Controller
         $content = [
             'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'status' => 'required',
-            'start_date' => 'nullable|date', // Validasi untuk tanggal awal yang dapat bernilai NULL
-            'end_date' => 'nullable|date',   // Validasi untuk tanggal akhir yang dapat bernilai NULL
+            'start_date' => 'date', // Validasi untuk tanggal awal yang dapat bernilai NULL
+            'end_date' => 'date',   // Validasi untuk tanggal akhir yang dapat bernilai NULL
         ];
 
         $validatedData = $request->validate($content);
@@ -108,7 +103,7 @@ class PopupController extends Controller
 
         return redirect('/Popup');
     }
-    
+
     public function destroy($id)
     {
         $popup = Popup::findOrFail($id);

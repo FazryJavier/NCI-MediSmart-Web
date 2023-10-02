@@ -30,11 +30,11 @@
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th class="col-sm-1">Id</th>
+                <th class="col-sm-2">Id</th>
                 <th class="col-sm-2">Image</th>
-                <th class="col-sm-4">Status</th>
-                <th class="col-sm-4">Start Date</th>
-                <th class="col-sm-4">End Date</th>
+                <th class="col-sm-2">Status</th>
+                <th class="col-sm-2">Start Date</th>
+                <th class="col-sm-2">End Date</th>
                 <th class="col-sm-2">Action</th>
             </tr>
         </thead>
