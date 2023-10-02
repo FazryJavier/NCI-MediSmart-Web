@@ -13,6 +13,10 @@
 </head>
 
 <body>
+    {{-- Popup --}}
+    @include('UserPage.Layouts.popups')
+    {{-- End popup --}}
+
     {{-- Header --}}
     @include('UserPage.Layouts.header')
     {{-- End Header --}}

@@ -1,7 +1,7 @@
 @extends('AdminPage.Layouts.master')
 
 @section('title')
-    Page CTA
+    Page Pop up
 @endsection
 
 @push('script')
@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right mb-2">
-                <a class="btn btn-success" href="/CTA/create"> Create </a>
+                <a class="btn btn-success" href="/Popup/create"> Create </a>
             </div>
         </div>
     </div>
@@ -32,21 +32,24 @@
             <tr>
                 <th class="col-sm-1">Id</th>
                 <th class="col-sm-2">Image</th>
-                <th class="col-sm-4">Title</th>
-                <th class="col-sm-4">Description</th>
-                <th class="col-sm-1">Action</th>
+                <th class="col-sm-4">Status</th>
+                <th class="col-sm-4">Start Date</th>
+                <th class="col-sm-4">End Date</th>
+                <th class="col-sm-2">Action</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($cta as $cta => $item)
+            @forelse ($popup as $popup => $item)
                 <tr>
-                    <td>{{ $cta + 1 }}</td>
-                    <td>{{ $item->title }}</td>
-                    <td>{{ $item->description }}</td>
+                    <td>{{ $popup + 1 }}</td>
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
+                    <td>{{ $item->status}}</td>
+                    <td>{{ $item->start_date}}</td>
+                    <td>{{ $item->end_date}}</td>
+                    
                     <td>
-                        <form action="/CTA/{{ $item->id }}" method="POST">
-                            <a href="/CTA/{{ $item->id }}/update" type="button" class="btn btn-warning"><i
+                        <form action="/Popup/{{ $item->id }}" method="POST">
+                            <a href="/Popup/{{ $item->id }}/update" type="button" class="btn btn-warning"><i
                                     class="fa-solid fa-pen-to-square"></i></a>
                             @csrf
                             @method('delete')

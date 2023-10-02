@@ -27,6 +27,7 @@ use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\WhatsappController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PopupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -344,6 +345,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Whatsapp/{id}/update', [WhatsappController::class, 'edit']);
     Route::put('/Whatsapp/{id}', [WhatsappController::class, 'update']);
     Route::delete('/Whatsapp/{id}', [WhatsappController::class, 'destroy']);
+
+    // Pop up
+    Route::get('/Popup', [PopupController::class, 'index']);
+    Route::get('/Popup/create', [PopupController::class, 'create']);
+    Route::post('/Popup', [PopupController::class, 'store']);
+    Route::get('/Popup/{id}/update', [PopupController::class, 'edit']);
+    Route::put('/Popup/{id}', [PopupController::class, 'update']);
+    Route::delete('/Popup/{id}', [PopupController::class, 'destroy']);
 });
 
 // Show Image
