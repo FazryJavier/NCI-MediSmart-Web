@@ -31,14 +31,23 @@
                     </div>
                 </div>
             </div>
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" value="{{ $feedbackUpdate->name }}" name="name" class="form-control">
             </div>
+            @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="5">{{ $feedbackUpdate->description }}</textarea>
             </div>
+            @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/Feedback" type="button" class="btn btn-secondary">Back</a>

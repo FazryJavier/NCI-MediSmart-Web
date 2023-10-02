@@ -10,9 +10,12 @@
             @csrf
             @method('POST')
             <div class="mb-3">
-                <label for="title" class="form-label">Judul</label>
+                <label for="title" class="form-label">Title</label>
                 <input type="text" name="title" class="form-control" id="formGroupExampleInput">
             </div>
+            @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
                 <span class="description">*Ukuran gambar 1920x900px dan ukuran maksimal 5MB</span>
@@ -24,10 +27,13 @@
                     <div class="custom-file">
                         <input type="file" class="form-control" id="image" name="image" onchange="previewImage()">
                         <label class="custom-file-label" for="image">Choose file <span class="description">(*.jpeg,
-                            *.png, *.jpg, *.webp)</span></label>
+                                *.png, *.jpg, *.webp)</span></label>
                     </div>
                 </div>
             </div>
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
                 <a href="/MapFeedback" type="button" class="btn btn-secondary">Back</a>

@@ -24,14 +24,23 @@
                     </div>
                 </div>
             </div>
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" name="title" class="form-control" id="formGroupExampleInput">
             </div>
+            @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="caption" class="form-label">Description</label>
                 <input type="text" name="description" class="form-control" id="formGroupExampleInput2">
             </div>
+            @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
                 <a href="/CTA" type="button" class="btn btn-secondary">Back</a>

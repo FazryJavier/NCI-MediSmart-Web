@@ -6,8 +6,7 @@
 
 @section('content')
     <section class="content">
-        <form action="{{ url('/ImageModulProduct/' . $imageModulProduct->id) }}" method="POST"
-            enctype="multipart/form-data">
+        <form action="{{ url('/ImageModulProduct/' . $imageModulProduct->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3">
@@ -20,6 +19,9 @@
                     @endforeach
                 </select>
             </div>
+            @error('modulId')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
                 <span class="description">*Ukuran gambar 1600x900px dan ukuran maksimal 5MB</span>
@@ -42,12 +44,19 @@
                     </div>
                 </div>
             </div>
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="list" class="form-label">List</label>
-                <span class="description">*List Diisi dengan 1-2 (1 : Gambar pertama, 2 : Gambar kedua). Gambar akan ditampilkan untuk fasilitas</span>
+                <span class="description">*List Diisi dengan 1-2 (1 : Gambar pertama, 2 : Gambar kedua). Gambar akan
+                    ditampilkan untuk fasilitas</span>
                 <input type="text" value="{{ $imageModulProduct->list }}" name="list" class="form-control"
                     id="formGroupExampleInput">
             </div>
+            @error('list')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/ImageModulProduct" type="button" class="btn btn-secondary">Back</a>

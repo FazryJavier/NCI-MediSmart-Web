@@ -66,7 +66,7 @@ class CTAController extends Controller
 
         CTA::create($validatedData);
 
-        return redirect('/CTA');
+        return redirect('/CTA')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -113,7 +113,7 @@ class CTAController extends Controller
 
         $cta->update($validatedData);
 
-        return redirect('/CTA');
+        return redirect('/CTA')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -131,6 +131,6 @@ class CTAController extends Controller
             Storage::disk('local')->delete($imagepath);
         }
 
-        return redirect('/CTA');
+        return redirect('/CTA')->with('error', 'Data deleted successfully!');
     }
 }

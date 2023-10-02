@@ -21,7 +21,10 @@
                     <div class="text">
                         <h1>{{ $ctaContent['titleView'] }}</h1>
                         <p>{{ $ctaContent['descriptionView'] }}</p>
-                        <a href="" class="btn-konsul">Konsultasi</a>
+                        @foreach ($whatsappContent['whatsappView'] as $phone_number)
+                            <a href="https://api.whatsapp.com/send?phone={{ $phone_number }}"
+                                class="btn-konsul">Konsultasi</a>
+                        @endforeach
                     </div>
                 </div>
             </div>

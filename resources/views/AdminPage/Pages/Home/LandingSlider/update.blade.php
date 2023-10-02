@@ -10,15 +10,19 @@
             @csrf
             @method('PUT')
             <div class="mb-3">
-                <label for="title" class="form-label">Judul</label>
+                <label for="title" class="form-label">Title</label>
                 <input type="text" value="{{ $slider->title }}" name="title" class="form-control">
             </div>
-
+            @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
-                <label for="caption" class="form-label">Sub Judul</label>
+                <label for="caption" class="form-label">Caption</label>
                 <input type="text" value="{{ $slider->caption }}" name="caption" class="form-control">
             </div>
-
+            @error('caption')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
                 <span class="description">*Ukuran gambar 1600x900px dan ukuran maksimal 5MB</span>
@@ -40,23 +44,27 @@
                                 .jpg, .gif, .webp)</span></label>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="status" class="form-label">Status</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="1" name="status" id="show"
-                            {{ $slider->status == 1 ? 'checked' : '' }}>
-                        <label class="form-check-label" for="show">Tampilkan Data</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="0" name="status" id="hide"
-                            {{ $slider->status == 0 ? 'checked' : '' }}>
-                        <label class="form-check-label" for="hide">Sembunyikan Data</label>
-                    </div>
+            </div>
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="1" name="status" id="show"
+                        {{ $slider->status == 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="show">Tampilkan Data</label>
                 </div>
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-success">Update</button>
-                    <a href="/LandingSlider" type="button" class="btn btn-secondary">Back</a>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="0" name="status" id="hide"
+                        {{ $slider->status == 0 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="hide">Sembunyikan Data</label>
                 </div>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Update</button>
+                <a href="/LandingSlider" type="button" class="btn btn-secondary">Back</a>
+            </div>
         </form>
 
         <style>

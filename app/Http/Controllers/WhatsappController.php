@@ -45,7 +45,7 @@ class WhatsappController extends Controller
 
         Whatsapp::create($validatedData);
 
-        return redirect('/Whatsapp');
+        return redirect('/Whatsapp')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -83,7 +83,7 @@ class WhatsappController extends Controller
 
         $whatsapp->update($validatedData);
 
-        return redirect('/Whatsapp');
+        return redirect('/Whatsapp')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -95,6 +95,6 @@ class WhatsappController extends Controller
 
         $whatsapp->delete();
 
-        return redirect('/Whatsapp');
+        return redirect('/Whatsapp')->with('error', 'Data deleted successfully!');
     }
 }

@@ -84,6 +84,7 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        @include('AdminPage.Layouts.flash-message')
                         @yield('content')
                     </div>
                     <!-- /.card-body -->

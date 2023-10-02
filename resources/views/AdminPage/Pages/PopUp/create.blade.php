@@ -31,20 +31,25 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="mb-3">
-                <label for="status" class="form-label">Status</label>
-                <input type="text" name="status" class="form-control" id="formGroupExampleInput">
-            </div> --}}
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="form-group">
                 <label for="start_date" class="form-label">Tanggal Akhir</label>
                 <input type="date" name="start_date" class="form-control datetimepicker-input"
                     data-target="#reservationdate" />
             </div>
+            @error('start_date')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="form-group">
                 <label for="end_date" class="form-label">Tanggal Akhir</label>
                 <input type="date" name="end_date" class="form-control datetimepicker-input"
                     data-target="#reservationdate" />
             </div>
+            @error('end_date')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
                 <div class="form-check">

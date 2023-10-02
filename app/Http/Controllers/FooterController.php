@@ -22,7 +22,7 @@ class FooterController extends Controller
     {
         $footerContent = Footer::first();
 
-        return $footerContent;
+        return $footerContent ?? new Footer();
     }
 
     /**
@@ -39,17 +39,17 @@ class FooterController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'address_head' => 'nullable',
+            'address_head' => 'required',
             'phone_head' => 'nullable',
             'fax_head' => 'nullable',
-            'address_branch' => 'nullable',
+            'address_branch' => 'required',
             'phone_branch' => 'nullable',
             'fax_branch' => 'nullable',
         ]);
 
         Footer::create($validatedData);
 
-        return redirect('/Footer');
+        return redirect('/Footer')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -78,10 +78,10 @@ class FooterController extends Controller
     public function update(Request $request, $id)
     {
         $content = [
-            'address_head' => 'nullable',
+            'address_head' => 'required',
             'phone_head' => 'nullable',
             'fax_head' => 'nullable',
-            'address_branch' => 'nullable',
+            'address_branch' => 'required',
             'phone_branch' => 'nullable',
             'fax_branch' => 'nullable',
         ];
@@ -92,7 +92,7 @@ class FooterController extends Controller
 
         $footer->update($validatedData);
 
-        return redirect('/Footer');
+        return redirect('/Footer')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -104,6 +104,6 @@ class FooterController extends Controller
 
         $footer->delete();
 
-        return redirect('/Footer');
+        return redirect('/Footer')->with('error', 'Data deleted successfully!');
     }
 }

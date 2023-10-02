@@ -63,7 +63,7 @@ class LandingSliderController extends Controller
 
         LandingSlider::create($validatedData);
 
-        return redirect('/LandingSlider');
+        return redirect('/LandingSlider')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -117,7 +117,7 @@ class LandingSliderController extends Controller
         }
         $slider->update($validatedData);
 
-        return redirect('/LandingSlider');
+        return redirect('/LandingSlider')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -135,6 +135,6 @@ class LandingSliderController extends Controller
             Storage::disk('local')->delete($imagePath);
         }
 
-        return redirect('/LandingSlider');
+        return redirect('/LandingSlider')->with('error', 'Data deleted successfully!');
     }
 }

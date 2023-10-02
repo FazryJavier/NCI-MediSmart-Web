@@ -62,7 +62,7 @@ class PopupController extends Controller
 
         Popup::create($validatedData);
 
-        return redirect('/Popup');
+        return redirect('/Popup')->with('success', 'Data created successfully!');
     }
 
     public function show(Popup $id)
@@ -101,7 +101,7 @@ class PopupController extends Controller
 
         $popup->update($validatedData);
 
-        return redirect('/Popup');
+        return redirect('/Popup')->with('success', 'Data updated successfully!');
     }
 
     public function destroy($id)
@@ -116,6 +116,6 @@ class PopupController extends Controller
             Storage::disk('local')->delete($imagepath);
         }
 
-        return redirect('/Popup');
+        return redirect('/Popup')->with('error', 'Data deleted successfully!');
     }
 }

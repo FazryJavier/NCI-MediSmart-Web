@@ -14,15 +14,24 @@
                 <input type="text" value="{{ $productUpdate->title }}" name="title" class="form-control"
                     id="formGroupExampleInput">
             </div>
+            @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="subTitle" class="form-label">Sub Title</label>
                 <input type="text" value="{{ $productUpdate->subTitle }}" name="subTitle" class="form-control"
                     id="formGroupExampleInput">
             </div>
+            @error('subTitle')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="5">{{ $productUpdate->description }}"</textarea>
             </div>
+            @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
                 <span class="description">*Ukuran gambar 1600x900px dan ukuran maksimal 5MB</span>
@@ -45,6 +54,9 @@
                     </div>
                 </div>
             </div>
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/Product" type="button" class="btn btn-secondary">Back</a>

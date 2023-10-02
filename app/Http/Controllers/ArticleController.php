@@ -22,6 +22,9 @@ class ArticleController extends Controller
     public function showContentBlog1()
     {
         $articles = Article::where('prioritize', 1)->first();
+        if (!$articles) {
+            abort(404);
+        }
         $articles2 = Article::where('prioritize', 2)->latest('created_at')->take(3)->get();
         $articles3 = Article::where('prioritize', 3)->get();
 
@@ -32,10 +35,10 @@ class ArticleController extends Controller
     {
         $articles = Article::where('id', $id)->first();
         $articles2 = Article::where('id', '!=', $id)
-        ->where('prioritize', 2)
-        ->latest('created_at')
-        ->take(3)
-        ->get();
+            ->where('prioritize', 2)
+            ->latest('created_at')
+            ->take(3)
+            ->get();
 
         return view('UserPage.Pages.detail', compact('articles', 'articles2'));
     }
@@ -85,7 +88,7 @@ class ArticleController extends Controller
         }
         // dd($validatedData);
         Article::create($validatedData);
-        return redirect('/Article');
+        return redirect('/Article')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -148,7 +151,7 @@ class ArticleController extends Controller
         }
         // dd($validatedData);
         $articles->update($validatedData);
-        return redirect('/Article');
+        return redirect('/Article')->with('success', 'Data updated successfully!');
     }
     /**
      * Remove the specified resource from storage.
@@ -159,6 +162,6 @@ class ArticleController extends Controller
 
         $articles->delete();
 
-        return redirect('/Article');
+        return redirect('/Article')->with('error', 'Data deleted successfully!');
     }
 }

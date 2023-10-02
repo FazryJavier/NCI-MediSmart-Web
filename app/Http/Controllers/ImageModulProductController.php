@@ -46,7 +46,7 @@ class ImageModulProductController extends Controller
 
         ImageModulProduct::create($validatedData);
 
-        return redirect('/ImageModulProduct');
+        return redirect('/ImageModulProduct')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -96,7 +96,7 @@ class ImageModulProductController extends Controller
 
         $imageModulProduct->update($validatedData);
 
-        return redirect('/ImageModulProduct');
+        return redirect('/ImageModulProduct')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -114,6 +114,6 @@ class ImageModulProductController extends Controller
             Storage::disk('local')->delete($imagepath);
         }
 
-        return redirect('/ImageModulProduct');
+        return redirect('/ImageModulProduct')->with('error', 'Data deleted successfully!');
     }
 }

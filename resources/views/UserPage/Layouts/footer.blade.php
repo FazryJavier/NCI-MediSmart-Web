@@ -66,7 +66,7 @@
             <div class="footer-content">
                 <h4><b>Perusahaan</b></h4>
                 <ul>
-                    <li><a href="">Informasi Perusahaan</a></li>
+                    <li><a href="http://nuansa.com/2019/" target="_blank">Informasi Perusahaan</a></li>
                     <li><a href="/Blog">Blog</a></li>
                     <li><a href="">Syarat & Ketentuan</a></li>
                 </ul>

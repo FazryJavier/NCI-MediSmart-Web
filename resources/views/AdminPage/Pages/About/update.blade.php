@@ -15,6 +15,9 @@
                     JzmHxafphj0</b></span>
             <input type="text" value="{{ $aboutUpdate->video }}" name="video" class="form-control">
         </div>
+        @error('video')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <div class="mb-3">
             <label for="image" class="form-label">Upload Logo</label>
             <span class="description">*Ukuran gambar 600x312px dan ukuran maksimal 5MB</span>
@@ -36,18 +39,30 @@
                 </div>
             </div>
         </div>
+        @error('image')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <textarea name="description" class="form-control" rows="5">{{ $aboutUpdate->description }}</textarea>
         </div>
+        @error('description')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <div class="mb-3">
             <label for="visi" class="form-label">Visi</label>
             <input type="text" value="{{ $aboutUpdate->visi }}" name="visi" class="form-control">
         </div>
+        @error('visi')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <div class="mb-3">
             <label for="misi" class="form-label">Misi</label>
             <textarea name="misi" class="form-control" rows="5">{{ $aboutUpdate->misi }}</textarea>
         </div>
+        @error('misi')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <button type="submit" class="btn btn-success">Update</button>
         <a href="/AboutUs" type="button" class="btn btn-secondary">Back</a>
     </form>

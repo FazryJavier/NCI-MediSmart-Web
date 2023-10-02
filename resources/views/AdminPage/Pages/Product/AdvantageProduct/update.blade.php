@@ -19,11 +19,17 @@
                     @endforeach
                 </select>
             </div>
+            @error('productId')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" value="{{ $advantageProduct->title }}" name="title" class="form-control"
                     id="formGroupExampleInput">
             </div>
+            @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
                 <span class="description">*Ukuran gambar 300x300px dan ukuran maksimal 5MB</span>
@@ -46,6 +52,9 @@
                     </div>
                 </div>
             </div>
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/AdvantageProduct" type="button" class="btn btn-secondary">Back</a>

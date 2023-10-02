@@ -13,9 +13,9 @@
             <span class="description">*Diisi dengan awalan nomor kode negara, contoh : 6285xxxxxxxxx</span>
             <input type="text" value="{{ $whatsappUpdate->phone_number }}" name="phone_number" class="form-control">
         </div>
-        {{-- @error('judul')
+        @error('phone_number')
             <div class="alert alert-danger">{{ $message }}</div>
-        @enderror --}}
+        @enderror
 
         <button type="submit" class="btn btn-success">Update</button>
         <a href="/Whatsapp" type="button" class="btn btn-secondary">Back</a>

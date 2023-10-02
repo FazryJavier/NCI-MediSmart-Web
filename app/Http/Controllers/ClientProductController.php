@@ -56,7 +56,7 @@ class ClientProductController extends Controller
 
         ClientProduct::create($validatedData);
 
-        return redirect('/ClientProduct');
+        return redirect('/ClientProduct')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -104,7 +104,7 @@ class ClientProductController extends Controller
 
         $clientProduct->update($validatedData);
 
-        return redirect('/ClientProduct');
+        return redirect('/ClientProduct')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -122,6 +122,6 @@ class ClientProductController extends Controller
             Storage::disk('local')->delete($imagepath);
         }
 
-        return redirect('/ClientProduct');
+        return redirect('/ClientProduct')->with('error', 'Data deleted successfully!');
     }
 }

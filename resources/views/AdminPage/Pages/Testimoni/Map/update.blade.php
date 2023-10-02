@@ -10,10 +10,12 @@
             @csrf
             @method('PUT')
             <div class="mb-3">
-                <label for="title" class="form-label">Judul</label>
+                <label for="title" class="form-label">Title</label>
                 <input type="text" value="{{ $mapFeedback->title }}" name="title" class="form-control">
             </div>
-            
+            @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
                 <span class="description">*Ukuran gambar 1920x900px dan ukuran maksimal 5MB</span>
@@ -32,10 +34,13 @@
                         <input type="file" class="custom-file-input" id="image" name="image"
                             onchange="previewImage()">
                         <label class="custom-file-label" for="label">Choose file <span class="description">(*.jpeg,
-                            *.png, *.jpg, *.webp)</span></label>
+                                *.png, *.jpg, *.webp)</span></label>
                     </div>
                 </div>
             </div>
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/MapFeedback" type="button" class="btn btn-secondary">Back</a>
@@ -48,7 +53,7 @@
                 color: #888;
             }
         </style>
-        
+
         <script>
             function previewImage() {
                 const image = document.querySelector('#image');

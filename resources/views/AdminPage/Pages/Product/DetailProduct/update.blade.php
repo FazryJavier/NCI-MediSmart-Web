@@ -19,8 +19,11 @@
                     @endforeach
                 </select>
             </div>
+            @error('productId')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
-                <label for="logo" class="form-label">Image File</label>
+                <label for="logo" class="form-label">Logo File</label>
                 <span class="description">*Ukuran gambar 1920x347px dan ukuran maksimal 5MB</span>
                 <input type="hidden" name="oldImage" value="{{ $detailProduct->logo }}">
                 @if ($detailProduct->logo)
@@ -41,15 +44,24 @@
                     </div>
                 </div>
             </div>
+            @error('logo')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="5">{{ $detailProduct->description }}</textarea>
             </div>
+            @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="flyer" class="form-label">Link Flyer</label>
                 <input type="text" value="{{ $detailProduct->flyer }}" name="flyer" class="form-control"
                     id="formGroupExampleInput">
             </div>
+            @error('flyer')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="video" class="form-label">Video</label>
                 <span class="description">*Masukkan token yang ada pada link youtube. Ex :
@@ -58,6 +70,9 @@
                 <input type="text" value="{{ $detailProduct->video }}" name="video" class="form-control"
                     id="formGroupExampleInput">
             </div>
+            @error('video')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/DetailProduct" type="button" class="btn btn-secondary">Back</a>

@@ -20,8 +20,11 @@
                     @endforeach
                 </select>
             </div>
+            @error('modulId')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
-                <label for="icon" class="form-label">Image File</label>
+                <label for="icon" class="form-label">Icon File</label>
                 <span class="description">*Ukuran gambar 300x370px dan ukuran maksimal 5MB</span>
                 <input type="hidden" name="oldImage" value="{{ $advantageModulProduct->icon }}">
                 @if ($advantageModulProduct->icon)
@@ -42,15 +45,24 @@
                     </div>
                 </div>
             </div>
+            @error('icon')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" value="{{ $advantageModulProduct->title }}" name="title" class="form-control"
                     id="formGroupExampleInput">
             </div>
+            @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="5">{{ $advantageModulProduct->description }}"</textarea>
             </div>
+            @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/AdvantageModulProduct" type="button" class="btn btn-secondary">Back</a>

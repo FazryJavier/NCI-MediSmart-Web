@@ -74,7 +74,7 @@ class ProductController extends Controller
 
         Product::create($validatedData);
 
-        return redirect('/Product');
+        return redirect('/Product')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -123,7 +123,7 @@ class ProductController extends Controller
 
         $product->update($validatedData);
 
-        return redirect('/Product');
+        return redirect('/Product')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -141,6 +141,6 @@ class ProductController extends Controller
             Storage::disk('local')->delete($imagePath);
         }
 
-        return redirect('/Product');
+        return redirect('/Product')->with('error', 'Data deleted successfully!');
     }
 }

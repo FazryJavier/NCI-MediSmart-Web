@@ -10,13 +10,19 @@
             @csrf
             @method('POST')
             <div class="mb-3">
-                <label for="title" class="form-label">Judul</label>
+                <label for="title" class="form-label">Title</label>
                 <input type="text" name="title" class="form-control" id="formGroupExampleInput">
             </div>
+            @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
-                <label for="caption" class="form-label">Sub Judul</label>
+                <label for="caption" class="form-label">Caption</label>
                 <input type="text" name="caption" class="form-control" id="formGroupExampleInput2">
             </div>
+            @error('caption')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
                 <span class="description">*Ukuran gambar 1600x900px dan ukuran maksimal 5MB</span>
@@ -32,6 +38,9 @@
                     </div>
                 </div>
             </div>
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
                 <div class="form-check">

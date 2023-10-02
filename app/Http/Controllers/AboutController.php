@@ -38,13 +38,7 @@ class AboutController extends Controller
             ];
         }
 
-        return [
-            'videoView' => null,
-            'imageView' => null,
-            'descriptionView' => null,
-            'visiView' => null,
-            'misiView' => null,
-        ];
+        abort(404);
     }
 
     /**
@@ -74,7 +68,7 @@ class AboutController extends Controller
 
         About::create($validatedData);
 
-        return redirect('/AboutUs');
+        return redirect('/AboutUs')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -123,7 +117,7 @@ class AboutController extends Controller
 
         $about->update($validatedData);
 
-        return redirect('/AboutUs');
+        return redirect('/AboutUs')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -141,6 +135,6 @@ class AboutController extends Controller
             Storage::disk('local')->delete($imagePath);
         }
 
-        return redirect('/AboutUs');
+        return redirect('/AboutUs')->with('error', 'Data deleted successfully!');
     }
 }

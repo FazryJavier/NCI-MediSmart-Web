@@ -59,8 +59,7 @@
                                     @foreach ($navbarContent as $navbarItem)
                                         <li class="nav-item-2">
                                             <a href="/ProductView/{{ $navbarItem->products->id }}" class="nav-link">
-                                                <img src="{{ asset('storage/' . $navbarItem->icon) }}"
-                                                    alt="">
+                                                <img src="{{ asset('storage/' . $navbarItem->icon) }}" alt="">
                                                 <div class="text">
                                                     <h5>{{ $navbarItem->products->title }}</h5>
                                                     <p>{{ $navbarItem->products->subTitle }}</p>
@@ -92,7 +91,12 @@
                             <li class="nav-item"><a href="/Testimoni" class="nav-link">Testimoni</a></li>
                             <li class="nav-item"><a href="/Blog" class="nav-link">Blog</a></li>
                             <li class="nav-item"><a href="/Demo" class="nav-link">Demo</a></li>
-                            <li class="nav-item"><a href="#" class="btn-contact">Hubungi Kami</a></li>
+                            <li class="nav-item">
+                                @foreach ($whatsappContent['whatsappView'] as $phone_number)
+                                    <a href="https://api.whatsapp.com/send?phone={{ $phone_number }}"
+                                        class="btn-contact">Hubungi Kami</a>
+                                @endforeach
+                            </li>
                         </ul>
                     </nav>
                 </div>

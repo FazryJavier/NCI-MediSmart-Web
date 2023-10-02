@@ -30,7 +30,6 @@
                 <form action="/Admin" method="post">
                     @csrf
                     @method('POST')
-                    {{-- @include('/flash-message/flash-message') --}}
                     <div class="input-group mb-3">
                         <input type="username" name="username" class="form-control @error('username') is-invalid @enderror"
                             placeholder="Username" id="username" autofocus required>

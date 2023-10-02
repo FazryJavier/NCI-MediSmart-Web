@@ -29,7 +29,6 @@
                 <p class="login-box-msg">Register a new membership</p>
                 <form action="/Registration" method="post">
                     @csrf
-                    {{-- @include('/flash-message/flash-message') --}}
                     <div class="input-group mb-3">
                         <input type="text" name="username"
                             class="form-control @error('username') is-invalid @enderror" id="username"

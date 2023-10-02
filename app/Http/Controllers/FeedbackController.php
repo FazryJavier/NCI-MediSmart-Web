@@ -20,6 +20,12 @@ class FeedbackController extends Controller
 
     public function showContent()
     {
+        $feedback = Feedback::all();
+
+        if ($feedback->isEmpty()) {
+            abort(404);
+        }
+
         $imageView = Feedback::pluck('image');
         $nameView = Feedback::pluck('name');
         $descriptionView = Feedback::pluck('description');
@@ -56,7 +62,7 @@ class FeedbackController extends Controller
 
         Feedback::create($validatedData);
 
-        return redirect('/Feedback');
+        return redirect('/Feedback')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -104,7 +110,7 @@ class FeedbackController extends Controller
 
         $feedback->update($validatedData);
 
-        return redirect('/Feedback');
+        return redirect('/Feedback')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -122,6 +128,6 @@ class FeedbackController extends Controller
             Storage::disk('local')->delete($imagePath);
         }
 
-        return redirect('/Feedback');
+        return redirect('/Feedback')->with('error', 'Data deleted successfully!');
     }
 }

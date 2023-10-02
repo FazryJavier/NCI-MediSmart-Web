@@ -56,7 +56,7 @@ class AdvantageModulProductController extends Controller
 
         AdvantageModulProduct::create($validatedData);
 
-        return redirect('/AdvantageModulProduct');
+        return redirect('/AdvantageModulProduct')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -107,7 +107,7 @@ class AdvantageModulProductController extends Controller
 
         $advantageModulProduct->update($validatedData);
 
-        return redirect('/AdvantageModulProduct');
+        return redirect('/AdvantageModulProduct')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -125,6 +125,6 @@ class AdvantageModulProductController extends Controller
             Storage::disk('local')->delete($imagepath);
         }
 
-        return redirect('/AdvantageModulProduct');
+        return redirect('/AdvantageModulProduct')->with('error', 'Data deleted successfully!');
     }
 }

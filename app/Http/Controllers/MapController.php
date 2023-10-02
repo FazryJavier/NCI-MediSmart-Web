@@ -62,7 +62,7 @@ class MapController extends Controller
 
         Map::create($validatedData);
 
-        return redirect('/LandingMap');
+        return redirect('/LandingMap')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -109,7 +109,7 @@ class MapController extends Controller
 
         $map->update($validatedData);
 
-        return redirect('/LandingMap');
+        return redirect('/LandingMap')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -127,6 +127,6 @@ class MapController extends Controller
             Storage::disk('local')->delete($imagePath);
         }
 
-        return redirect('/LandingMap');
+        return redirect('/LandingMap')->with('error', 'Data deleted successfully!');
     }
 }

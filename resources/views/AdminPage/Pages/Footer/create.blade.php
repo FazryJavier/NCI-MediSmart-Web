@@ -13,6 +13,9 @@
                 <label for="address_head" class="form-label">Address Head Office</label>
                 <input type="text" name="address_head" class="form-control" id="formGroupExampleInput">
             </div>
+            @error('address_head')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="phone_head" class="form-label">Phone Head Office</label>
                 <span class="description">*Tambahkan tulisan 'Phone. '</span>
@@ -27,6 +30,9 @@
                 <label for="address_branch" class="form-label">Address Branch Office</label>
                 <input type="text" name="address_branch" class="form-control" id="formGroupExampleInput">
             </div>
+            @error('address_branch')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="phone_branch" class="form-label">Phone Branch Office</label>
                 <span class="description">*Tambahkan tulisan 'Phone. '</span>

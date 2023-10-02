@@ -56,7 +56,7 @@ class ExperienceListController extends Controller
 
         ExperienceList::create($validatedData);
 
-        return redirect('/ExperienceList');
+        return redirect('/ExperienceList')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -104,7 +104,7 @@ class ExperienceListController extends Controller
 
         $experienceList->update($validatedData);
 
-        return redirect('/ExperienceList');
+        return redirect('/ExperienceList')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -122,6 +122,6 @@ class ExperienceListController extends Controller
             Storage::disk('local')->delete($imagePath);
         }
 
-        return redirect('/ExperienceList');
+        return redirect('/ExperienceList')->with('error', 'Data deleted successfully!');
     }
 }

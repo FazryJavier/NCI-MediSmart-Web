@@ -31,6 +31,9 @@
                     </div>
                 </div>
             </div>
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
                 <div class="form-check">
@@ -51,13 +54,18 @@
                     value="{{ $popup->start_date ? \Carbon\Carbon::parse($popup->start_date)->format('Y-m-d') : '' }}"
                     class="form-control" />
             </div>
+            @error('start_date')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="form-group">
                 <label for="end_date" class="form-label">Tanggal Akhir</label>
                 <input type="date" name="end_date"
                     value="{{ $popup->end_date ? \Carbon\Carbon::parse($popup->end_date)->format('Y-m-d') : '' }}"
                     class="form-control" />
             </div>
-
+            @error('end_date')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/CTA" type="button" class="btn btn-secondary">Back</a>

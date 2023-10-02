@@ -18,17 +18,26 @@
                     @endforeach
                 </select>
             </div>
+            @error('modulId')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <span class="description">*Pisahkan dengan titik koma (;) jika yang diinputkan ingin langsung seluruh list,
                     contoh : Satu;Dua;Tiga</span>
                 <textarea name="description" class="form-control" rows="5"></textarea>
             </div>
+            @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="list" class="form-label">List</label>
                 <span class="description">*List Diisi dengan 1-2 (1 : List bagian atas, 2 : List bagian bawah)</span>
                 <input type="text" name="list" class="form-control" id="formGroupExampleInput">
             </div>
+            @error('list')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
                 <a href="/FasilitiesModulProduct" type="button" class="btn btn-secondary">Back</a>

@@ -31,15 +31,23 @@
                     </div>
                 </div>
             </div>
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" value="{{ $cta->title }}" name="title" class="form-control">
             </div>
-
+            @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="caption" class="form-label">Description</label>
                 <input type="text" value="{{ $cta->description }}" name="description" class="form-control">
             </div>
+            @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/CTA" type="button" class="btn btn-secondary">Back</a>

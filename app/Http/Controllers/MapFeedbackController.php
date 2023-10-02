@@ -62,7 +62,7 @@ class MapFeedbackController extends Controller
 
         MapFeedback::create($validatedData);
 
-        return redirect('/MapFeedback');
+        return redirect('/MapFeedback')->with('success', 'Data created successfully!');
     }
 
     /**
@@ -109,7 +109,7 @@ class MapFeedbackController extends Controller
 
         $mapFeedback->update($validatedData);
 
-        return redirect('/MapFeedback');
+        return redirect('/MapFeedback')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -127,6 +127,6 @@ class MapFeedbackController extends Controller
             Storage::disk('local')->delete($imagePath);
         }
 
-        return redirect('/MapFeedback');
+        return redirect('/MapFeedback')->with('error', 'Data deleted successfully!');
     }
 }

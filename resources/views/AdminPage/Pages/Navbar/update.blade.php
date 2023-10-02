@@ -19,6 +19,9 @@
                     @endforeach
                 </select>
             </div>
+            @error('productId')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="icon" class="form-label">Icon File</label>
                 <span class="description">*Ukuran gambar 300x300px dan ukuran maksimal 5MB</span>
@@ -41,6 +44,9 @@
                     </div>
                 </div>
             </div>
+            @error('icon')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/Navbar" type="button" class="btn btn-secondary">Back</a>

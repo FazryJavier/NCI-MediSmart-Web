@@ -17,15 +17,24 @@
                     @endforeach
                 </select>
             </div>
+            @error('adminId')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="title" class="form-label"> Title</label>
                 <input type="text" name="title" class="form-control" id="formGroupExampleInput">
             </div>
+            @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <div id="editor"></div>
                 <textarea name="description" id="description" style="display: none;"></textarea>
             </div>
+            @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
                 <span class="description">*Ukuran gambar 1920x900px dan ukuran maksimal 5MB</span>
@@ -41,11 +50,18 @@
                     </div>
                 </div>
             </div>
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="prioritize" class="form-label"> Priority</label>
-                <span class="description">*Prioritas Diisi dengan 1-3 (1 : Prioritas, 2 : 3 berita terpanas, 3 : berita lainnya)</span>
+                <span class="description">*Prioritas Diisi dengan 1-3 (1 : Prioritas, 2 : 3 berita terpanas, 3 : berita
+                    lainnya)</span>
                 <input type="text" name="prioritize" class="form-control" id="formGroupExampleInput">
             </div>
+            @error('prioritiza')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
                 <a href="/AdvantageListProduct" type="button" class="btn btn-secondary">Back</a>
