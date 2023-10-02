@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +10,21 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style-popup.css') }}">
 
 </head>
+
 <body>
     {{-- Pop Up --}}
-    <div class="home-popup">
-        <div class="home-popup__background">
-            <div class="home-popup__content">
-                <div class="popup-container">
-                    <img class="banner-image" src="{{ $popupContent['imageView'] }}" alt="Banner">
-                    <button class="close-button">X</button>
+    @if ($popupContent['statusView'] == 1)
+        <div class="home-popup">
+            <div class="home-popup__background">
+                <div class="home-popup__content">
+                    <div class="popup-container">
+                        <img class="banner-image" src="{{ $popupContent['imageView'] }}" alt="Banner">
+                        <button class="close-button">X</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
     {{-- End Pop Up --}}
 </body>
 
@@ -44,7 +48,7 @@
 </script> --}}
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         const homePopup = document.querySelector(".home-popup");
         const closeButton = document.querySelector(".close-button");
 
@@ -61,7 +65,7 @@
         }
 
         // Sembunyikan pop-up saat tombol "Tutup" diklik
-        closeButton.addEventListener("click", function () {
+        closeButton.addEventListener("click", function() {
             homePopup.style.display = "none";
         });
     });

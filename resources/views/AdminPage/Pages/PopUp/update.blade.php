@@ -33,7 +33,16 @@
             </div>
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
-                <input type="text" value="{{ $popup->status }}" name="status" class="form-control">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="1" name="status" id="show"
+                        {{ $popup->status == 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="show">Tampilkan Data</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="0" name="status" id="hide"
+                        {{ $popup->status == 0 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="hide">Sembunyikan Data</label>
+                </div>
             </div>
 
             <div class="form-group">
@@ -228,5 +237,17 @@
                 myDropzone.removeAllFiles(true)
             }
             // DropzoneJS Demo Code End
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const statusCheckBox = document.getElementById("status");
+                const statusValue = "{{ $popup->status }}";
+
+                if (statusValue == 1) {
+                    statusCheckBox.checked = true;
+                } else {
+                    statusCheckBox.checked = false;
+                }
+            });
         </script>
     @endsection

@@ -38,10 +38,10 @@
                             <a href="https://api.whatsapp.com/send?phone={{ $phone_number }}" class="button-1"
                                 data-index="{{ $index }}">Hubungi Kami</a>
                         @endforeach
+                        @if ($sliderContent['statusView'][$index] == 1)
+                            <a href="" class="button-2" data-index="{{ $index }}">Pelajari Lanjut</a>
+                        @endif
                     </div>
-                    @if ($sliderContent['statusView'][$index] == 1)
-                        <a href="" class="button-2" data-index="{{ $index }}">Pelajari Lanjut</a>
-                    @endif
                 </div>
             @endforeach
         </div>

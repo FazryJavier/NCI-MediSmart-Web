@@ -31,10 +31,10 @@
                     </div>
                 </div>
             </div>
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
                 <input type="text" name="status" class="form-control" id="formGroupExampleInput">
-            </div>
+            </div> --}}
             <div class="form-group">
                 <label for="start_date" class="form-label">Tanggal Akhir</label>
                 <input type="date" name="start_date" class="form-control datetimepicker-input"
@@ -45,6 +45,22 @@
                 <input type="date" name="end_date" class="form-control datetimepicker-input"
                     data-target="#reservationdate" />
             </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="1" name="status" id="show" checked>
+                    <label class="form-check-label" for="show">
+                        Show Data
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="0" name="status" id="hide">
+                    <label class="form-check-label" for="hide">
+                        Hide Data
+                    </label>
+                </div>
+            </div>
+            <input type="hidden" name="status" id="selected_status" value="1">
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
                 <a href="/Popup" type="button" class="btn btn-secondary">Back</a>
@@ -225,5 +241,31 @@
             myDropzone.removeAllFiles(true)
         }
         // DropzoneJS Demo Code End
+    </script>
+    <script>
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+
+        // JavaScript function to update the hidden input with the selected status
+        function updateStatus() {
+            var selectedStatus = document.querySelector('input[name="status"]:checked').value;
+            document.getElementById('selected_status').value = selectedStatus;
+        }
+
+        // Attach the updateStatus function to the radio buttons' onchange event
+        document.querySelectorAll('input[name="status"]').forEach(function(radio) {
+            radio.addEventListener('change', updateStatus);
+        });
     </script>
 @endsection
