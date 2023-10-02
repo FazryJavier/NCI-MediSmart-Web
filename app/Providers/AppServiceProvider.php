@@ -8,6 +8,7 @@ use App\Http\Controllers\CTAController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\WhatsappController;
+use App\Http\Controllers\PopupController;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -42,6 +43,11 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $footerContent = FooterController::showContent();
             $view->with('footerContent', $footerContent);
+        });
+
+        View::composer('*', function ($view) {
+            $popupContent = PopupController::showContent();
+            $view->with('popupContent', $popupContent);
         });
     }
 

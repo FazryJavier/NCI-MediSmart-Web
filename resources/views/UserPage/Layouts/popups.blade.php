@@ -15,7 +15,7 @@
         <div class="home-popup__background">
             <div class="home-popup__content">
                 <div class="popup-container">
-                    <img class="banner-image" src="{{ asset('assets/img/background.png') }}" alt="Banner">
+                    <img class="banner-image" src="{{ $popupContent['imageView'] }}" alt="Banner">
                     <button class="close-button">X</button>
                 </div>
             </div>
@@ -25,7 +25,7 @@
 </body>
 
 {{-- pop up --}}
-<script>
+{{-- <script>
     document.addEventListener("DOMContentLoaded", function () {
         const homePopup = document.querySelector(".home-popup");
         
@@ -41,6 +41,30 @@
     });
 
 
+</script> --}}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const homePopup = document.querySelector(".home-popup");
+        const closeButton = document.querySelector(".close-button");
+
+        // Ambil tanggal saat ini dalam format yang sesuai dengan 'start_date' dan 'end_date' dari data
+        const currentDate = new Date().toISOString().slice(0, 19).replace("T", " ");
+
+        // Ambil tanggal 'start_date' dan 'end_date' dari data yang diberikan oleh PopupController
+        const startDate = "{{ $popupContent['startdateView'] }}";
+        const endDate = "{{ $popupContent['enddateView'] }}";
+
+        // Periksa apakah tanggal saat ini berada dalam rentang 'start_date' dan 'end_date'
+        if (currentDate >= startDate && currentDate <= endDate) {
+            homePopup.style.display = "flex"; // Tampilkan pop-up
+        }
+
+        // Sembunyikan pop-up saat tombol "Tutup" diklik
+        closeButton.addEventListener("click", function () {
+            homePopup.style.display = "none";
+        });
+    });
 </script>
 
 </html>

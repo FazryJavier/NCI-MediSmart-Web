@@ -23,7 +23,7 @@
 
 .popup-container img {
     max-width: 100%; /* Maksimum lebar gambar dalam popup */
-    width: 1000px;
+    width: 600px;
     height: auto; /* Sesuaikan tinggi gambar sesuai dengan lebar */
 }
 
