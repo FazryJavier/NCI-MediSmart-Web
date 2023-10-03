@@ -27,7 +27,7 @@
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
-                <form action="/Registration" method="post">
+                <form action="/RegistrationJustForAdmin" method="post">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="text" name="username"

@@ -142,8 +142,8 @@ Route::get('/Admin', [UserController::class, 'index'])->name('Admin');
 Route::post('/Admin', [UserController::class, 'authenticate']);
 Route::post('/logout', [UserController::class, 'logout']);
 
-Route::get('/Registration', [RegistrationController::class, 'index']);
-Route::post('/Registration', [RegistrationController::class, 'store']);
+Route::get('/RegistrationJustForAdmin', [RegistrationController::class, 'index']);
+Route::post('/RegistrationJustForAdmin', [RegistrationController::class, 'store']);
 
 Route::middleware(['auth'])->group(function () {
     // Landing Slider
