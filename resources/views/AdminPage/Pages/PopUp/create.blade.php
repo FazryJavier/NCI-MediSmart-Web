@@ -35,7 +35,7 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="form-group">
-                <label for="start_date" class="form-label">Tanggal Akhir</label>
+                <label for="start_date" class="form-label">Tanggal Awal</label>
                 <input type="date" name="start_date" class="form-control datetimepicker-input"
                     data-target="#reservationdate" />
             </div>

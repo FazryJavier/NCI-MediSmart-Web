@@ -37,7 +37,7 @@
                 <th class="col-sm-1">Fax Head</th>
                 <th class="col-sm-2">Address Branch</th>
                 <th class="col-sm-2">Phone Branch</th>
-                <th class="col-sm-2">Fax Branch</th>
+                <th class="col-sm-1">Fax Branch</th>
                 <th class="col-sm-1">Action</th>
             </tr>
         </thead>
@@ -58,8 +58,10 @@
                                     class="fa-solid fa-pen-to-square"></i></a>
                             @csrf
                             @method('delete')
-                            <input type="submit" value='Delete' class="btn btn-danger mt-1"
+                            <button type="submit" class="btn btn-danger"
                                 onclick="return confirm('Are you sure want to delete this data?')">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
                         </form>
                     </td>
                 </tr>

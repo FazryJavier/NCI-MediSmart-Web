@@ -37,7 +37,7 @@
                 <th class="col-sm-2">Description</th>
                 <th class="col-sm-2">Flyer</th>
                 <th class="col-sm-1">Video</th>
-                <th class="col-sm-2">Action</th>
+                <th class="col-sm-1">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -56,8 +56,10 @@
                                     class="fa-solid fa-pen-to-square"></i></a>
                             @csrf
                             @method('delete')
-                            <input type="submit" value='Delete' class="btn btn-danger mt-1"
+                            <button type="submit" class="btn btn-danger"
                                 onclick="return confirm('Are you sure want to delete this data?')">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
                         </form>
                     </td>
                 </tr>

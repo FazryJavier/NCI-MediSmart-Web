@@ -17,6 +17,10 @@
     @include('UserPage.Layouts.header')
     {{-- End Header --}}
 
+    {{-- Popup --}}
+    @include('UserPage.Layouts.popups')
+    {{-- End popup --}}
+
     {{-- WhatsApp Button --}}
     @include('UserPage.Layouts.wa-icon')
 
@@ -37,7 +41,10 @@
                             @endisset
                         </div>
                         <div class="button">
-                            <a href="#" class="btn-call">Hubungi Kami</a>
+                            @foreach ($whatsappContent['whatsappView'] as $phone_number)
+                                <a href="https://api.whatsapp.com/send?phone={{ $phone_number }}"
+                                    class="btn-call">Hubungi Kami</a>
+                            @endforeach
                             @isset($detailproductContent['flyerView'])
                                 <a href="{{ $detailproductContent['flyerView'] }}" class="btn-flyer">Download Flyer</a>
                             @endisset

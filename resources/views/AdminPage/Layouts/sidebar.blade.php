@@ -229,12 +229,6 @@
                                 <p>Navbar</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Bottom Bar</p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
                 {{-- End Header --}}
@@ -253,12 +247,6 @@
                             <a href="/Footer" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Footer</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Copyright</p>
                             </a>
                         </li>
                     </ul>
@@ -325,7 +313,7 @@
                 </li>
                 {{-- End WhatsApp --}}
 
-                {{-- Pop Up--}}
+                {{-- Pop Up --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-plus-square"></i>

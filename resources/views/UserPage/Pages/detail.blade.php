@@ -16,6 +16,10 @@
     @include('UserPage.Layouts.header')
     {{-- End Header --}}
 
+    {{-- Popup --}}
+    @include('UserPage.Layouts.popups')
+    {{-- End popup --}}
+
     {{-- WhatsApp Button --}}
     @include('UserPage.Layouts.wa-icon')
 

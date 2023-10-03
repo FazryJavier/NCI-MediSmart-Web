@@ -64,7 +64,7 @@
             @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
-                <a href="/AdvantageListProduct" type="button" class="btn btn-secondary">Back</a>
+                <a href="/Article" type="button" class="btn btn-secondary">Back</a>
             </div>
         </form>
     </section>

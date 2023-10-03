@@ -31,11 +31,11 @@
         <thead>
             <tr>
                 <th class="col-sm-1">No</th>
-                <th class="col-sm-1">ID</th>
-                <th class="col-sm-2">ID Admin</th>
+                <th class="col-sm-1">Id</th>
+                <th class="col-sm-1">Id Admin</th>
                 <th class="col-sm-2">Title</th>
                 <th class="col-sm-3">Description</th>
-                <th class="col-sm-2">image</th>
+                <th class="col-sm-2">Image</th>
                 <th class="col-sm-1">Priority</th>
                 <th class="col-sm-1">Action</th>
 
@@ -57,8 +57,10 @@
                                     class="fa-solid fa-pen-to-square"></i></a>
                             @csrf
                             @method('delete')
-                            <input type="submit" value='Delete' class="btn btn-danger mt-1"
+                            <button type="submit" class="btn btn-danger"
                                 onclick="return confirm('Are you sure want to delete this data?')">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
                         </form>
                     </td>
                 </tr>
