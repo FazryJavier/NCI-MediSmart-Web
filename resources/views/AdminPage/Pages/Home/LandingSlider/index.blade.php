@@ -30,6 +30,7 @@
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th class="col-sm-1">No</th>
                 <th class="col-sm-1">Id</th>
                 <th class="col-sm-3">Title</th>
                 <th class="col-sm-3">Caption</th>
@@ -42,6 +43,7 @@
             @forelse ($landing as $ld => $item)
                 <tr>
                     <td>{{ $ld + 1 }}</td>
+                    <td>{{ $item->id }}</td>
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->caption }}</td>
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>

@@ -30,6 +30,7 @@
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th class="col-sm-1">No</th>
                 <th class="col-sm-1">Id</th>
                 <th class="col-sm-2">Address Head</th>
                 <th class="col-sm-1">Phone Head</th>
@@ -44,6 +45,7 @@
             @forelse ($footer as $footer => $item)
                 <tr>
                     <td>{{ $footer + 1 }}</td>
+                    <td>{{ $item->id }}</td>
                     <td>{{ $item->address_head }}</td>
                     <td>{{ $item->phone_head }}</td>
                     <td>{{ $item->fax_head }}</td>

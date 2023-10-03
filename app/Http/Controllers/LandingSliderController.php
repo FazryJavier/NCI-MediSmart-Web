@@ -28,12 +28,13 @@ class LandingSliderController extends Controller
         $captionView = LandingSlider::whereIn('id', $latestSliderIds)->pluck('caption');
         $imageView = LandingSlider::whereIn('id', $latestSliderIds)->pluck('image');
         $statusView = LandingSlider::whereIn('id', $latestSliderIds)->pluck('status');
-
+        $linkView = LandingSlider::whereIn('id', $latestSliderIds)->pluck('link');
         return [
             'titleView' => $titleView,
             'captionView' => $captionView,
             'imageView' => $imageView,
             'statusView' => $statusView,
+            'linkView' => $linkView,
         ];
     }
 
@@ -55,6 +56,7 @@ class LandingSliderController extends Controller
             'caption' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'status' => 'nullable|boolean',
+            'link' => 'required',
         ]);
 
         if ($request->file('image')) {
@@ -96,6 +98,7 @@ class LandingSliderController extends Controller
             'caption' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'status' => 'required',
+            'link' => 'required',
         ];
 
         $validatedData = $request->validate($content);

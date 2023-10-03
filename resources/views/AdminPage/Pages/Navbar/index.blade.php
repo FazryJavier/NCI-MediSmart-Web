@@ -30,6 +30,7 @@
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th class="col-sm-2">No</th>
                 <th class="col-sm-2">Id</th>
                 <th class="col-sm-4">Product Name</th>
                 <th class="col-sm-4">Icon</th>
@@ -40,6 +41,7 @@
             @forelse ($navbar as $navbar => $item)
                 <tr>
                     <td>{{ $navbar + 1 }}</td>
+                    <td>{{ $item->id }}</td>
                     <td>{{ $item->products->title }}</td>
                     <td><img src="{{ asset('storage/' . $item->icon) }}" alt="Image" class="img-fluid mt-3"></td>
                     <td>

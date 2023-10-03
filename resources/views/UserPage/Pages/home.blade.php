@@ -39,7 +39,8 @@
                                 data-index="{{ $index }}">Hubungi Kami</a>
                         @endforeach
                         @if ($sliderContent['statusView'][$index] == 1)
-                            <a href="" class="button-2" data-index="{{ $index }}">Pelajari Lanjut</a>
+                            <a href="{{ $sliderContent['linkView'][$index] }}" class="button-2"
+                                data-index="{{ $index }}">Pelajari Lanjut</a>
                         @endif
                     </div>
                 </div>

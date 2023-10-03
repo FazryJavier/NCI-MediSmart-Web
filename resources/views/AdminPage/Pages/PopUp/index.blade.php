@@ -30,6 +30,7 @@
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th class="col-sm-2">No</th>
                 <th class="col-sm-2">Id</th>
                 <th class="col-sm-2">Image</th>
                 <th class="col-sm-2">Status</th>
@@ -42,11 +43,12 @@
             @forelse ($popup as $popup => $item)
                 <tr>
                     <td>{{ $popup + 1 }}</td>
+                    <td>{{ $item->id }}</td>
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
-                    <td>{{ $item->status}}</td>
-                    <td>{{ $item->start_date}}</td>
-                    <td>{{ $item->end_date}}</td>
-                    
+                    <td>{{ $item->status ? 'Tampil' : 'Sebunyikan' }}</td>
+                    <td>{{ $item->start_date }}</td>
+                    <td>{{ $item->end_date }}</td>
+
                     <td>
                         <form action="/Popup/{{ $item->id }}" method="POST">
                             <a href="/Popup/{{ $item->id }}/update" type="button" class="btn btn-warning"><i

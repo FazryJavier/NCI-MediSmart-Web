@@ -30,6 +30,7 @@
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th class="col-sm-2">No</th>
                 <th class="col-sm-2">Id</th>
                 <th class="col-sm-4">Title</th>
                 <th class="col-sm-4">Description</th>
@@ -40,6 +41,7 @@
             @forelse ($experience as $experience => $item)
                 <tr>
                     <td>{{ $experience + 1 }}</td>
+                    <td>{{ $item->id }}</td>
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->description }}</td>
                     <td>
