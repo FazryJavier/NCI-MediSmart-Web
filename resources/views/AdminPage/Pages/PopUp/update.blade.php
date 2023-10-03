@@ -68,7 +68,7 @@
             @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
-                <a href="/CTA" type="button" class="btn btn-secondary">Back</a>
+                <a href="/Popup" type="button" class="btn btn-secondary">Back</a>
             </div>
         </form>
 
