@@ -30,6 +30,7 @@
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th class="col-sm-2">No</th>
                 <th class="col-sm-2">Id</th>
                 <th class="col-sm-8">Phone Number</th>
                 <th class="col-sm-2">Action</th>
@@ -39,6 +40,7 @@
             @forelse ($whatsapp as $key => $item)
                 <tr>
                     <td>{{ $key + 1 }}</td>
+                    <td>{{ $item->id }}</td>
                     <td>{{ $item->phone_number }}</td>
                     <td>
                         <form action="/Whatsapp/{{ $item->id }}" method="POST">

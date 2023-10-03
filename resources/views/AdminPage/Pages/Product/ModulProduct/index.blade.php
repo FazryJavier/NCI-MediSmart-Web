@@ -30,6 +30,7 @@
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th class="col-sm-1">No</th>
                 <th class="col-sm-1">Id</th>
                 <th class="col-sm-2">Product Name</th>
                 <th class="col-sm-2">Title</th>
