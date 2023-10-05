@@ -76,7 +76,9 @@
                 <div class="content">
                     <div class="description-1">
                         <div class="image">
-                            <img src="{{ asset('storage/' . $imageModul1->image) }}" alt="">
+                            @if ($imageModul1)
+                                <img src="{{ asset('storage/' . $imageModul1->image) }}" alt="">
+                            @endif
                         </div>
                         <div class="list">
                             <ul>
@@ -97,7 +99,9 @@
                             </ul>
                         </div>
                         <div class="image">
-                            <img src="{{ asset('storage/' . $imageModul2->image) }}" alt="">
+                            @if ($imageModul1)
+                                <img src="{{ asset('storage/' . $imageModul2->image) }}" alt="">
+                            @endif
                         </div>
                     </div>
                 </div>

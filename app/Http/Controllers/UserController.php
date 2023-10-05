@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ModulProduct;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -14,6 +16,14 @@ class UserController extends Controller
     public function index()
     {
         return view('AdminPage.Pages.login');
+    }
+
+    public function showAll()
+    {
+        $moduls = ModulProduct::all();
+        $products = Product::all();
+
+        return view('UserPage.Pages.sitemap', compact('moduls', 'products'));
     }
 
     /**
@@ -72,7 +82,7 @@ class UserController extends Controller
             'password' => 'required'
         ]);
 
-        if(Auth::attempt($credentials)){
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('/LandingSlider');
         }
@@ -83,7 +93,7 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Be Vietnam", sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    /* transition: all 0.2s linear; */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* .example::-webkit-scrollbar {
+    display: none;
+} */
+
+/* Hide scrollbar for IE, Edge and Firefox */
+/* .example {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+} */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f5f5f5;
+    min-height: 100vh;
+}
+
+.container {
+    padding: 10px 10%;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Sitemap */
+.section-sitemap .sitemap h1 {
+    font-size: 42px;
+    padding: 20px 0;
+    color: #272727;
+}
+
+.section-sitemap .sitemap .wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    gap: 2.5rem;
+    justify-content: space-between;
+}
+
+.section-sitemap .sitemap .sitemap-content h4 {
+    font-size: 26px;
+    color: #272727;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.section-sitemap .sitemap .sitemap-content ul li {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+.section-sitemap .sitemap .sitemap-content ul li a {
+    display: block;
+    color: #272727;
+    font-size: 18px;
+}
+
+.section-sitemap .sitemap .sitemap-content ul li a:hover {
+    color: #1bad4b;
+}
+/* End Sitemap */
+
+/* Animation */
+.scroll-section {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.scroll-section.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+/* End Animation */
+
+/* Media Queries */
+@media screen and (max-width: 1500px) {
+}
+
+@media screen and (max-width: 1350px) {
+}
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 991px) {
+}
+
+@media screen and (max-width: 950px) {
+}
+
+@media screen and (max-width: 720px) {
+}
+
+@media screen and (max-width: 680px) {
+}
+
+@media screen and (max-width: 580px) {
+}
+
+@media screen and (max-width: 360px) {
+}

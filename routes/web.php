@@ -137,6 +137,7 @@ Route::get('/Demo', function () {
     return view('UserPage/Pages/demo');
 });
 
+Route::get('/Sitemap', [UserController::class, 'showAll']);
 
 Route::get('/Admin', [UserController::class, 'index'])->name('Admin');
 Route::post('/Admin', [UserController::class, 'authenticate']);
