@@ -22,9 +22,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right mb-2">
-                @if (Auth::user()->level == 'Admin')
-                    <a class="btn btn-success" href="/Article/create"> Create </a>
-                @endif
+                <a class="btn btn-success" href="/Article/create"> Create </a>
             </div>
         </div>
     </div>
