@@ -22,7 +22,9 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right mb-2">
-                <a class="btn btn-success" href="/ClientProduct/create"> Create </a>
+                @if (Auth::user()->level == 'Admin')
+                    <a class="btn btn-success" href="/ClientProduct/create"> Create </a>
+                @endif
             </div>
         </div>
     </div>
@@ -46,14 +48,22 @@
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
                     <td>
                         <form action="/ClientProduct/{{ $item->id }}" method="POST">
-                            <a href="/ClientProduct/{{ $item->id }}/update" type="button" class="btn btn-warning"><i
-                                    class="fa-solid fa-pen-to-square"></i></a>
+                            @if (Auth::user()->level == 'Admin')
+                                <a href="/ClientProduct/{{ $item->id }}/update" type="button"
+                                    class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                            @endif
+                            @if (Auth::user()->level == 'Editor')
+                                <a href="/ClientProduct/{{ $item->id }}/update" type="button"
+                                    class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                            @endif
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-danger"
-                                onclick="return confirm('Are you sure want to delete this data?')">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
+                            @if (Auth::user()->level == 'Admin')
+                                <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure want to delete this data?')">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            @endif
                         </form>
                     </td>
                 </tr>

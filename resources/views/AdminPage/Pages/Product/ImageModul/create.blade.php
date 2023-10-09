@@ -41,8 +41,8 @@
             @enderror
             <div class="mb-3">
                 <label for="list" class="form-label">List</label>
-                <span class="description">*List Diisi dengan 1-2 (1 : Gambar pertama, 2 : Gambar kedua). Gambar akan
-                    ditampilkan untuk fasilitas</span>
+                <span class="description">*List Diisi dengan 1-3 (Gambar 1 akan ditampilkan untuk thumbnail) (2 : Gambar
+                    pertama, 3 : Gambar kedua untuk fasilitas).</span>
                 <input type="text" name="list" class="form-control" id="formGroupExampleInput">
             </div>
             @error('list')

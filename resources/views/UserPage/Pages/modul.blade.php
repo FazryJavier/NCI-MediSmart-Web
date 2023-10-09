@@ -32,11 +32,16 @@
                         <h1><b>{{ $modul->title }}</b></h1>
                         <p>{{ $modul->description }}</p>
                         <div class="button">
-                            <a href="#" class="btn-contact"><b>Hubungi Kami</b></a>
+                            @foreach ($whatsappContent['whatsappView'] as $phone_number)
+                                <a href="https://api.whatsapp.com/send?phone={{ $phone_number }}"
+                                    class="btn-contact">Hubungi Kami</a>
+                            @endforeach
                         </div>
                     </div>
                     <div class="image">
-                        <img src="{{ asset('storage/' . $modul->icon) }}" alt="">
+                        @if ($imageModul1)
+                            <img src="{{ asset('storage/' . $imageModul1->image) }}" alt="">
+                        @endif
                     </div>
                 </div>
             </div>
@@ -76,8 +81,8 @@
                 <div class="content">
                     <div class="description-1">
                         <div class="image">
-                            @if ($imageModul1)
-                                <img src="{{ asset('storage/' . $imageModul1->image) }}" alt="">
+                            @if ($imageModul2)
+                                <img src="{{ asset('storage/' . $imageModul2->image) }}" alt="">
                             @endif
                         </div>
                         <div class="list">
@@ -99,8 +104,8 @@
                             </ul>
                         </div>
                         <div class="image">
-                            @if ($imageModul1)
-                                <img src="{{ asset('storage/' . $imageModul2->image) }}" alt="">
+                            @if ($imageModul3)
+                                <img src="{{ asset('storage/' . $imageModul3->image) }}" alt="">
                             @endif
                         </div>
                     </div>

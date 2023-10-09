@@ -22,10 +22,12 @@ class FacilitiesModulProductController extends Controller
     {
         $fasilities1 = FacilitiesModulProduct::where('list', 1)->where('modulId', $modulId)->get();
         $fasilities2 = FacilitiesModulProduct::where('list', 2)->where('modulId', $modulId)->get();
+        $fasilities3 = FacilitiesModulProduct::where('list', 3)->where('modulId', $modulId)->get();
 
         return [
             'fasilities1' => $fasilities1,
             'fasilities2' => $fasilities2,
+            'fasilities3' => $fasilities3,
         ];
     }
 

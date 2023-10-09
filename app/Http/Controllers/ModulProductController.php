@@ -44,11 +44,12 @@ class ModulProductController extends Controller
         $advantageModulProducts = AdvantageModulProduct::where('modulId', $id)->get();
         $imageModul1 = ImageModulProduct::where('list', 1)->where('modulId', $id)->first();
         $imageModul2 = ImageModulProduct::where('list', 2)->where('modulId', $id)->first();
+        $imageModul3 = ImageModulProduct::where('list', 3)->where('modulId', $id)->first();
         $listfasilitasModulProducts1 = FacilitiesModulProduct::where('list', 1)->where('modulId', $id)->get();
         $listfasilitasModulProducts2 = FacilitiesModulProduct::where('list', 2)->where('modulId', $id)->get();
         $feedback = Feedback::latest()->limit(12)->get();
 
-        return view('UserPage.Pages.modul', compact('modulProduct', 'advantageModulProducts', 'listfasilitasModulProducts1', 'listfasilitasModulProducts2', 'modul', 'feedback', 'imageModul1', 'imageModul2'));
+        return view('UserPage.Pages.modul', compact('modulProduct', 'advantageModulProducts', 'listfasilitasModulProducts1', 'listfasilitasModulProducts2', 'modul', 'feedback', 'imageModul1', 'imageModul2', 'imageModul3'));
     }
     /**
      * Show the form for creating a new resource.
