@@ -43,12 +43,12 @@
                 </div>
             </div>
 
-            {{-- <div class="footer-content">
-                <h4><b>NCIMEDISMART</b></h4>
+            <div class="footer-content">
+                {{-- <h4><b>NCIMEDISMART</b></h4>
                 <ul>
                     <li><a href="/Demo">Demo</a></li>
-                </ul>
-            </div> --}}
+                </ul> --}}
+            </div>
 
             <div class="footer-content">
                 <h4><b>NCIMEDISMART</b></h4>
