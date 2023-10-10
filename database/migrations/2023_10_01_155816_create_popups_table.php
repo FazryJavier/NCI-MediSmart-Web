@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('status')->default(1)->nullable(); // Kolom boolean untuk status popup (default: 1)
             $table->dateTime('start_date')->nullable(); // Kolom tanggal dan waktu awal (nullable)
             $table->dateTime('end_date')->nullable(); // Kolom tanggal dan waktu akhir (nullable)
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     

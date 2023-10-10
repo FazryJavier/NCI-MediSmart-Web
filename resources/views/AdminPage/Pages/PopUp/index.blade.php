@@ -34,10 +34,11 @@
             <tr>
                 <th class="col-sm-1">No</th>
                 <th class="col-sm-1">Id</th>
-                <th class="col-sm-3">Image</th>
-                <th class="col-sm-2">Status</th>
+                <th class="col-sm-2">Image</th>
+                <th class="col-sm-1">Status</th>
                 <th class="col-sm-2">Start Date</th>
                 <th class="col-sm-2">End Date</th>
+                <th class="col-sm-2">Link</th>
                 <th class="col-sm-1">Action</th>
             </tr>
         </thead>
@@ -50,7 +51,7 @@
                     <td>{{ $item->status ? 'Tampil' : 'Sebunyikan' }}</td>
                     <td>{{ $item->start_date }}</td>
                     <td>{{ $item->end_date }}</td>
-
+                    <td>{{ $item->link }}</td>
                     <td>
                         <form action="/Popup/{{ $item->id }}" method="POST">
                             @if (Auth::user()->level == 'Admin')

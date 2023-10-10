@@ -67,6 +67,20 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">
+                <label for="link" class="form-label">Link Button</label>
+                <input type="text" value="{{ $popup->link }}" name="link" class="form-control" id="formGroupExampleInput">
+                <ul>
+                    <li class="description">Untuk Mengakses Link Produk: /ProductView/id</li>
+                    <li class="description">Untuk Mengakses Link Modul: /Modul/id</li>
+                    <li class="description">Untuk Mengakses Link Testimoni: /Testimoni</li>
+                    <li class="description">Untuk Mengakses Link Blog: /Blog</li>
+                    <li class="description">Untuk Mengakses Link Detail pada Blog: /DetailBlog/id</li>
+                </ul>
+            </div>
+            @error('link')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/Popup" type="button" class="btn btn-secondary">Back</a>
             </div>

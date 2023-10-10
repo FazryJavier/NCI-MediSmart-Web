@@ -18,7 +18,9 @@
             <div class="home-popup__background">
                 <div class="home-popup__content">
                     <div class="popup-container">
-                        <img class="banner-image" src="{{ $popupContent['imageView'] }}" alt="Banner">
+                        <a href="{{ $popupContent['linkView'] }}">
+                            <img class="banner-image" src="{{ $popupContent['imageView'] }}" alt="Banner">
+                        </a>
                         <button class="close-button">X</button>
                     </div>
                 </div>

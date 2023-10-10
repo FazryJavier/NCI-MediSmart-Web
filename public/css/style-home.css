@@ -332,10 +332,13 @@ body {
 
 .section-product .product .wrapper .card {
     padding: 20px;
-    box-shadow: 1px 1px 5px 0px grey;
-    border-radius: 20px;
     display: flex;
     flex-direction: column;
+}
+
+.section-product .product .wrapper .card:hover {
+    box-shadow: 1px 1px 5px 0px grey;
+    border-radius: 20px;
 }
 
 .section-product .product .wrapper .card .image {

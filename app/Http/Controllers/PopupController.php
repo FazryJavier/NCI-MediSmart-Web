@@ -24,12 +24,14 @@ class PopupController extends Controller
                 $status = $latestPopup->status;
                 $tanggalawal = $latestPopup->start_date;
                 $tanggalakhir = $latestPopup->end_date;
+                $link = $latestPopup->link;
 
                 return [
                     'imageView' => $image,
                     'statusView' => $status,
                     'startdateView' => $tanggalawal,
                     'enddateView' => $tanggalakhir,
+                    'linkView' => $link,
                 ];
             }
 
@@ -38,6 +40,7 @@ class PopupController extends Controller
                 'statusView' => null,
                 'startdateView' => null,
                 'enddateView' => null,
+                'linkView' => null,
             ];
         }
     }
@@ -54,6 +57,7 @@ class PopupController extends Controller
             'status' => 'required|boolean',
             'start_date' => 'date',
             'end_date' => 'date',
+            'link' => 'required',
         ]);
 
         if ($request->file('image')) {
@@ -86,6 +90,7 @@ class PopupController extends Controller
             'status' => 'required',
             'start_date' => 'date', // Validasi untuk tanggal awal yang dapat bernilai NULL
             'end_date' => 'date',   // Validasi untuk tanggal akhir yang dapat bernilai NULL
+            'link' => 'required',   // Validasi untuk tanggal akhir yang dapat bernilai NULL
         ];
 
         $validatedData = $request->validate($content);
