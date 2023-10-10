@@ -76,7 +76,7 @@ body {
     font-size: 48px;
     color: #fff;
     padding-right: 700px;
-    text-shadow: 2px 2px 4px rgba(105, 105, 105, 0.8);
+    text-shadow: 2px 2px 4px rgba(105, 105, 105, 0.5);
 }
 
 .section-header .slide .image-date h3 {
@@ -84,7 +84,7 @@ body {
     color: #fff;
     padding: 30px 0;
     padding-right: 800px;
-    text-shadow: 2px 2px 4px rgba(105, 105, 105, 0.8);
+    text-shadow: 2px 2px 4px rgba(105, 105, 105, 0.5);
 }
 
 .section-header .slide a {
@@ -229,7 +229,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 0 280px;
+    margin: 0 150px;
 }
 
 .section-experience .experience .text .title p {
@@ -453,7 +453,7 @@ body {
 
 .section-video .video-view .video iframe {
     width: 100%;
-    border-radius: 50px;
+    border-radius: 20px;
 }
 /* End Video View */
 
@@ -568,7 +568,7 @@ body {
 
     /* Experience */
     .section-experience .experience .text {
-        margin: 0 180px;
+        margin: 0 80px;
     }
     /* End Experience */
 }
