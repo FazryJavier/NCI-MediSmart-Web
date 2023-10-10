@@ -76,7 +76,7 @@ body {
     font-size: 48px;
     color: #fff;
     padding-right: 700px;
-    text-shadow: 2px 2px 4px rgba(68, 68, 68, 0.5);
+    text-shadow: 2px 2px 4px rgba(105, 105, 105, 0.8);
 }
 
 .section-header .slide .image-date h3 {
@@ -84,7 +84,7 @@ body {
     color: #fff;
     padding: 30px 0;
     padding-right: 800px;
-    text-shadow: 2px 2px 4px rgba(68, 68, 68, 0.5);
+    text-shadow: 2px 2px 4px rgba(105, 105, 105, 0.8);
 }
 
 .section-header .slide a {
