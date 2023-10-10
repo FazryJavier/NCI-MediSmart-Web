@@ -104,22 +104,39 @@
         </div>
     </header>
     {{-- End Header --}}
-
-    {{-- <script>
-        window.addEventListener('scroll', function() {
-            var topBar = document.querySelector('.top-bar');
-
-            if (window.scrollY > 0) {
-                // Jika sudah di-scroll, sembunyikan top-bar
-                topBar.style.transform = 'translateY(-100%)';
-            } else {
-                // Jika kembali ke atas, tampilkan kembali top-bar
-                topBar.style.transform = 'translateY(0)';
-            }
-        });
-    </script> --}}
 </body>
+
 <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
 <script src="{{ asset('js/Script.js') }}"></script>
+
+<script>
+    const topBar = document.querySelector('.top-bar');
+    const bottomBar = document.querySelector('.bottom-bar');
+
+    let isTopBarHidden = false;
+
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        if (scrollY > 0 && !isTopBarHidden) {
+            // Jika sudah di-scroll, sembunyikan top-bar dan naikkan bottom-bar
+
+
+            bottomBar.style.transition = 'transform 0.3s ease-out';
+            bottomBar.style.transform = 'translateY(-55%)';
+
+            isTopBarHidden = true;
+        } else if (scrollY === 0 && isTopBarHidden) {
+            // Jika kembali ke atas, tampilkan kembali top-bar dan kembalikan bottom-bar ke posisi awal
+            topBar.style.transition = 'transform 0.3s ease-in';
+            topBar.style.transform = 'translateY(0)';
+
+            bottomBar.style.transition = 'transform 0.3s ease-in';
+            bottomBar.style.transform = 'translateY(0)';
+
+            isTopBarHidden = false;
+        }
+    });
+</script>
 
 </html>

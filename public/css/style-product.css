@@ -195,7 +195,6 @@ a {
 .section-advantage .advantage .wrapper .card .description ul {
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
 .section-advantage .advantage .wrapper .card .description ul li {
@@ -230,7 +229,7 @@ a {
 .section-modul .modul .title p {
     font-size: 20px;
     margin-bottom: 50px;
-    padding: 0 300px;
+    padding: 0 120px;
 }
 
 .section-modul .modul .wrapper {
@@ -376,8 +375,8 @@ a {
     border-color: #bcbcbc;
     border-radius: 10px; */
     margin-bottom: 50px;
-    padding: 20px;
     color: #242424;
+    padding: 20px 100px;
 }
 
 .section-testimoni .content .wrapper .card img {
@@ -460,6 +459,12 @@ a {
         padding: 0 100px;
     }
     /* End Modul */
+
+    /* Testimoni */
+    .section-testimoni .content .wrapper .card {
+        padding: 20px 50px;
+    }
+    /* End Testimoni */
 }
 
 @media screen and (max-width: 991px) {

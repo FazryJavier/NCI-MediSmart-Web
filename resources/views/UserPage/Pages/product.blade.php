@@ -17,10 +17,6 @@
     @include('UserPage.Layouts.header')
     {{-- End Header --}}
 
-    {{-- Popup --}}
-    @include('UserPage.Layouts.popups')
-    {{-- End popup --}}
-
     {{-- WhatsApp Button --}}
     @include('UserPage.Layouts.wa-icon')
 
@@ -223,7 +219,7 @@
             type: "bullets"
         },
         breakpoints: {
-            640: {
+            991: {
                 slidesPerView: 2,
                 spaceBetween: 30,
             },

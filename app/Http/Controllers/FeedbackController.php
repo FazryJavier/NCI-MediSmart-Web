@@ -20,12 +20,6 @@ class FeedbackController extends Controller
 
     public function showContent()
     {
-        $feedback = Feedback::all();
-
-        if ($feedback->isEmpty()) {
-            abort(404);
-        }
-
         $imageView = Feedback::pluck('image');
         $nameView = Feedback::pluck('name');
         $descriptionView = Feedback::pluck('description');
