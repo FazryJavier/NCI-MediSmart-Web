@@ -104,6 +104,20 @@
         </div>
     </header>
     {{-- End Header --}}
+
+    {{-- <script>
+        window.addEventListener('scroll', function() {
+            var topBar = document.querySelector('.top-bar');
+
+            if (window.scrollY > 0) {
+                // Jika sudah di-scroll, sembunyikan top-bar
+                topBar.style.transform = 'translateY(-100%)';
+            } else {
+                // Jika kembali ke atas, tampilkan kembali top-bar
+                topBar.style.transform = 'translateY(0)';
+            }
+        });
+    </script> --}}
 </body>
 <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
 <script src="{{ asset('js/Script.js') }}"></script>
