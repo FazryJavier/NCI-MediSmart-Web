@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ModulProduct;
 use App\Models\Product;
+use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -22,8 +23,9 @@ class UserController extends Controller
     {
         $moduls = ModulProduct::all();
         $products = Product::all();
+        $articles = Article::all();
 
-        return view('UserPage.Pages.sitemap', compact('moduls', 'products'));
+        return view('UserPage.Pages.sitemap', compact('moduls', 'products', 'articles'));
     }
 
     /**

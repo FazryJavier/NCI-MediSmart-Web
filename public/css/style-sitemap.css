@@ -60,6 +60,10 @@ a {
     margin-top: 20px;
 }
 
+.hide-content {
+    display: none;
+}
+
 .section-sitemap .sitemap .sitemap-content ul li {
     list-style: none;
     margin-bottom: 15px;

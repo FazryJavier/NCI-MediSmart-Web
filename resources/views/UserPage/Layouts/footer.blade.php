@@ -46,8 +46,7 @@
             <div class="footer-content">
                 <h4><b>NCIMEDISMART</b></h4>
                 <ul>
-                    <li><a href="">Layanan</a></li>
-                    <li><a href="">Fitur</a></li>
+                    <li><a href="/Demo">Demo</a></li>
                 </ul>
             </div>
 
@@ -68,14 +67,14 @@
                 <ul>
                     <li><a href="http://nuansa.com/2019/" target="_blank">Informasi Perusahaan</a></li>
                     <li><a href="/Blog">Blog</a></li>
-                    <li><a href="">Syarat & Ketentuan</a></li>
+                    <li><a href="/Sitemap">Sitemap</a></li>
                 </ul>
                 <div class="image">
-                    <a href="https://pse.kominfo.go.id/" target=”_blank”><img src="{{ asset('assets/img/pse.png') }}"
+                    <a href="https://pse.kominfo.go.id/home/pse-domestik" target=”_blank”><img src="{{ asset('assets/img/pse.png') }}"
                             alt="PSE Logo"></a>
                 </div>
                 <div class="image">
-                    <a href="https://e-katalog.lkpp.go.id/" target=”_blank”><img
+                    <a href="https://e-katalog.lkpp.go.id/katalog/produk/detail/51361898?lang=id&type=general" target=”_blank”><img
                             src="{{ asset('assets/img/lkpp.png') }}" alt="LKPP Logo"></a>
                 </div>
             </div>

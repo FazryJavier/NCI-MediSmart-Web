@@ -28,6 +28,7 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\WhatsappController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PopupController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -138,6 +139,7 @@ Route::get('/Demo', function () {
 });
 
 Route::get('/Sitemap', [UserController::class, 'showAll']);
+Route::get('/Sitemap.xml', [SitemapController::class, 'index']);
 
 Route::get('/Admin', [UserController::class, 'index'])->name('Admin');
 Route::post('/Admin', [UserController::class, 'authenticate']);

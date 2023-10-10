@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NCI Medismart</title>
+    <meta name="description"
+        content="SIMRS NCI Medismart adalah aplikasi yang terintegrasi dengan platform satu sehat, cetak SEP BPJS">
+    <meta name="author" content="SIM RS">
+    <meta name="keywords" content="simrs, sim rs, sim rumah sakit, satu sehat, bridging bpjs, integrasi satu sehat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style-home.css') }}">
     {{-- Swiper CSS --}}

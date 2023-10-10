@@ -67,6 +67,19 @@
                             </ul>
                         </div>
                     </div>
+
+                    <div class="sitemap-content hide-content">
+                        <div class="title">
+                            <h4><b>Blog</b></h4>
+                        </div>
+                        <div class="list">
+                            <ul>
+                                @foreach ($articles as $article)
+                                    <li><a href="{{ url('/DetailBlog/' . $article->id) }}">{{ $article->title }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
