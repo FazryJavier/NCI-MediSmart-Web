@@ -262,7 +262,7 @@ body {
 }
 
 .section-experience .experience .advantage .experience-list p {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .section-experience .experience .advantage .experience-list img {
@@ -438,7 +438,7 @@ body {
 
 .section-video .video-view .text {
     color: #fff;
-    margin-right: 35%;
+    margin-right: 10%;
 }
 
 .section-video .video-view .text h1 {

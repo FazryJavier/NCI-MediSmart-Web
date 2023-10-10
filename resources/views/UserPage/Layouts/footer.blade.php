@@ -43,15 +43,15 @@
                 </div>
             </div>
 
-            <div class="footer-content">
+            {{-- <div class="footer-content">
                 <h4><b>NCIMEDISMART</b></h4>
                 <ul>
                     <li><a href="/Demo">Demo</a></li>
                 </ul>
-            </div>
+            </div> --}}
 
             <div class="footer-content">
-                <h4><b>Solusi</b></h4>
+                <h4><b>NCIMEDISMART</b></h4>
                 <ul>
                     @foreach ($navbarContent as $navbarItem)
                         <li>
@@ -70,7 +70,7 @@
                     <li><a href="/Sitemap">Sitemap</a></li>
                 </ul>
                 <div class="image">
-                    <a href="https://pse.kominfo.go.id/home/pse-domestik" target=”_blank”><img src="{{ asset('assets/img/pse.png') }}"
+                    <a href="https://pse.kominfo.go.id/tdpse-detail/13864" target=”_blank”><img src="{{ asset('assets/img/pse.png') }}"
                             alt="PSE Logo"></a>
                 </div>
                 <div class="image">
