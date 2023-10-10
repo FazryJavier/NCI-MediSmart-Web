@@ -76,7 +76,7 @@ body {
     font-size: 48px;
     color: #fff;
     padding-right: 700px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    text-shadow: 2px 2px 4px rgba(68, 68, 68, 0.5);
 }
 
 .section-header .slide .image-date h3 {
@@ -84,7 +84,7 @@ body {
     color: #fff;
     padding: 30px 0;
     padding-right: 800px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    text-shadow: 2px 2px 4px rgba(68, 68, 68, 0.5);
 }
 
 .section-header .slide a {
@@ -560,6 +560,10 @@ body {
     .section-header .slide .image-date h1 {
         padding-right: 700px;
     }
+
+    .section-header .slide .image-date h3 {
+        padding-right: 700px;
+    }
     /* End Header */
 
     /* Experience */
@@ -572,6 +576,10 @@ body {
 @media screen and (max-width: 1350px) {
     /* Header */
     .section-header .slide .image-date h1 {
+        padding-right: 600px;
+    }
+
+    .section-header .slide .image-date h3 {
         padding-right: 600px;
     }
     /* End Header */
@@ -595,6 +603,10 @@ body {
     .section-header .slide .image-date h1 {
         padding-right: 400px;
     }
+
+    .section-header .slide .image-date h3 {
+        padding-right: 400px;
+    }
     /* End Header */
 
     /* Experience */
@@ -607,6 +619,10 @@ body {
 @media screen and (max-width: 991px) {
     /* Header */
     .section-header .slide .image-date h1 {
+        padding-right: 200px;
+    }
+
+    .section-header .slide .image-date h3 {
         padding-right: 200px;
     }
     /* End Header */
@@ -632,6 +648,10 @@ body {
     }
 
     .section-header .slide .image-date h1 {
+        padding-right: 0;
+    }
+
+    .section-header .slide .image-date h3 {
         padding-right: 0;
     }
     /* End Header Text */
