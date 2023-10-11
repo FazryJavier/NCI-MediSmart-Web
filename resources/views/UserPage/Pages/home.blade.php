@@ -37,8 +37,8 @@
                     <img src="{{ asset('storage/' . $sliderContent['imageView'][$index]) }}" alt=""
                         class="image">
                     <div class="image-date">
-                        <h1>{{ $title }}</h1>
-                        <h3>{{ $sliderContent['captionView'][$index] }}</h3>
+                        <h1>{!! $title !!}</h1>
+                        <h3>{!! $sliderContent['captionView'][$index] !!}</h3>
                         @foreach ($whatsappContent['whatsappView'] as $phone_number)
                             <a href="https://api.whatsapp.com/send?phone={{ $phone_number }}" class="button-1"
                                 data-index="{{ $index }}">Hubungi Kami</a>
@@ -91,10 +91,10 @@
             <div class="container">
                 <div class="text">
                     <div class="title">
-                        <p><b>{{ $experienceContent['titleView'] }}</b></p>
+                        <p>{!! $experienceContent['titleView'] !!}</p>
                     </div>
                     <div class="description">
-                        <p>{{ $experienceContent['descriptionView'] }}</p>
+                        <p>{!! $experienceContent['descriptionView'] !!}</p>
                     </div>
                 </div>
 

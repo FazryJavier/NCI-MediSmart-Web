@@ -18,7 +18,9 @@
             @enderror
             <div class="mb-3">
                 <label for="caption" class="form-label">Caption</label>
-                <input type="text" name="caption" class="form-control" id="formGroupExampleInput2">
+                <div id="editor1"></div>
+                {{-- <input type="text" name="caption" class="form-control" id="formGroupExampleInput2"> --}}
+                <textarea name="caption" id="caption" style="display: none;"></textarea>
             </div>
             @error('caption')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -110,5 +112,19 @@
         document.querySelectorAll('input[name="status"]').forEach(function(radio) {
             radio.addEventListener('change', updateStatus);
         });
+    </script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor1'))
+            .then(editor => {
+                editor.model.document.on('change:data', () => {
+                    const caption = editor.getData();
+                    document.querySelector('#caption').value = caption;
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
     </script>
 @endsection

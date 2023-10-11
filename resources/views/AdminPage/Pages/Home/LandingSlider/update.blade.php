@@ -18,7 +18,8 @@
             @enderror
             <div class="mb-3">
                 <label for="caption" class="form-label">Caption</label>
-                <input type="text" value="{{ $slider->caption }}" name="caption" class="form-control">
+                <div id="editor1"></div>
+                <textarea name="caption" id="caption" style="display: none;" value="{{ $slider->caption }}"></textarea>
             </div>
             @error('caption')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -115,6 +116,23 @@
                     statusCheckBox.checked = false;
                 }
             });
+        </script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#editor1'))
+                .then(editor => {
+                    editor.model.document.on('change:data', () => {
+                        const caption = editor.getData();
+                        document.querySelector('#caption').value = caption;
+                    });
+
+                    const initalCaption = "{!! addslashes($slider->caption) !!}";
+                    editor.setData(initalCaption);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         </script>
     </section>
 @endsection

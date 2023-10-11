@@ -44,8 +44,8 @@
                 <tr>
                     <td>{{ $experience + 1 }}</td>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->title }}</td>
-                    <td>{{ $item->description }}</td>
+                    <td>{!! $item->title !!}</td>
+                    <td>{!! $item->description !!}</td>
                     <td>
                         <form action="/Experience/{{ $item->id }}" method="POST">
                             @if (Auth::user()->level == 'Admin')

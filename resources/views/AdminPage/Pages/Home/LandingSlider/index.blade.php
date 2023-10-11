@@ -47,8 +47,8 @@
                 <tr>
                     <td>{{ $ld + 1 }}</td>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->title }}</td>
-                    <td>{{ $item->caption }}</td>
+                    <td>{!! $item->title !!}</td>
+                    <td>{!! $item->caption !!}</td>
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
                     <td>{{ $item->link }}</td>
                     <td>{{ $item->status ? 'Tampil' : 'Sembunyikan' }}</td>
