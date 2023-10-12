@@ -38,7 +38,7 @@
                         class="image">
                     <div class="image-date">
                         <h1>{!! $title !!}</h1>
-                        <h3>{!! $sliderContent['captionView'][$index] !!}</h3>
+                        <p>{!! $sliderContent['captionView'][$index] !!}</p>
                         @foreach ($whatsappContent['whatsappView'] as $phone_number)
                             <a href="https://api.whatsapp.com/send?phone={{ $phone_number }}" class="button-1"
                                 data-index="{{ $index }}">Hubungi Kami</a>
