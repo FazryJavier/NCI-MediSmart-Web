@@ -122,6 +122,18 @@
     </section>
     {{-- End Advantage --}}
 
+    {{-- Sparasi --}}
+    <section class="section-sparasi scroll-section">
+        <div class="sparasi">
+            @if ($sparasiContent['imageView'])
+                <img src="{{ asset('storage/' . $sparasiContent['imageView']) }}" alt="Sparasi">
+            @else
+                <img src="{{ asset('storage/placeholder.jpg') }}" alt="Placeholder">
+            @endif
+        </div>
+    </section>
+    {{-- End Sparasi --}}
+
     {{-- Modul --}}
     <section class="section-modul scroll-section">
         <div class="modul">

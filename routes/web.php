@@ -29,6 +29,7 @@ use App\Http\Controllers\WhatsappController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PopupController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\SparasiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -90,6 +91,9 @@ Route::get('/ProductView/{id}', function ($productId) {
     $advantageproductController = app()->make(AdvantageProductController::class);
     $advantageproductContent = $advantageproductController->showContent($productId);
 
+    $sparasiController = app()->make(SparasiController::class);
+    $sparasiContent = $sparasiController->showContent($productId);
+
     $modulproductController = app()->make(ModulProductController::class);
     $modulproductContent = $modulproductController->showContent($productId);
 
@@ -100,6 +104,7 @@ Route::get('/ProductView/{id}', function ($productId) {
         'detailproductContent' => $detailproductContent,
         'clientproductContent' => $clientproductContent,
         'advantageproductContent' => $advantageproductContent,
+        'sparasiContent' => $sparasiContent,
         'modulproductContent' => $modulproductContent,
         'feedbackContent' => $feedbackContent,
     ]);
@@ -276,6 +281,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/AdvantageListProduct/{id}/update', [AdvantageListProductController::class, 'edit']);
     Route::put('/AdvantageListProduct/{id}', [AdvantageListProductController::class, 'update']);
     Route::delete('/AdvantageListProduct/{id}', [AdvantageListProductController::class, 'destroy']);
+
+    // Product Sparasi
+    Route::get('/Sparasi', [SparasiController::class, 'index']);
+    Route::get('/Sparasi/create', [SparasiController::class, 'create']);
+    Route::post('/Sparasi', [SparasiController::class, 'store']);
+    Route::get('/Sparasi/{id}/update', [SparasiController::class, 'edit']);
+    Route::put('/Sparasi/{id}', [SparasiController::class, 'update']);
+    Route::delete('/Sparasi/{id}', [SparasiController::class, 'destroy']);
 
     // About Us
     Route::get('/AboutUs', [AboutController::class, 'index']);

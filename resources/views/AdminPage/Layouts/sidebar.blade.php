@@ -105,6 +105,12 @@
                                 <p>Advantage List Product</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/Sparasi" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Sparasi Product</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 {{-- End Product --}}

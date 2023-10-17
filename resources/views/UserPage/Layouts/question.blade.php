@@ -18,13 +18,15 @@
         <div class="question">
             <div class="container">
                 <div class="border" style="background-image: url('{{ $ctaContent['imageView'] }}')">
-                    <div class="text">
-                        <h1>{{ $ctaContent['titleView'] }}</h1>
-                        <p>{{ $ctaContent['descriptionView'] }}</p>
-                        @foreach ($whatsappContent['whatsappView'] as $phone_number)
-                            <a href="https://api.whatsapp.com/send?phone={{ $phone_number }}"
-                                class="btn-konsul">Konsultasi</a>
-                        @endforeach
+                    <div class="wrapper">
+                        <div class="text">
+                            <h1>{{ $ctaContent['titleView'] }}</h1>
+                            <p>{{ $ctaContent['descriptionView'] }}</p>
+                            @foreach ($whatsappContent['whatsappView'] as $phone_number)
+                                <a href="https://api.whatsapp.com/send?phone={{ $phone_number }}"
+                                    class="btn-konsul">Konsultasi</a>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

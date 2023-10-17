@@ -51,6 +51,8 @@ a {
     border-radius: 40px;
     background-position: center;
     background-size: cover;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .section-question .image {
@@ -62,15 +64,17 @@ a {
     max-width: 220px;
 }
 
+.section-question .wrapper {
+    width: 65%;
+    padding-right: 70px;
+}
+
 .section-question .text {
     color: #fff;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
 }
 
 .section-question .text h1 {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 700;
     margin-bottom: 20px;
 }
@@ -147,6 +151,11 @@ a {
 
     .section-question .border {
         padding: 80px;
+    }
+
+    .section-question .wrapper {
+        width: 100%;
+        padding-right: 0;
     }
 }
 

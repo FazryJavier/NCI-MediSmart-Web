@@ -208,6 +208,17 @@ a {
 }
 /* End Advantage */
 
+/* Sparasi */
+.section-sparasi {
+    max-width: 100%;
+    padding: 15px 0;
+}
+
+.section-sparasi img {
+    max-width: 100%;
+}
+/* End Sparasi */
+
 /* Modul */
 .section-modul .modul {
     padding: 20px 0;
