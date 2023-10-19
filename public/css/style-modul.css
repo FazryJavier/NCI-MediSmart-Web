@@ -57,6 +57,7 @@ a {
     align-items: center;
     color: #fff;
     padding-right: 50px;
+    max-width: 60%;
 }
 
 .section-modul .modul .first-page .description h1 {
@@ -329,6 +330,7 @@ a {
 
     .section-modul .modul .first-page .description {
         padding-right: 0;
+        max-width: 100%;
     }
 
     .section-modul .modul .first-page .image {
