@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NCI Medismart</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo NCI-01.png') }}">
+    <meta name="google-site-verification" content="whvf61-mi-MkaBQzB8XrYdaQeWN33nkeYvJPj2YieAc"  />
     <meta name="description"
         content="SIMRS NCI Medismart adalah aplikasi yang terintegrasi dengan platform satu sehat, cetak SEP BPJS">
     <meta name="author" content="SIM RS">
