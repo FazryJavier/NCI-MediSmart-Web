@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('flyer');
             $table->string('video');
+            $table->text('moduldesc');
             $table->timestamps();
         });
     }

@@ -35,10 +35,11 @@
                 <th class="col-sm-1">No</th>
                 <th class="col-sm-1">Id</th>
                 <th class="col-sm-2">Product Name</th>
-                <th class="col-sm-2">Logo</th>
+                <th class="col-sm-1">Logo</th>
                 <th class="col-sm-2">Description</th>
-                <th class="col-sm-2">Flyer</th>
+                <th class="col-sm-1">Flyer</th>
                 <th class="col-sm-1">Video</th>
+                <th class="col-sm-2">Modul Desc</th>
                 <th class="col-sm-1">Action</th>
             </tr>
         </thead>
@@ -52,6 +53,7 @@
                     <td>{{ $item->description }}</td>
                     <td>{{ $item->flyer }}</td>
                     <td>{{ $item->video }}</td>
+                    <td>{{ strip_tags($item->moduldesc) }}</td>
                     <td>
                         <form action="/DetailProduct/{{ $item->id }}" method="POST">
                             @if (Auth::user()->level == 'Admin')

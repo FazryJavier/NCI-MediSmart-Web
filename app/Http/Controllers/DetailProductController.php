@@ -33,6 +33,7 @@ class DetailProductController extends Controller
             'descriptionView' => $detailProduct->description,
             'flyerView' => $detailProduct->flyer,
             'videoView' => $detailProduct->video,
+            'moduldescView' => $detailProduct->moduldesc,
         ];
     }
 
@@ -42,7 +43,6 @@ class DetailProductController extends Controller
     public function create()
     {
         $products = Product::all();
-
         return view('AdminPage.Pages.Product.DetailProduct.create', compact('products'));
     }
 
@@ -57,6 +57,7 @@ class DetailProductController extends Controller
             'description' => 'required',
             'flyer' => 'required',
             'video' => 'required',
+            'moduldesc' => 'required',
         ]);
 
         if ($request->file('logo')) {
@@ -64,7 +65,6 @@ class DetailProductController extends Controller
         }
 
         DetailProduct::create($validatedData);
-
         return redirect('/DetailProduct')->with('success', 'Data created successfully!');
     }
 
@@ -101,6 +101,7 @@ class DetailProductController extends Controller
             'description' => 'required',
             'flyer' => 'required',
             'video' => 'required',
+            'moduldesc' => 'required'
         ];
 
         $validatedData = $request->validate($content);

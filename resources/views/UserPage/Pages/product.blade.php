@@ -140,9 +140,9 @@
             <div class="container">
                 <div class="title">
                     <h1>Modul {{ optional($detailproductContent['products'])->title }}</h1>
-                    <p>Dikembangkan dengan sistem modular, proses implementasi dilakukan bertahap dan terintegrasi antar
-                        modul. Mengelola aktivitas kegiatan dari Front Office sampai dengan Back Office, menghasilkan
-                        pelaporan secara lengkap dan cepat</p>
+                    @isset($detailproductContent['moduldescView'])
+                        <p>{!! $detailproductContent['moduldescView'] !!}</p>
+                    @endisset
                 </div>
                 <div class="wrapper">
                     @foreach ($modulproductContent as $modulProduct)

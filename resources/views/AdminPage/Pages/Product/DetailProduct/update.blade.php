@@ -74,6 +74,14 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">
+                <label for="moduldesc" class="form-label">Modul Description</label>
+                <div id="editor1"></div>
+                <textarea name="moduldesc" id="moduldesc" style="display: none;"value="{!! $detailProduct->moduldesc !!}"></textarea>
+            </div>
+            @error('moduldesc')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/DetailProduct" type="button" class="btn btn-secondary">Back</a>
             </div>
@@ -100,6 +108,23 @@
                     imgPreview.src = oFREvent.target.result;
                 }
             }
+        </script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#editor1'))
+                .then(editor => {
+                    editor.model.document.on('change:data', () => {
+                        const moduldesc = editor.getData();
+                        document.querySelector('#moduldesc').value = moduldesc;
+                    });
+
+                    const initialdesc = "{!! addslashes($detailProduct->moduldesc) !!}";
+                    editor.setData(initialdesc);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         </script>
     </section>
 @endsection
