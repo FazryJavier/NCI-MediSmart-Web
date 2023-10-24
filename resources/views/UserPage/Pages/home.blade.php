@@ -139,7 +139,7 @@
                             </div>
                             <div class="layer">
                                 <h1>{{ $productContent['titleView'][$index] }}</h1>
-                                <h3>{{ $productContent['subtitleView'][$index] }}</h3>
+                                <h2>{{ $productContent['subtitleView'][$index] }}</h2>
                                 <p>{{ $productContent['descriptionView'][$index] }}</p>
                                 @foreach ($productContent['modulView'] as $modul)
                                     @if ($modul->productId == $productContent['idView'][$index])
