@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form Demo</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo NCI-01.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style-demo.css') }}">
     {{-- Swiper CSS --}}
@@ -42,7 +43,7 @@
                     </div>
                 </div>
 
-                <form action="/DemoList" class="form-demo" method="POST" enctype="multipart/form-data">
+                <form action="/Demo" class="form-demo" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <div class="input-form mb-4">

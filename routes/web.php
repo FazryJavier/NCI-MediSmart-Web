@@ -142,6 +142,7 @@ Route::get('/DetailBlog/{id}', [ArticleController::class, 'showContentdetailBlog
 Route::get('/Demo', function () {
     return view('UserPage/Pages/demo');
 });
+Route::post('/Demo', [DemoController::class, 'store']);
 
 Route::get('/Sitemap', [UserController::class, 'showAll']);
 Route::get('/Sitemap.xml', [SitemapController::class, 'index']);
