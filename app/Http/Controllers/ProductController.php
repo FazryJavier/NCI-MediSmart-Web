@@ -35,8 +35,13 @@ class ProductController extends Controller
         $descriptionView = Product::pluck('description');
         $productsWithModulProducts = Product::join('modul_products', 'products.id', '=', 'modul_products.productId')
             ->select('products.*', 'modul_products.*')
-            ->limit(10)
-            ->get();
+            ->latest('products.created_at')
+            ->get()
+            ->groupBy('productId')
+            ->map(function ($group) {
+                return $group->take(10);
+            })
+            ->flatten();
 
         return [
             'idView' => $idView,
