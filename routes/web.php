@@ -212,12 +212,12 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/Product/{id}', [ProductController::class, 'destroy']);
 
     // Product List
-    Route::get('/ProductList', [ProductListController::class, 'index']);
-    Route::get('/ProductList/create', [ProductListController::class, 'create']);
-    Route::post('/ProductList', [ProductListController::class, 'store']);
-    Route::get('/ProductList/{id}/update', [ProductListController::class, 'edit']);
-    Route::put('/ProductList/{id}', [ProductListController::class, 'update']);
-    Route::delete('/ProductList/{id}', [ProductListController::class, 'destroy']);
+    // Route::get('/ProductList', [ProductListController::class, 'index']);
+    // Route::get('/ProductList/create', [ProductListController::class, 'create']);
+    // Route::post('/ProductList', [ProductListController::class, 'store']);
+    // Route::get('/ProductList/{id}/update', [ProductListController::class, 'edit']);
+    // Route::put('/ProductList/{id}', [ProductListController::class, 'update']);
+    // Route::delete('/ProductList/{id}', [ProductListController::class, 'destroy']);
 
     // Product Detail
     Route::get('/DetailProduct', [DetailProductController::class, 'index']);
