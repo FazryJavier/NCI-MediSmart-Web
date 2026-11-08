@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasPublicUrl;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, HasPublicUrl;
     protected $table='products';
     protected $guarded=[];
 
@@ -34,5 +35,10 @@ class Product extends Model
     public function navbars()
     {
         return $this->hasMany(Navbar::class, 'productId')->cascadeDeletes();
+    }
+
+    protected function publicRouteName(): string
+    {
+        return 'produk.show';
     }
 }

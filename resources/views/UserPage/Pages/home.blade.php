@@ -36,6 +36,35 @@
     <meta name="google-site-verification" content="whvf61-mi-MkaBQzB8XrYdaQeWN33nkeYvJPj2YieAc">
     <meta name="author" content="SIM RS">
     <meta name="keywords" content="simrs, sim rs, sim rumah sakit, satu sehat, bridging bpjs, integrasi satu sehat">
+    {{-- Structured data: lets Google show the organisation (logo, contact, social profiles). --}}
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'Organization',
+                    '@id' => route('home') . '#organization',
+                    'name' => 'NCI Medismart',
+                    'legalName' => 'PT Nuansa Cerah Informasi',
+                    'url' => route('home'),
+                    'logo' => asset('assets/img/logo NCI-01.png'),
+                    'contactPoint' => [['@type' => 'ContactPoint', 'telephone' => '+62-22-8735-6050', 'contactType' => 'customer service', 'areaServed' => 'ID', 'availableLanguage' => 'id']],
+                    'sameAs' => [
+                        'https://www.instagram.com/ncimedismart/',
+                        'https://www.youtube.com/@simrsncimedismart2282',
+                        'https://www.linkedin.com/company/pt-nuansa-cerah-informasi/',
+                    ],
+                ],
+                [
+                    '@type' => 'WebSite',
+                    'name' => 'NCI Medismart',
+                    'url' => route('home'),
+                    'inLanguage' => 'id-ID',
+                    'publisher' => ['@id' => route('home') . '#organization'],
+                ],
+            ],
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}
+    </script>
 @endpush
 
 @section('content')
@@ -106,7 +135,7 @@
                                     <x-icon name="whatsapp" />Hubungi Kami
                                 </a>
                             @endif
-                            <a href="{{ url('/Demo') }}" class="btn btn-outline-light">Jadwalkan Demo<x-icon name="arrow-right" class="text-sm" /></a>
+                            <a href="{{ route('demo') }}" class="btn btn-outline-light">Jadwalkan Demo<x-icon name="arrow-right" class="text-sm" /></a>
                         </div>
                     </div>
                 </div>
@@ -157,7 +186,7 @@
                 @if ($experienceItems->isNotEmpty())
                     <div class="mt-10 flex flex-wrap justify-center gap-4 sm:gap-6">
                         @foreach ($experienceItems as $item)
-                            <div class="{{ $experienceWidth }} flex flex-col items-center rounded-2xl bg-white p-5 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-md sm:p-7">
+                            <div class="{{ $experienceWidth }} flex flex-col items-center rounded-2xl bg-white p-5 text-center shadow-sm transition hover:shadow-md sm:p-7">
                                 @if ($item->image)
                                     <img src="{{ $img($item->image) }}" alt="" width="64" height="64"
                                         class="h-12 w-12 object-contain sm:h-16 sm:w-16" loading="lazy" decoding="async">
@@ -172,13 +201,14 @@
                 @endif
 
                 @if ($hasMap)
-                    <div class="mt-12 overflow-hidden rounded-3xl bg-brand-dark px-6 pt-10 text-center sm:rounded-[40px] sm:px-10 sm:pt-12 {{ $map->image ? '' : 'pb-10 sm:pb-12' }}">
+                    {{-- The card hugs its content: title, then the map at its natural ratio (no forced box, no empty gap). --}}
+                    <div class="mt-12 overflow-hidden rounded-3xl bg-brand-dark px-4 text-center sm:rounded-[40px] sm:px-10 {{ $map->image ? 'pt-8 sm:pt-10' : 'py-10 sm:py-12' }}">
                         @if (filled($map->title))
-                            <h2 class="text-2xl font-bold text-white sm:text-3xl">{{ $map->title }}</h2>
+                            <h2 class="px-2 text-2xl font-bold text-white sm:text-3xl">{{ $map->title }}</h2>
                         @endif
                         @if ($map->image)
                             <img src="{{ $img($map->image) }}" alt="Peta sebaran klien di Indonesia"
-                                class="mx-auto mt-6 aspect-[2/1] w-full max-w-3xl object-contain object-bottom" loading="lazy" decoding="async">
+                                class="mx-auto block h-auto w-full max-w-3xl {{ filled($map->title) ? 'mt-2 sm:mt-4' : '' }}" loading="lazy" decoding="async">
                         @endif
                     </div>
                 @endif
@@ -188,7 +218,7 @@
 
     {{-- Products --}}
     @if ($products->isNotEmpty())
-        <section class="reveal">
+        <section class="reveal scroll-mt-24" id="produk">
             <div class="page-container py-12 sm:py-16">
                 <h2 class="section-title">Produk Kami</h2>
                 <div class="mt-10 flex flex-wrap justify-center gap-6 lg:gap-8">
@@ -197,7 +227,7 @@
                             $modules = $modulesByProduct->get($product->id, collect());
                             $extraModules = max(0, $modules->count() - \App\Http\Controllers\HomeController::MODULES_PER_PRODUCT);
                         @endphp
-                        <article class="{{ $productWidth }} flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white transition hover:-translate-y-1 hover:shadow-xl">
+                        <article class="{{ $productWidth }} flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white transition hover:border-brand/40 hover:shadow-xl">
                             <div class="aspect-[16/10] w-full overflow-hidden bg-mist">
                                 @if ($product->image)
                                     <img src="{{ $img($product->image) }}" alt="{{ $product->title }}"
@@ -226,7 +256,7 @@
                                 @endif
                                 <div class="mt-auto pt-6">
                                     <div class="border-t border-black/10 pt-6">
-                                        <a href="{{ url('/ProductView/' . $product->id) }}" class="btn btn-primary">
+                                        <a href="{{ $product->publicUrl() }}" class="btn btn-primary">
                                             Pelajari Lanjut<x-icon name="arrow-right" class="text-sm" />
                                         </a>
                                     </div>
@@ -271,7 +301,7 @@
             <div class="page-container py-12 sm:py-16">
                 <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
                     <h2 class="section-title">News &amp; Update</h2>
-                    <a href="{{ url('/Blog') }}" class="inline-flex items-center gap-2 text-sm font-medium text-brand-link hover:underline sm:text-base">
+                    <a href="{{ route('blog.index') }}" class="inline-flex items-center gap-2 text-sm font-medium text-brand-link hover:underline sm:text-base">
                         Lihat semua artikel<x-icon name="arrow-right" class="text-xs" />
                     </a>
                 </div>
@@ -293,8 +323,8 @@
                                     <div class="flex flex-1 flex-col p-5">
                                         <h3 class="line-clamp-2 text-lg font-bold text-ink">{{ $article->title }}</h3>
                                         <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">
-                                            {{ \Illuminate\Support\Str::limit(trim(strip_tags((string) $article->description)), 220) }}</p>
-                                        <a href="{{ route('detail.show', ['id' => $article->id]) }}"
+                                            {{ \Illuminate\Support\Str::limit(trim(preg_replace('/\s+/u', ' ', html_entity_decode(strip_tags((string) $article->description), ENT_QUOTES | ENT_HTML5, 'UTF-8'))), 220) }}</p>
+                                        <a href="{{ $article->publicUrl() }}"
                                             class="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-medium text-brand-link hover:underline">
                                             Pelajari Lanjut<x-icon name="arrow-right" class="text-xs" />
                                         </a>

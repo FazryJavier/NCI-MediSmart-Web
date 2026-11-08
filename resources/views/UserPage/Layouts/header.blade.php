@@ -13,7 +13,7 @@
     ];
     $products = collect($navbarContent)->filter(fn ($item) => $item->products);
     $about = [
-        ['href' => url('/HealthcareSolution'), 'icon' => asset('assets/img/healthcare.png'), 'title' => 'Healthcare Solution', 'external' => false],
+        ['href' => route('about'), 'icon' => asset('assets/img/healthcare.png'), 'title' => 'Healthcare Solution', 'external' => false],
         ['href' => 'http://nuansa.com/2019/', 'icon' => asset('assets/img/pt-nci.png'), 'title' => 'PT Nuansa Cerah Informasi', 'external' => true],
     ];
     $menus = array_filter([
@@ -21,9 +21,9 @@
         'tentang' => 'Tentang Kami',
     ]);
     $links = [
-        ['href' => url('/Testimoni'), 'label' => 'Testimoni', 'active' => request()->is('Testimoni')],
-        ['href' => url('/Blog'), 'label' => 'Blog', 'active' => request()->is('Blog', 'DetailBlog/*')],
-        ['href' => url('/Demo'), 'label' => 'Demo', 'active' => request()->is('Demo')],
+        ['href' => route('testimoni'), 'label' => 'Testimoni', 'active' => request()->routeIs('testimoni')],
+        ['href' => route('blog.index'), 'label' => 'Blog', 'active' => request()->routeIs('blog.*')],
+        ['href' => route('demo'), 'label' => 'Demo', 'active' => request()->routeIs('demo')],
     ];
     $waNumber = collect($whatsappContent['whatsappView'])->first();
 @endphp
@@ -59,7 +59,7 @@
     {{-- Main bar --}}
     <div class="relative border-b border-black/5 shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
         <div class="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-6 px-5 sm:h-20 sm:px-8">
-            <a href="{{ url('/') }}" class="shrink-0" aria-label="Beranda NCI Medismart">
+            <a href="{{ route('home') }}" class="shrink-0" aria-label="Beranda NCI Medismart">
                 <img src="{{ asset('assets/img/Logo Medismart.png') }}" alt="NCI Medismart" width="600" height="312"
                     class="h-11 w-auto sm:h-14">
             </a>

@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasPublicUrl;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ModulProduct extends Model
 {
-    use HasFactory;
+    use HasFactory, HasPublicUrl;
     protected $table='modul_products';
     protected $guarded=[];
 
@@ -29,5 +30,10 @@ class ModulProduct extends Model
     public function imageModulProducts()
     {
         return $this->hasMany(ImageModulProduct::class, 'modulId')->cascadeDeletes();
+    }
+
+    protected function publicRouteName(): string
+    {
+        return 'modul.show';
     }
 }

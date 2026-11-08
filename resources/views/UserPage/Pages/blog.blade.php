@@ -1,92 +1,87 @@
 @extends('UserPage.Layouts.app')
 
-@section('title', 'Blog - NCI Medismart')
-@section('description', 'Berita, artikel, dan update terbaru seputar SIMRS NCI Medismart.')
+@section('title', 'Blog SIMRS & Kesehatan Digital | NCI Medismart')
+@section('description', 'Berita, artikel, dan update terbaru seputar SIMRS, SATUSEHAT, bridging BPJS, dan transformasi digital rumah sakit dari NCI Medismart.')
+
+{{--
+    Original blog design kept: "NCIMedismart/Blog" heading, featured article (image left, text right,
+    green underline), a 2-column grid, the CTA, then the article list with "load more".
+    Tidied: consistent image ratios, left-aligned text (justify left big gaps), readable letter spacing,
+    Indonesian dates, decoded &nbsp; in excerpts.
+--}}
+@php
+    $plain = fn ($article) => trim(preg_replace('/\s+/u', ' ', html_entity_decode(strip_tags((string) $article->description), ENT_QUOTES | ENT_HTML5, 'UTF-8')));
+@endphp
 
 @section('content')
     @include('UserPage.Layouts.wa-icon')
 
-    {{-- Blog --}}
     <section class="reveal">
-        <div class="py-10">
-            <div class="page-container">
-                <h1 class="mb-12 text-2xl font-bold">NCIMedismart/Blog</h1>
+        <div class="page-container py-10 sm:py-12">
+            <h1 class="text-2xl font-bold text-ink">
+                <a href="{{ route('home') }}" class="hover:text-brand-dark">NCIMedismart</a>/Blog
+            </h1>
 
-                @if ($articles)
-                    <article class="block min-[1201px]:flex">
-                        <div class="text-center min-[1201px]:flex-1">
-                            <img src="{{ asset('storage/' . $articles->image) }}" alt="{{ $articles->title }}"
-                                class="mx-auto w-full max-w-[800px] min-[1201px]:max-w-[1200px]">
+            @if (! $featured)
+                <p class="mt-10 text-ink/70">Belum ada artikel. Silakan kembali lagi nanti.</p>
+            @else
+                {{-- Featured article --}}
+                <article class="group mt-8 grid gap-6 lg:grid-cols-2 lg:gap-0">
+                    <a href="{{ $featured->publicUrl() }}" class="block aspect-video overflow-hidden rounded-xl bg-mist lg:rounded-none" tabindex="-1" aria-hidden="true">
+                        @if ($featured->image)
+                            <img src="{{ asset('storage/' . $featured->image) }}" alt="" class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                fetchpriority="high" decoding="async">
+                        @endif
+                    </a>
+                    <div class="flex flex-col border-b-2 border-brand pb-6 lg:px-10 lg:py-4">
+                        <h2 class="text-2xl font-bold leading-snug text-ink">
+                            <a href="{{ $featured->publicUrl() }}" class="hover:text-brand-dark">{{ $featured->title }}</a>
+                        </h2>
+                        <p class="mt-4 line-clamp-5 text-base leading-relaxed text-muted sm:text-lg">{{ \Illuminate\Support\Str::limit($plain($featured), 400) }}</p>
+                        <a href="{{ $featured->publicUrl() }}" class="mt-4 text-base text-brand-link hover:underline">Pelajari Lanjut...</a>
+                        <div class="mt-auto flex flex-wrap items-center gap-x-5 gap-y-1 pt-6 text-base">
+                            @if (optional($featured->Users)->username)
+                                <span class="font-bold text-ink">{{ $featured->Users->username }}</span>
+                            @endif
+                            @if ($featured->created_at)
+                                <time datetime="{{ $featured->created_at->toDateString() }}" class="text-ink/50">
+                                    {{ $featured->created_at->locale('id')->translatedFormat('d F Y') }}</time>
+                            @endif
                         </div>
-                        <div class="border-b-2 border-brand px-7 py-5 min-[1201px]:flex-1 min-[1201px]:px-12">
-                            <h2 class="mb-7 text-[26px] font-bold leading-[30px] text-ink">{{ $articles->title }}</h2>
-                            <p class="mb-7 line-clamp-5 text-xl font-medium tracking-[2px] text-muted">
-                                {{ strip_tags($articles->description) }}</p>
-                            <a href="{{ url('/DetailBlog/' . $articles->id) }}"
-                                class="text-lg leading-8 text-brand-link hover:underline">Pelajari Lanjut...</a>
-                            <div class="mt-7 flex gap-5 text-lg">
-                                <p class="font-bold text-ink">{{ optional($articles->Users)->username }}</p>
-                                <time class="text-[#b9b9b9]" datetime="{{ $articles->created_at?->toIso8601String() }}">
-                                    {{ $articles->created_at }}</time>
-                            </div>
-                        </div>
-                    </article>
-                @endif
+                    </div>
+                </article>
 
-                <div class="mt-5 border-b border-muted min-[1201px]:mt-12">
-                    <div class="grid grid-cols-1 gap-x-7 gap-y-5 md:grid-cols-2 min-[1201px]:gap-x-12 min-[1201px]:gap-y-[60px]">
-                        @foreach ($articles2 as $ar2)
-                            <article class="p-5">
-                                <div class="overflow-hidden text-center">
-                                    <img src="{{ asset('storage/' . $ar2->image) }}" alt="{{ $ar2->title }}"
-                                        class="mx-auto mb-2.5 w-full max-w-[450px]" loading="lazy">
-                                </div>
-                                <div class="p-2.5">
-                                    <h3 class="mb-2.5 text-xl font-bold text-ink">{{ $ar2->title }}</h3>
-                                    <p class="mb-2.5 line-clamp-4 text-justify text-base text-muted">
-                                        {{ strip_tags($ar2->description) }}</p>
-                                </div>
-                                <div class="text-right">
-                                    <a href="{{ url('/DetailBlog/' . $ar2->id) }}"
-                                        class="text-lg text-brand-link hover:underline">Pelajari Lanjut</a>
-                                </div>
-                            </article>
+                {{-- Highlighted articles: original 2-column grid --}}
+                @if ($highlights->isNotEmpty())
+                    <div class="mt-10 grid gap-x-12 gap-y-10 border-b border-muted/60 pb-10 md:grid-cols-2">
+                        @foreach ($highlights as $article)
+                            @include('UserPage.Layouts.article-card', ['article' => $article])
                         @endforeach
                     </div>
-                </div>
-            </div>
+                @endif
+            @endif
         </div>
     </section>
 
     @include('UserPage.Layouts.question')
 
     {{-- Article list --}}
-    <section class="reveal">
-        <div class="py-10" x-data="loadMore({ initial: 3, step: 2, total: {{ count($articles3) }} })">
-            <div class="page-container">
-                <div class="grid gap-7">
-                    @foreach ($articles3 as $ar3)
-                        <article class="block min-[992px]:flex" x-show="{{ $loop->index }} < visible"
-                            @if ($loop->index >= 3) x-cloak @endif>
-                            <img src="{{ asset('storage/' . $ar3->image) }}" alt="{{ $ar3->title }}"
-                                class="w-full max-w-[500px] shrink-0" loading="lazy">
-                            <div class="px-7 py-5">
-                                <h3 class="mb-5 text-[22px] font-bold">{{ $ar3->title }}</h3>
-                                <p class="mb-7 line-clamp-5 text-lg text-muted">{{ strip_tags($ar3->description) }}</p>
-                                <a href="{{ url('/DetailBlog/' . $ar3->id) }}"
-                                    class="text-lg text-brand-link hover:underline">Pelajari Lanjut</a>
-                            </div>
-                        </article>
+    @if ($others->isNotEmpty())
+        <section class="reveal">
+            <div class="page-container py-10 sm:py-12" x-data="loadMore({ initial: 3, step: 3, total: {{ $others->count() }} })">
+                <div class="grid gap-10">
+                    @foreach ($others as $article)
+                        <div x-show="{{ $loop->index }} < visible" @if ($loop->index >= 3) x-cloak @endif>
+                            @include('UserPage.Layouts.article-card', ['article' => $article, 'layout' => 'row'])
+                        </div>
                     @endforeach
-
-                    <div class="mt-10 text-center" x-show="hasMore" x-cloak>
-                        <button type="button" @click="more()"
-                            class="inline-block rounded-[10px] border border-brand px-[60px] py-4 text-xl text-brand transition hover:bg-brand hover:text-white">
-                            Muat Lebih Banyak
-                        </button>
-                    </div>
+                </div>
+                <div class="mt-10 text-center" x-show="hasMore" x-cloak>
+                    <button type="button" @click="more()"
+                        class="rounded-[10px] border border-brand px-12 py-3.5 text-lg text-brand transition hover:bg-brand hover:text-white">
+                        Muat lebih banyak</button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 @endsection

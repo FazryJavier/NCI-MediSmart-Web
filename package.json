@@ -9,6 +9,7 @@
     "devDependencies": {
         "@fortawesome/free-brands-svg-icons": "^6.4.2",
         "@fortawesome/free-solid-svg-icons": "^6.4.2",
+        "@tailwindcss/typography": "^0.5.16",
         "autoprefixer": "^10.6.2",
         "laravel-vite-plugin": "^0.7.5",
         "postcss": "^8.5.32",

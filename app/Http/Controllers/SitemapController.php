@@ -2,24 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Article;
 use App\Models\ModulProduct;
 use App\Models\Product;
-use App\Models\Article;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\View;
+use Illuminate\Http\Response;
 
 class SitemapController extends Controller
 {
-    public function index()
+    /** XML sitemap (https://www.sitemaps.org/protocol.html) with canonical, SEO-friendly URLs. */
+    public function index(): Response
     {
-        $products = Product::all(); // Sesuaikan dengan model dan data yang sesuai
-        $moduls = ModulProduct::all(); // Sesuaikan dengan model dan data yang sesuai
-        $articles = Article::all(); // Sesuaikan dengan model dan data yang sesuai
+        $content = view('UserPage.Layouts.sitemap-xml', [
+            'products' => Product::query()->orderBy('id')->get(['id', 'title', 'updated_at']),
+            'moduls' => ModulProduct::query()->orderBy('id')->get(['id', 'title', 'updated_at']),
+            'articles' => Article::query()->latest('id')->get(['id', 'title', 'updated_at']),
+        ])->render();
 
-        $view = View::make('UserPage.Layouts.sitemap-xml', compact('products', 'moduls', 'articles'));
-        $content = $view->render();
-
-        return Response::make($content)->header('Content-Type', 'text/xml');
+        return response($content, 200, ['Content-Type' => 'application/xml; charset=UTF-8']);
     }
 }
