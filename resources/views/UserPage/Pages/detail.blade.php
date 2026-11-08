@@ -42,7 +42,7 @@
 
     <article class="page-container py-10 sm:py-14">
         @if ($imageUrl)
-            <img src="{{ $imageUrl }}" alt="{{ $article->title }}" class="aspect-[3/2] w-full max-w-2xl rounded-2xl object-cover"
+            <img src="{{ $imageUrl }}" alt="{{ $article->title }}" class="aspect-[3/2] w-full rounded-2xl object-cover md:w-3/4"
                 fetchpriority="high" decoding="async">
         @endif
 
@@ -57,8 +57,9 @@
             @endif
         </p>
 
-        {{-- Admin-authored rich text, full container width as in the design. --}}
-        <div class="prose mt-8 max-w-none text-ink/80 prose-headings:font-bold prose-headings:text-ink prose-h2:text-xl prose-h3:text-lg prose-a:text-brand-link prose-li:my-1 prose-img:rounded-xl sm:prose-lg sm:max-w-none">
+        {{-- Admin-authored rich text, full container width as in the design.
+             Justified on wide screens as in the design (long lines keep word gaps even); left-aligned on phones. --}}
+        <div class="prose mt-8 max-w-none text-ink/80 prose-headings:font-bold prose-headings:text-ink prose-h2:text-xl prose-h3:text-lg prose-a:text-brand-link prose-li:my-1 prose-img:rounded-xl sm:prose-lg sm:max-w-none md:prose-p:text-justify md:prose-li:text-justify">
             {!! $article->description !!}
         </div>
     </article>
