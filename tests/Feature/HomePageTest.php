@@ -61,18 +61,18 @@ class HomePageTest extends TestCase
         $this->assertStringNotContainsString('lg:w-[calc(25%-1.125rem)]', $html);
     }
 
-    public function test_product_card_lists_five_modules_and_summarises_the_rest(): void
+    public function test_product_card_lists_ten_modules_and_summarises_the_rest(): void
     {
         $product = Product::create(['title' => 'SIMRS', 'subTitle' => 'Sub', 'description' => 'Desc', 'image' => 'file-image/p.png']);
-        foreach (range(1, 7) as $i) {
+        foreach (range(1, 12) as $i) {
             ModulProduct::create(['productId' => $product->id, 'title' => "Modul {$i}", 'description' => 'd', 'icon' => 'file-image/i.png']);
         }
 
         $this->get('/')
             ->assertOk()
             ->assertSee('Produk Kami')
-            ->assertSee('Modul 5')
-            ->assertDontSee('Modul 6')
+            ->assertSee('Modul 10')
+            ->assertDontSee('Modul 11')
             ->assertSee('+2 modul lainnya')
             // A single product is centered at a readable width instead of half a grid.
             ->assertSee('w-full max-w-2xl', false);

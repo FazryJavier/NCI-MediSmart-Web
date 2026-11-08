@@ -186,14 +186,14 @@
                 @if ($experienceItems->isNotEmpty())
                     <div class="mt-10 flex flex-wrap justify-center gap-4 sm:gap-6">
                         @foreach ($experienceItems as $item)
-                            <div class="{{ $experienceWidth }} flex flex-col items-center rounded-2xl bg-white p-5 text-center shadow-sm transition hover:shadow-md sm:p-7">
+                            <div class="{{ $experienceWidth }} flex flex-col items-center px-2 py-4 text-center sm:px-4">
                                 @if ($item->image)
                                     <img src="{{ $img($item->image) }}" alt="" width="64" height="64"
                                         class="h-12 w-12 object-contain sm:h-16 sm:w-16" loading="lazy" decoding="async">
                                 @endif
-                                <h3 class="mt-4 text-base font-bold sm:text-xl">{{ $item->name }}</h3>
+                                <h3 class="mt-4 text-base font-bold text-ink sm:text-xl">{{ $item->name }}</h3>
                                 @if (filled($item->description))
-                                    <p class="mt-2 text-xs leading-relaxed text-muted sm:text-sm">{{ $item->description }}</p>
+                                    <p class="mt-2 text-sm leading-relaxed text-ink/70 sm:text-base">{{ $item->description }}</p>
                                 @endif
                             </div>
                         @endforeach
@@ -201,14 +201,17 @@
                 @endif
 
                 @if ($hasMap)
-                    {{-- The card hugs its content: title, then the map at its natural ratio (no forced box, no empty gap). --}}
-                    <div class="mt-12 overflow-hidden rounded-3xl bg-brand-dark px-4 text-center sm:rounded-[40px] sm:px-10 {{ $map->image ? 'pt-8 sm:pt-10' : 'py-10 sm:py-12' }}">
-                        @if (filled($map->title))
-                            <h2 class="px-2 text-2xl font-bold text-white sm:text-3xl">{{ $map->title }}</h2>
-                        @endif
+                    {{-- As in the design: the card hugs the map (natural ratio, no empty gap) and the title sits centred on it. --}}
+                    <div class="relative mt-10 overflow-hidden rounded-3xl bg-brand-dark text-center sm:rounded-[40px] {{ $map->image ? 'px-4 pt-6 sm:px-10 sm:pt-8' : 'px-6 py-12 sm:py-16' }}">
                         @if ($map->image)
                             <img src="{{ $img($map->image) }}" alt="Peta sebaran klien di Indonesia"
-                                class="mx-auto block h-auto w-full max-w-3xl {{ filled($map->title) ? 'mt-2 sm:mt-4' : '' }}" loading="lazy" decoding="async">
+                                class="mx-auto block h-auto w-full max-w-3xl {{ filled($map->title) ? 'opacity-30' : '' }}" loading="lazy" decoding="async">
+                        @endif
+                        @if (filled($map->title))
+                            <h2 @class([
+                                'px-6 text-2xl font-bold text-white sm:text-3xl',
+                                'absolute inset-0 flex items-center justify-center [text-shadow:0_2px_16px_rgba(1,80,40,0.9)]' => $map->image,
+                            ])>{{ $map->title }}</h2>
                         @endif
                     </div>
                 @endif
@@ -227,14 +230,14 @@
                             $modules = $modulesByProduct->get($product->id, collect());
                             $extraModules = max(0, $modules->count() - \App\Http\Controllers\HomeController::MODULES_PER_PRODUCT);
                         @endphp
-                        <article class="{{ $productWidth }} flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white transition hover:border-brand/40 hover:shadow-xl">
-                            <div class="aspect-[16/10] w-full overflow-hidden bg-mist">
+                        <article class="{{ $productWidth }} flex flex-col rounded-2xl border border-black/10 bg-white p-4 shadow-sm transition hover:border-brand/40 hover:shadow-lg sm:p-6">
+                            <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-mist">
                                 @if ($product->image)
                                     <img src="{{ $img($product->image) }}" alt="{{ $product->title }}"
                                         class="h-full w-full object-cover" loading="lazy" decoding="async">
                                 @endif
                             </div>
-                            <div class="flex flex-1 flex-col p-6 sm:p-8">
+                            <div class="flex flex-1 flex-col px-1 pt-6 sm:px-2">
                                 <h3 class="text-2xl font-bold text-ink sm:text-[1.75rem]">{{ $product->title }}</h3>
                                 @if (filled($product->subTitle))
                                     <p class="mt-1 text-base font-medium text-ink/80 sm:text-lg">{{ $product->subTitle }}</p>
@@ -243,7 +246,7 @@
                                     <p class="mt-4 line-clamp-4 text-sm leading-relaxed text-muted sm:text-base">{{ $product->description }}</p>
                                 @endif
                                 @if ($modules->isNotEmpty())
-                                    <ul class="mt-5 space-y-2.5">
+                                    <ul class="mt-5 space-y-2">
                                         @foreach ($modules->take(\App\Http\Controllers\HomeController::MODULES_PER_PRODUCT) as $modul)
                                             <li class="flex gap-2.5 text-sm text-ink sm:text-base">
                                                 <x-icon name="circle-check" class="mt-1 text-brand" />{{ $modul->title }}
@@ -254,10 +257,10 @@
                                         @endif
                                     </ul>
                                 @endif
-                                <div class="mt-auto pt-6">
-                                    <div class="border-t border-black/10 pt-6">
-                                        <a href="{{ $product->publicUrl() }}" class="btn btn-primary">
-                                            Pelajari Lanjut<x-icon name="arrow-right" class="text-sm" />
+                                <div class="mt-auto pt-5">
+                                    <div class="border-t border-black/10 pt-5">
+                                        <a href="{{ $product->publicUrl() }}" class="btn btn-primary !px-4 !py-2.5 !text-sm">
+                                            <x-icon name="arrow-right" class="text-xs" />Pelajari Lanjut
                                         </a>
                                     </div>
                                 </div>
@@ -299,12 +302,7 @@
     @if ($articles->isNotEmpty())
         <section class="reveal">
             <div class="page-container py-12 sm:py-16">
-                <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
-                    <h2 class="section-title">News &amp; Update</h2>
-                    <a href="{{ route('blog.index') }}" class="inline-flex items-center gap-2 text-sm font-medium text-brand-link hover:underline sm:text-base">
-                        Lihat semua artikel<x-icon name="arrow-right" class="text-xs" />
-                    </a>
-                </div>
+                <h2 class="section-title">News &amp; Update</h2>
 
                 {{-- With fewer articles than fit on screen, Swiper centers them and hides the pagination. --}}
                 <div class="swiper mt-8 !pb-12" x-data
@@ -312,7 +310,7 @@
                     <div class="swiper-wrapper">
                         @foreach ($articles as $article)
                             <div class="swiper-slide !h-auto">
-                                <article class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white transition hover:shadow-lg">
+                                <article class="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition hover:shadow-lg">
                                     <div class="aspect-video overflow-hidden bg-mist">
                                         @if ($article->image)
                                             <img src="{{ $img($article->image) }}" alt="{{ $article->title }}"
@@ -324,10 +322,10 @@
                                         <h3 class="line-clamp-2 text-lg font-bold text-ink">{{ $article->title }}</h3>
                                         <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">
                                             {{ \Illuminate\Support\Str::limit(trim(preg_replace('/\s+/u', ' ', html_entity_decode(strip_tags((string) $article->description), ENT_QUOTES | ENT_HTML5, 'UTF-8'))), 220) }}</p>
-                                        <a href="{{ $article->publicUrl() }}"
-                                            class="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-medium text-brand-link hover:underline">
-                                            Pelajari Lanjut<x-icon name="arrow-right" class="text-xs" />
-                                        </a>
+                                        <div class="mt-auto pt-4 text-right">
+                                            <a href="{{ $article->publicUrl() }}" class="text-sm font-medium text-brand-link hover:underline">
+                                                Pelajari Lanjut<span class="sr-only">: {{ $article->title }}</span></a>
+                                        </div>
                                     </div>
                                 </article>
                             </div>
