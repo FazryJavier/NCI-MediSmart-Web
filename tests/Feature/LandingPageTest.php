@@ -191,6 +191,21 @@ class LandingPageTest extends TestCase
         $this->assertStringNotContainsString('&amp;nbsp;', $html);
     }
 
+    public function test_blog_detail_follows_the_design_structure(): void
+    {
+        Article::create(['adminId' => $this->article->adminId, 'title' => 'Rekomendasi Satu', 'description' => '<p>Isi</p>',
+            'image' => 'file-image/a.png', 'prioritize' => 2]);
+
+        $html = $this->get($this->article->publicUrl())->assertOk()->getContent();
+
+        // No visible breadcrumb trail, but the BreadcrumbList structured data is kept.
+        $this->assertStringNotContainsString('aria-label="Breadcrumb"', $html);
+        $this->assertStringContainsString('"@type":"BreadcrumbList"', $html);
+        $this->assertStringContainsString('>' . $this->article->created_at->format('d/m/Y') . '</time>', $html);
+        $this->assertStringContainsString('Rekomendasi</h2>', $html);
+        $this->assertStringContainsString('Rekomendasi Satu', $html);
+    }
+
     public function test_about_page_shows_vision_mission_and_highlights_its_menu(): void
     {
         $this->get('/tentang-kami')

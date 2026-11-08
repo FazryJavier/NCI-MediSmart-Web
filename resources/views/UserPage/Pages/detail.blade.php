@@ -33,28 +33,32 @@
 @section('content')
     @include('UserPage.Layouts.wa-icon')
 
+    {{--
+        Follows the article design: image left-aligned at the top, title, "author · dd/mm/yyyy", the body at full
+        container width, the CTA, then "Rekomendasi" as three columns with dividers. The breadcrumb is kept as
+        structured data only (no visible trail in the design).
+    --}}
+    @include('UserPage.Layouts.breadcrumb', ['items' => [['Blog', route('blog.index')], [$article->title, null]], 'visible' => false])
+
     <article class="page-container py-10 sm:py-14">
-        <div class="mx-auto max-w-3xl">
-            @include('UserPage.Layouts.breadcrumb', ['items' => [['Blog', route('blog.index')], [$article->title, null]]])
-
-            <h1 class="mt-4 text-3xl font-bold leading-tight text-ink sm:text-4xl">{{ $article->title }}</h1>
-            <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-ink/60">
-                @if (optional($article->Users)->username)
-                    <span class="font-bold text-ink">{{ $article->Users->username }}</span>
-                @endif
-                @if ($article->created_at)
-                    <time datetime="{{ $article->created_at->toDateString() }}">{{ $article->created_at->locale('id')->translatedFormat('d F Y') }}</time>
-                @endif
-            </div>
-        </div>
-
         @if ($imageUrl)
-            <img src="{{ $imageUrl }}" alt="{{ $article->title }}" class="mx-auto mt-8 aspect-video w-full max-w-4xl rounded-2xl object-cover"
+            <img src="{{ $imageUrl }}" alt="{{ $article->title }}" class="aspect-[3/2] w-full max-w-2xl rounded-2xl object-cover"
                 fetchpriority="high" decoding="async">
         @endif
 
-        {{-- Admin-authored rich text. --}}
-        <div class="prose prose-lg mx-auto mt-10 max-w-3xl text-ink/90 prose-headings:text-ink prose-a:text-brand-link prose-img:rounded-xl">
+        <h1 class="mt-8 max-w-3xl text-2xl font-bold leading-snug text-ink sm:text-3xl">{{ $article->title }}</h1>
+        <p class="mt-4 text-sm">
+            @if (optional($article->Users)->username)
+                <span class="font-bold text-ink">{{ $article->Users->username }}</span>
+            @endif
+            @if ($article->created_at)
+                <span class="text-ink/40" aria-hidden="true">&nbsp;·&nbsp;</span>
+                <time datetime="{{ $article->created_at->toDateString() }}" class="text-ink/50">{{ $article->created_at->format('d/m/Y') }}</time>
+            @endif
+        </p>
+
+        {{-- Admin-authored rich text, full container width as in the design. --}}
+        <div class="prose mt-8 max-w-none text-ink/80 prose-headings:font-bold prose-headings:text-ink prose-h2:text-xl prose-h3:text-lg prose-a:text-brand-link prose-li:my-1 prose-img:rounded-xl sm:prose-lg sm:max-w-none">
             {!! $article->description !!}
         </div>
     </article>
@@ -64,14 +68,10 @@
     @if ($recommended->isNotEmpty())
         <section class="reveal">
             <div class="page-container py-10 sm:py-14">
-                <div class="flex items-end justify-between gap-4">
-                    <h2 class="text-2xl font-bold text-ink sm:text-3xl">Rekomendasi</h2>
-                    <a href="{{ route('blog.index') }}" class="inline-flex items-center gap-2 text-sm font-medium text-brand-link hover:underline">
-                        Semua artikel<x-icon name="arrow-right" class="text-xs" /></a>
-                </div>
-                <div class="mt-6 flex flex-wrap justify-center gap-6">
+                <h2 class="text-xl font-bold text-ink sm:text-2xl">Rekomendasi</h2>
+                <div class="mt-6 grid gap-y-10 md:grid-cols-3 md:divide-x md:divide-black/10">
                     @foreach ($recommended as $item)
-                        <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+                        <div class="md:px-5 md:first:pl-0 md:last:pr-0">
                             @include('UserPage.Layouts.article-card', ['article' => $item])
                         </div>
                     @endforeach
