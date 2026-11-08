@@ -230,6 +230,22 @@ class LandingPageTest extends TestCase
         $this->assertStringContainsString('Apa kata <strong>Klien</strong> tentang <strong>Kami</strong>', $html);
     }
 
+    public function test_modul_page_follows_the_design_structure(): void
+    {
+        \App\Models\AdvantageModulProduct::create(['modulId' => $this->modul->id, 'title' => 'Import data', 'icon' => 'file-image/i.png', 'description' => 'Import dari SIM RS']);
+        \App\Models\FacilitiesModulProduct::create(['modulId' => $this->modul->id, 'list' => 1, 'description' => 'Verifikasi Data Pasien']);
+
+        $html = $this->get($this->modul->publicUrl())->assertOk()->getContent();
+
+        $this->assertStringNotContainsString('aria-label="Breadcrumb"', $html);
+        $this->assertStringContainsString('"@type":"BreadcrumbList"', $html);
+        // Advantages headed by the module title, in divider columns.
+        $this->assertStringContainsString('text-ink sm:text-3xl">Modul Rawat Jalan</h2>', $html);
+        $this->assertStringContainsString('md:[&:nth-child(3n+2)]:border-x', $html);
+        $this->assertStringContainsString('Fasilitas Modul Rawat Jalan', $html);
+        $this->assertStringContainsString('Verifikasi Data Pasien', $html);
+    }
+
     public function test_about_page_shows_vision_mission_and_highlights_its_menu(): void
     {
         $this->get('/tentang-kami')
