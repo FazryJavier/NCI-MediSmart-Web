@@ -9,11 +9,7 @@
     clients to share a testimonial.
 --}}
 @php
-    $waNumber = collect($whatsappContent['whatsappView'])->first();
-    // There is no testimonial form yet: the button opens WhatsApp with a ready-made message.
-    $testimonialUrl = $waNumber
-        ? 'https://api.whatsapp.com/send?phone=' . urlencode($waNumber) . '&text=' . rawurlencode('Halo NCI Medismart, saya ingin memberikan testimoni.')
-        : null;
+    $testimonialUrl = route('testimoni.form');
 @endphp
 
 @section('content')
@@ -85,9 +81,7 @@
                 <img src="{{ asset('assets/img/Logo Medismart.png') }}" alt="NCI Medismart" width="600" height="312" class="mx-auto h-16 w-auto sm:h-20">
                 <h2 class="mx-auto mt-6 max-w-lg text-2xl font-bold leading-tight text-ink sm:text-3xl">Terima Kasih telah mempercayai Kami sebagai Mitra Anda</h2>
                 <p class="mx-auto mt-4 max-w-md text-base text-ink/75">Izinkan kami untuk sedikit mengetahui pengalaman anda dalam bermitra dengan kami.</p>
-                @if ($testimonialUrl)
-                    <a href="{{ $testimonialUrl }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-8 !px-8">Form Testimoni</a>
-                @endif
+                <a href="{{ $testimonialUrl }}" class="btn btn-primary mt-8 !px-8">Form Testimoni</a>
             </div>
         </div>
     </section>

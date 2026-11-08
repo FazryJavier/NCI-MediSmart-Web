@@ -38,6 +38,12 @@ npm run build   # hasil di public/build, WAJIB di-commit
 - Pakai `$model->publicUrl()` atau `route('...')`, jangan tulis path manual.
 - `public/robots.txt` menunjuk ke `/sitemap.xml`. Setiap halaman punya canonical, Open Graph/Twitter, dan JSON-LD (Organization di beranda, BreadcrumbList, serta BlogPosting di artikel).
 
+### Form testimoni
+
+- Form publik ada di `/testimoni/form` (tombol **Form Testimoni** di halaman Testimoni). Form ini memakai honeypot dan membatasi 5 kiriman per menit.
+- Kiriman **tidak langsung tampil**. Setiap kiriman disimpan sebagai file JSON di `storage/app/testimonial-submissions/`, jadi tidak perlu migrasi.
+- Admin (setelah login) bisa melihat kiriman di **`/TestimoniMasuk`**, lalu menyalin yang layak ke menu **Feedback** supaya tampil di website.
+
 ### Data dummy (lokal)
 
 ```bash
