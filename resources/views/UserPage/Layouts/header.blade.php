@@ -1,122 +1,178 @@
 {{-- Site header: top bar (collapses after scroll) + main navigation. --}}
 @php
-    $navLink = 'block p-5 transition hover:bg-brand-dark hover:text-white';
-    $subItem = 'whitespace-nowrap border-t border-black/10 bg-[#eee] nav:bg-white';
-    $subLink = 'flex items-center p-5 transition hover:bg-brand-dark hover:text-white';
-    $subMenu = 'hidden w-full bg-white group-hover:block group-focus-within:block nav:absolute nav:left-0 nav:w-auto';
+    $navLink = 'block rounded-lg px-3 py-2 font-medium transition hover:bg-mist hover:text-brand-dark xl:px-4';
+    $dropLink = 'flex items-center gap-3 rounded-lg p-3 transition hover:bg-mist';
+    $mobileLink = 'flex w-full items-center justify-between rounded-lg px-3 py-3 text-left font-medium transition hover:bg-mist';
+    $socials = [
+        ['https://www.instagram.com/ncimedismart/', 'fa-instagram', 'Instagram NCI Medismart'],
+        ['https://www.youtube.com/@simrsncimedismart2282/featured', 'fa-youtube', 'YouTube NCI Medismart'],
+        ['https://www.linkedin.com/company/pt-nuansa-cerah-informasi/', 'fa-linkedin-in', 'LinkedIn PT Nuansa Cerah Informasi'],
+    ];
+    $products = collect($navbarContent)->filter(fn ($item) => $item->products);
+    $about = [
+        ['href' => url('/HealthcareSolution'), 'icon' => asset('assets/img/healthcare.png'), 'title' => 'Healthcare Solution', 'external' => false],
+        ['href' => 'http://nuansa.com/2019/', 'icon' => asset('assets/img/pt-nci.png'), 'title' => 'PT Nuansa Cerah Informasi', 'external' => true],
+    ];
+    $links = [
+        ['href' => url('/Testimoni'), 'label' => 'Testimoni'],
+        ['href' => url('/Blog'), 'label' => 'Blog'],
+        ['href' => url('/Demo'), 'label' => 'Demo'],
+    ];
+    $waNumber = collect($whatsappContent['whatsappView'])->first();
 @endphp
-<header x-data="{ open: false, scrolled: false }" x-init="scrolled = window.scrollY > 0"
-    @scroll.window.passive="scrolled = window.scrollY > 0" class="sticky top-0 z-[1000]">
-    <div class="overflow-hidden bg-ink text-[10px] text-white transition-[max-height] duration-300 min-[501px]:text-sm"
-        :class="scrolled ? 'max-h-0' : 'max-h-[30px]'">
-        <div class="px-[10%]">
-            <div class="flex h-[30px] items-center justify-between gap-5 sm:px-[30px]">
-                <div class="flex items-center gap-7">
-                    <a href="https://www.instagram.com/ncimedismart/" target="_blank" rel="noopener noreferrer"
-                        aria-label="Instagram NCI Medismart" class="transition hover:text-brand">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@simrsncimedismart2282/featured" target="_blank"
-                        rel="noopener noreferrer" aria-label="YouTube NCI Medismart"
-                        class="transition hover:text-brand">
-                        <i class="fa-brands fa-youtube"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/company/pt-nuansa-cerah-informasi/" target="_blank"
-                        rel="noopener noreferrer" aria-label="LinkedIn PT Nuansa Cerah Informasi"
-                        class="transition hover:text-brand">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </a>
-                </div>
 
-                <div class="flex flex-wrap items-center">
-                    <span><i class="fa-solid fa-phone mr-1.5"></i>022 8735 6050</span>
-                    <span
-                        class="ml-12 hidden h-[30px] items-center rounded-t-[10px] bg-white px-7 text-ink min-[681px]:flex">
-                        Kantor Bandung
-                    </span>
-                </div>
+<header x-data="{ open: false, scrolled: false, sub: null }" x-init="scrolled = window.scrollY > 0"
+    @scroll.window.passive="scrolled = window.scrollY > 0" @keydown.escape.window="open = false; sub = null"
+    class="sticky top-0 z-[1000] bg-white">
+    {{-- Top bar --}}
+    <div class="overflow-hidden bg-ink text-xs text-white transition-[max-height] duration-300 sm:text-sm"
+        :class="scrolled ? 'max-h-0' : 'max-h-10'">
+        <div class="mx-auto flex h-9 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
+            <div class="flex items-center gap-5">
+                @foreach ($socials as [$href, $icon, $label])
+                    <a href="{{ $href }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $label }}"
+                        class="transition hover:text-brand"><i class="fa-brands {{ $icon }}"></i></a>
+                @endforeach
+            </div>
+            <div class="flex items-center gap-5">
+                <a href="tel:+622287356050" class="transition hover:text-brand">
+                    <i class="fa-solid fa-phone mr-1.5"></i>022 8735 6050
+                </a>
+                <span class="hidden items-center gap-1.5 text-white/80 md:inline-flex">
+                    <i class="fa-solid fa-location-dot"></i>Kantor Bandung
+                </span>
             </div>
         </div>
     </div>
 
-    <div class="bg-white text-ink shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
-        <div class="px-[10%]">
-            <div class="flex min-h-[60px] items-center justify-between sm:px-[30px]">
-                <a href="{{ url('/') }}" class="flex items-center">
-                    <img src="{{ asset('assets/img/Logo Medismart.png') }}" alt="Medismart"
-                        class="w-full max-w-[100px] min-[501px]:max-w-[150px]">
-                </a>
+    {{-- Main bar --}}
+    <div class="relative border-b border-black/5 shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
+        <div class="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-6 px-5 sm:h-20 sm:px-8">
+            <a href="{{ url('/') }}" class="shrink-0" aria-label="Beranda NCI Medismart">
+                <img src="{{ asset('assets/img/Logo Medismart.png') }}" alt="NCI Medismart"
+                    class="h-11 w-auto sm:h-14">
+            </a>
 
-                <button type="button" class="text-[22px] text-brand-dark min-[501px]:text-[28px] nav:hidden"
-                    @click="open = !open" :aria-expanded="open.toString()" aria-controls="main-nav"
-                    aria-label="Buka menu navigasi">
-                    <i class="fa-solid" :class="open ? 'fa-xmark' : 'fa-bars'"></i>
-                </button>
-
-                <nav id="main-nav"
-                    class="absolute inset-x-0 top-full hidden border-t border-black/10 bg-white pb-2.5 nav:static nav:block nav:border-0 nav:pb-0"
-                    :class="{ '!block': open }">
-                    <ul class="grid gap-5 nav:flex nav:items-center nav:gap-0 xl:gap-5">
-                        <li class="group relative">
-                            <a href="#" class="{{ $navLink }}" @click.prevent>Produk <span
-                                    aria-hidden="true">&#x25BE;</span></a>
-                            <ul class="{{ $subMenu }}">
-                                @foreach ($navbarContent as $navbarItem)
-                                    @if ($navbarItem->products)
-                                        <li class="{{ $subItem }}">
-                                            <a href="{{ url('/ProductView/' . $navbarItem->products->id) }}"
-                                                class="{{ $subLink }}">
-                                                <img src="{{ asset('storage/' . $navbarItem->icon) }}" alt=""
-                                                    class="mr-2.5 w-[38px]">
-                                                <div>
-                                                    <h5 class="font-bold">{{ $navbarItem->products->title }}</h5>
-                                                    <p class="text-xs text-muted">
-                                                        {{ $navbarItem->products->subTitle }}</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    @endif
+            {{-- Desktop navigation --}}
+            <nav class="hidden nav:block" aria-label="Navigasi utama">
+                <ul class="flex items-center gap-1 text-[15px]">
+                    <li class="group relative">
+                        <button type="button" class="{{ $navLink }} inline-flex items-center gap-1.5" aria-haspopup="true">
+                            Produk <i class="fa-solid fa-chevron-down text-[10px] transition group-hover:rotate-180"></i>
+                        </button>
+                        <div
+                            class="invisible absolute left-0 top-full z-10 pt-3 opacity-0 transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                            <ul class="w-80 rounded-xl border border-black/5 bg-white p-2 shadow-xl">
+                                @foreach ($products as $navbarItem)
+                                    <li>
+                                        <a href="{{ url('/ProductView/' . $navbarItem->products->id) }}" class="{{ $dropLink }}">
+                                            <img src="{{ asset('storage/' . $navbarItem->icon) }}" alt=""
+                                                class="h-9 w-9 shrink-0 object-contain">
+                                            <span>
+                                                <span class="block font-bold">{{ $navbarItem->products->title }}</span>
+                                                <span class="block text-xs text-muted">{{ $navbarItem->products->subTitle }}</span>
+                                            </span>
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
-                        </li>
-
-                        <li class="group relative">
-                            <a href="#" class="{{ $navLink }}" @click.prevent>Tentang Kami <span
-                                    aria-hidden="true">&#x25BE;</span></a>
-                            <ul class="{{ $subMenu }}">
-                                <li class="{{ $subItem }}">
-                                    <a href="{{ url('/HealthcareSolution') }}" class="{{ $subLink }}">
-                                        <img src="{{ asset('assets/img/healthcare.png') }}" alt=""
-                                            class="mr-2.5 w-[38px]">
-                                        <h5 class="font-bold">Healthcare Solution</h5>
-                                    </a>
-                                </li>
-                                <li class="{{ $subItem }}">
-                                    <a href="http://nuansa.com/2019/" target="_blank" rel="noopener noreferrer"
-                                        class="{{ $subLink }}">
-                                        <img src="{{ asset('assets/img/pt-nci.png') }}" alt=""
-                                            class="mr-2.5 w-[38px]">
-                                        <h5 class="font-bold">PT Nuansa Cerah Informasi</h5>
-                                    </a>
-                                </li>
+                        </div>
+                    </li>
+                    <li class="group relative">
+                        <button type="button" class="{{ $navLink }} inline-flex items-center gap-1.5" aria-haspopup="true">
+                            Tentang Kami <i class="fa-solid fa-chevron-down text-[10px] transition group-hover:rotate-180"></i>
+                        </button>
+                        <div
+                            class="invisible absolute left-0 top-full z-10 pt-3 opacity-0 transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                            <ul class="w-80 rounded-xl border border-black/5 bg-white p-2 shadow-xl">
+                                @foreach ($about as $item)
+                                    <li>
+                                        <a href="{{ $item['href'] }}" class="{{ $dropLink }}"
+                                            @if ($item['external']) target="_blank" rel="noopener noreferrer" @endif>
+                                            <img src="{{ $item['icon'] }}" alt="" class="h-9 w-9 shrink-0 object-contain">
+                                            <span class="font-bold">{{ $item['title'] }}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
+                        </div>
+                    </li>
+                    @foreach ($links as $link)
+                        <li><a href="{{ $link['href'] }}" class="{{ $navLink }}">{{ $link['label'] }}</a></li>
+                    @endforeach
+                    @if ($waNumber)
+                        <li class="ml-3">
+                            <a href="https://api.whatsapp.com/send?phone={{ urlencode($waNumber) }}" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-primary !py-2.5">
+                                <i class="fa-brands fa-whatsapp"></i>Hubungi Kami
+                            </a>
                         </li>
+                    @endif
+                </ul>
+            </nav>
 
-                        <li><a href="{{ url('/Testimoni') }}" class="{{ $navLink }}">Testimoni</a></li>
-                        <li><a href="{{ url('/Blog') }}" class="{{ $navLink }}">Blog</a></li>
-                        <li><a href="{{ url('/Demo') }}" class="{{ $navLink }}">Demo</a></li>
-                        <li class="px-5 nav:px-0">
-                            @foreach ($whatsappContent['whatsappView'] as $phone_number)
-                                <a href="https://api.whatsapp.com/send?phone={{ urlencode($phone_number) }}"
-                                    target="_blank" rel="noopener noreferrer"
-                                    class="inline-block w-fit rounded-[10px] bg-brand px-4 py-[18px] text-center text-white transition hover:bg-brand-dark nav:ml-2.5 xl:ml-0">
-                                    Hubungi Kami
-                                </a>
-                            @endforeach
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            {{-- Mobile toggle --}}
+            <button type="button"
+                class="flex h-11 w-11 items-center justify-center rounded-lg text-2xl text-brand-dark transition hover:bg-mist nav:hidden"
+                @click="open = !open" :aria-expanded="open.toString()" aria-controls="mobile-nav"
+                :aria-label="open ? 'Tutup menu navigasi' : 'Buka menu navigasi'">
+                <i class="fa-solid" :class="open ? 'fa-xmark' : 'fa-bars'"></i>
+            </button>
         </div>
+
+        {{-- Mobile navigation --}}
+        <nav id="mobile-nav" x-show="open" x-cloak x-transition.opacity.duration.200ms
+            class="absolute inset-x-0 top-full max-h-[calc(100svh-7rem)] overflow-y-auto border-t border-black/5 bg-white shadow-xl nav:hidden"
+            aria-label="Navigasi utama">
+            <ul class="mx-auto w-full max-w-7xl space-y-1 px-5 py-4 sm:px-8">
+                <li>
+                    <button type="button" class="{{ $mobileLink }}" @click="sub = sub === 'produk' ? null : 'produk'"
+                        :aria-expanded="(sub === 'produk').toString()">
+                        Produk <i class="fa-solid fa-chevron-down text-xs transition" :class="sub === 'produk' && 'rotate-180'"></i>
+                    </button>
+                    <ul x-show="sub === 'produk'" x-transition.opacity class="ml-3 border-l border-black/10 pl-3">
+                        @foreach ($products as $navbarItem)
+                            <li>
+                                <a href="{{ url('/ProductView/' . $navbarItem->products->id) }}" class="{{ $dropLink }}">
+                                    <img src="{{ asset('storage/' . $navbarItem->icon) }}" alt="" class="h-8 w-8 shrink-0 object-contain">
+                                    <span>
+                                        <span class="block font-bold">{{ $navbarItem->products->title }}</span>
+                                        <span class="block text-xs text-muted">{{ $navbarItem->products->subTitle }}</span>
+                                    </span>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+                <li>
+                    <button type="button" class="{{ $mobileLink }}" @click="sub = sub === 'tentang' ? null : 'tentang'"
+                        :aria-expanded="(sub === 'tentang').toString()">
+                        Tentang Kami <i class="fa-solid fa-chevron-down text-xs transition" :class="sub === 'tentang' && 'rotate-180'"></i>
+                    </button>
+                    <ul x-show="sub === 'tentang'" x-transition.opacity class="ml-3 border-l border-black/10 pl-3">
+                        @foreach ($about as $item)
+                            <li>
+                                <a href="{{ $item['href'] }}" class="{{ $dropLink }}"
+                                    @if ($item['external']) target="_blank" rel="noopener noreferrer" @endif>
+                                    <img src="{{ $item['icon'] }}" alt="" class="h-8 w-8 shrink-0 object-contain">
+                                    <span class="font-bold">{{ $item['title'] }}</span>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+                @foreach ($links as $link)
+                    <li><a href="{{ $link['href'] }}" class="{{ $mobileLink }}">{{ $link['label'] }}</a></li>
+                @endforeach
+                @if ($waNumber)
+                    <li class="pt-3">
+                        <a href="https://api.whatsapp.com/send?phone={{ urlencode($waNumber) }}" target="_blank"
+                            rel="noopener noreferrer" class="btn btn-primary w-full">
+                            <i class="fa-brands fa-whatsapp"></i>Hubungi Kami
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        </nav>
     </div>
 </header>

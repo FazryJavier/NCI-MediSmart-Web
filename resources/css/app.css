@@ -26,18 +26,34 @@
 }
 
 @layer components {
-    /* Horizontal page gutter used by every section (was `.container`). */
+    /* Centered content column with responsive gutters, shared by every section. */
     .page-container {
-        @apply px-[10%] py-2.5;
+        @apply mx-auto w-full max-w-7xl px-5 py-2.5 sm:px-8;
+    }
+
+    .section-title {
+        @apply text-center text-2xl font-bold text-ink sm:text-3xl lg:text-[2rem] lg:leading-tight;
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center gap-2.5 rounded-[10px] px-5 py-3 text-sm font-medium transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:px-6 sm:py-3.5 sm:text-base;
+    }
+
+    .btn-primary {
+        @apply bg-brand text-white hover:bg-brand-dark;
+    }
+
+    .btn-outline-light {
+        @apply border-2 border-white text-white hover:border-brand-dark hover:bg-brand-dark;
     }
 
     /* Scroll reveal: only hidden when JS is available (see layout <head>). */
     .js .reveal {
-        @apply -translate-x-12 opacity-0 transition duration-500 ease-in-out;
+        @apply translate-y-6 opacity-0 transition duration-700 ease-out;
     }
 
     .js .reveal.is-visible {
-        @apply translate-x-0 opacity-100;
+        @apply translate-y-0 opacity-100;
     }
 
     /* Swiper theme overrides shared by every slider. */
@@ -58,6 +74,6 @@
 
 @media (prefers-reduced-motion: reduce) {
     .js .reveal {
-        @apply translate-x-0 opacity-100 transition-none;
+        @apply translate-y-0 opacity-100 transition-none;
     }
 }
