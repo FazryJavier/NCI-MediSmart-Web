@@ -46,6 +46,15 @@ jobs:
       - name: Build frontend assets
         run: npm run build
 
+      # Production deploys public/build straight from git, so the committed build must match the sources.
+      - name: Check committed build is up to date
+        run: |
+          if [ -n "$(git status --porcelain -- public/build)" ]; then
+            echo "::error::public/build is out of date. Run 'npm run build' and commit public/build."
+            git status --short -- public/build
+            exit 1
+          fi
+
       # phpunit.xml points tests at an in-memory SQLite database.
       - name: Run tests
         run: php artisan test
