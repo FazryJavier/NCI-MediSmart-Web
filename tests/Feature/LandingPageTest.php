@@ -172,6 +172,21 @@ class LandingPageTest extends TestCase
         $this->get('/')->assertOk()->assertDontSee('aria-current="page"', false);
     }
 
+    public function test_about_page_shows_vision_mission_and_highlights_its_menu(): void
+    {
+        $this->get('/tentang-kami')
+            ->assertOk()
+            ->assertSee('<h1 class="text-center text-2xl font-bold sm:text-3xl">NCI-MediSmart</h1>', false)
+            ->assertSee('Visi kami')
+            // Each mission line is its own paragraph.
+            ->assertSee('<p>Misi satu</p>', false)
+            ->assertSee('<p>Misi dua</p>', false)
+            // The "Tentang Kami" dropdown trigger gets the active style on its own page.
+            ->assertSee('bg-brand/10 text-brand-dark" aria-haspopup="true"', false);
+
+        $this->get('/')->assertOk()->assertDontSee('bg-brand/10 text-brand-dark" aria-haspopup="true"', false);
+    }
+
     public function test_popup_is_rendered_only_inside_its_date_window(): void
     {
         Popup::create([
