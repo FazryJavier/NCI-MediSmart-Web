@@ -5,7 +5,7 @@
 --}}
 @php($desktopSlides = $desktopSlides ?? 2)
 @if (! empty($testimonials))
-<section class="reveal bg-mist py-12 sm:py-14">
+<section class="reveal bg-white py-12 sm:py-14">
     <div class="page-container">
         <h2 class="pb-8 text-center text-2xl text-ink sm:text-3xl">Apa kata <strong>Klien</strong> tentang <strong>Kami</strong></h2>
         <div class="swiper text-center" x-data
@@ -23,8 +23,8 @@
                     </div>
                 @endforeach
             </div>
-            <div class="swiper-button-next nav-btn !bg-mist max-[900px]:!hidden"></div>
-            <div class="swiper-button-prev nav-btn !bg-mist max-[900px]:!hidden"></div>
+            <div class="swiper-button-next nav-btn !bg-white max-[900px]:!hidden"></div>
+            <div class="swiper-button-prev nav-btn !bg-white max-[900px]:!hidden"></div>
             <div class="swiper-pagination"></div>
         </div>
     </div>

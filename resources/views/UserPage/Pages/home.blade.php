@@ -118,7 +118,7 @@
                 @if ($sliders->count() > 1)
                     <div class="swiper-button-prev nav-btn !left-6 !hidden !rounded-full lg:!flex"></div>
                     <div class="swiper-button-next nav-btn !right-6 !hidden !rounded-full lg:!flex"></div>
-                    <div class="swiper-pagination !bottom-6 [--swiper-pagination-bullet-inactive-color:#fff] [--swiper-pagination-bullet-inactive-opacity:0.6] [--swiper-pagination-color:#1bad4b]"></div>
+                    <div class="swiper-pagination swiper-pagination-light !bottom-6"></div>
                 @endif
             </div>
         @else
