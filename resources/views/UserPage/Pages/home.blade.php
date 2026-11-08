@@ -172,13 +172,14 @@
                 @endif
 
                 @if ($hasMap)
-                    <div class="mt-12 overflow-hidden rounded-3xl bg-brand-dark px-6 pt-10 text-center sm:rounded-[40px] sm:px-10 sm:pt-12 {{ $map->image ? '' : 'pb-10 sm:pb-12' }}">
+                    {{-- The card hugs its content: title, then the map at its natural ratio (no forced box, no empty gap). --}}
+                    <div class="mt-12 overflow-hidden rounded-3xl bg-brand-dark px-4 text-center sm:rounded-[40px] sm:px-10 {{ $map->image ? 'pt-8 sm:pt-10' : 'py-10 sm:py-12' }}">
                         @if (filled($map->title))
-                            <h2 class="text-2xl font-bold text-white sm:text-3xl">{{ $map->title }}</h2>
+                            <h2 class="px-2 text-2xl font-bold text-white sm:text-3xl">{{ $map->title }}</h2>
                         @endif
                         @if ($map->image)
                             <img src="{{ $img($map->image) }}" alt="Peta sebaran klien di Indonesia"
-                                class="mx-auto mt-6 aspect-[2/1] w-full max-w-3xl object-contain object-bottom" loading="lazy" decoding="async">
+                                class="mx-auto block h-auto w-full max-w-3xl {{ filled($map->title) ? 'mt-2 sm:mt-4' : '' }}" loading="lazy" decoding="async">
                         @endif
                     </div>
                 @endif

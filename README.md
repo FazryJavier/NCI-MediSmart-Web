@@ -24,6 +24,18 @@ npm run dev     # pengembangan (HMR); hapus public/hot jika dev server mati tida
 npm run build   # hasil di public/build, WAJIB di-commit
 ```
 
+### Data dummy (lokal)
+
+```bash
+php artisan db:seed --class=DemoContentSeeder
+```
+
+Perintah ini mengisi semua konten landing page (slider, client, pengalaman, peta, produk + modul, video, artikel, testimoni, about, CTA, footer, WhatsApp, popup nonaktif). Gambarnya disalin ke `storage/app/file-image/demo-*`.
+
+- Hanya mengisi tabel yang **masih kosong**; data yang sudah ada tidak diubah. Aman dijalankan berulang kali.
+- **Menolak berjalan di production.**
+- Kalau tabel `users` kosong, dibuat user `demo-admin` dengan password acak sebagai penulis artikel.
+
 ### Deploy
 
 Production (Hostinger) meng-update kode lewat webhook GitHub (`git pull` dari `main`) dan **tidak menjalankan npm**. Karena itu `public/build` **ikut di-commit**:
