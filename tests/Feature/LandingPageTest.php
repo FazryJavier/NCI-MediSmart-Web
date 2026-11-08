@@ -151,6 +151,18 @@ class LandingPageTest extends TestCase
             ->assertSee(url('/ProductView/' . $this->product->id), false);
     }
 
+    public function test_header_has_desktop_and_mobile_navigation_and_footer_lists_products(): void
+    {
+        $html = $this->get('/')->assertOk()->getContent();
+
+        // Desktop and mobile menus are separate landmarks; the mobile one starts hidden (x-cloak).
+        $this->assertSame(2, substr_count($html, 'aria-label="Navigasi utama"'));
+        $this->assertStringContainsString('id="mobile-nav" x-show="open" x-cloak', $html);
+        // The product is linked from the desktop menu, mobile menu, home product card and footer.
+        $this->assertSame(4, substr_count($html, 'href="' . url('/ProductView/' . $this->product->id) . '"'));
+        $this->assertStringContainsString('Copyright &copy; ' . now()->year, $html);
+    }
+
     public function test_popup_is_rendered_only_inside_its_date_window(): void
     {
         Popup::create([

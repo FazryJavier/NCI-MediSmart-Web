@@ -1,9 +1,9 @@
 {{-- Floating WhatsApp button. --}}
-<div class="fixed bottom-[10%] right-4 z-[1000] flex flex-col items-center gap-2 min-[581px]:bottom-[15%] min-[581px]:right-[2%]">
-    @foreach ($whatsappContent['whatsappView'] as $phone_number)
-        <a href="https://api.whatsapp.com/send?phone={{ urlencode($phone_number) }}" target="_blank"
-            rel="noopener noreferrer" aria-label="Chat WhatsApp" class="transition hover:-translate-y-2.5">
-            <img src="{{ asset('assets/img/whatsapp.png') }}" alt="" class="w-10 min-[581px]:w-[60px]">
-        </a>
-    @endforeach
-</div>
+@php($waNumber = collect($whatsappContent['whatsappView'])->first())
+@if ($waNumber)
+    <a href="https://api.whatsapp.com/send?phone={{ urlencode($waNumber) }}" target="_blank" rel="noopener noreferrer"
+        aria-label="Chat WhatsApp"
+        class="fixed bottom-5 right-5 z-[900] block rounded-full shadow-lg transition hover:-translate-y-1 sm:bottom-8 sm:right-8">
+        <img src="{{ asset('assets/img/whatsapp.png') }}" alt="" class="h-12 w-12 sm:h-14 sm:w-14">
+    </a>
+@endif
