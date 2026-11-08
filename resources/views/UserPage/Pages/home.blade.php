@@ -17,7 +17,7 @@
 
     {{-- Hero slider (no reveal: it is above the fold) --}}
     <section class="relative bg-ink" aria-label="Sorotan">
-        <div class="swiper h-[calc(100svh-6.25rem)] max-h-[820px] min-h-[460px] sm:h-[calc(100svh-7.25rem)]" x-data
+        <div class="swiper h-[calc(100svh-6.5rem)] max-h-[820px] min-h-[460px] sm:h-[calc(100svh-7.75rem)]" x-data
             x-init="initSwiper($el, { slidesPerView: 1, loop: {{ count($sliderContent['titleView']) > 1 ? 'true' : 'false' }} })">
             <div class="swiper-wrapper">
                 @foreach ($sliderContent['titleView'] as $index => $title)
