@@ -5,9 +5,9 @@
 --}}
 @php($desktopSlides = $desktopSlides ?? 2)
 @if (! empty($testimonials))
-<section class="reveal bg-mist py-5">
+<section class="reveal bg-mist py-12 sm:py-14">
     <div class="page-container">
-        <h2 class="section-title pb-8">Apa Kata Klien Tentang Kami</h2>
+        <h2 class="pb-8 text-center text-2xl text-ink sm:text-3xl">Apa kata <strong>Klien</strong> tentang <strong>Kami</strong></h2>
         <div class="swiper text-center" x-data
             x-init="initSwiper($el, { slidesPerView: 1, loop: {{ count($testimonials) > $desktopSlides ? 'true' : 'false' }}, spaceBetween: 10, breakpoints: { 991: { slidesPerView: {{ $desktopSlides }}, spaceBetween: 30 } } })">
             <div class="swiper-wrapper">
@@ -18,8 +18,8 @@
                                 alt="Logo {{ $testimonial['name'] }}" class="mx-auto h-16 w-auto max-w-[140px] object-contain"
                                 loading="lazy">
                         @endif
-                        <h3 class="py-2.5 text-lg font-medium min-[361px]:text-xl">{{ $testimonial['name'] }}</h3>
-                        <p class="text-sm min-[361px]:text-base">{{ $testimonial['description'] }}</p>
+                        <h3 class="pt-4 text-base font-medium">{{ $testimonial['name'] }}</h3>
+                        <p class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-ink/75">&ldquo;{{ $testimonial['description'] }}&rdquo;</p>
                     </div>
                 @endforeach
             </div>

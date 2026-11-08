@@ -218,6 +218,18 @@ class LandingPageTest extends TestCase
         $this->assertStringContainsString('send?phone=628123456789&amp;text=Halo%20NCI%20Medismart%2C%20saya%20ingin%20memberikan%20testimoni.', $html);
     }
 
+    public function test_product_page_follows_the_design_structure(): void
+    {
+        $html = $this->get($this->product->publicUrl())->assertOk()->getContent();
+
+        $this->assertStringNotContainsString('aria-label="Breadcrumb"', $html);
+        $this->assertStringContainsString('"@type":"BreadcrumbList"', $html);
+        // Modules: 5 per row on desktop, first 15 shown.
+        $this->assertStringContainsString('lg:grid-cols-5', $html);
+        $this->assertStringContainsString('loadMore({ initial: 15', $html);
+        $this->assertStringContainsString('Apa kata <strong>Klien</strong> tentang <strong>Kami</strong>', $html);
+    }
+
     public function test_about_page_shows_vision_mission_and_highlights_its_menu(): void
     {
         $this->get('/tentang-kami')

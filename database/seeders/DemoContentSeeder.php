@@ -108,11 +108,14 @@ class DemoContentSeeder extends Seeder
         }
 
         $catalog = [
-            ['SIMRS NCI Medismart', 'Sistem Informasi Manajemen Rumah Sakit', 'produk-1.png', 'simrs.png', 7],
+            ['SIMRS NCI Medismart', 'Sistem Informasi Manajemen Rumah Sakit', 'produk-1.png', 'simrs.png', 17],
             ['RME Klinik', 'Rekam Medis Elektronik untuk Klinik', 'produk-2.png', 'rme.png', 4],
             ['Bridging BPJS', 'Integrasi V-Claim, Antrean & SATUSEHAT', 'bpjs-claim1.png', 'healthcare.png', 2],
         ];
-        $modules = ['Pendaftaran Pasien', 'Rawat Jalan', 'Rawat Inap', 'Farmasi & Apotek', 'Laboratorium', 'Radiologi', 'Kasir & Billing'];
+        // 17 modules on the first product: more than the 15 shown before "Lihat Semua Modul".
+        $modules = ['Pendaftaran Pasien', 'Rawat Jalan', 'Rawat Inap', 'Farmasi & Apotek', 'Laboratorium', 'Radiologi', 'Kasir & Billing',
+            'Rekam Medik Elektronik', 'Keuangan & Akuntansi', 'Integrasi BPJS', 'Integrasi SATUSEHAT', 'Integrasi LIS', 'Integrasi Ina-CBG', 'Integrasi Aplicare',
+            'Pembayaran QRIS', 'Gizi', 'Bank Darah'];
 
         foreach ($catalog as [$title, $subTitle, $image, $icon, $moduleCount]) {
             $product = Product::create(['title' => $title, 'subTitle' => $subTitle, 'image' => $this->image($image),
@@ -126,7 +129,7 @@ class DemoContentSeeder extends Seeder
             ClientProduct::create(['productId' => $product->id, 'image' => $this->image('client2.png')]);
             Sparasi::create(['productId' => $product->id, 'image' => $this->image('rumah-sakit.png')]);
 
-            foreach (['Terintegrasi' => 'vector1.png', 'Aman' => 'vector2.png', 'Mudah Digunakan' => 'vector3.png'] as $advTitle => $advIcon) {
+            foreach (['Teknologi' => 'vector1.png', 'Integrasi' => 'vector2.png', 'Modular' => 'vector3.png', 'Purna Jual' => 'icon4.png'] as $advTitle => $advIcon) {
                 $advantage = AdvantageProduct::create(['productId' => $product->id, 'title' => $advTitle, 'icon' => $this->image($advIcon)]);
                 foreach (['Akses berbasis peran pengguna', 'Laporan real-time', 'Dukungan teknis 24/7'] as $point) {
                     AdvantageListProduct::create(['advantageId' => $advantage->id, 'name' => $point]);
