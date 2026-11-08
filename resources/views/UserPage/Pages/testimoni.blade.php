@@ -1,149 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('UserPage.Layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Testimoni</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style-testimoni.css') }}">
-    {{-- Swiper CSS --}}
-    <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
-</head>
+@section('title', 'Testimoni - NCI Medismart')
+@section('description', 'Apa kata klien rumah sakit dan fasilitas kesehatan tentang SIMRS NCI Medismart.')
 
-<body>
-    {{-- Header --}}
-    @include('UserPage.Layouts.header')
-    {{-- End Header --}}
-
-    {{-- WhatsApp Button --}}
+@section('content')
     @include('UserPage.Layouts.wa-icon')
 
     {{-- Testimoni --}}
-    <section class="section-testimoni scroll-section">
-        <div class="testimoni">
-            <div class="container">
-                <div class="text">
-                    <h1>Apa kata klient tentang kami</h1>
-                </div>
-                <div class="content">
-                    <div class="wrapper">
+    <section class="reveal">
+        <div class="py-12" x-data="loadMore({ initial: 6, step: 3, total: {{ count($feedbackContent['imageView']) }} })">
+            <div class="page-container">
+                <h1 class="mb-10 text-center text-[28px] text-ink min-[581px]:text-[40px]">Apa kata klien tentang kami</h1>
+                <div class="text-center">
+                    <div class="grid grid-cols-1 gap-x-12 md:grid-cols-2 xl:grid-cols-3">
                         @foreach ($feedbackContent['imageView'] as $index => $image)
-                            <div class="card">
-                                <img src="{{ asset('storage/' . $feedbackContent['imageView'][$index]) }}"
-                                    alt="">
-                                <h3>{{ $feedbackContent['nameView'][$index] }}</h3>
-                                <p>{{ $feedbackContent['descriptionView'][$index] }}</p>
+                            <div class="mb-12 p-5" x-show="{{ $loop->index }} < visible"
+                                @if ($loop->index >= 6) x-cloak @endif>
+                                <img src="{{ asset('storage/' . $image) }}"
+                                    alt="Logo {{ $feedbackContent['nameView'][$index] }}"
+                                    class="mx-auto w-full max-w-[100px]" loading="lazy">
+                                <h3 class="py-2.5 text-xl font-medium">{{ $feedbackContent['nameView'][$index] }}</h3>
+                                <p class="text-base">{{ $feedbackContent['descriptionView'][$index] }}</p>
                             </div>
                         @endforeach
                     </div>
-                    <div class="btn-load">load More</div>
-                    <div class="btn-less">load Less</div>
+                    <button type="button" x-show="hasMore" x-cloak @click="more()"
+                        class="inline-block rounded-[10px] border border-brand px-[60px] py-4 text-xl text-brand transition hover:bg-brand hover:text-white">
+                        Muat Lebih Banyak
+                    </button>
                 </div>
             </div>
         </div>
     </section>
-    {{-- End Testimoni --}}
 
-    {{-- Client --}}
-    <section class="section-client scroll-section">
-        <div class="client">
-            <div class="container">
-                <div class="text">
-                    <h1>{{ $mapfeedbackContent['titleView'] }}</h1>
-                </div>
-                <div class="image">
-                    <img src="{{ $mapfeedbackContent['imageView'] }}" alt="Indonesia">
-                </div>
+    {{-- Client map --}}
+    <section class="reveal">
+        <div class="py-12">
+            <div class="page-container">
+                <h2 class="mb-12 text-center text-2xl text-ink min-[581px]:text-[32px]">{{ $mapfeedbackContent['titleView'] }}</h2>
+                @if ($mapfeedbackContent['imageView'])
+                    <img src="{{ $mapfeedbackContent['imageView'] }}" alt="Peta sebaran klien di Indonesia"
+                        class="mx-auto w-full max-w-[1300px]" loading="lazy">
+                @endif
             </div>
         </div>
     </section>
-    {{-- End Client --}}
 
-    {{-- Konsultasi --}}
     @include('UserPage.Layouts.question')
-    {{-- End Konsultasi --}}
-
-    {{-- Footer --}}
-    @include('UserPage.Layouts.footer')
-    {{-- End Footer --}}
-
-</body>
-
-<!-- Swiper JS -->
-<script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
-
-<script src="{{ asset('js/Script.js') }}"></script>
-
-{{-- Load More --}}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        let loadMoreBtn = document.querySelector('.btn-load');
-        let loadLessBtn = document.querySelector('.btn-less');
-        let currentItem = 6;
-
-        loadMoreBtn.addEventListener('click', () => {
-            let boxes = document.querySelectorAll('.section-testimoni .content .wrapper .card');
-
-            for (var i = currentItem; i < currentItem + 3 && i < boxes.length; i++) {
-                boxes[i].style.display = 'block';
-            }
-
-            currentItem += 3;
-
-            if (currentItem >= boxes.length) {
-                loadMoreBtn.style.display = 'none';
-                // loadLessBtn.style.display = 'inline-block';
-            }
-        });
-
-        // loadLessBtn.addEventListener('click', () => {
-        //     let boxes = document.querySelectorAll('.section-testimoni .content .wrapper .card');
-
-        //     for (var i = boxes.length - 1; i >= currentItem - 3; i--) {
-        //         boxes[i].style.display = 'none';
-        //     }
-
-        //     currentItem -= 3;
-
-        //     if (currentItem <= 3) {
-        //         loadMoreBtn.style.display = 'inline-block';
-        //         loadLessBtn.style.display = 'none';
-        //     }
-        // });
-    });
-</script>
-
-{{-- Animation Script --}}
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const scrollSections = document.querySelectorAll(".scroll-section");
-
-        function checkScroll() {
-            scrollSections.forEach((section) => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const sectionBottom = section.getBoundingClientRect().bottom;
-                const windowHeight = window.innerHeight;
-
-                // Check if the bottom of the section is above the viewport
-                const isAboveViewport = sectionBottom < 0;
-
-                // Check if the top of the section is below the viewport
-                const isBelowViewport = sectionTop > windowHeight;
-
-                if (!isAboveViewport && !isBelowViewport) {
-                    section.classList.add("animated");
-                } else {
-                    section.classList.remove("animated");
-                }
-            });
-        }
-
-        window.addEventListener("scroll", checkScroll);
-        window.addEventListener("resize", checkScroll);
-
-        checkScroll();
-    });
-</script>
-
-</html>
+@endsection

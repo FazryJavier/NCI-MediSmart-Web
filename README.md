@@ -7,6 +7,20 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Frontend landing page
+
+Landing page publik (`resources/views/UserPage`) dibangun dengan **Tailwind CSS 3**, **Alpine.js 3**, dan **Swiper 10** lewat **Vite**. Panel admin tidak ikut menggunakannya.
+
+- Layout utama: `resources/views/UserPage/Layouts/app.blade.php`. Setiap halaman memakai `@extends` dan `@section('content')`.
+- Style: `resources/css/app.css` (`@tailwind` beserta komponen kecil `.page-container`, `.reveal`, dan override Swiper), lalu `tailwind.config.js` (warna `brand`, `ink`, `muted`, `mist`, plus breakpoint `nav` = 1151px).
+- Script: `resources/js/app.js` (Alpine `loadMore`, helper `initSwiper`, dan reveal on scroll).
+
+```bash
+npm install
+npm run dev     # pengembangan (HMR)
+npm run build   # wajib sebelum deploy; hasilnya ada di public/build (di-ignore git)
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

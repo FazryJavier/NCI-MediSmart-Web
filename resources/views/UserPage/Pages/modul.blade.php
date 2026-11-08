@@ -1,216 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('UserPage.Layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Modul NCI Medismart</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style-modul.css') }}">
-    {{-- Swiper CSS --}}
-    <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
-</head>
+@section('title', "{$modul->title} - NCI Medismart")
+@section('description', \Illuminate\Support\Str::limit(strip_tags((string) $modul->description), 160))
 
-<body>
-    {{-- Header --}}
-    @include('UserPage.Layouts.header')
-    {{-- End Header --}}
-
-    {{-- WhatsApp Button --}}
+@section('content')
     @include('UserPage.Layouts.wa-icon')
 
-    {{-- Modul Description --}}
-    <section class="section-modul scroll-section">
-        <div class="modul">
-            <div class="container">
-                <div class="first-page">
-                    <div class="description">
-                        <h1><b>{{ $modul->title }}</b></h1>
-                        <p>{{ $modul->description }}</p>
-                        <div class="button">
+    {{-- Modul intro --}}
+    <section class="reveal">
+        <div class="bg-gradient-to-r from-brand to-[#28b88d]">
+            <div class="page-container">
+                <div class="flex flex-col items-center justify-center py-12 min-[992px]:flex-row">
+                    <div class="max-w-full text-white min-[992px]:max-w-[60%] min-[992px]:pr-12">
+                        <h1 class="mb-5 text-[30px] font-bold min-[1201px]:text-[34px]">{{ $modul->title }}</h1>
+                        <p class="text-justify text-lg min-[1201px]:text-[22px]">{{ $modul->description }}</p>
+                        <div class="mt-10">
                             @foreach ($whatsappContent['whatsappView'] as $phone_number)
-                                <a href="https://api.whatsapp.com/send?phone={{ $phone_number }}"
-                                    class="btn-contact">Hubungi Kami</a>
+                                <a href="https://api.whatsapp.com/send?phone={{ urlencode($phone_number) }}"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="inline-block rounded-[10px] bg-white px-10 py-5 text-sm text-brand transition hover:bg-brand-dark hover:text-white min-[1201px]:text-base">
+                                    Hubungi Kami
+                                </a>
                             @endforeach
                         </div>
                     </div>
-                    <div class="image">
-                        @if ($imageModul1)
-                            <img src="{{ asset('storage/' . $imageModul1->image) }}" alt="">
-                        @endif
-                    </div>
+                    @if ($imageModul1)
+                        <div class="-order-1 mb-5 min-[992px]:order-none min-[992px]:mb-0">
+                            <img src="{{ asset('storage/' . $imageModul1->image) }}" alt="{{ $modul->title }}"
+                                class="w-full max-w-[800px] rounded-[20px]">
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
     </section>
-    {{-- End Modul Description --}}
 
     {{-- Advantage --}}
-    <section class="section-advantage scroll-section">
-        <div class="advantage">
-            <div class="container">
-                <div class="title">
-                    <h1><b>{{ $modul->title }}</b>
-                        <h1>
-                </div>
-                <div class="wrapper">
+    <section class="reveal">
+        <div class="page-container">
+            <div class="min-[992px]:px-20">
+                <h2 class="py-12 text-center text-[28px] font-bold text-ink">{{ $modul->title }}</h2>
+                <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] items-center justify-center gap-10 text-center">
                     @foreach ($advantageModulProducts as $advantageModul)
-                        <div class="card">
-                            <img src="{{ asset('storage/' . $advantageModul->icon) }}" alt="">
-                            <h3><b>{{ $advantageModul->title }}</b></h3>
-                            <p>{{ $advantageModul->description }}</p>
+                        <div class="p-5 text-ink">
+                            <img src="{{ asset('storage/' . $advantageModul->icon) }}" alt=""
+                                class="mx-auto mb-5 h-full max-h-[62px]" loading="lazy">
+                            <h3 class="mb-5 text-2xl font-bold">{{ $advantageModul->title }}</h3>
+                            <p class="text-lg">{{ $advantageModul->description }}</p>
                         </div>
                     @endforeach
                 </div>
             </div>
         </div>
     </section>
-    {{-- End Advantage --}}
 
     {{-- Fasilitas --}}
-    <section class="section-fasilitas scroll-section">
-        <div class="fasilitas">
-            <div class="container">
-                <div class="title">
-                    <h1><b>Fasilitas {{ $modul->title }}</b></h1>
-                </div>
-                <div class="content">
-                    <div class="description-1">
-                        <div class="image">
-                            @if ($imageModul2)
-                                <img src="{{ asset('storage/' . $imageModul2->image) }}" alt="">
-                            @endif
-                        </div>
-                        <div class="list">
-                            <ul>
-                                @foreach ($listfasilitasModulProducts1 as $fs1)
-                                    <li><i class="fa-solid fa-circle-check"
-                                            style="color: #1bad4b;"></i>{{ $fs1->description }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
+    <section class="reveal py-12">
+        <div class="bg-mist py-12">
+            <div class="page-container">
+                <h2 class="mb-12 text-center text-[28px] font-bold text-ink">Fasilitas {{ $modul->title }}</h2>
+                <div class="space-y-12">
+                    <div class="flex flex-col items-center justify-between gap-5 min-[992px]:flex-row">
+                        @if ($imageModul2)
+                            <img src="{{ asset('storage/' . $imageModul2->image) }}" alt=""
+                                class="w-full max-w-[700px] rounded-[20px]" loading="lazy">
+                        @endif
+                        <ul class="px-5">
+                            @foreach ($listfasilitasModulProducts1 as $fs1)
+                                <li class="mb-5 flex text-base text-ink min-[581px]:text-xl">
+                                    <i class="fa-solid fa-circle-check mr-2.5 mt-1 shrink-0 text-brand"></i>{{ $fs1->description }}
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
-                    <div class="description-2">
-                        <div class="list">
-                            <ul>
-                                @foreach ($listfasilitasModulProducts2 as $fs2)
-                                    <li><i class="fa-solid fa-circle-check"
-                                            style="color: #1bad4b;"></i>{{ $fs2->description }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="image">
-                            @if ($imageModul3)
-                                <img src="{{ asset('storage/' . $imageModul3->image) }}" alt="">
-                            @endif
-                        </div>
+                    <div class="flex flex-col items-center justify-between gap-5 min-[992px]:flex-row">
+                        <ul class="order-2 px-5 min-[992px]:order-none">
+                            @foreach ($listfasilitasModulProducts2 as $fs2)
+                                <li class="mb-5 flex text-base text-ink min-[581px]:text-xl">
+                                    <i class="fa-solid fa-circle-check mr-2.5 mt-1 shrink-0 text-brand"></i>{{ $fs2->description }}
+                                </li>
+                            @endforeach
+                        </ul>
+                        @if ($imageModul3)
+                            <img src="{{ asset('storage/' . $imageModul3->image) }}" alt=""
+                                class="w-full max-w-[700px] rounded-[20px]" loading="lazy">
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    {{-- End Fasilitas --}}
 
-    {{-- Testimoni --}}
-    <section class="section-testimoni scroll-section">
-        <div class="testimoni">
-            <div class="container">
-                <div class="text">
-                    <h1>Apa kata klient tentang kami</h1>
-                </div>
-                <div class="content swiper mySwiper">
-                    <div class="wrapper swiper-wrapper">
-                        @foreach ($feedback as $fd)
-                            <div class="card swiper-slide">
-                                <div class="image">
-                                    <img src="{{ asset('storage/' . $fd->image) }}" alt="">
-                                </div>
-                                <div class="description">
-                                    <h3>{{ $fd->title }}</h3>
-                                    <p>{{ $fd->description }}
-                                    </p>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="swiper-button-next nav-btn"></div>
-                    <div class="swiper-button-prev nav-btn"></div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- End Testimoni --}}
+    @include('UserPage.Layouts.testimonial-slider', [
+        'testimonials' => collect($feedback)
+            ->map(fn ($fd) => [
+                'image' => $fd->image,
+                'name' => $fd->name,
+                'description' => $fd->description,
+            ])
+            ->values()
+            ->all(),
+    ])
 
-    {{-- Konsultasi --}}
     @include('UserPage.Layouts.question')
-    {{-- End Konsultasi --}}
-
-    {{-- Footer --}}
-    @include('UserPage.Layouts.footer')
-    {{-- End Footer --}}
-</body>
-
-<!-- Swiper JS -->
-<script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
-
-<script src="{{ asset('js/Script.js') }}"></script>
-
-<!-- Initialize Swiper -->
-<script>
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 1,
-        loop: true,
-        spaceBetween: 10,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-            dynamicBullets: true,
-            type: "bullets"
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 30,
-            },
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-    });
-</script>
-
-{{-- Animation Script --}}
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const scrollSections = document.querySelectorAll(".scroll-section");
-
-        function checkScroll() {
-            scrollSections.forEach((section) => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const sectionBottom = section.getBoundingClientRect().bottom;
-                const windowHeight = window.innerHeight;
-
-                // Check if the bottom of the section is above the viewport
-                const isAboveViewport = sectionBottom < 0;
-
-                // Check if the top of the section is below the viewport
-                const isBelowViewport = sectionTop > windowHeight;
-
-                if (!isAboveViewport && !isBelowViewport) {
-                    section.classList.add("animated");
-                } else {
-                    section.classList.remove("animated");
-                }
-            });
-        }
-
-        window.addEventListener("scroll", checkScroll);
-        window.addEventListener("resize", checkScroll);
-
-        checkScroll();
-    });
-</script>
-
-</html>
+@endsection

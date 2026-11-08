@@ -1,122 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('UserPage.Layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Healthcare Solution</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style-healthcare.css') }}">
-    {{-- Swiper CSS --}}
-    <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
-</head>
+@section('title', 'Healthcare Solution - NCI Medismart')
+@if (! empty($aboutContent['descriptionView']))
+    @section('description', \Illuminate\Support\Str::limit(strip_tags($aboutContent['descriptionView']), 160))
+@endif
 
-<body>
-    {{-- Header --}}
-    @include('UserPage.Layouts.header')
-    {{-- End Header --}}
-
-    {{-- Popup --}}
+@section('content')
     @include('UserPage.Layouts.popups')
-    {{-- End popup --}}
-
-    {{-- WhatsApp Button --}}
     @include('UserPage.Layouts.wa-icon')
 
-    {{-- Video Views --}}
-    <section class="section-video scroll-section">
-        <div class="video-view">
-            <div class="container">
-                <div class="text">
-                    <h1>NCI - MediSmart</h1>
+    {{-- Video --}}
+    <section class="reveal">
+        <div class="w-full bg-brand-link p-7 text-center text-white">
+            <h1 class="pb-2.5 text-[32px] font-bold tracking-[2px]">NCI - MediSmart</h1>
+            @if ($aboutContent['videoView'])
+                <div class="mx-auto w-full max-w-[1000px] p-5">
+                    <iframe class="aspect-video w-full overflow-hidden rounded-[20px]"
+                        src="https://www.youtube.com/embed/{{ $aboutContent['videoView'] }}" title="Profil NCI Medismart"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen loading="lazy"></iframe>
                 </div>
-                <div class="content">
-                    <div class="video">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/{{ $aboutContent['videoView'] }}"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen controls muted></iframe>
-                    </div>
-                </div>
-            </div>
+            @endif
         </div>
     </section>
-    {{-- End Video Views --}}
 
     {{-- Visi Misi --}}
-    <section class="section-visimisi scroll-section">
-        <div class="visimisi">
-            <div class="container">
-                <div class="content">
-                    <img src="{{ $aboutContent['imageView'] }}" alt="Logo">
-                    <p>{{ $aboutContent['descriptionView'] }}</p>
+    <section class="reveal">
+        <div class="bg-white py-[60px] text-ink">
+            <div class="page-container">
+                <div class="mb-[100px] flex flex-col items-center justify-center gap-7 min-[992px]:flex-row min-[992px]:gap-0">
+                    @if ($aboutContent['imageView'])
+                        <img src="{{ $aboutContent['imageView'] }}" alt="NCI Medismart" class="w-full max-w-[370px]">
+                    @endif
+                    <p class="text-justify text-lg tracking-[2px] min-[992px]:px-12 min-[992px]:text-[30px] min-[992px]:leading-snug">
+                        {{ $aboutContent['descriptionView'] }}</p>
                 </div>
-                <div class="text">
-                    <div class="columns">
-                        <div class="card">
-                            <h1>Visi</h1>
-                            <p>{{ $aboutContent['visiView'] }}</p>
-                        </div>
-                    </div>
 
-                    <div class="columns">
-                        <div class="card">
-                            <h1>Misi</h1>
-                            <p>{!! nl2br($aboutContent['misiView']) !!}</p>
-                        </div>
+                <div class="flex flex-col justify-center gap-5 text-center min-[992px]:flex-row">
+                    <div class="rounded-[20px] border border-ink px-7 py-5 min-[992px]:basis-1/2 min-[992px]:px-12">
+                        <h2 class="mb-5 text-[28px] font-bold min-[992px]:text-[38px]">Visi</h2>
+                        <p class="mb-5 text-lg min-[992px]:text-2xl">{{ $aboutContent['visiView'] }}</p>
+                    </div>
+                    <div class="rounded-[20px] border border-ink px-7 py-5 min-[992px]:basis-1/2 min-[992px]:px-12">
+                        <h2 class="mb-5 text-[28px] font-bold min-[992px]:text-[38px]">Misi</h2>
+                        <p class="mb-5 text-lg min-[992px]:text-2xl">{!! nl2br(e($aboutContent['misiView'])) !!}</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    {{-- End Visi Misi --}}
 
-    {{-- Konsultasi --}}
     @include('UserPage.Layouts.question')
-    {{-- End Konsultasi --}}
-
-    {{-- Footer --}}
-    @include('UserPage.Layouts.footer')
-    {{-- End Footer --}}
-</body>
-
-<!-- Swiper JS -->
-<script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
-
-<script src="{{ asset('js/Script.js') }}"></script>
-
-{{-- Animation Script --}}
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const scrollSections = document.querySelectorAll(".scroll-section");
-
-        function checkScroll() {
-            scrollSections.forEach((section) => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const sectionBottom = section.getBoundingClientRect().bottom;
-                const windowHeight = window.innerHeight;
-
-                // Check if the bottom of the section is above the viewport
-                const isAboveViewport = sectionBottom < 0;
-
-                // Check if the top of the section is below the viewport
-                const isBelowViewport = sectionTop > windowHeight;
-
-                if (!isAboveViewport && !isBelowViewport) {
-                    section.classList.add("animated");
-                } else {
-                    section.classList.remove("animated");
-                }
-            });
-        }
-
-        window.addEventListener("scroll", checkScroll);
-        window.addEventListener("resize", checkScroll);
-
-        checkScroll();
-    });
-</script>
-
-</html>
+@endsection
