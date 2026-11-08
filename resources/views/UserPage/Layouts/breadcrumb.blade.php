@@ -2,11 +2,14 @@
     Visible breadcrumb + BreadcrumbList structured data.
     @param array<int, array{0: string, 1: ?string}> $items  [label, url]; the last item is the current page (url null)
     @param bool $light  white text (for use on dark/green backgrounds)
+    @param bool $visible  false = structured data only (for designs without a visible breadcrumb)
 --}}
 @php
     $light = $light ?? false;
+    $visible = $visible ?? true;
     $crumbs = array_merge([['Beranda', route('home')]], $items);
 @endphp
+@if ($visible)
 <nav aria-label="Breadcrumb" class="text-sm {{ $light ? 'text-white/80' : 'text-muted' }}">
     <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
         @foreach ($crumbs as [$label, $url])
@@ -23,6 +26,7 @@
         @endforeach
     </ol>
 </nav>
+@endif
 @push('meta')
     <script type="application/ld+json">
         {!! json_encode([

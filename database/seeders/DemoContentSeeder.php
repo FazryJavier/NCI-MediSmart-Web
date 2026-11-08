@@ -165,20 +165,54 @@ class DemoContentSeeder extends Seeder
                 'level' => 'Admin',
             ])->id;
 
-            $body = '<p>Transformasi digital rumah sakit dimulai dari data yang rapi dan terintegrasi. Dengan SIMRS yang tepat, pelayanan menjadi lebih cepat dan pelaporan lebih akurat.</p>'
-                . '<p>Artikel ini membahas langkah-langkah praktis menuju integrasi SATUSEHAT dan bridging BPJS.</p>';
+            $titles = ['Mengenal SATUSEHAT untuk Rumah Sakit', 'Tips Implementasi SIMRS', 'Bridging BPJS V-Claim', 'Rekam Medis Elektronik Wajib 2024', 'Mempercepat Klaim BPJS', 'Studi Kasus Klinik Pratama'];
 
             return collect(['blog.png', 'blog1.png', 'blog2.png', 'blog3.png', 'bpjs-claim1.png', 'produk-1.png'])
                 ->values()
                 ->map(fn ($image, $i) => [
                     'adminId' => $adminId,
-                    'title' => ['Mengenal SATUSEHAT untuk Rumah Sakit', 'Tips Implementasi SIMRS', 'Bridging BPJS V-Claim', 'Rekam Medis Elektronik Wajib 2024', 'Mempercepat Klaim BPJS', 'Studi Kasus Klinik Pratama'][$i],
-                    'description' => $body,
+                    'title' => $titles[$i],
+                    'description' => self::articleBody($titles[$i]),
                     'image' => $this->image($image),
                     'prioritize' => $i === 0 ? 1 : ($i <= 3 ? 2 : 3),
                 ])
                 ->all();
         });
+    }
+
+    /**
+     * A long rich-text article body (headings, paragraphs, ordered and unordered lists, &nbsp; entities as an
+     * admin editor would produce) so the article page can be checked with realistic content.
+     */
+    public static function articleBody(string $title): string
+    {
+        return <<<HTML
+<p>Di era transformasi digital, semakin banyak rumah sakit dan klinik yang mulai menata ulang proses pelayanannya. Topik <strong>{$title}</strong> menjadi salah satu hal yang paling sering ditanyakan oleh manajemen fasilitas kesehatan, terutama ketika regulasi pemerintah menuntut data pelayanan yang cepat, akurat, dan terintegrasi secara nasional.</p>
+<h2>Apa yang Perlu Dipahami?</h2>
+<p>Sistem Informasi Manajemen Rumah Sakit (SIMRS) adalah tulang punggung operasional fasilitas kesehatan. Mulai dari pendaftaran pasien, pemeriksaan di poliklinik, rawat inap, farmasi, hingga penagihan, seluruh alur dicatat dalam satu sistem.&nbsp;Dengan data yang terpusat, manajemen dapat mengambil keputusan berdasarkan informasi yang lengkap dan terkini, bukan lagi berdasarkan rekap manual yang rawan salah.</p>
+<p>Integrasi dengan platform SATUSEHAT dan bridging BPJS juga bukan lagi pilihan, melainkan kewajiban. Fasilitas kesehatan yang belum siap biasanya menghadapi antrean klaim yang menumpuk, data ganda, dan proses verifikasi yang memakan waktu berhari-hari.</p>
+<h2>Tanda Fasilitas Kesehatan Perlu Berbenah</h2>
+<p>Beberapa gejala yang umum ditemui pada fasilitas kesehatan yang belum terintegrasi antara lain:</p>
+<ol>
+<li><strong>Antrean pendaftaran panjang:</strong> pasien harus mengisi formulir berulang kali karena data tidak tersimpan dengan baik.</li>
+<li><strong>Klaim BPJS sering tertunda:</strong> berkas tidak lengkap atau tidak sesuai sehingga dikembalikan oleh verifikator.</li>
+<li><strong>Laporan manajemen terlambat:</strong> rekap harian dan bulanan masih dikerjakan secara manual di spreadsheet.</li>
+<li><strong>Rekam medis tersebar:</strong> riwayat pasien sulit ditelusuri karena tersimpan di berbagai unit.</li>
+<li><strong>Stok obat tidak akurat:</strong> selisih antara stok sistem dan stok fisik di farmasi sering terjadi.</li>
+</ol>
+<h2>Dampaknya bagi Pelayanan</h2>
+<p>Meskipun terlihat sepele, masalah-masalah tersebut berdampak langsung pada kualitas layanan dan keuangan fasilitas kesehatan. Beberapa dampak yang paling terasa meliputi:</p>
+<ul>
+<li>Waktu tunggu pasien bertambah dan tingkat kepuasan menurun.</li>
+<li>Arus kas terganggu karena pencairan klaim yang lambat.</li>
+<li>Risiko kesalahan pemberian obat akibat data yang tidak sinkron.</li>
+<li>Kesulitan memenuhi standar akreditasi dan pelaporan ke Kementerian Kesehatan.</li>
+</ul>
+<h2>Langkah Menuju Integrasi</h2>
+<p>Langkah pertama adalah memetakan alur pelayanan yang berjalan saat ini, lalu menentukan modul prioritas yang paling berdampak. Implementasi bertahap, misalnya dimulai dari pendaftaran dan rawat jalan, biasanya lebih mudah diterima oleh petugas dibandingkan perubahan besar sekaligus.</p>
+<p>Selanjutnya, pastikan vendor SIMRS menyediakan pendampingan implementasi, pelatihan pengguna, dan dukungan teknis yang responsif. Integrasi dengan SATUSEHAT dan BPJS juga perlu diuji di lingkungan percobaan sebelum digunakan pada pelayanan nyata.</p>
+<p>Dengan perencanaan yang matang, transformasi digital bukan hanya memenuhi regulasi, tetapi juga menjadi investasi jangka panjang untuk pelayanan yang lebih cepat, aman, dan berpusat pada pasien.</p>
+HTML;
     }
 
     private function testimonials(): void
