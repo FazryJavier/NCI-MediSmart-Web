@@ -323,7 +323,7 @@
                                     <div class="flex flex-1 flex-col p-5">
                                         <h3 class="line-clamp-2 text-lg font-bold text-ink">{{ $article->title }}</h3>
                                         <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">
-                                            {{ \Illuminate\Support\Str::limit(trim(strip_tags((string) $article->description)), 220) }}</p>
+                                            {{ \Illuminate\Support\Str::limit(trim(preg_replace('/\s+/u', ' ', html_entity_decode(strip_tags((string) $article->description), ENT_QUOTES | ENT_HTML5, 'UTF-8'))), 220) }}</p>
                                         <a href="{{ $article->publicUrl() }}"
                                             class="mt-auto inline-flex items-center gap-2 pt-4 text-sm font-medium text-brand-link hover:underline">
                                             Pelajari Lanjut<x-icon name="arrow-right" class="text-xs" />

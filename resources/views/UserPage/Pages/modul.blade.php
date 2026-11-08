@@ -74,17 +74,22 @@
         <section class="reveal bg-mist">
             <div class="page-container py-12 sm:py-16">
                 <h2 class="section-title">Fasilitas {{ $modul->title }}</h2>
-                <div class="mt-10 space-y-10 lg:space-y-14">
+                {{-- Each image + checklist pair sits in one card so they read as a unit (no big gaps between them). --}}
+                <div class="mx-auto mt-10 max-w-5xl space-y-6">
                     @foreach ($facilityBlocks as $block)
-                        <div class="grid items-center gap-8 {{ $block['image'] && $block['items']->isNotEmpty() ? 'lg:grid-cols-2 lg:gap-12' : 'mx-auto max-w-3xl' }}">
+                        @php($paired = $block['image'] && $block['items']->isNotEmpty())
+                        <div @class([
+                            'grid items-center gap-6 overflow-hidden rounded-2xl bg-white p-4 shadow-sm sm:p-6',
+                            'md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:gap-10' => $paired,
+                        ])>
                             @if ($block['image'])
-                                <img src="{{ $img($block['image']->image) }}" alt="" @class([
-                                    'aspect-[4/3] w-full rounded-2xl object-cover shadow-md',
-                                    'lg:order-2' => $loop->odd === false,
-                                ]) loading="lazy" decoding="async">
+                                <div @class(['flex h-56 items-center justify-center overflow-hidden rounded-xl bg-mist sm:h-72', 'md:order-2' => $paired && $loop->even])>
+                                    <img src="{{ $img($block['image']->image) }}" alt="" class="max-h-full w-auto max-w-full object-contain"
+                                        loading="lazy" decoding="async">
+                                </div>
                             @endif
                             @if ($block['items']->isNotEmpty())
-                                <ul class="space-y-4">
+                                <ul class="space-y-3.5 px-2 sm:px-0">
                                     @foreach ($block['items'] as $facility)
                                         <li class="flex gap-3 text-base text-ink sm:text-lg">
                                             <x-icon name="circle-check" class="mt-1 text-brand" />{{ $facility->description }}

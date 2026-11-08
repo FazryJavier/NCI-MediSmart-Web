@@ -166,8 +166,8 @@ class LandingPageTest extends TestCase
     public function test_current_page_is_marked_active_in_navigation(): void
     {
         $blog = $this->get('/blog')->assertOk()->getContent();
-        // Desktop + mobile menu entries for Blog, plus the breadcrumb's current item.
-        $this->assertSame(3, substr_count($blog, 'aria-current="page"'));
+        // Desktop + mobile menu entries for Blog are both marked as the current page.
+        $this->assertSame(2, substr_count($blog, 'aria-current="page"'));
 
         $this->get('/')->assertOk()->assertDontSee('aria-current="page"', false);
     }
