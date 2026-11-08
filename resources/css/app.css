@@ -1,0 +1,63 @@
+@import '@fontsource/be-vietnam-pro/300.css';
+@import '@fontsource/be-vietnam-pro/400.css';
+@import '@fontsource/be-vietnam-pro/500.css';
+@import '@fontsource/be-vietnam-pro/700.css';
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    [x-cloak] {
+        display: none !important;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply min-h-screen overflow-x-hidden bg-white font-sans text-ink;
+    }
+}
+
+@layer components {
+    /* Horizontal page gutter used by every section (was `.container`). */
+    .page-container {
+        @apply px-[10%] py-2.5;
+    }
+
+    /* Scroll reveal: only hidden when JS is available (see layout <head>). */
+    .js .reveal {
+        @apply -translate-x-12 opacity-0 transition duration-500 ease-in-out;
+    }
+
+    .js .reveal.is-visible {
+        @apply translate-x-0 opacity-100;
+    }
+
+    /* Swiper theme overrides shared by every slider. */
+    .swiper {
+        --swiper-theme-color: #015028;
+        --swiper-navigation-color: #1bad4b;
+        --swiper-navigation-size: 25px;
+    }
+
+    .swiper-pagination-bullet {
+        @apply h-2 w-[30px] rounded-md;
+    }
+
+    .nav-btn {
+        @apply h-[50px] w-[50px] bg-white opacity-60 hover:opacity-90;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+        @apply translate-x-0 opacity-100 transition-none;
+    }
+}

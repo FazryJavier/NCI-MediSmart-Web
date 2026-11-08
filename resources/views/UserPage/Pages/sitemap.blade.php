@@ -1,126 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('UserPage.Layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sitemap</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style-sitemap.css') }}">
-    {{-- Swiper CSS --}}
-    <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
-</head>
+@section('title', 'Sitemap - NCI Medismart')
+@section('description', 'Peta situs NCI Medismart: produk, modul, dan halaman lainnya.')
 
-<body>
-    {{-- Header --}}
-    @include('UserPage.Layouts.header')
-    {{-- End Header --}}
+@php
+    $sitemapLink = 'block text-lg text-[#272727] hover:text-brand';
+    $sitemapHeading = 'my-5 text-[26px] font-bold text-[#272727]';
+@endphp
 
-    {{-- Sitemap --}}
-    <section class="section-sitemap scroll-section">
-        <div class="sitemap">
-            <div class="container">
-                <h1><b>Sitemap</b></h1>
-                <div class="wrapper">
-                    <div class="sitemap-content">
-                        <div class="title">
-                            <h4><b>Produk</b></h4>
-                        </div>
-                        <div class="list">
-                            <ul>
-                                @foreach ($products as $product)
-                                    <li><a href="{{ url('/ProductView/' . $product->id) }}">{{ $product->title }}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
+@section('content')
+    <section class="reveal bg-[#f5f5f5]">
+        <div class="page-container">
+            <h1 class="py-5 text-[42px] font-bold text-[#272727]">Sitemap</h1>
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,auto))] justify-between gap-10 pb-10">
+                <div>
+                    <h2 class="{{ $sitemapHeading }}">Produk</h2>
+                    <ul class="space-y-4">
+                        @foreach ($products as $product)
+                            <li><a href="{{ url('/ProductView/' . $product->id) }}" class="{{ $sitemapLink }}">{{ $product->title }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
 
-                    <div class="sitemap-content">
-                        <div class="title">
-                            <h4><b>Modul</b></h4>
-                        </div>
-                        <div class="list">
-                            <ul>
-                                @foreach ($moduls as $modul)
-                                    <li><a href="{{ url('/Modul/' . $modul->id) }}">{{ $modul->title }}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
+                <div>
+                    <h2 class="{{ $sitemapHeading }}">Modul</h2>
+                    <ul class="space-y-4">
+                        @foreach ($moduls as $modul)
+                            <li><a href="{{ url('/Modul/' . $modul->id) }}" class="{{ $sitemapLink }}">{{ $modul->title }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
 
-                    <div class="sitemap-content">
-                        <div class="title">
-                            <h4><b>Lainnya</b></h4>
-                        </div>
-                        <div class="list">
-                            <ul>
-                                <li><a href="/HealthcareSolution">About</a></li>
-                                <li><a href="/Testimoni">Testimoni</a></li>
-                                <li><a href="/Blog">Blog</a></li>
-                                <li><a href="/Demo">Demo</a></li>
-                                @foreach ($whatsappContent['whatsappView'] as $phone_number)
-                                    <li><a href="https://api.whatsapp.com/send?phone={{ $phone_number }}">Contact</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
+                <div>
+                    <h2 class="{{ $sitemapHeading }}">Lainnya</h2>
+                    <ul class="space-y-4">
+                        <li><a href="{{ url('/HealthcareSolution') }}" class="{{ $sitemapLink }}">About</a></li>
+                        <li><a href="{{ url('/Testimoni') }}" class="{{ $sitemapLink }}">Testimoni</a></li>
+                        <li><a href="{{ url('/Blog') }}" class="{{ $sitemapLink }}">Blog</a></li>
+                        <li><a href="{{ url('/Demo') }}" class="{{ $sitemapLink }}">Demo</a></li>
+                        @foreach ($whatsappContent['whatsappView'] as $phone_number)
+                            <li><a href="https://api.whatsapp.com/send?phone={{ urlencode($phone_number) }}" target="_blank"
+                                    rel="noopener noreferrer" class="{{ $sitemapLink }}">Contact</a></li>
+                        @endforeach
+                    </ul>
+                </div>
 
-                    <div class="sitemap-content hide-content">
-                        <div class="title">
-                            <h4><b>Blog</b></h4>
-                        </div>
-                        <div class="list">
-                            <ul>
-                                @foreach ($articles as $article)
-                                    <li><a href="{{ url('/DetailBlog/' . $article->id) }}">{{ $article->title }}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
+                {{-- Blog list intentionally hidden (kept from the previous layout). --}}
+                <div class="hidden">
+                    <h2 class="{{ $sitemapHeading }}">Blog</h2>
+                    <ul class="space-y-4">
+                        @foreach ($articles as $article)
+                            <li><a href="{{ url('/DetailBlog/' . $article->id) }}" class="{{ $sitemapLink }}">{{ $article->title }}</a></li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-    {{-- End Sitemap --}}
-
-    {{-- Footer --}}
-    @include('UserPage.Layouts.footer')
-    {{-- End Footer --}}
-</body>
-
-{{-- Animation Script --}}
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const scrollSections = document.querySelectorAll(".scroll-section");
-
-        function checkScroll() {
-            scrollSections.forEach((section) => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const sectionBottom = section.getBoundingClientRect().bottom;
-                const windowHeight = window.innerHeight;
-
-                // Check if the bottom of the section is above the viewport
-                const isAboveViewport = sectionBottom < 0;
-
-                // Check if the top of the section is below the viewport
-                const isBelowViewport = sectionTop > windowHeight;
-
-                if (!isAboveViewport && !isBelowViewport) {
-                    section.classList.add("animated");
-                } else {
-                    section.classList.remove("animated");
-                }
-            });
-        }
-
-        window.addEventListener("scroll", checkScroll);
-        window.addEventListener("resize", checkScroll);
-
-        checkScroll();
-    });
-</script>
-
-</html>
+@endsection

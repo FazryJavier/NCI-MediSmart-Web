@@ -1,98 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('UserPage.Layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Detail Blog</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style-detail.css') }}">
-    {{-- Swiper CSS --}}
-    <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
-</head>
+@section('title', "{$articles->title} - Blog NCI Medismart")
+@section('description', \Illuminate\Support\Str::limit(trim(strip_tags((string) $articles->description)), 160))
 
-<body>
-    {{-- Header --}}
-    @include('UserPage.Layouts.header')
-    {{-- End Header --}}
+@push('meta')
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ $articles->title }}">
+    <meta property="og:image" content="{{ asset('storage/' . $articles->image) }}">
+@endpush
 
-    {{-- WhatsApp Button --}}
+@section('content')
     @include('UserPage.Layouts.wa-icon')
 
     {{-- Article --}}
-    <section class="section-article">
-        <div class="article">
-            <div class="container">
-                <article>
-                    <div class="image">
-                        <img src="{{ asset('storage/' . $articles->image) }}" alt="">
-                    </div>
-                    <div class="content">
-                        <div class="title">
-                            <h1><b>{{ $articles->title }}</b></h1>
-                        </div>
+    <section>
+        <div class="page-container">
+            <article class="py-12">
+                <img src="{{ asset('storage/' . $articles->image) }}" alt="{{ $articles->title }}"
+                    class="w-full max-w-[1200px] overflow-hidden">
+                <div class="px-2.5 py-7">
+                    <h1 class="mb-7 text-[28px] font-bold text-ink min-[581px]:text-[40px]">{{ $articles->title }}</h1>
 
-                        <div class="posting">
-                            <div class="admin">
-                                <p><b>{{ $articles->Users->username }}</b></p>
-                            </div>
-                            <div class="date">
-                                <p>{{ $articles->created_at }}</p>
-                            </div>
-                        </div>
-
-                        <div class="text">
-                            <p>
-                                {!! $articles->description !!}
-                            </p>
-                        </div>
+                    <div class="mb-7 flex gap-5 text-lg">
+                        <p class="font-bold text-ink">{{ optional($articles->Users)->username }}</p>
+                        <time class="text-[#b9b9b9]" datetime="{{ $articles->created_at?->toIso8601String() }}">
+                            {{ $articles->created_at }}</time>
                     </div>
-                </article>
-            </div>
+
+                    {{-- Article body is admin-authored rich text. --}}
+                    <div class="text-justify text-base tracking-[2px] text-muted min-[581px]:text-xl">
+                        {!! $articles->description !!}
+                    </div>
+                </div>
+            </article>
         </div>
     </section>
-    {{-- End Article --}}
 
-    {{-- Konsultasi --}}
     @include('UserPage.Layouts.question')
-    {{-- End Konsultasi --}}
 
     {{-- Rekomendasi --}}
-    <section class="section-rekomendasi">
-        <div class="rekomendasi">
-            <div class="container">
-                <h1>Rekomendasi</h1>
-                <div class="wrapper">
+    <section>
+        <div class="page-container">
+            <div class="mt-12 border-b border-muted">
+                <h2 class="text-2xl font-bold">Rekomendasi</h2>
+                <div class="grid grid-cols-1 gap-x-12 gap-y-[60px] md:grid-cols-2">
                     @foreach ($articles2 as $ar2)
-                        <div class="card">
-                            <div class="image">
-                                <img src="{{ asset('storage/' . $ar2->image) }}" alt="">
+                        <article class="p-5">
+                            <div class="overflow-hidden text-center">
+                                <img src="{{ asset('storage/' . $ar2->image) }}" alt="{{ $ar2->title }}"
+                                    class="mx-auto mb-2.5 w-full max-w-[450px]" loading="lazy">
                             </div>
-                            <div class="description">
-                                <h3>{{ $ar2->title }}
-                                </h3>
-                                <p>{{ strip_tags($ar2->description) }}
-                                </p>
+                            <div class="p-2.5">
+                                <h3 class="mb-2.5 text-xl font-bold text-ink">{{ $ar2->title }}</h3>
+                                <p class="mb-2.5 line-clamp-4 text-justify text-base text-muted">
+                                    {{ strip_tags($ar2->description) }}</p>
                             </div>
-                            <div class="button">
-                                <a href={{ url('/DetailBlog/' . $ar2->id) }}>Pelajari Lanjut</a>
+                            <div class="text-right">
+                                <a href="{{ url('/DetailBlog/' . $ar2->id) }}"
+                                    class="text-lg text-brand-link hover:underline">Pelajari Lanjut</a>
                             </div>
-                        </div>
+                        </article>
                     @endforeach
                 </div>
             </div>
         </div>
     </section>
-    {{-- End Rekomendasi --}}
-
-    {{-- Footer --}}
-    @include('UserPage.Layouts.footer')
-    {{-- End Footer --}}
-</body>
-
-<!-- Swiper JS -->
-<script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
-
-<script src="{{ asset('js/Script.js') }}"></script>
-
-</html>
+@endsection
