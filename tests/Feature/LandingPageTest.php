@@ -172,6 +172,25 @@ class LandingPageTest extends TestCase
         $this->get('/')->assertOk()->assertDontSee('aria-current="page"', false);
     }
 
+    public function test_blog_page_follows_the_design_structure(): void
+    {
+        foreach (range(1, 3) as $i) {
+            Article::create(['adminId' => $this->article->adminId, 'title' => "Sorotan {$i}", 'description' => "<p>Isi&nbsp;{$i}</p>",
+                'image' => 'file-image/a.png', 'prioritize' => 2]);
+        }
+
+        $html = $this->get('/blog')->assertOk()->getContent();
+
+        $this->assertStringContainsString('NCIMedismart</a>/Blog', $html);
+        // Featured author line uses the dd/mm/yyyy date from the design.
+        $this->assertStringContainsString('>' . $this->article->created_at->format('d/m/Y') . '</time>', $html);
+        // Three highlight columns with vertical dividers.
+        $this->assertStringContainsString('md:grid-cols-3 md:divide-x', $html);
+        $this->assertSame(3, substr_count($html, 'md:px-5 md:first:pl-0 md:last:pr-0'));
+        // Rich-text entities are decoded in excerpts.
+        $this->assertStringNotContainsString('&amp;nbsp;', $html);
+    }
+
     public function test_about_page_shows_vision_mission_and_highlights_its_menu(): void
     {
         $this->get('/tentang-kami')
