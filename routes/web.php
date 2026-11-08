@@ -21,6 +21,7 @@ use App\Http\Controllers\Landing\BlogController;
 use App\Http\Controllers\Landing\ModulPageController;
 use App\Http\Controllers\Landing\ProductPageController;
 use App\Http\Controllers\Landing\TestimonialPageController;
+use App\Http\Controllers\Landing\TestimonialSubmissionController;
 use App\Models\Article;
 use App\Models\ModulProduct;
 use App\Models\Product;
@@ -64,7 +65,9 @@ Route::get('/testimoni', TestimonialPageController::class)->name('testimoni');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->where('slug', $slug)->name('blog.show');
 Route::view('/demo', 'UserPage.Pages.demo')->name('demo');
-Route::post('/demo', [DemoController::class, 'store'])->name('demo.store');
+Route::post('/demo', [DemoController::class, 'store'])->middleware('throttle:10,1')->name('demo.store');
+Route::get('/testimoni/form', [TestimonialSubmissionController::class, 'create'])->name('testimoni.form');
+Route::post('/testimoni/form', [TestimonialSubmissionController::class, 'store'])->middleware('throttle:5,1')->name('testimoni.store');
 Route::get('/sitemap', [UserController::class, 'showAll'])->name('sitemap');
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.xml');
 
@@ -80,7 +83,7 @@ Route::get('/Demo', fn () => redirect()->route('demo', status: 301)); // GET onl
 Route::permanentRedirect('/Sitemap', '/sitemap');
 Route::permanentRedirect('/Sitemap.xml', '/sitemap.xml');
 // Old demo form posts (cached pages) keep working.
-Route::post('/Demo', [DemoController::class, 'store']);
+Route::post('/Demo', [DemoController::class, 'store'])->middleware('throttle:10,1');
 
 Route::get('/Admin', [UserController::class, 'index'])->name('Admin');
 Route::post('/Admin', [UserController::class, 'authenticate']);
@@ -297,6 +300,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Whatsapp/{id}/update', [WhatsappController::class, 'edit']);
     Route::put('/Whatsapp/{id}', [WhatsappController::class, 'update']);
     Route::delete('/Whatsapp/{id}', [WhatsappController::class, 'destroy']);
+
+    // Testimonials sent through the public form (review before copying into Feedback)
+    Route::get('/TestimoniMasuk', [TestimonialSubmissionController::class, 'index'])->name('testimoni.submissions');
 
     // Pop up
     Route::get('/Popup', [PopupController::class, 'index']);
