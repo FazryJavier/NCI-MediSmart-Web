@@ -225,7 +225,7 @@ class LandingPageTest extends TestCase
         $this->assertStringNotContainsString('aria-label="Breadcrumb"', $html);
         $this->assertStringContainsString('"@type":"BreadcrumbList"', $html);
         // Modules: 5 per row on desktop, first 15 shown.
-        $this->assertStringContainsString('lg:w-[calc(20%-0.8rem)]', $html);
+        $this->assertStringContainsString('lg:grid-cols-5', $html);
         $this->assertStringContainsString('loadMore({ initial: 15', $html);
         $this->assertStringContainsString('Apa kata <strong>Klien</strong> tentang <strong>Kami</strong>', $html);
     }

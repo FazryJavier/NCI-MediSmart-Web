@@ -10,7 +10,12 @@
     $advantageWidth = $advantages->count() === 3
         ? 'w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]'
         : 'w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]';
-    $modulWidth = 'w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.667rem)] lg:w-[calc(20%-0.8rem)]';
+    // Module grid dividers, like the testimonial grid: a line between columns and between rows. Each breakpoint
+    // range gets its own nth-child rules (2 / 3 / 5 columns) so the rules never conflict.
+    $modulDividers = 'border-black/10'
+        . ' max-sm:[&:nth-child(2n+1)]:border-r max-sm:[&:nth-child(n+3)]:border-t'
+        . ' sm:max-lg:[&:not(:nth-child(3n))]:border-r sm:max-lg:[&:nth-child(n+4)]:border-t'
+        . ' lg:[&:not(:nth-child(5n))]:border-r lg:[&:nth-child(n+6)]:border-t';
 @endphp
 
 @section('title', \Illuminate\Support\Str::limit(trim($product->title . (filled($product->subTitle) ? ' – ' . $product->subTitle : '')), 60, '') . ' | NCI Medismart')
@@ -132,12 +137,12 @@
                     @endif
                 </div>
 
-                {{-- As in the design: plain tiles (title above the image); hovering lifts the tile into a white card
-                     and reveals "Pelajari Lebih Lanjut". --}}
-                <div class="mt-10 flex flex-wrap justify-center gap-4">
+                {{-- As in the design: plain tiles (title above the image) separated by divider lines; hovering
+                     enlarges the tile slightly into a white card and reveals "Pelajari Lebih Lanjut". --}}
+                <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
                     @foreach ($moduls as $modul)
                         <a href="{{ $modul->publicUrl() }}" x-show="{{ $loop->index }} < visible" @if ($loop->index >= 15) x-cloak @endif
-                            class="{{ $modulWidth }} group flex flex-col items-center rounded-2xl p-3 text-center transition duration-200 hover:bg-white hover:shadow-xl focus-visible:bg-white focus-visible:shadow-xl focus-visible:outline-none sm:p-4">
+                            class="{{ $modulDividers }} group relative flex flex-col items-center p-3 text-center transition duration-200 hover:z-10 hover:scale-105 hover:rounded-2xl hover:border-transparent hover:bg-white hover:shadow-xl focus-visible:z-10 focus-visible:scale-105 focus-visible:rounded-2xl focus-visible:bg-white focus-visible:shadow-xl focus-visible:outline-none sm:p-4">
                             <h3 class="flex min-h-[2.5rem] items-center text-sm font-medium leading-snug text-ink group-hover:text-brand-dark">{{ $modul->title }}</h3>
                             @if ($modul->icon)
                                 <img src="{{ $img($modul->icon) }}" alt="" class="mt-2 aspect-[4/3] w-full object-contain"
