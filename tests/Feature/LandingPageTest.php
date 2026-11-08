@@ -163,6 +163,15 @@ class LandingPageTest extends TestCase
         $this->assertStringContainsString('Copyright &copy; ' . now()->year, $html);
     }
 
+    public function test_current_page_is_marked_active_in_navigation(): void
+    {
+        $blog = $this->get('/Blog')->assertOk()->getContent();
+        // Desktop + mobile menu entries for Blog are both marked as the current page.
+        $this->assertSame(2, substr_count($blog, 'aria-current="page"'));
+
+        $this->get('/')->assertOk()->assertDontSee('aria-current="page"', false);
+    }
+
     public function test_popup_is_rendered_only_inside_its_date_window(): void
     {
         Popup::create([

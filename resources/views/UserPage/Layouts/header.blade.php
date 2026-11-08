@@ -1,8 +1,11 @@
 {{-- Site header: top bar (collapses after scroll) + main navigation. --}}
 @php
-    $navLink = 'block rounded-lg px-3 py-2 font-medium transition hover:bg-mist hover:text-brand-dark xl:px-4';
-    $dropLink = 'flex items-center gap-3 rounded-lg p-3 transition hover:bg-mist';
-    $mobileLink = 'flex w-full items-center justify-between rounded-lg px-3 py-3 text-left font-medium transition hover:bg-mist';
+    // Hover/active states are deliberately strong (brand green) so they stay visible on the white sticky bar.
+    $navLink = 'block rounded-lg px-3 py-2.5 font-medium transition duration-200 hover:bg-brand hover:text-white focus-visible:bg-brand focus-visible:text-white focus-visible:outline-none xl:px-4';
+    $navActive = 'bg-brand/10 text-brand-dark';
+    $navTrigger = $navLink . ' inline-flex items-center gap-1.5 group-hover:bg-brand group-hover:text-white group-focus-within:bg-brand group-focus-within:text-white';
+    $dropLink = 'flex items-center gap-3 rounded-lg p-3 transition hover:bg-brand/10 hover:text-brand-dark';
+    $mobileLink = 'flex w-full items-center justify-between rounded-lg px-3 py-3 text-left font-medium transition hover:bg-brand/10 hover:text-brand-dark';
     $socials = [
         ['https://www.instagram.com/ncimedismart/', 'fa-instagram', 'Instagram NCI Medismart'],
         ['https://www.youtube.com/@simrsncimedismart2282/featured', 'fa-youtube', 'YouTube NCI Medismart'],
@@ -14,9 +17,9 @@
         ['href' => 'http://nuansa.com/2019/', 'icon' => asset('assets/img/pt-nci.png'), 'title' => 'PT Nuansa Cerah Informasi', 'external' => true],
     ];
     $links = [
-        ['href' => url('/Testimoni'), 'label' => 'Testimoni'],
-        ['href' => url('/Blog'), 'label' => 'Blog'],
-        ['href' => url('/Demo'), 'label' => 'Demo'],
+        ['href' => url('/Testimoni'), 'label' => 'Testimoni', 'active' => request()->is('Testimoni')],
+        ['href' => url('/Blog'), 'label' => 'Blog', 'active' => request()->is('Blog', 'DetailBlog/*')],
+        ['href' => url('/Demo'), 'label' => 'Demo', 'active' => request()->is('Demo')],
     ];
     $waNumber = collect($whatsappContent['whatsappView'])->first();
 @endphp
@@ -25,21 +28,24 @@
     @scroll.window.passive="scrolled = window.scrollY > 0" @keydown.escape.window="open = false; sub = null"
     class="sticky top-0 z-[1000] bg-white">
     {{-- Top bar --}}
-    <div class="overflow-hidden bg-ink text-xs text-white transition-[max-height] duration-300 sm:text-sm"
-        :class="scrolled ? 'max-h-0' : 'max-h-10'">
-        <div class="mx-auto flex h-9 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
-            <div class="flex items-center gap-5">
+    <div class="overflow-hidden bg-ink text-sm text-white transition-[max-height] duration-300 sm:text-[15px]"
+        :class="scrolled ? 'max-h-0' : 'max-h-11'">
+        <div class="mx-auto flex h-10 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:h-11 sm:px-8">
+            <div class="flex items-center gap-1">
                 @foreach ($socials as [$href, $icon, $label])
                     <a href="{{ $href }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $label }}"
-                        class="transition hover:text-brand"><i class="fa-brands {{ $icon }}"></i></a>
+                        class="flex h-8 w-8 items-center justify-center rounded-full text-base transition hover:bg-white/10 hover:text-brand"><i
+                            class="fa-brands {{ $icon }}"></i></a>
                 @endforeach
             </div>
-            <div class="flex items-center gap-5">
-                <a href="tel:+622287356050" class="transition hover:text-brand">
-                    <i class="fa-solid fa-phone mr-1.5"></i>022 8735 6050
+            <div class="flex h-full items-center gap-6">
+                <a href="tel:+622287356050" class="inline-flex items-center gap-2 transition hover:text-brand">
+                    <i class="fa-solid fa-phone"></i>022 8735 6050
                 </a>
-                <span class="hidden items-center gap-1.5 text-white/80 md:inline-flex">
-                    <i class="fa-solid fa-location-dot"></i>Kantor Bandung
+                {{-- Office tab: white "tab" that visually connects to the main bar below. --}}
+                <span
+                    class="hidden h-8 items-center gap-2 self-end rounded-t-[10px] bg-white px-6 font-medium text-ink md:inline-flex">
+                    <i class="fa-solid fa-location-dot text-brand"></i>Kantor Bandung
                 </span>
             </div>
         </div>
@@ -57,7 +63,7 @@
             <nav class="hidden nav:block" aria-label="Navigasi utama">
                 <ul class="flex items-center gap-1 text-[15px]">
                     <li class="group relative">
-                        <button type="button" class="{{ $navLink }} inline-flex items-center gap-1.5" aria-haspopup="true">
+                        <button type="button" class="{{ $navTrigger }}" aria-haspopup="true">
                             Produk <i class="fa-solid fa-chevron-down text-[10px] transition group-hover:rotate-180"></i>
                         </button>
                         <div
@@ -79,7 +85,7 @@
                         </div>
                     </li>
                     <li class="group relative">
-                        <button type="button" class="{{ $navLink }} inline-flex items-center gap-1.5" aria-haspopup="true">
+                        <button type="button" class="{{ $navTrigger }}" aria-haspopup="true">
                             Tentang Kami <i class="fa-solid fa-chevron-down text-[10px] transition group-hover:rotate-180"></i>
                         </button>
                         <div
@@ -98,7 +104,7 @@
                         </div>
                     </li>
                     @foreach ($links as $link)
-                        <li><a href="{{ $link['href'] }}" class="{{ $navLink }}">{{ $link['label'] }}</a></li>
+                        <li><a href="{{ $link['href'] }}" class="{{ $navLink }} {{ $link['active'] ? $navActive : '' }}" @if ($link['active']) aria-current="page" @endif>{{ $link['label'] }}</a></li>
                     @endforeach
                     @if ($waNumber)
                         <li class="ml-3">
@@ -162,7 +168,7 @@
                     </ul>
                 </li>
                 @foreach ($links as $link)
-                    <li><a href="{{ $link['href'] }}" class="{{ $mobileLink }}">{{ $link['label'] }}</a></li>
+                    <li><a href="{{ $link['href'] }}" class="{{ $mobileLink }} {{ $link['active'] ? $navActive : '' }}" @if ($link['active']) aria-current="page" @endif>{{ $link['label'] }}</a></li>
                 @endforeach
                 @if ($waNumber)
                     <li class="pt-3">
