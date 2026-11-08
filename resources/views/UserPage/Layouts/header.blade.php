@@ -20,6 +20,11 @@
         'produk' => $products->isNotEmpty() ? 'Produk' : null,
         'tentang' => 'Tentang Kami',
     ]);
+    // Dropdown trigger is highlighted while on one of its pages (e.g. Tentang Kami on /tentang-kami).
+    $menuActive = [
+        'produk' => request()->routeIs('produk.show', 'modul.show'),
+        'tentang' => request()->routeIs('about'),
+    ];
     $links = [
         ['href' => route('testimoni'), 'label' => 'Testimoni', 'active' => request()->routeIs('testimoni')],
         ['href' => route('blog.index'), 'label' => 'Blog', 'active' => request()->routeIs('blog.*')],
@@ -69,7 +74,7 @@
                 <ul class="flex items-center gap-1 text-[15px]">
                     @foreach ($menus as $key => $label)
                         <li class="group relative">
-                            <button type="button" class="{{ $navTrigger }}" aria-haspopup="true">
+                            <button type="button" class="{{ $navTrigger }} {{ $menuActive[$key] ? $navActive : '' }}" aria-haspopup="true">
                                 {{ $label }}
                                 <x-icon name="chevron-down" class="text-[10px] transition group-hover:rotate-180" />
                             </button>
