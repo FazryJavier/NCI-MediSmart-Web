@@ -20,7 +20,7 @@ use Illuminate\Contracts\View\View;
 class HomeController extends Controller
 {
     /** Max modules listed per product card before collapsing into "+N modul lainnya". */
-    public const MODULES_PER_PRODUCT = 5;
+    public const MODULES_PER_PRODUCT = 10;
 
     public function __invoke(): View
     {
