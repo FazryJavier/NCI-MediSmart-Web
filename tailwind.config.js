@@ -1,3 +1,5 @@
+import typography from '@tailwindcss/typography';
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -31,5 +33,6 @@ export default {
             },
         },
     },
-    plugins: [],
+    // Typography: readable defaults for admin-authored rich text (article body, module descriptions).
+    plugins: [typography],
 };

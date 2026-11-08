@@ -7,7 +7,7 @@
 @if ($menu === 'produk')
     @foreach ($products as $navbarItem)
         <li>
-            <a href="{{ url('/ProductView/' . $navbarItem->products->id) }}" class="{{ $dropLink }}">
+            <a href="{{ $navbarItem->products->publicUrl() }}" class="{{ $dropLink }}">
                 <img src="{{ asset('storage/' . $navbarItem->icon) }}" alt="" class="{{ $iconSize }} shrink-0 object-contain"
                     loading="lazy" decoding="async">
                 <span>

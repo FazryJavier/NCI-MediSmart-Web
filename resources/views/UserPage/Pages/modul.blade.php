@@ -1,105 +1,106 @@
 @extends('UserPage.Layouts.app')
 
-@section('title', "{$modul->title} - NCI Medismart")
-@section('description', \Illuminate\Support\Str::limit(strip_tags((string) $modul->description), 160))
+@php
+    $img = fn (?string $path) => $path ? asset('storage/' . $path) : null;
+    $waNumber = collect($whatsappContent['whatsappView'])->first();
+    $advantageWidth = 'w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]';
+@endphp
+
+@section('title', \Illuminate\Support\Str::limit(trim($modul->title . ($product ? ' – ' . $product->title : '')), 60, '') . ' | NCI Medismart')
+@section('description', \Illuminate\Support\Str::limit(trim(strip_tags((string) $modul->description)), 155))
+@section('canonical', $modul->publicUrl())
+@if ($heroImage?->image)
+    @section('og_image', $img($heroImage->image))
+@endif
 
 @section('content')
     @include('UserPage.Layouts.wa-icon')
 
-    {{-- Modul intro --}}
-    <section class="reveal">
-        <div class="bg-gradient-to-r from-brand to-[#28b88d]">
-            <div class="page-container">
-                <div class="flex flex-col items-center justify-center py-12 min-[992px]:flex-row">
-                    <div class="max-w-full text-white min-[992px]:max-w-[60%] min-[992px]:pr-12">
-                        <h1 class="mb-5 text-[30px] font-bold min-[1201px]:text-[34px]">{{ $modul->title }}</h1>
-                        <p class="text-justify text-lg min-[1201px]:text-[22px]">{{ $modul->description }}</p>
-                        <div class="mt-10">
-                            @foreach ($whatsappContent['whatsappView'] as $phone_number)
-                                <a href="https://api.whatsapp.com/send?phone={{ urlencode($phone_number) }}"
-                                    target="_blank" rel="noopener noreferrer"
-                                    class="inline-block rounded-[10px] bg-white px-10 py-5 text-sm text-brand transition hover:bg-brand-dark hover:text-white min-[1201px]:text-base">
-                                    Hubungi Kami
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
-                    @if ($imageModul1)
-                        <div class="-order-1 mb-5 min-[992px]:order-none min-[992px]:mb-0">
-                            <img src="{{ asset('storage/' . $imageModul1->image) }}" alt="{{ $modul->title }}"
-                                class="w-full max-w-[800px] rounded-[20px]">
-                        </div>
+    {{-- Intro --}}
+    <section class="bg-gradient-to-r from-brand to-[#28b88d] text-white">
+        <div class="page-container py-10 sm:py-14">
+            @include('UserPage.Layouts.breadcrumb', [
+                'light' => true,
+                'items' => array_values(array_filter([
+                    $product ? [$product->title, $product->publicUrl() . '#modul'] : null,
+                    [$modul->title, null],
+                ])),
+            ])
+            <div class="mt-8 grid items-center gap-8 {{ $heroImage ? 'lg:grid-cols-2 lg:gap-12' : 'max-w-3xl' }}">
+                <div>
+                    <h1 class="text-3xl font-bold leading-tight sm:text-4xl">{{ $modul->title }}</h1>
+                    @if (filled($modul->description))
+                        <p class="mt-4 text-base leading-relaxed text-white/90 sm:text-lg">{{ $modul->description }}</p>
+                    @endif
+                    @if ($waNumber)
+                        <a href="https://api.whatsapp.com/send?phone={{ urlencode($waNumber) }}" target="_blank" rel="noopener noreferrer"
+                            class="btn mt-8 bg-white text-brand-dark hover:bg-brand-dark hover:text-white">
+                            <x-icon name="whatsapp" />Hubungi Kami</a>
                     @endif
                 </div>
+                @if ($heroImage)
+                    <img src="{{ $img($heroImage->image) }}" alt="{{ $modul->title }}" class="-order-1 aspect-[4/3] w-full rounded-2xl object-cover shadow-xl lg:order-none"
+                        fetchpriority="high" decoding="async">
+                @endif
             </div>
         </div>
     </section>
 
-    {{-- Advantage --}}
-    <section class="reveal">
-        <div class="page-container">
-            <div class="min-[992px]:px-20">
-                <h2 class="py-12 text-center text-[28px] font-bold text-ink">{{ $modul->title }}</h2>
-                <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] items-center justify-center gap-10 text-center">
-                    @foreach ($advantageModulProducts as $advantageModul)
-                        <div class="p-5 text-ink">
-                            <img src="{{ asset('storage/' . $advantageModul->icon) }}" alt=""
-                                class="mx-auto mb-5 h-full max-h-[62px]" loading="lazy">
-                            <h3 class="mb-5 text-2xl font-bold">{{ $advantageModul->title }}</h3>
-                            <p class="text-lg">{{ $advantageModul->description }}</p>
+    {{-- Advantages --}}
+    @if ($advantages->isNotEmpty())
+        <section class="reveal">
+            <div class="page-container py-12 sm:py-16">
+                <h2 class="section-title">Keunggulan {{ $modul->title }}</h2>
+                <div class="mt-10 flex flex-wrap justify-center gap-6">
+                    @foreach ($advantages as $advantage)
+                        <div class="{{ $advantageWidth }} rounded-2xl border border-black/10 bg-white p-6 text-center shadow-sm sm:p-8">
+                            @if ($advantage->icon)
+                                <img src="{{ $img($advantage->icon) }}" alt="" class="mx-auto h-14 w-auto max-w-[80px] object-contain"
+                                    loading="lazy" decoding="async">
+                            @endif
+                            <h3 class="mt-4 text-xl font-bold text-ink">{{ $advantage->title }}</h3>
+                            @if (filled($advantage->description))
+                                <p class="mt-2 text-base leading-relaxed text-ink/75">{{ $advantage->description }}</p>
+                            @endif
                         </div>
                     @endforeach
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
-    {{-- Fasilitas --}}
-    <section class="reveal py-12">
-        <div class="bg-mist py-12">
-            <div class="page-container">
-                <h2 class="mb-12 text-center text-[28px] font-bold text-ink">Fasilitas {{ $modul->title }}</h2>
-                <div class="space-y-12">
-                    <div class="flex flex-col items-center justify-between gap-5 min-[992px]:flex-row">
-                        @if ($imageModul2)
-                            <img src="{{ asset('storage/' . $imageModul2->image) }}" alt=""
-                                class="w-full max-w-[700px] rounded-[20px]" loading="lazy">
-                        @endif
-                        <ul class="px-5">
-                            @foreach ($listfasilitasModulProducts1 as $fs1)
-                                <li class="mb-5 flex text-base text-ink min-[581px]:text-xl">
-                                    <x-icon name="circle-check" class="mr-2.5 mt-1 shrink-0 text-brand" />{{ $fs1->description }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="flex flex-col items-center justify-between gap-5 min-[992px]:flex-row">
-                        <ul class="order-2 px-5 min-[992px]:order-none">
-                            @foreach ($listfasilitasModulProducts2 as $fs2)
-                                <li class="mb-5 flex text-base text-ink min-[581px]:text-xl">
-                                    <x-icon name="circle-check" class="mr-2.5 mt-1 shrink-0 text-brand" />{{ $fs2->description }}
-                                </li>
-                            @endforeach
-                        </ul>
-                        @if ($imageModul3)
-                            <img src="{{ asset('storage/' . $imageModul3->image) }}" alt=""
-                                class="w-full max-w-[700px] rounded-[20px]" loading="lazy">
-                        @endif
-                    </div>
+    {{-- Facilities: alternating image / checklist rows --}}
+    @if ($facilityBlocks->isNotEmpty())
+        <section class="reveal bg-mist">
+            <div class="page-container py-12 sm:py-16">
+                <h2 class="section-title">Fasilitas {{ $modul->title }}</h2>
+                <div class="mt-10 space-y-10 lg:space-y-14">
+                    @foreach ($facilityBlocks as $block)
+                        <div class="grid items-center gap-8 {{ $block['image'] && $block['items']->isNotEmpty() ? 'lg:grid-cols-2 lg:gap-12' : 'mx-auto max-w-3xl' }}">
+                            @if ($block['image'])
+                                <img src="{{ $img($block['image']->image) }}" alt="" @class([
+                                    'aspect-[4/3] w-full rounded-2xl object-cover shadow-md',
+                                    'lg:order-2' => $loop->odd === false,
+                                ]) loading="lazy" decoding="async">
+                            @endif
+                            @if ($block['items']->isNotEmpty())
+                                <ul class="space-y-4">
+                                    @foreach ($block['items'] as $facility)
+                                        <li class="flex gap-3 text-base text-ink sm:text-lg">
+                                            <x-icon name="circle-check" class="mt-1 text-brand" />{{ $facility->description }}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     @include('UserPage.Layouts.testimonial-slider', [
-        'testimonials' => collect($feedback)
-            ->map(fn ($fd) => [
-                'image' => $fd->image,
-                'name' => $fd->name,
-                'description' => $fd->description,
-            ])
-            ->values()
-            ->all(),
+        'testimonials' => $testimonials->map(fn ($t) => ['image' => $t->image, 'name' => $t->name, 'description' => $t->description])->all(),
     ])
 
     @include('UserPage.Layouts.question')

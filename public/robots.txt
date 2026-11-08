@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /Admin
+Disallow: /RegistrationJustForAdmin
+
+Sitemap: https://simrsncimedismart.com/sitemap.xml

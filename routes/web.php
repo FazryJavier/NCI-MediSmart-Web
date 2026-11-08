@@ -16,6 +16,14 @@ use App\Http\Controllers\FacilitiesModulProductController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Landing\AboutPageController;
+use App\Http\Controllers\Landing\BlogController;
+use App\Http\Controllers\Landing\ModulPageController;
+use App\Http\Controllers\Landing\ProductPageController;
+use App\Http\Controllers\Landing\TestimonialPageController;
+use App\Models\Article;
+use App\Models\ModulProduct;
+use App\Models\Product;
 use App\Http\Controllers\ImageModulProductController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
@@ -45,74 +53,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Landing Page
-Route::get('/', HomeController::class);
+// Landing Page (public). SEO-friendly lowercase URLs; "{id}-{slug}" pages 301 to their canonical slug.
+$slug = '[0-9]+(?:-[a-z0-9-]*)?';
 
-Route::get('/ProductView/{id}', function ($productId) {
-    $detailproductController = app()->make(DetailProductController::class);
-    $detailproductContent = $detailproductController->showContent($productId);
+Route::get('/', HomeController::class)->name('home');
+Route::get('/produk/{slug}', [ProductPageController::class, 'show'])->where('slug', $slug)->name('produk.show');
+Route::get('/modul/{slug}', [ModulPageController::class, 'show'])->where('slug', $slug)->name('modul.show');
+Route::get('/tentang-kami', AboutPageController::class)->name('about');
+Route::get('/testimoni', TestimonialPageController::class)->name('testimoni');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->where('slug', $slug)->name('blog.show');
+Route::view('/demo', 'UserPage.Pages.demo')->name('demo');
+Route::post('/demo', [DemoController::class, 'store'])->name('demo.store');
+Route::get('/sitemap', [UserController::class, 'showAll'])->name('sitemap');
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.xml');
 
-    $clientproductController = app()->make(ClientProductController::class);
-    $clientproductContent = $clientproductController->showContent($productId);
-
-    $advantageproductController = app()->make(AdvantageProductController::class);
-    $advantageproductContent = $advantageproductController->showContent($productId);
-
-    $sparasiController = app()->make(SparasiController::class);
-    $sparasiContent = $sparasiController->showContent($productId);
-
-    $modulproductController = app()->make(ModulProductController::class);
-    $modulproductContent = $modulproductController->showContent($productId);
-
-    $feedbackController = app()->make(FeedbackController::class);
-    $feedbackContent = $feedbackController->showContent();
-
-    return view('UserPage/Pages/product', [
-        'detailproductContent' => $detailproductContent,
-        'clientproductContent' => $clientproductContent,
-        'advantageproductContent' => $advantageproductContent,
-        'sparasiContent' => $sparasiContent,
-        'modulproductContent' => $modulproductContent,
-        'feedbackContent' => $feedbackContent,
-    ]);
-});
-
-Route::get('/Modul', [ModulProductController::class, 'showContentHome']);
-Route::get('/Modul/{id}', [ModulProductController::class, 'showModul'])->name('modul.show');
-
-Route::get('/HealthcareSolution', function () {
-    $aboutController = app()->make(AboutController::class);
-    $aboutContent = $aboutController->showContent();
-
-    return view('UserPage/Pages/healthcare', [
-        'aboutContent' => $aboutContent,
-    ]);
-});
-
-Route::get('/Testimoni', function () {
-    $feedbackController = app()->make(FeedbackController::class);
-    $feedbackContent = $feedbackController->showContent();
-
-    $mapfeedbackController = app()->make(MapFeedbackController::class);
-    $mapfeedbackContent = $mapfeedbackController->showContent();
-
-    return view('UserPage/Pages/testimoni', [
-        'feedbackContent' => $feedbackContent,
-        'mapfeedbackContent' => $mapfeedbackContent,
-    ]);
-});
-
-Route::get('/Blog', [ArticleController::class, 'showContentBlog1']);
-
-Route::get('/DetailBlog/{id}', [ArticleController::class, 'showContentdetailBlog'])->name('detail.show');
-
-Route::get('/Demo', function () {
-    return view('UserPage/Pages/demo');
-});
+// Legacy URLs (already indexed by Google / shared links): permanent redirects to the new URLs.
+Route::get('/ProductView/{id}', fn (int $id) => redirect()->to(Product::query()->findOrFail($id)->publicUrl(), 301))->whereNumber('id');
+Route::get('/Modul/{id}', fn (int $id) => redirect()->to(ModulProduct::query()->findOrFail($id)->publicUrl(), 301))->whereNumber('id');
+Route::get('/DetailBlog/{id}', fn (int $id) => redirect()->to(Article::query()->findOrFail($id)->publicUrl(), 301))->whereNumber('id');
+Route::permanentRedirect('/Modul', '/');
+Route::permanentRedirect('/HealthcareSolution', '/tentang-kami');
+Route::permanentRedirect('/Testimoni', '/testimoni');
+Route::permanentRedirect('/Blog', '/blog');
+Route::get('/Demo', fn () => redirect()->route('demo', status: 301)); // GET only: POST /Demo stays the old form endpoint
+Route::permanentRedirect('/Sitemap', '/sitemap');
+Route::permanentRedirect('/Sitemap.xml', '/sitemap.xml');
+// Old demo form posts (cached pages) keep working.
 Route::post('/Demo', [DemoController::class, 'store']);
-
-Route::get('/Sitemap', [UserController::class, 'showAll']);
-Route::get('/Sitemap.xml', [SitemapController::class, 'index']);
 
 Route::get('/Admin', [UserController::class, 'index'])->name('Admin');
 Route::post('/Admin', [UserController::class, 'authenticate']);

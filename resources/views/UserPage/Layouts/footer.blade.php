@@ -45,7 +45,7 @@
                 <h2 class="mb-4 text-sm font-bold uppercase tracking-wider">NCI Medismart</h2>
                 <ul class="space-y-3 text-sm text-white/90">
                     @foreach ($footerProducts as $navbarItem)
-                        <li><a href="{{ url('/ProductView/' . $navbarItem->products->id) }}"
+                        <li><a href="{{ $navbarItem->products->publicUrl() }}"
                                 class="{{ $footerLink }}">{{ $navbarItem->products->title }}</a></li>
                     @endforeach
                 </ul>
@@ -58,9 +58,9 @@
             <ul class="space-y-3 text-sm text-white/90">
                 <li><a href="http://nuansa.com/2019/" target="_blank" rel="noopener noreferrer"
                         class="{{ $footerLink }}">Informasi Perusahaan</a></li>
-                <li><a href="{{ url('/HealthcareSolution') }}" class="{{ $footerLink }}">Healthcare Solution</a></li>
-                <li><a href="{{ url('/Blog') }}" class="{{ $footerLink }}">Blog</a></li>
-                <li><a href="{{ url('/Sitemap') }}" class="{{ $footerLink }}">Sitemap</a></li>
+                <li><a href="{{ route('about') }}" class="{{ $footerLink }}">Healthcare Solution</a></li>
+                <li><a href="{{ route('blog.index') }}" class="{{ $footerLink }}">Blog</a></li>
+                <li><a href="{{ route('sitemap') }}" class="{{ $footerLink }}">Sitemap</a></li>
             </ul>
         </div>
 

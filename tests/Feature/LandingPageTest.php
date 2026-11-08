@@ -91,11 +91,11 @@ class LandingPageTest extends TestCase
     {
         return [
             'home' => ['/'],
-            'healthcare' => ['/HealthcareSolution'],
-            'testimoni' => ['/Testimoni'],
-            'blog' => ['/Blog'],
-            'demo' => ['/Demo'],
-            'sitemap' => ['/Sitemap'],
+            'tentang-kami' => ['/tentang-kami'],
+            'testimoni' => ['/testimoni'],
+            'blog' => ['/blog'],
+            'demo' => ['/demo'],
+            'sitemap' => ['/sitemap'],
         ];
     }
 
@@ -119,16 +119,16 @@ class LandingPageTest extends TestCase
 
     public function test_product_page_renders_product_and_modul(): void
     {
-        $this->get('/ProductView/' . $this->product->id)
+        $this->get($this->product->publicUrl())
             ->assertOk()
-            ->assertSee('<title>SIMRS Test - SIMRS NCI Medismart</title>', false)
+            ->assertSee('<title>SIMRS Test – Sub title | NCI Medismart</title>', false)
             ->assertSee('Modul Rawat Jalan')
             ->assertSee('RS Sehat');
     }
 
     public function test_modul_page_shows_testimonial_names(): void
     {
-        $this->get('/Modul/' . $this->modul->id)
+        $this->get($this->modul->publicUrl())
             ->assertOk()
             ->assertSee('Modul Rawat Jalan')
             ->assertSee('RS Sehat');
@@ -136,7 +136,7 @@ class LandingPageTest extends TestCase
 
     public function test_blog_detail_page_renders_article(): void
     {
-        $this->get('/DetailBlog/' . $this->article->id)
+        $this->get($this->article->publicUrl())
             ->assertOk()
             ->assertSee('Artikel Utama')
             ->assertSee('<p>Isi artikel</p>', false);
@@ -148,7 +148,7 @@ class LandingPageTest extends TestCase
             ->assertOk()
             ->assertSee('rel="noopener noreferrer"', false)
             ->assertSee('https://api.whatsapp.com/send?phone=628123456789', false)
-            ->assertSee(url('/ProductView/' . $this->product->id), false);
+            ->assertSee($this->product->publicUrl(), false);
     }
 
     public function test_header_has_desktop_and_mobile_navigation_and_footer_lists_products(): void
@@ -159,15 +159,15 @@ class LandingPageTest extends TestCase
         $this->assertSame(2, substr_count($html, 'aria-label="Navigasi utama"'));
         $this->assertStringContainsString('id="mobile-nav" x-show="open" x-cloak', $html);
         // The product is linked from the desktop menu, mobile menu, home product card and footer.
-        $this->assertSame(4, substr_count($html, 'href="' . url('/ProductView/' . $this->product->id) . '"'));
+        $this->assertSame(4, substr_count($html, 'href="' . $this->product->publicUrl() . '"'));
         $this->assertStringContainsString('Copyright &copy; ' . now()->year, $html);
     }
 
     public function test_current_page_is_marked_active_in_navigation(): void
     {
-        $blog = $this->get('/Blog')->assertOk()->getContent();
-        // Desktop + mobile menu entries for Blog are both marked as the current page.
-        $this->assertSame(2, substr_count($blog, 'aria-current="page"'));
+        $blog = $this->get('/blog')->assertOk()->getContent();
+        // Desktop + mobile menu entries for Blog, plus the breadcrumb's current item.
+        $this->assertSame(3, substr_count($blog, 'aria-current="page"'));
 
         $this->get('/')->assertOk()->assertDontSee('aria-current="page"', false);
     }
@@ -210,12 +210,12 @@ class LandingPageTest extends TestCase
 
     public function test_demo_form_shows_validation_errors_and_keeps_old_input(): void
     {
-        $this->from('/Demo')
-            ->post('/Demo', ['name' => 'Budi'])
-            ->assertRedirect('/Demo')
+        $this->from('/demo')
+            ->post('/demo', ['name' => 'Budi'])
+            ->assertRedirect('/demo')
             ->assertSessionHasErrors(['position', 'instance_name', 'instance_address', 'email', 'phone_number']);
 
-        $this->get('/Demo')
+        $this->get('/demo')
             ->assertOk()
             ->assertSee('value="Budi"', false)
             ->assertSee('aria-invalid="true"', false);
@@ -232,7 +232,7 @@ class LandingPageTest extends TestCase
             'phone_number' => '08123456789',
         ];
 
-        $this->post('/Demo', $payload)->assertRedirect('/');
+        $this->from('/demo')->post('/demo', $payload)->assertRedirect('/demo')->assertSessionHas('status');
 
         $this->assertDatabaseHas('demos', ['email' => 'budi@example.com', 'instance_name' => 'RS Sehat']);
     }

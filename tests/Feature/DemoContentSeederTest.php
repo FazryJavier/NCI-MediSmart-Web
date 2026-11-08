@@ -33,10 +33,11 @@ class DemoContentSeederTest extends TestCase
         Storage::disk('local')->assertExists('file-image/demo-peta-indonesia.png');
 
         $product = Product::first();
-        foreach (['/', '/HealthcareSolution', '/Testimoni', '/Blog', '/Sitemap', "/ProductView/{$product->id}"] as $uri) {
+        $article = \App\Models\Article::first();
+        $modul = \App\Models\ModulProduct::first();
+        foreach (['/', '/tentang-kami', '/testimoni', '/blog', '/sitemap', '/demo', $product->publicUrl(), $modul->publicUrl(), $article->publicUrl()] as $uri) {
             $this->get($uri)->assertOk();
         }
-        $this->get('/Modul/' . $product->id)->assertOk();
     }
 
     public function test_it_is_additive_and_never_duplicates_or_overwrites(): void
@@ -63,7 +64,7 @@ class DemoContentSeederTest extends TestCase
     {
         CTA::create(['image' => 'file-image/banner.webp', 'title' => 'Punya Pertanyaan?', 'description' => 'Kami siap membantu']);
 
-        $html = $this->get('/Testimoni')->assertOk()->getContent();
+        $html = $this->get('/testimoni')->assertOk()->getContent();
 
         // Desktop: the uploaded banner is an <img> (not a cropped background), so its transparent top
         // lets the person's head overflow the card.

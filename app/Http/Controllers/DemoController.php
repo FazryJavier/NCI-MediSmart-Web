@@ -31,17 +31,19 @@ class DemoController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
-            'position' => 'required',
-            'instance_name' => 'required',
-            'instance_address' => 'required',
-            'email' => 'required',
-            'phone_number' => 'required',
+            'name' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
+            'instance_name' => 'required|string|max:255',
+            'instance_address' => 'required|string|max:2000',
+            'email' => 'required|email|max:255',
+            'phone_number' => ['required', 'string', 'max:20', 'regex:/^\+?[0-9 ()-]{8,20}$/'],
+        ], [
+            'phone_number.regex' => 'Nomor telepon hanya boleh berisi angka, spasi, tanda + ( ) -, minimal 8 digit.',
         ]);
 
         Demo::create($validatedData);
 
-        return redirect('/');
+        return back()->with('status', 'Terima kasih! Permintaan demo Anda sudah kami terima. Tim kami akan segera menghubungi Anda.');
     }
 
     /**

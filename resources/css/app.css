@@ -52,8 +52,10 @@
         @apply translate-y-6 opacity-0 transition duration-700 ease-out;
     }
 
+    /* `transform: none` (not translateY(0)) once visible: a lingering transform keeps the section on its own
+       compositing layer, which renders text slightly blurry in Chromium. */
     .js .reveal.is-visible {
-        @apply translate-y-0 opacity-100;
+        @apply transform-none opacity-100;
     }
 
     /* Swiper theme overrides shared by every slider. */

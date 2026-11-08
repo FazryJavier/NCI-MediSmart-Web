@@ -24,6 +24,20 @@ npm run dev     # pengembangan (HMR); hapus public/hot jika dev server mati tida
 npm run build   # hasil di public/build, WAJIB di-commit
 ```
 
+### URL publik & SEO
+
+| Halaman | URL | URL lama (redirect 301) |
+|---|---|---|
+| Produk | `/produk/{id}-{slug}` | `/ProductView/{id}` |
+| Modul | `/modul/{id}-{slug}` | `/Modul/{id}` |
+| Blog / artikel | `/blog`, `/blog/{id}-{slug}` | `/Blog`, `/DetailBlog/{id}` |
+| Tentang kami | `/tentang-kami` | `/HealthcareSolution` |
+| Testimoni, Demo, Sitemap | `/testimoni`, `/demo`, `/sitemap`, `/sitemap.xml` | `/Testimoni`, `/Demo`, `/Sitemap`, `/Sitemap.xml` |
+
+- Slug dibentuk dari judul (`HasPublicUrl`), jadi **tidak perlu kolom/migrasi baru**. Kalau judul berubah, URL dengan slug lama otomatis di-redirect 301 ke slug yang baru.
+- Pakai `$model->publicUrl()` atau `route('...')`, jangan tulis path manual.
+- `public/robots.txt` menunjuk ke `/sitemap.xml`. Setiap halaman punya canonical, Open Graph/Twitter, dan JSON-LD (Organization di beranda, BreadcrumbList, serta BlogPosting di artikel).
+
 ### Data dummy (lokal)
 
 ```bash
