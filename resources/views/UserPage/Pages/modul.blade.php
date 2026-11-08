@@ -74,17 +74,17 @@
         <section class="reveal bg-mist">
             <div class="page-container py-12 sm:py-16">
                 <h2 class="section-title">Fasilitas {{ $modul->title }}</h2>
-                {{-- Each image + checklist pair sits in one card so they read as a unit (no big gaps between them). --}}
-                <div class="mx-auto mt-10 max-w-5xl space-y-6">
+                {{-- Image + checklist side by side in a narrow column with a capped image height, so they stay close together. --}}
+                <div class="mx-auto mt-10 max-w-5xl space-y-10 sm:space-y-12">
                     @foreach ($facilityBlocks as $block)
                         @php($paired = $block['image'] && $block['items']->isNotEmpty())
                         <div @class([
-                            'grid items-center gap-6 overflow-hidden rounded-2xl bg-white p-4 shadow-sm sm:p-6',
+                            'grid items-center gap-6',
                             'md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:gap-10' => $paired,
                         ])>
                             @if ($block['image'])
-                                <div @class(['flex h-56 items-center justify-center overflow-hidden rounded-xl bg-mist sm:h-72', 'md:order-2' => $paired && $loop->even])>
-                                    <img src="{{ $img($block['image']->image) }}" alt="" class="max-h-full w-auto max-w-full object-contain"
+                                <div @class(['flex h-56 items-center justify-center sm:h-72', 'md:order-2' => $paired && $loop->even])>
+                                    <img src="{{ $img($block['image']->image) }}" alt="" class="max-h-full w-auto max-w-full rounded-2xl object-contain"
                                         loading="lazy" decoding="async">
                                 </div>
                             @endif
