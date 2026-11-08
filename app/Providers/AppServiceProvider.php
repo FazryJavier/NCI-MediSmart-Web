@@ -2,13 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\View\Composers\LandingComposer;
 use Illuminate\Support\Facades\View;
-use App\Http\Controllers\CTAController;
-use App\Http\Controllers\FooterController;
-use App\Http\Controllers\NavbarController;
-use App\Http\Controllers\WhatsappController;
-use App\Http\Controllers\PopupController;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,30 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('*', function ($view) {
-            $ctaContent = CTAController::showContent();
-            $view->with('ctaContent', $ctaContent);
-        });
-
-        View::composer('*', function ($view) {
-            $whatsappContent = WhatsappController::showContent();
-            $view->with('whatsappContent', $whatsappContent);
-        });
-
-        View::composer('*', function ($view) {
-            $navbarContent = NavbarController::showContent();
-            $view->with('navbarContent', $navbarContent);
-        });
-
-        View::composer('*', function ($view) {
-            $footerContent = FooterController::showContent();
-            $view->with('footerContent', $footerContent);
-        });
-
-        View::composer('*', function ($view) {
-            $popupContent = PopupController::showContent();
-            $view->with('popupContent', $popupContent);
-        });
+        // Only landing views need the shared navbar/footer/WhatsApp/CTA/popup data; it is loaded once per request.
+        View::composer('UserPage.*', LandingComposer::class);
     }
 
     // public function boot2(\Illuminate\Http\Request $request)

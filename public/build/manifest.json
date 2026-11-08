@@ -1,12 +1,4 @@
 {
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-300-normal.woff": {
-    "file": "assets/be-vietnam-pro-latin-300-normal-98a6f5f0.woff",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-300-normal.woff"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-300-normal.woff2": {
-    "file": "assets/be-vietnam-pro-latin-300-normal-d56b8b4a.woff2",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-300-normal.woff2"
-  },
   "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-400-normal.woff": {
     "file": "assets/be-vietnam-pro-latin-400-normal-e0fb7b6b.woff",
     "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-400-normal.woff"
@@ -31,109 +23,13 @@
     "file": "assets/be-vietnam-pro-latin-700-normal-6ed20761.woff2",
     "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-700-normal.woff2"
   },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-300-normal.woff": {
-    "file": "assets/be-vietnam-pro-latin-ext-300-normal-3edcb056.woff",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-300-normal.woff"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-300-normal.woff2": {
-    "file": "assets/be-vietnam-pro-latin-ext-300-normal-af14a96c.woff2",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-300-normal.woff2"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-400-normal.woff": {
-    "file": "assets/be-vietnam-pro-latin-ext-400-normal-eef4c99f.woff",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-400-normal.woff"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-400-normal.woff2": {
-    "file": "assets/be-vietnam-pro-latin-ext-400-normal-c481d179.woff2",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-400-normal.woff2"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-500-normal.woff": {
-    "file": "assets/be-vietnam-pro-latin-ext-500-normal-946988ec.woff",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-500-normal.woff"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-500-normal.woff2": {
-    "file": "assets/be-vietnam-pro-latin-ext-500-normal-584c50c3.woff2",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-500-normal.woff2"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-700-normal.woff": {
-    "file": "assets/be-vietnam-pro-latin-ext-700-normal-b044a6de.woff",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-700-normal.woff"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-700-normal.woff2": {
-    "file": "assets/be-vietnam-pro-latin-ext-700-normal-2a11d0d4.woff2",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-ext-700-normal.woff2"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-300-normal.woff": {
-    "file": "assets/be-vietnam-pro-vietnamese-300-normal-a311ae40.woff",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-300-normal.woff"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-300-normal.woff2": {
-    "file": "assets/be-vietnam-pro-vietnamese-300-normal-1a2c0792.woff2",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-300-normal.woff2"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-400-normal.woff": {
-    "file": "assets/be-vietnam-pro-vietnamese-400-normal-b4543565.woff",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-400-normal.woff"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-400-normal.woff2": {
-    "file": "assets/be-vietnam-pro-vietnamese-400-normal-a1a7de62.woff2",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-400-normal.woff2"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-500-normal.woff": {
-    "file": "assets/be-vietnam-pro-vietnamese-500-normal-e9c6be15.woff",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-500-normal.woff"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-500-normal.woff2": {
-    "file": "assets/be-vietnam-pro-vietnamese-500-normal-2ddb42e4.woff2",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-500-normal.woff2"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-700-normal.woff": {
-    "file": "assets/be-vietnam-pro-vietnamese-700-normal-b5c858cf.woff",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-700-normal.woff"
-  },
-  "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-700-normal.woff2": {
-    "file": "assets/be-vietnam-pro-vietnamese-700-normal-390d020c.woff2",
-    "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-vietnamese-700-normal.woff2"
-  },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf": {
-    "file": "assets/fa-brands-400-003f1154.ttf",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"
-  },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2": {
-    "file": "assets/fa-brands-400-faae6fc0.woff2",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"
-  },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf": {
-    "file": "assets/fa-regular-400-7d81a1a7.ttf",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"
-  },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2": {
-    "file": "assets/fa-regular-400-9169d8be.woff2",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"
-  },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf": {
-    "file": "assets/fa-solid-900-cea79b34.ttf",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"
-  },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2": {
-    "file": "assets/fa-solid-900-886c8611.woff2",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
-  },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf": {
-    "file": "assets/fa-v4compatibility-455e8e72.ttf",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf"
-  },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2": {
-    "file": "assets/fa-v4compatibility-335fd7d9.woff2",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2"
-  },
   "resources/css/app.css": {
-    "file": "assets/app-09bae164.css",
+    "file": "assets/app-52552d64.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/app.js": {
-    "file": "assets/app-37c05438.js",
+    "file": "assets/app-4ac52532.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

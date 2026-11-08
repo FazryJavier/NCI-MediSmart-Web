@@ -15,10 +15,11 @@
             <h1 class="pb-2.5 text-[32px] font-bold tracking-[2px]">NCI - MediSmart</h1>
             @if ($aboutContent['videoView'])
                 <div class="mx-auto w-full max-w-[1000px] p-5">
-                    <iframe class="aspect-video w-full overflow-hidden rounded-[20px]"
-                        src="https://www.youtube.com/embed/{{ $aboutContent['videoView'] }}" title="Profil NCI Medismart"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen loading="lazy"></iframe>
+                    @include('UserPage.Layouts.youtube', [
+                        'video' => $aboutContent['videoView'],
+                        'title' => 'Profil NCI Medismart',
+                        'class' => 'rounded-[20px]',
+                    ])
                 </div>
             @endif
         </div>

@@ -4,6 +4,7 @@
     @param int $desktopSlides slides per view from 991px (default 2)
 --}}
 @php($desktopSlides = $desktopSlides ?? 2)
+@if (! empty($testimonials))
 <section class="reveal bg-mist py-5">
     <div class="page-container">
         <h2 class="pb-10 pt-2.5 text-center text-xl min-[361px]:text-2xl min-[581px]:text-[28px] min-[801px]:text-[32px]">
@@ -29,3 +30,4 @@
         </div>
     </div>
 </section>
+@endif

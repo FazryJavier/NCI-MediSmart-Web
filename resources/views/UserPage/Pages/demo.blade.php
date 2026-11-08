@@ -6,7 +6,7 @@
 @section('header')
     <header>
         <nav class="flex items-center justify-between bg-[#f5f5f5] px-[5%] py-2.5 shadow-[0_0_20px_0_rgba(0,0,0,0.2),0_5px_5px_0_rgba(0,0,0,0.1)]">
-            <a href="{{ url('/') }}" class="text-base text-muted"><i class="fa-solid fa-arrow-left mr-1"></i> Kembali</a>
+            <a href="{{ url('/') }}" class="text-base text-muted"><x-icon name="arrow-left" class="mr-1" /> Kembali</a>
             <a href="{{ url('/') }}"><img src="{{ asset('assets/img/Logo Medismart.png') }}" alt="Medismart"
                     class="w-full max-w-[100px]"></a>
         </nav>

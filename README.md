@@ -13,7 +13,10 @@ Landing page publik (`resources/views/UserPage`) dibangun dengan **Tailwind CSS 
 
 - Layout utama: `resources/views/UserPage/Layouts/app.blade.php`. Setiap halaman memakai `@extends` dan `@section('content')`.
 - Style: `resources/css/app.css` (`@tailwind` beserta komponen kecil `.page-container`, `.reveal`, dan override Swiper), lalu `tailwind.config.js` (warna `brand`, `ink`, `muted`, `mist`, plus breakpoint `nav` = 1151px).
-- Script: `resources/js/app.js` (Alpine `loadMore`, helper `initSwiper`, dan reveal on scroll).
+- Script: `resources/js/app.js` (Alpine `loadMore`, helper `initSwiper`, reveal on scroll, dan `lite-youtube-embed`).
+- Ikon: `<x-icon name="phone" />` (SVG inline dari Font Awesome Free, tanpa font ikon). Untuk menambah ikon, daftarkan di `scripts/generate-icons.cjs`, lalu jalankan `npm run icons`.
+- Video YouTube: `@include('UserPage.Layouts.youtube', ['video' => $id, 'title' => '...'])`. Awalnya hanya thumbnail yang dimuat; player baru dimuat saat diklik.
+- Beranda (`HomeController`): setiap section hanya tampil jika datanya ada, dan grid menyesuaikan jumlah item (1, 2, 3, atau 4+).
 
 ```bash
 npm install

@@ -19,7 +19,7 @@
             </a>
             <button type="button" @click="show = false" aria-label="Tutup promo"
                 class="absolute right-2.5 top-2.5 bg-brand px-2.5 py-1 text-white">
-                <i class="fa-solid fa-xmark"></i>
+                <x-icon name="xmark" />
             </button>
         </div>
     </div>

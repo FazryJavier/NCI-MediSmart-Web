@@ -50,11 +50,11 @@
                 class="relative overflow-hidden bg-[linear-gradient(to_bottom,#f1f5f9_50%,transparent_50%)] before:absolute before:bottom-0 before:h-1/2 before:w-full before:bg-gradient-to-r before:from-brand before:to-[#28b88d] before:content-['']">
                 <div class="page-container">
                     <div class="relative z-10 mx-auto aspect-video max-w-[800px]">
-                        <iframe class="h-full w-full rounded-[20px] border-[20px] border-black"
-                            src="https://www.youtube.com/embed/{{ $detailproductContent['videoView'] }}"
-                            title="Video {{ $productTitle }}"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen loading="lazy"></iframe>
+                        @include('UserPage.Layouts.youtube', [
+                            'video' => $detailproductContent['videoView'],
+                            'title' => 'Video ' . $productTitle,
+                            'class' => 'h-full rounded-[20px] border-[20px] border-black',
+                        ])
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                             <ul class="space-y-4">
                                 @foreach ($advantageProduct->advantageListProducts as $advantageList)
                                     <li class="flex text-base min-[361px]:text-lg">
-                                        <i class="fa-solid fa-circle-check mr-2.5 mt-1 shrink-0 text-brand"></i>{{ $advantageList->name }}
+                                        <x-icon name="circle-check" class="mr-2.5 mt-1 shrink-0 text-brand" />{{ $advantageList->name }}
                                     </li>
                                 @endforeach
                             </ul>

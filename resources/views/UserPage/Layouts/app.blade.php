@@ -9,8 +9,12 @@
     <link rel="canonical" href="{{ url()->current() }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/img/logo NCI-01.png') }}">
     @stack('meta')
-    {{-- Mark JS as available so .reveal sections start hidden only when they can be revealed. --}}
-    <script>document.documentElement.classList.add('js')</script>
+    {{-- Mark JS as available so .reveal sections start hidden only when they can be revealed.
+         Safety net: if the bundle has not booted after 3s (slow/failed load), show everything. --}}
+    <script>
+        document.documentElement.classList.add('js');
+        setTimeout(function () { if (!window.Alpine) document.documentElement.classList.remove('js'); }, 3000);
+    </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 

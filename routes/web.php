@@ -15,6 +15,7 @@ use App\Http\Controllers\ExperienceListController;
 use App\Http\Controllers\FacilitiesModulProductController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\FooterController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageModulProductController;
 use App\Http\Controllers\LandingSliderController;
 use App\Http\Controllers\LandingVideoController;
@@ -30,6 +31,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PopupController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SparasiController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,42 +46,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Landing Page
-Route::get('/', function () {
-    $sliderController = app()->make(LandingSliderController::class);
-    $sliderContent = $sliderController->showContent();
-
-    $clientController = app()->make(AllClientController::class);
-    $clientContent = $clientController->showContent();
-
-    $experienceController = app()->make(ExperienceController::class);
-    $experienceContent = $experienceController->showContent();
-
-    $experiencelistController = app()->make(ExperienceListController::class);
-    $experiencelistContent = $experiencelistController->showContent();
-
-    $mapController = app()->make(MapController::class);
-    $mapContent = $mapController->showContent();
-
-    $productController = app()->make(ProductController::class);
-    $productContent = $productController->showContent();
-
-    $videoController = app()->make(LandingVideoController::class);
-    $videoContent = $videoController->showContent();
-
-    $articleController = app()->make(ArticleController::class);
-    $articleContent = $articleController->showContentHome();
-
-    return view('UserPage/Pages/home', [
-        'sliderContent' => $sliderContent,
-        'clientContent' => $clientContent,
-        'experienceContent' => $experienceContent,
-        'experiencelistContent' => $experiencelistContent,
-        'mapContent' => $mapContent,
-        'productContent' => $productContent,
-        'videoContent' => $videoContent,
-        'articleContent' => $articleContent,
-    ]);
-});
+Route::get('/', HomeController::class);
 
 Route::get('/ProductView/{id}', function ($productId) {
     $detailproductController = app()->make(DetailProductController::class);
@@ -372,11 +339,25 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/Popup/{id}', [PopupController::class, 'destroy']);
 });
 
-// Show Image
-Route::get('/storage/file-image/{filename}', function ($filename) {
-    $path = storage_path("app/file-image/{$filename}");
-    if (!file_exists($path)) {
-        abort(404);
-    }
-    return response()->file($path);
-})->where('filename', '.*');
+// Show uploaded image.
+// Uploaded file names are random hashes, so the response can be cached for a year. Session, cookie
+// and CSRF middleware are skipped: every image used to boot a session and set cookies (slow on shared hosting).
+Route::get('/storage/file-image/{filename}', function (Request $request, string $filename) {
+    $path = storage_path('app/file-image/' . $filename);
+    abort_unless(is_file($path), 404);
+
+    $response = response()->file($path, ['Cache-Control' => 'public, max-age=31536000, immutable']);
+    $response->setEtag(md5($filename . filemtime($path)));
+    $response->isNotModified($request);
+
+    return $response;
+})
+    // Flat file names only (e.g. "abc123.webp"): blocks "../" path traversal.
+    ->where('filename', '[A-Za-z0-9][A-Za-z0-9._-]*')
+    ->withoutMiddleware([
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\VerifyCsrfToken::class,
+    ]);
