@@ -6,7 +6,7 @@ const brands = require(path.join(root, 'node_modules/@fortawesome/free-brands-sv
 const want = {
   bars: solid.faBars, xmark: solid.faXmark, 'arrow-left': solid.faArrowLeft, 'arrow-right': solid.faArrowRight,
   'chevron-down': solid.faChevronDown, 'circle-check': solid.faCircleCheck, 'location-dot': solid.faLocationDot,
-  phone: solid.faPhone, play: solid.faPlay,
+  phone: solid.faPhone, play: solid.faPlay, check: solid.faCheck,
   instagram: brands.faInstagram, 'linkedin-in': brands.faLinkedinIn, youtube: brands.faYoutube, whatsapp: brands.faWhatsapp,
 };
 const lines = Object.entries(want).map(([name, def]) => {

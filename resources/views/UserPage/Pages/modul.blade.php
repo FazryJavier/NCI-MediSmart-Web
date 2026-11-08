@@ -3,7 +3,6 @@
 @php
     $img = fn (?string $path) => $path ? asset('storage/' . $path) : null;
     $waNumber = collect($whatsappContent['whatsappView'])->first();
-    $advantageWidth = 'w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]';
 @endphp
 
 @section('title', \Illuminate\Support\Str::limit(trim($modul->title . ($product ? ' – ' . $product->title : '')), 60, '') . ' | NCI Medismart')
@@ -13,54 +12,65 @@
     @section('og_image', $img($heroImage->image))
 @endif
 
+{{--
+    Follows the module design: green hero (title, description, white "Hubungi Kami" button, screenshot on the
+    right), the module's advantages as columns separated by dividers, alternating screenshot / checklist rows
+    for the facilities, testimonials, then the CTA. Breadcrumb is structured data only.
+--}}
 @section('content')
     @include('UserPage.Layouts.wa-icon')
 
-    {{-- Intro --}}
+    @include('UserPage.Layouts.breadcrumb', [
+        'visible' => false,
+        'items' => array_values(array_filter([
+            $product ? [$product->title, $product->publicUrl() . '#modul'] : null,
+            [$modul->title, null],
+        ])),
+    ])
+
+    {{-- Hero --}}
     <section class="bg-gradient-to-r from-brand to-[#28b88d] text-white">
-        <div class="page-container py-10 sm:py-14">
-            @include('UserPage.Layouts.breadcrumb', [
-                'light' => true,
-                'items' => array_values(array_filter([
-                    $product ? [$product->title, $product->publicUrl() . '#modul'] : null,
-                    [$modul->title, null],
-                ])),
-            ])
-            <div class="mt-8 grid items-center gap-8 {{ $heroImage ? 'lg:grid-cols-2 lg:gap-12' : 'max-w-3xl' }}">
+        <div class="page-container py-12 sm:py-16">
+            <div class="grid items-center gap-10 {{ $heroImage ? 'lg:grid-cols-2' : 'max-w-3xl' }}">
                 <div>
-                    <h1 class="text-3xl font-bold leading-tight sm:text-4xl">{{ $modul->title }}</h1>
+                    <h1 class="text-2xl font-bold leading-tight sm:text-3xl">{{ $modul->title }}</h1>
                     @if (filled($modul->description))
-                        <p class="mt-4 text-base leading-relaxed text-white/90 sm:text-lg">{{ $modul->description }}</p>
+                        <p class="mt-4 text-base leading-relaxed text-white/90">{{ $modul->description }}</p>
                     @endif
                     @if ($waNumber)
                         <a href="https://api.whatsapp.com/send?phone={{ urlencode($waNumber) }}" target="_blank" rel="noopener noreferrer"
-                            class="btn mt-8 bg-white text-brand-dark hover:bg-brand-dark hover:text-white">
-                            <x-icon name="whatsapp" />Hubungi Kami</a>
+                            class="btn mt-8 bg-white !px-6 !py-2.5 !text-sm text-brand-dark hover:bg-brand-dark hover:text-white">Hubungi Kami</a>
                     @endif
                 </div>
                 @if ($heroImage)
-                    <img src="{{ $img($heroImage->image) }}" alt="{{ $modul->title }}" class="-order-1 aspect-[4/3] w-full rounded-2xl object-cover shadow-xl lg:order-none"
-                        fetchpriority="high" decoding="async">
+                    {{-- Framed: uploaded photos may have their own background, the frame keeps them tidy. --}}
+                    <div class="aspect-[16/10] w-full overflow-hidden rounded-2xl border-4 border-white/70 bg-white shadow-xl">
+                        <img src="{{ $img($heroImage->image) }}" alt="{{ $modul->title }}" class="h-full w-full object-contain"
+                            fetchpriority="high" decoding="async">
+                    </div>
                 @endif
             </div>
         </div>
     </section>
 
-    {{-- Advantages --}}
+    {{-- Advantages: columns separated by vertical dividers, a rule between rows --}}
     @if ($advantages->isNotEmpty())
         <section class="reveal">
             <div class="page-container py-12 sm:py-16">
-                <h2 class="section-title">Keunggulan {{ $modul->title }}</h2>
-                <div class="mt-10 flex flex-wrap justify-center gap-6">
+                <h2 class="text-center text-2xl font-bold text-ink sm:text-3xl">{{ $modul->title }}</h2>
+                <div class="mx-auto mt-10 grid max-w-5xl md:grid-cols-3">
                     @foreach ($advantages as $advantage)
-                        <div class="{{ $advantageWidth }} rounded-2xl border border-black/10 bg-white p-6 text-center shadow-sm sm:p-8">
-                            @if ($advantage->icon)
-                                <img src="{{ $img($advantage->icon) }}" alt="" class="mx-auto h-14 w-auto max-w-[80px] object-contain"
-                                    loading="lazy" decoding="async">
-                            @endif
-                            <h3 class="mt-4 text-xl font-bold text-ink">{{ $advantage->title }}</h3>
+                        <div class="flex flex-col items-center border-black/10 px-6 py-6 text-center [&:not(:first-child)]:border-t md:[&:not(:first-child)]:border-t-0 md:[&:nth-child(3n+2)]:border-x md:[&:nth-child(n+4)]:border-t">
+                            {{-- Fixed icon box and title height so the descriptions line up across columns. --}}
+                            <div class="flex h-14 w-full items-center justify-center">
+                                @if ($advantage->icon)
+                                    <img src="{{ $img($advantage->icon) }}" alt="" class="max-h-14 w-auto max-w-[72px] object-contain opacity-60 grayscale"
+                                        loading="lazy" decoding="async">
+                                @endif
+                            </div>
+                            <h3 class="mt-5 flex min-h-[3rem] items-center text-base font-bold leading-snug text-ink">{{ $advantage->title }}</h3>
                             @if (filled($advantage->description))
-                                <p class="mt-2 text-base leading-relaxed text-ink/75">{{ $advantage->description }}</p>
+                                <p class="mt-2 max-w-xs text-sm leading-relaxed text-ink/70">{{ $advantage->description }}</p>
                             @endif
                         </div>
                     @endforeach
@@ -69,30 +79,31 @@
         </section>
     @endif
 
-    {{-- Facilities: alternating image / checklist rows --}}
+    {{-- Facilities: alternating screenshot / checklist rows --}}
     @if ($facilityBlocks->isNotEmpty())
         <section class="reveal bg-mist">
             <div class="page-container py-12 sm:py-16">
-                <h2 class="section-title">Fasilitas {{ $modul->title }}</h2>
-                {{-- Image + checklist side by side in a narrow column with a capped image height, so they stay close together. --}}
-                <div class="mx-auto mt-10 max-w-5xl space-y-10 sm:space-y-12">
+                <h2 class="text-center text-2xl font-bold text-ink sm:text-3xl">Fasilitas {{ $modul->title }}</h2>
+                <div class="mx-auto mt-10 max-w-5xl space-y-12">
                     @foreach ($facilityBlocks as $block)
                         @php($paired = $block['image'] && $block['items']->isNotEmpty())
+                        {{-- Every row: same 2-column grid and the same framed 16:10 image, so rows line up. --}}
                         <div @class([
-                            'grid items-center gap-6',
-                            'md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:gap-10' => $paired,
+                            'grid items-center gap-8',
+                            'md:grid-cols-2 md:gap-12' => $paired,
+                            'mx-auto max-w-2xl' => ! $paired,
                         ])>
                             @if ($block['image'])
-                                <div @class(['flex h-56 items-center justify-center sm:h-72', 'md:order-2' => $paired && $loop->even])>
-                                    <img src="{{ $img($block['image']->image) }}" alt="" class="max-h-full w-auto max-w-full rounded-2xl object-contain"
+                                <div @class(['aspect-[16/10] w-full overflow-hidden rounded-2xl border border-black/10 bg-white p-2 shadow-sm', 'md:order-2' => $paired && $loop->even])>
+                                    <img src="{{ $img($block['image']->image) }}" alt="" class="h-full w-full rounded-xl object-contain"
                                         loading="lazy" decoding="async">
                                 </div>
                             @endif
                             @if ($block['items']->isNotEmpty())
-                                <ul class="space-y-3.5 px-2 sm:px-0">
+                                <ul class="space-y-4 px-2 md:px-4">
                                     @foreach ($block['items'] as $facility)
-                                        <li class="flex gap-3 text-base text-ink sm:text-lg">
-                                            <x-icon name="circle-check" class="mt-1 text-brand" />{{ $facility->description }}
+                                        <li class="flex gap-3 text-sm text-ink sm:text-base">
+                                            <x-icon name="check" class="mt-1 text-brand/80" />{{ $facility->description }}
                                         </li>
                                     @endforeach
                                 </ul>

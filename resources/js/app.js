@@ -28,7 +28,7 @@ window.initSwiper = (el, options = {}) => {
     // Only register a module when its markup exists; passing `undefined` params crashes Swiper.
     if (pagination) {
         config.modules.push(Pagination);
-        config.pagination = { el: pagination, clickable: true, dynamicBullets: true };
+        config.pagination = { el: pagination, clickable: true };
     }
     if (next && prev) {
         config.modules.push(Navigation);

@@ -65,13 +65,31 @@
         --swiper-navigation-size: 25px;
     }
 
-    .swiper-pagination-bullet {
-        @apply h-2 w-[30px] rounded-md;
-    }
-
     .nav-btn {
         @apply h-[50px] w-[50px] bg-white opacity-60 hover:opacity-90;
     }
+}
+
+/*
+ * Swiper pagination as short green bars (design), not dots: the active bar is longer and solid.
+ * Kept outside @layer on purpose: these classes are added by Swiper's JS (never written in Blade), so
+ * Tailwind would purge them from a layer. Placed after Swiper's own CSS so they win at equal specificity.
+ */
+.swiper-pagination-bullet {
+    @apply mx-1 h-1.5 w-7 rounded-full bg-brand/30 opacity-100 transition-all duration-300;
+}
+
+.swiper-pagination-bullet-active {
+    @apply w-10 bg-brand;
+}
+
+/* On photos (hero) the inactive bars are white. */
+.swiper-pagination-light .swiper-pagination-bullet {
+    @apply bg-white/60;
+}
+
+.swiper-pagination-light .swiper-pagination-bullet-active {
+    @apply bg-brand;
 }
 
 @media (prefers-reduced-motion: reduce) {
