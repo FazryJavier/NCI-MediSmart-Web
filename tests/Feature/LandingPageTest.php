@@ -206,6 +206,18 @@ class LandingPageTest extends TestCase
         $this->assertStringContainsString('Rekomendasi Satu', $html);
     }
 
+    public function test_testimonial_page_follows_the_design_structure(): void
+    {
+        $html = $this->get('/testimoni')->assertOk()->getContent();
+
+        $this->assertStringContainsString('Apa kata klien tentang kami</h1>', $html);
+        $this->assertStringContainsString('md:grid-cols-3', $html);
+        $this->assertStringContainsString('&ldquo;Mantap&rdquo;', $html);
+        // Thank-you section: no form exists yet, so the button opens WhatsApp with a prefilled message.
+        $this->assertStringContainsString('Terima Kasih telah mempercayai Kami sebagai Mitra Anda', $html);
+        $this->assertStringContainsString('send?phone=628123456789&amp;text=Halo%20NCI%20Medismart%2C%20saya%20ingin%20memberikan%20testimoni.', $html);
+    }
+
     public function test_about_page_shows_vision_mission_and_highlights_its_menu(): void
     {
         $this->get('/tentang-kami')
