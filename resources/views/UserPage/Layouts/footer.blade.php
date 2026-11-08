@@ -2,20 +2,21 @@
 @php
     $footerLink = 'transition hover:text-brand-dark hover:underline underline-offset-4';
     $socials = [
-        ['https://www.instagram.com/ncimedismart/', 'fa-instagram', 'Instagram NCI Medismart'],
-        ['https://www.youtube.com/@simrsncimedismart2282/featured', 'fa-youtube', 'YouTube NCI Medismart'],
-        ['https://www.linkedin.com/company/pt-nuansa-cerah-informasi/', 'fa-linkedin-in', 'LinkedIn PT Nuansa Cerah Informasi'],
+        ['https://www.instagram.com/ncimedismart/', 'instagram', 'Instagram NCI Medismart'],
+        ['https://www.youtube.com/@simrsncimedismart2282/featured', 'youtube', 'YouTube NCI Medismart'],
+        ['https://www.linkedin.com/company/pt-nuansa-cerah-informasi/', 'linkedin-in', 'LinkedIn PT Nuansa Cerah Informasi'],
     ];
     $offices = [
         'Head Office' => [$footerContent->address_head, $footerContent->phone_head, $footerContent->fax_head],
         'Branch Office' => [$footerContent->address_branch, $footerContent->phone_branch, $footerContent->fax_branch],
     ];
+    $footerProducts = collect($navbarContent)->filter(fn ($item) => $item->products);
 @endphp
 <footer class="bg-brand text-white">
     <div class="mx-auto grid w-full max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-5 py-14 sm:px-8 lg:grid-cols-12 lg:py-16">
         {{-- Brand & offices --}}
         <div class="col-span-2 lg:col-span-5">
-            <img src="{{ asset('assets/img/white-logo.png') }}" alt="NCI Medismart" class="h-14 w-auto" loading="lazy">
+            <img src="{{ asset('assets/img/white-logo.png') }}" alt="NCI Medismart" class="h-14 w-auto" loading="lazy" decoding="async">
             <div class="mt-6 grid gap-6 text-sm leading-relaxed text-white/90 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                 @foreach ($offices as $label => $lines)
                     @if (array_filter($lines))
@@ -32,27 +33,27 @@
                 @foreach ($socials as [$href, $icon, $label])
                     <a href="{{ $href }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $label }}"
                         class="flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-lg transition hover:-translate-y-0.5 hover:bg-white hover:text-brand-dark">
-                        <i class="fa-brands {{ $icon }}"></i>
+                        <x-icon :name="$icon" />
                     </a>
                 @endforeach
             </div>
         </div>
 
-        {{-- Products --}}
-        <div class="lg:col-span-2">
-            <h2 class="mb-4 text-sm font-bold uppercase tracking-wider">NCI Medismart</h2>
-            <ul class="space-y-3 text-sm text-white/90">
-                @foreach ($navbarContent as $navbarItem)
-                    @if ($navbarItem->products)
+        {{-- Products (hidden when none are configured; Company then takes both columns on phones) --}}
+        @if ($footerProducts->isNotEmpty())
+            <div class="lg:col-span-2">
+                <h2 class="mb-4 text-sm font-bold uppercase tracking-wider">NCI Medismart</h2>
+                <ul class="space-y-3 text-sm text-white/90">
+                    @foreach ($footerProducts as $navbarItem)
                         <li><a href="{{ url('/ProductView/' . $navbarItem->products->id) }}"
                                 class="{{ $footerLink }}">{{ $navbarItem->products->title }}</a></li>
-                    @endif
-                @endforeach
-            </ul>
-        </div>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         {{-- Company --}}
-        <div class="lg:col-span-2">
+        <div class="{{ $footerProducts->isNotEmpty() ? '' : 'col-span-2 ' }}lg:col-span-2">
             <h2 class="mb-4 text-sm font-bold uppercase tracking-wider">Perusahaan</h2>
             <ul class="space-y-3 text-sm text-white/90">
                 <li><a href="http://nuansa.com/2019/" target="_blank" rel="noopener noreferrer"
@@ -87,7 +88,7 @@
             class="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-3 px-5 pb-24 pt-5 text-center sm:pb-5 text-xs sm:flex-row sm:px-8 sm:text-left sm:text-sm">
             <img src="{{ asset('assets/img/Logo NCI.png') }}" alt="PT Nuansa Cerah Informasi" class="h-8 w-auto sm:h-10"
                 loading="lazy">
-            <p class="font-light">Copyright &copy; {{ now()->year }} PT Nuansa Cerah Informasi. All rights reserved.</p>
+            <p class="text-ink/70">Copyright &copy; {{ now()->year }} PT Nuansa Cerah Informasi. All rights reserved.</p>
         </div>
     </div>
 </footer>

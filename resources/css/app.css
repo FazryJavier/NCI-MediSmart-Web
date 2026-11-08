@@ -1,8 +1,8 @@
-@import '@fontsource/be-vietnam-pro/300.css';
-@import '@fontsource/be-vietnam-pro/400.css';
-@import '@fontsource/be-vietnam-pro/500.css';
-@import '@fontsource/be-vietnam-pro/700.css';
-@import '@fortawesome/fontawesome-free/css/all.min.css';
+/* Latin subset only (Indonesian content); icons are inline SVG via <x-icon>, so no icon font. */
+@import '@fontsource/be-vietnam-pro/latin-400.css';
+@import '@fontsource/be-vietnam-pro/latin-500.css';
+@import '@fontsource/be-vietnam-pro/latin-700.css';
+@import 'lite-youtube-embed/src/lite-yt-embed.css';
 @import 'swiper/css';
 @import 'swiper/css/navigation';
 @import 'swiper/css/pagination';

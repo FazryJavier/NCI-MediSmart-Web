@@ -68,7 +68,7 @@
                         <ul class="px-5">
                             @foreach ($listfasilitasModulProducts1 as $fs1)
                                 <li class="mb-5 flex text-base text-ink min-[581px]:text-xl">
-                                    <i class="fa-solid fa-circle-check mr-2.5 mt-1 shrink-0 text-brand"></i>{{ $fs1->description }}
+                                    <x-icon name="circle-check" class="mr-2.5 mt-1 shrink-0 text-brand" />{{ $fs1->description }}
                                 </li>
                             @endforeach
                         </ul>
@@ -77,7 +77,7 @@
                         <ul class="order-2 px-5 min-[992px]:order-none">
                             @foreach ($listfasilitasModulProducts2 as $fs2)
                                 <li class="mb-5 flex text-base text-ink min-[581px]:text-xl">
-                                    <i class="fa-solid fa-circle-check mr-2.5 mt-1 shrink-0 text-brand"></i>{{ $fs2->description }}
+                                    <x-icon name="circle-check" class="mr-2.5 mt-1 shrink-0 text-brand" />{{ $fs2->description }}
                                 </li>
                             @endforeach
                         </ul>
