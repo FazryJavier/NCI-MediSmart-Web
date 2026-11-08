@@ -24,7 +24,7 @@
     "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-700-normal.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-ac5305fb.css",
+    "file": "assets/app-190c2331.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
