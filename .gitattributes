@@ -6,6 +6,10 @@
 *.md diff=markdown
 *.php diff=php
 
+# Vite build output: store byte-for-byte (no EOL conversion) so CI can verify it is up to date,
+# and collapse it in GitHub diffs.
+/public/build/** -text -diff linguist-generated=true
+
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore

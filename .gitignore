@@ -1,6 +1,6 @@
 /.phpunit.cache
 /node_modules
-/public/build
+# public/build is committed on purpose: production deploys by `git pull` only (no npm on the server).
 /public/hot
 /public/storage
 /storage/*.key

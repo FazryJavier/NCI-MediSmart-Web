@@ -17,9 +17,19 @@ Landing page publik (`resources/views/UserPage`) dibangun dengan **Tailwind CSS 
 
 ```bash
 npm install
-npm run dev     # pengembangan (HMR)
-npm run build   # wajib sebelum deploy; hasilnya ada di public/build (di-ignore git)
+npm run dev     # pengembangan (HMR); hapus public/hot jika dev server mati tidak normal
+npm run build   # hasil di public/build, WAJIB di-commit
 ```
+
+### Deploy
+
+Production (Hostinger) meng-update kode lewat webhook GitHub (`git pull` dari `main`) dan **tidak menjalankan npm**. Karena itu `public/build` **ikut di-commit**:
+
+1. Setiap kali mengubah `resources/css`, `resources/js`, `tailwind.config.js`, atau view Blade yang memakai class Tailwind baru, jalankan `npm run build`.
+2. Commit perubahan `public/build` bersama perubahan source-nya.
+3. CI (`.github/workflows/ci.yml`) build ulang dan **gagal** jika `public/build` tidak sama dengan hasil build dari source.
+
+Jangan commit `public/hot`. File ini dibuat oleh `npm run dev`; kalau ada di server, halaman akan mencoba memuat aset dari dev server.
 
 ## About Laravel
 
