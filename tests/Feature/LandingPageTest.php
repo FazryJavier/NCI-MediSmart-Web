@@ -241,7 +241,7 @@ class LandingPageTest extends TestCase
         $this->assertStringContainsString('"@type":"BreadcrumbList"', $html);
         // Advantages headed by the module title, in divider columns.
         $this->assertStringContainsString('text-ink sm:text-3xl">Modul Rawat Jalan</h2>', $html);
-        $this->assertStringContainsString('md:[&:nth-child(3n+2)]:border-x', $html);
+        $this->assertStringContainsString('mx-auto mt-10 flex flex-wrap justify-center max-w-md', $html);
         // Advantage icons keep their original colours.
         $this->assertStringContainsString('max-w-[72px] object-contain"', $html);
         $this->assertStringNotContainsString('grayscale', $html);
@@ -249,6 +249,33 @@ class LandingPageTest extends TestCase
         // Testimonial band is white (design).
         $this->assertStringContainsString('<section class="reveal bg-white py-12 sm:py-14">', $html);
         $this->assertStringContainsString('Verifikasi Data Pasien', $html);
+    }
+
+    /** @dataProvider advantageLayouts */
+    public function test_modul_advantages_columns_follow_the_item_count(int $count, string $width, string $max): void
+    {
+        foreach (range(1, $count) as $i) {
+            \App\Models\AdvantageModulProduct::create(['modulId' => $this->modul->id, 'title' => "Keunggulan $i", 'icon' => 'file-image/i.png', 'description' => 'Deskripsi']);
+        }
+
+        $html = $this->get($this->modul->publicUrl())->assertOk()->getContent();
+
+        $this->assertStringContainsString("flex flex-wrap justify-center $max", $html);
+        $this->assertSame($count, substr_count($html, " $width "));
+    }
+
+    public static function advantageLayouts(): array
+    {
+        return [
+            'one' => [1, 'lg:w-full', 'max-w-md'],
+            'two' => [2, 'lg:w-1/2', 'max-w-3xl'],
+            'three' => [3, 'lg:w-1/3', 'max-w-5xl'],
+            'four in one row' => [4, 'lg:w-1/4', 'max-w-6xl'],
+            'five as 3 + 2' => [5, 'lg:w-1/3', 'max-w-5xl'],
+            'six as 3 + 3' => [6, 'lg:w-1/3', 'max-w-5xl'],
+            'seven as 4 + 3' => [7, 'lg:w-1/4', 'max-w-6xl'],
+            'eight as 4 + 4' => [8, 'lg:w-1/4', 'max-w-6xl'],
+        ];
     }
 
     public function test_about_page_shows_vision_mission_and_highlights_its_menu(): void

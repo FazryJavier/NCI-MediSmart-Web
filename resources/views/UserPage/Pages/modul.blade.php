@@ -53,14 +53,32 @@
         </div>
     </section>
 
-    {{-- Advantages: columns separated by vertical dividers, a rule between rows --}}
+    {{--
+        Advantages: columns separated by vertical dividers, a rule between rows. The column count follows the
+        number of items (1-4 in one row, 5-6 as rows of 3, 7+ as rows of 4) and an unfinished last row is centred.
+        Phone: one column; tablet: two.
+    --}}
     @if ($advantages->isNotEmpty())
+        @php
+            $advCount = $advantages->count();
+            $advCols = $advCount <= 4 ? $advCount : ($advCount <= 6 ? 3 : 4);
+            $advWidth = [1 => 'lg:w-full', 2 => 'lg:w-1/2', 3 => 'lg:w-1/3', 4 => 'lg:w-1/4'][$advCols];
+            $advMax = [1 => 'max-w-md', 2 => 'max-w-3xl', 3 => 'max-w-5xl', 4 => 'max-w-6xl'][$advCols];
+            // Dividers per breakpoint: a left rule unless the item starts a row, a top rule unless it is in the first row.
+            $advBorders = fn (int $i) => implode(' ', array_filter([
+                $i > 0 ? 'border-t' : null,
+                $advCount > 1 ? ($i % 2 ? 'sm:border-l' : null) : null,
+                $advCount > 1 && $i === 1 ? 'sm:border-t-0' : null,
+                $i % $advCols ? 'lg:border-l' : 'lg:border-l-0',
+                $i >= $advCols ? 'lg:border-t' : 'lg:border-t-0',
+            ]));
+        @endphp
         <section class="reveal">
             <div class="page-container py-12 sm:py-16">
                 <h2 class="text-center text-2xl font-bold text-ink sm:text-3xl">{{ $modul->title }}</h2>
-                <div class="mx-auto mt-10 grid max-w-5xl md:grid-cols-3">
+                <div class="mx-auto mt-10 flex flex-wrap justify-center {{ $advMax }}">
                     @foreach ($advantages as $advantage)
-                        <div class="flex flex-col items-center border-black/10 px-6 py-6 text-center [&:not(:first-child)]:border-t md:[&:not(:first-child)]:border-t-0 md:[&:nth-child(3n+2)]:border-x md:[&:nth-child(n+4)]:border-t">
+                        <div class="flex w-full flex-col items-center border-black/10 px-6 py-6 text-center {{ $advCount > 1 ? 'sm:w-1/2' : '' }} {{ $advWidth }} {{ $advBorders($loop->index) }}">
                             {{-- Fixed icon box and title height so the descriptions line up across columns. --}}
                             <div class="flex h-14 w-full items-center justify-center">
                                 @if ($advantage->icon)
