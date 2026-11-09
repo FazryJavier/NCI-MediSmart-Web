@@ -124,6 +124,30 @@
     border: 1px solid var(--admin-border);
 }
 
+/* Long text in a table cell (e.g. article description): capped height, scrolls inside the cell
+   instead of turning the <td> itself into a scroll box. */
+.card-body table.table .cell-clamp {
+    max-height: 7.5rem;
+    overflow-y: auto;
+    word-break: break-word;
+}
+
+/* Wide tables scroll sideways inside the card instead of overflowing the page. */
+.card-body .dataTables_wrapper {
+    overflow-x: auto;
+}
+
+/* Without the negative Bootstrap row margins the scroll container shows no stray scrollbar. */
+.card-body .dataTables_wrapper > .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.card-body .dataTables_wrapper > .row > [class*="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 /* Edit / delete buttons side by side and compact. */
 .card-body table.table td form {
     display: flex;
@@ -147,11 +171,24 @@
     font-size: .9rem;
 }
 
-.dataTables_wrapper .dataTables_filter input,
-.dataTables_wrapper .dataTables_length select {
+.dataTables_wrapper .dataTables_filter input {
     border: 1px solid #ced4da;
     border-radius: .35rem;
     padding: .25rem .5rem;
+}
+
+/* The "show N entries" select keeps room on the right for its arrow (Bootstrap custom-select),
+   otherwise the arrow overlaps the number and "10" shows as "1". */
+.dataTables_wrapper .dataTables_length select {
+    display: inline-block;
+    width: auto;
+    min-width: 4.5rem;
+    height: calc(1.8125rem + 2px);
+    margin: 0 .35rem;
+    padding: .25rem 1.75rem .25rem .6rem;
+    font-size: .875rem;
+    border: 1px solid #ced4da;
+    border-radius: .35rem;
 }
 
 .dataTables_wrapper .dataTables_filter input {

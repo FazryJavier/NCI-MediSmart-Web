@@ -61,6 +61,30 @@ class AdminLayoutTest extends TestCase
         $this->assertStringContainsString('window.adminDataTableOptions', $html);
     }
 
+    public function test_datatables_length_select_keeps_room_for_its_arrow(): void
+    {
+        $css = (string) file_get_contents(public_path('assets/admin/admin.css'));
+
+        preg_match('#\.dataTables_length select \{(.*?)\}#s', $css, $rule);
+
+        $this->assertNotEmpty($rule, 'Missing .dataTables_length select rule');
+        // Right padding must stay wide (arrow) and the select must not shrink to one digit.
+        $this->assertMatchesRegularExpression('#padding:\s*[\d.]+rem\s+1\.75rem\s+[\d.]+rem\s+[\d.]+rem#', $rule[1]);
+        $this->assertStringContainsString('min-width', $rule[1]);
+    }
+
+    public function test_article_list_does_not_turn_table_cells_into_scroll_boxes(): void
+    {
+        $user = User::create(['username' => 'admin-user', 'password' => 'secret123', 'level' => 'Admin']);
+        \App\Models\Article::create(['adminId' => $user->id, 'title' => 'T', 'description' => '<p>Isi artikel</p>', 'image' => 'file-image/x.png', 'prioritize' => 1]);
+
+        $html = $this->actingAs($user)->get('/Article')->assertOk()->getContent();
+
+        $this->assertStringContainsString('<div class="cell-clamp">Isi artikel</div>', $html);
+        $this->assertStringNotContainsString('class="des"', $html);
+        $this->assertStringNotContainsString('-webkit-box', $html);
+    }
+
     public function test_empty_lists_render_without_the_old_stray_heading(): void
     {
         foreach (['/LandingSlider', '/Product', '/Whatsapp', '/CTA', '/Users'] as $url) {
