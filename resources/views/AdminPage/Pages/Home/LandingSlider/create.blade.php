@@ -57,22 +57,9 @@
             @error('link')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            <div class="mb-3">
-                <label for="status" class="form-label">Status</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" value="1" name="status" id="show" checked>
-                    <label class="form-check-label" for="show">
-                        Show Data
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" value="0" name="status" id="hide">
-                    <label class="form-check-label" for="hide">
-                        Hide Data
-                    </label>
-                </div>
-            </div>
-            <input type="hidden" name="status" id="selected_status" value="1">
+            <x-admin.switch name="status" label="Tampilkan slider di halaman beranda" :checked="true"
+                on="Tampil di beranda" off="Disembunyikan"
+                help="Slider yang disembunyikan tetap tersimpan dan bisa ditampilkan lagi kapan saja. Beranda menampilkan maksimal 8 slider aktif terbaru." />
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>
                 <a href="/LandingSlider" type="button" class="btn btn-secondary">Back</a>
@@ -101,17 +88,6 @@
                 imgPreview.src = oFREvent.target.result;
             }
         }
-
-        // JavaScript function to update the hidden input with the selected status
-        function updateStatus() {
-            var selectedStatus = document.querySelector('input[name="status"]:checked').value;
-            document.getElementById('selected_status').value = selectedStatus;
-        }
-
-        // Attach the updateStatus function to the radio buttons' onchange event
-        document.querySelectorAll('input[name="status"]').forEach(function(radio) {
-            radio.addEventListener('change', updateStatus);
-        });
     </script>
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     <script>

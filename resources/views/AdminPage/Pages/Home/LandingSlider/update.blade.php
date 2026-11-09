@@ -64,19 +64,9 @@
             @error('link')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            <div class="mb-3">
-                <label for="status" class="form-label">Status</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" value="1" name="status" id="show"
-                        {{ $slider->status == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="show">Tampilkan Data</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" value="0" name="status" id="hide"
-                        {{ $slider->status == 0 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="hide">Sembunyikan Data</label>
-                </div>
-            </div>
+            <x-admin.switch name="status" label="Tampilkan slider di halaman beranda" :checked="$slider->status"
+                on="Tampil di beranda" off="Disembunyikan"
+                help="Slider yang disembunyikan tetap tersimpan dan bisa ditampilkan lagi kapan saja. Beranda menampilkan maksimal 8 slider aktif terbaru." />
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>
                 <a href="/LandingSlider" type="button" class="btn btn-secondary">Back</a>
@@ -104,18 +94,6 @@
                     imgPreview.src = oFREvent.target.result;
                 }
             }
-        </script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const statusCheckBox = document.getElementById("status");
-                const statusValue = "{{ $slider->status }}";
-
-                if (statusValue == 1) {
-                    statusCheckBox.checked = true;
-                } else {
-                    statusCheckBox.checked = false;
-                }
-            });
         </script>
         <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
         <script>
