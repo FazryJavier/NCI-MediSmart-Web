@@ -55,7 +55,7 @@ class LandingSliderController extends Controller
             'title' => 'required',
             'caption' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
-            'status' => 'nullable|boolean',
+            'status' => 'required|boolean',
             'link' => 'required',
         ]);
 
@@ -97,25 +97,22 @@ class LandingSliderController extends Controller
             'title' => 'required',
             'caption' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
-            'status' => 'required',
+            'status' => 'required|boolean',
             'link' => 'required',
         ];
 
         $validatedData = $request->validate($content);
 
-        $slider = LandingSlider::find($id);
+        $slider = LandingSlider::findOrFail($id);
 
         if ($request->hasFile('image')) {
-            $this->deleteStoredFile($slider?->image);
+            $this->deleteStoredFile($slider->image);
 
             $validatedData['image'] = $request->file('image')->store('file-image');
         }
 
-        if ($request->has('status') && $request->input('status') == '0') {
-            $validatedData['status'] = 0;
-        } else {
-            $validatedData['status'] = 1;
-        }
+        $validatedData['status'] = $request->boolean('status');
+
         $slider->update($validatedData);
 
         return redirect('/LandingSlider')->with('success', 'Data updated successfully!');

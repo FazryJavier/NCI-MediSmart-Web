@@ -33,7 +33,7 @@ class HomeController extends Controller
             ->groupBy('productId');
 
         return view('UserPage.Pages.home', [
-            'sliders' => LandingSlider::query()->latest()->limit(8)->get()->sortBy('id')->values(),
+            'sliders' => LandingSlider::query()->where('status', true)->latest()->limit(8)->get()->sortBy('id')->values(),
             'client' => AllClient::query()->latest('id')->first(),
             'experience' => Experience::query()->latest('id')->first(),
             'experienceItems' => ExperienceList::query()->orderBy('id')->get(),

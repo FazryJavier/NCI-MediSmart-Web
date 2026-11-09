@@ -51,7 +51,9 @@
                     <td>{!! $item->caption !!}</td>
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
                     <td>{{ $item->link }}</td>
-                    <td>{{ $item->status ? 'Tampil' : 'Sembunyikan' }}</td>
+                    <td data-order="{{ (int) $item->status }}">
+                        <span class="badge {{ $item->status ? 'badge-success' : 'badge-light border' }}">{{ $item->status ? 'Tampil di beranda' : 'Disembunyikan' }}</span>
+                    </td>
                     <td>
                         <form action="/LandingSlider/{{ $item->id }}" method="POST">
                             @if (Auth::user()->level == 'Admin')

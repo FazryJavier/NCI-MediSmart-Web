@@ -1,6 +1,5 @@
 {{-- Shared fields of the popup form. $popup is null when creating. --}}
 @php
-    $isOn = (bool) old('status', $popup?->status ?? true);
     $startValue = old('start_date', $popup?->start_date?->format('Y-m-d'));
     $endValue = old('end_date', $popup?->end_date?->format('Y-m-d'));
 @endphp
@@ -24,21 +23,9 @@
     @enderror
 </div>
 
-<div class="mb-4">
-    <label class="form-label d-block">Tampilkan popup di website</label>
-    {{-- Unchecked checkboxes are not sent, so a hidden 0 comes first and the checkbox overrides it with 1. --}}
-    <input type="hidden" name="status" value="0">
-    <div class="custom-control custom-switch custom-switch-lg">
-        <input type="checkbox" class="custom-control-input" id="status" name="status" value="1"
-            @checked($isOn)>
-        <label class="custom-control-label font-weight-normal" for="status" id="status-label">
-            {{ $isOn ? 'Aktif' : 'Nonaktif' }}
-        </label>
-    </div>
-    @error('status')
-        <div class="text-danger small mt-1">{{ $message }}</div>
-    @enderror
-</div>
+<x-admin.switch name="status" label="Tampilkan popup di website" :checked="$popup?->status ?? true"
+    on="Aktif: tampil di website" off="Nonaktif: tidak tampil"
+    help="Matikan untuk menyembunyikan popup tanpa menghapusnya." />
 
 <div class="mb-4" id="schedule">
     <label class="form-label d-block">Jadwal tayang <span class="text-muted font-weight-normal">(opsional)</span></label>
@@ -87,8 +74,7 @@
 
 <script>
     (function() {
-        var toggle = document.getElementById('status');
-        var label = document.getElementById('status-label');
+        var toggle = document.getElementById('switch-status');
         var start = document.getElementById('start_date');
         var end = document.getElementById('end_date');
         var schedule = document.getElementById('schedule');
@@ -103,7 +89,6 @@
 
         function refresh() {
             var on = toggle.checked;
-            label.textContent = on ? 'Aktif' : 'Nonaktif';
             schedule.style.opacity = on ? '1' : '.5';
             end.min = start.value || '';
 
