@@ -48,7 +48,7 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->users->username }}</td>
                     <td>{{ $item->title }}</td>
-                    <td class="des">{{ strip_tags($item->description) }}</td>
+                    <td><div class="cell-clamp">{{ strip_tags($item->description) }}</div></td>
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
                     <td>{{ $item->prioritize }}</td>
                     <td>
@@ -76,13 +76,4 @@
             @endforelse
         </tbody>
     </table>
-
-    <style>
-        .des {
-            display: -webkit-box;
-            overflow: hidden;
-            max-height: 200px;
-            overflow-y: scroll
-        }
-    </style>
 @endsection
