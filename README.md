@@ -56,6 +56,18 @@ Perintah ini mengisi semua konten landing page (slider, client, pengalaman, peta
 - **Menolak berjalan di production.**
 - Kalau tabel `users` kosong, dibuat user `demo-admin` dengan password acak sebagai penulis artikel.
 
+### Login & akun admin
+
+- Login di `/Admin` (maksimal 5 percobaan gagal per username + IP, lalu terkunci 60 detik). Ada opsi "Ingat saya" dan tombol lihat password.
+- Akun dikelola di menu **Pengguna** (`/Users`, khusus level Admin): tambah, ubah level, reset password, hapus. Admin terakhir dan akun sendiri tidak bisa dihapus.
+- Semua pengguna bisa mengganti password sendiri di `/Account/password`. Setelah password berubah, sesi di perangkat lain otomatis keluar.
+- Tidak ada registrasi publik. Admin pertama (mis. di production) dibuat lewat terminal:
+
+```bash
+php artisan admin:create nama-admin            # password diminta secara aman
+php artisan admin:create nama-editor --level=Editor
+```
+
 ### Deploy
 
 Production (Hostinger) meng-update kode lewat webhook GitHub (`git pull` dari `main`) dan **tidak menjalankan npm**. Karena itu `public/build` **ikut di-commit**:
