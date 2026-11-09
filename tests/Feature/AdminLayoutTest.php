@@ -85,6 +85,23 @@ class AdminLayoutTest extends TestCase
         $this->assertStringNotContainsString('-webkit-box', $html);
     }
 
+    public function test_layout_still_renders_when_the_admin_stylesheet_is_missing(): void
+    {
+        $css = public_path('assets/admin/admin.css');
+        $backup = $css . '.bak';
+        $this->assertTrue(rename($css, $backup));
+
+        try {
+            $html = $this->adminPage('/LandingSlider');
+        } finally {
+            rename($backup, $css);
+        }
+
+        $this->assertStringContainsString('href="' . asset('assets/admin/admin.css') . '"', $html);
+        $this->assertStringNotContainsString('admin.css?v=', $html);
+        $this->assertFileExists($css);
+    }
+
     public function test_empty_lists_render_without_the_old_stray_heading(): void
     {
         foreach (['/LandingSlider', '/Product', '/Whatsapp', '/CTA', '/Users'] as $url) {

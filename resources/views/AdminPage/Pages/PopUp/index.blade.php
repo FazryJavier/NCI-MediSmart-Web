@@ -36,21 +36,29 @@
                 <th class="col-sm-1">Id</th>
                 <th class="col-sm-2">Image</th>
                 <th class="col-sm-1">Status</th>
-                <th class="col-sm-2">Start Date</th>
-                <th class="col-sm-2">End Date</th>
+                <th class="col-sm-2">Mulai</th>
+                <th class="col-sm-2">Berakhir</th>
                 <th class="col-sm-2">Link</th>
                 <th class="col-sm-1">Action</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($popup as $popup => $item)
+            @forelse ($popup as $key => $item)
                 <tr>
-                    <td>{{ $popup + 1 }}</td>
+                    <td>{{ $key + 1 }}</td>
                     <td>{{ $item->id }}</td>
                     <td><img src="{{ asset('storage/' . $item->image) }}" alt="Image" class="img-fluid mt-3"></td>
-                    <td>{{ $item->status ? 'Tampil' : 'Sebunyikan' }}</td>
-                    <td>{{ $item->start_date }}</td>
-                    <td>{{ $item->end_date }}</td>
+                    <td data-order="{{ $item->id }}">
+                        @php($state = $item->state())
+                        <span class="badge {{ ['live' => 'badge-success', 'scheduled' => 'badge-info', 'expired' => 'badge-secondary', 'hidden' => 'badge-light border'][$state] }}">
+                            {{ ['live' => 'Tampil', 'scheduled' => 'Terjadwal', 'expired' => 'Kedaluwarsa', 'hidden' => 'Dinonaktifkan'][$state] }}
+                        </span>
+                        @if ($item->id === $currentId)
+                            <div class="small text-muted mt-1">Popup terbaru (dipakai website)</div>
+                        @endif
+                    </td>
+                    <td>{{ $item->start_date?->translatedFormat('d M Y') ?? 'Langsung' }}</td>
+                    <td>{{ $item->end_date?->translatedFormat('d M Y') ?? 'Tanpa batas' }}</td>
                     <td>{{ $item->link }}</td>
                     <td>
                         <form action="/Popup/{{ $item->id }}" method="POST">
