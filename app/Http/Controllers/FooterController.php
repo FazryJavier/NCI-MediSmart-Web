@@ -49,7 +49,7 @@ class FooterController extends Controller
 
         Footer::create($validatedData);
 
-        return redirect('/Footer')->with('success', 'Data created successfully!');
+        return redirect('/Footer')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -92,7 +92,7 @@ class FooterController extends Controller
 
         $footer->update($validatedData);
 
-        return redirect('/Footer')->with('success', 'Data updated successfully!');
+        return redirect('/Footer')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**
@@ -104,6 +104,6 @@ class FooterController extends Controller
 
         $footer->delete();
 
-        return redirect('/Footer')->with('error', 'Data deleted successfully!');
+        return redirect('/Footer')->with('success', 'Data berhasil dihapus.');
     }
 }

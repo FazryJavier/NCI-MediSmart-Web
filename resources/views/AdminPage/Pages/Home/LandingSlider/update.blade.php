@@ -14,7 +14,7 @@
                 <input type="text" value="{{ $slider->title }}" name="title" class="form-control">
             </div>
             @error('title')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="caption" class="form-label">Caption</label>
@@ -22,7 +22,7 @@
                 <textarea name="caption" id="caption" style="display: none;" value="{{ $slider->caption }}"></textarea>
             </div>
             @error('caption')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
@@ -47,7 +47,7 @@
                 </div>
             </div>
             @error('image')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="link" class="form-label">Link Button</label>
@@ -62,7 +62,7 @@
                 </ul>
             </div>
             @error('link')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <x-admin.switch name="status" label="Tampilkan slider di halaman beranda" :checked="$slider->status"
                 on="Tampil di beranda" off="Disembunyikan"

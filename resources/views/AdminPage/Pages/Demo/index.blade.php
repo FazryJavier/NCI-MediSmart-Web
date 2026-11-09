@@ -59,7 +59,7 @@
                             @csrf
                             @method('delete')
                             <input type="submit" value='Delete' class="btn btn-danger mt-1"
-                                onclick="return confirm('Are you sure want to delete this data?')">
+                                data-confirm="Data yang dihapus tidak bisa dikembalikan.">
                         </form>
                     </td>
                 </tr>

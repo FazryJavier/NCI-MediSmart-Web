@@ -62,7 +62,7 @@ class FacilitiesModulProductController extends Controller
             ]);
         }
 
-        return redirect('/FasilitiesModulProduct')->with('success', 'Data created successfully!');
+        return redirect('/FasilitiesModulProduct')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -104,7 +104,7 @@ class FacilitiesModulProductController extends Controller
 
         $facilitiesModulProduct->update($validatedData);
 
-        return redirect('/FasilitiesModulProduct')->with('success', 'Data updated successfully!');
+        return redirect('/FasilitiesModulProduct')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**
@@ -116,6 +116,6 @@ class FacilitiesModulProductController extends Controller
 
         $facilitiesModulProduct->delete();
 
-        return redirect('/FasilitiesModulProduct')->with('error', 'Data deleted successfully!');
+        return redirect('/FasilitiesModulProduct')->with('success', 'Data berhasil dihapus.');
     }
 }

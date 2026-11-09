@@ -16,7 +16,7 @@
                 <textarea name="title" id="title" style="display: none;" value="{{ $experienceUpdate->title }}"></textarea>
             </div>
             @error('title')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
@@ -24,7 +24,7 @@
                 <textarea name="description" id="description" style="display: none;" value="{{ $experienceUpdate->description }}"></textarea>
             </div>
             @error('description')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>

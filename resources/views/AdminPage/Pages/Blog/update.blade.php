@@ -20,14 +20,14 @@
                 </select>
             </div>
             @error('adminId')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="title" class="form-label"> Title</label>
                 <input type="text" name="title" class="form-control" value="{{ $articles->title }}">
             </div>
             @error('title')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
@@ -35,7 +35,7 @@
                 <textarea name="description" id="description" style="display: none;" value="{{ $articles->description }}"></textarea>
             </div>
             @error('description')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="icon" class="form-label">Image File</label>
@@ -60,7 +60,7 @@
                 </div>
             </div>
             @error('image')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="prioritize" class="form-label"> Priority</label>
@@ -69,7 +69,7 @@
                 <input type="text" name="prioritize" class="form-control" value="{{ $articles->prioritize }}">
             </div>
             @error('prioritize')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>

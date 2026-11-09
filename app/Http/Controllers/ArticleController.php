@@ -88,7 +88,7 @@ class ArticleController extends Controller
         }
         // dd($validatedData);
         Article::create($validatedData);
-        return redirect('/Article')->with('success', 'Data created successfully!');
+        return redirect('/Article')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -149,7 +149,7 @@ class ArticleController extends Controller
         }
         // dd($validatedData);
         $articles->update($validatedData);
-        return redirect('/Article')->with('success', 'Data updated successfully!');
+        return redirect('/Article')->with('success', 'Data berhasil diperbarui.');
     }
     /**
      * Remove the specified resource from storage.
@@ -162,6 +162,6 @@ class ArticleController extends Controller
         $articles->delete();
         $this->deleteStoredFile($imagePath);
 
-        return redirect('/Article')->with('error', 'Data deleted successfully!');
+        return redirect('/Article')->with('success', 'Data berhasil dihapus.');
     }
 }

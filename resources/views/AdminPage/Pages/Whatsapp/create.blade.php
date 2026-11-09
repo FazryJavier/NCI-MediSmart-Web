@@ -14,7 +14,7 @@
             <input type="text" name="phone_number" class="form-control">
         </div>
         @error('phone_number')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="field-error" role="alert">{{ $message }}</div>
         @enderror
         <button type="submit" class="btn btn-success">Create</button>
         <a href="/Whatsapp" type="button" class="btn btn-secondary">Back</a>

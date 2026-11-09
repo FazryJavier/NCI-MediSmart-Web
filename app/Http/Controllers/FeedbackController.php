@@ -56,7 +56,7 @@ class FeedbackController extends Controller
 
         Feedback::create($validatedData);
 
-        return redirect('/Feedback')->with('success', 'Data created successfully!');
+        return redirect('/Feedback')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -102,7 +102,7 @@ class FeedbackController extends Controller
 
         $feedback->update($validatedData);
 
-        return redirect('/Feedback')->with('success', 'Data updated successfully!');
+        return redirect('/Feedback')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**
@@ -120,6 +120,6 @@ class FeedbackController extends Controller
             Storage::disk('local')->delete($imagePath);
         }
 
-        return redirect('/Feedback')->with('error', 'Data deleted successfully!');
+        return redirect('/Feedback')->with('success', 'Data berhasil dihapus.');
     }
 }

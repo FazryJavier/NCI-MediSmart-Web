@@ -97,6 +97,6 @@ class DemoController extends Controller
 
         $demo->delete();
 
-        return redirect('/DemoList')->with('error', 'Data deleted successfully!');
+        return redirect('/DemoList')->with('success', 'Data berhasil dihapus.');
     }
 }

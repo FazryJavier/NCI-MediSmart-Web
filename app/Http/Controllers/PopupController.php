@@ -61,7 +61,7 @@ class PopupController extends Controller
 
         Popup::create($validatedData);
 
-        return redirect('/Popup')->with('success', 'Data created successfully!');
+        return redirect('/Popup')->with('success', 'Data berhasil ditambahkan.');
     }
 
     public function show(Popup $id)
@@ -93,7 +93,7 @@ class PopupController extends Controller
 
         $popup->update($validatedData);
 
-        return redirect('/Popup')->with('success', 'Data updated successfully!');
+        return redirect('/Popup')->with('success', 'Data berhasil diperbarui.');
     }
 
     public function destroy($id)
@@ -108,7 +108,7 @@ class PopupController extends Controller
             Storage::disk('local')->delete($imagepath);
         }
 
-        return redirect('/Popup')->with('error', 'Data deleted successfully!');
+        return redirect('/Popup')->with('success', 'Data berhasil dihapus.');
     }
     /** @return array<string, mixed> */
     private function rules(bool $imageRequired): array

@@ -58,7 +58,7 @@ class ExperienceController extends Controller
 
         Experience::create($validatedData);
 
-        return redirect('/Experience')->with('success', 'Data created successfully!');
+        return redirect('/Experience')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -97,7 +97,7 @@ class ExperienceController extends Controller
 
         $experience->update($validatedData);
 
-        return redirect('/Experience')->with('success', 'Data updated successfully!');
+        return redirect('/Experience')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**
@@ -109,6 +109,6 @@ class ExperienceController extends Controller
 
         $experience->delete();
 
-        return redirect('/Experience')->with('error', 'Data deleted successfully!');
+        return redirect('/Experience')->with('success', 'Data berhasil dihapus.');
     }
 }

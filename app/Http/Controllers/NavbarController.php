@@ -52,7 +52,7 @@ class NavbarController extends Controller
 
         Navbar::create($validatedData);
 
-        return redirect('/Navbar')->with('success', 'Data created successfully!');
+        return redirect('/Navbar')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -99,7 +99,7 @@ class NavbarController extends Controller
 
         $navbar->update($validatedData);
 
-        return redirect('/Navbar')->with('success', 'Data updated successfully!');
+        return redirect('/Navbar')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**
@@ -117,6 +117,6 @@ class NavbarController extends Controller
             Storage::disk('local')->delete($imagepath);
         }
 
-        return redirect('/Navbar')->with('error', 'Data deleted successfully!');
+        return redirect('/Navbar')->with('success', 'Data berhasil dihapus.');
     }
 }

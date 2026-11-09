@@ -1,34 +1,41 @@
-@if ($message = Session::get('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>{{ $message }}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
+{{--
+    Flash messages and validation summary for every admin page.
+    - success / error / warning / info session messages are shown as toasts (public/assets/admin/admin.js).
+    - validation failures get one toast plus a short summary here; each field also shows its own message.
+--}}
+@php
+    $flash = [];
+    foreach (['success', 'error', 'warning', 'info'] as $type) {
+        $text = session($type);
+        if (is_string($text) && $text !== '') {
+            $flash[] = ['type' => $type, 'message' => $text];
+        }
+    }
+    if ($errors->any()) {
+        $flash[] = ['type' => 'error', 'message' => 'Data belum tersimpan. Periksa isian yang ditandai merah.'];
+    }
+@endphp
 
-@if ($message = Session::get('error'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>{{ $message }}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-
-@if ($message = Session::get('warning'))
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>{{ $message }}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-
-@if ($message = Session::get('info'))
-    <div class="alert alert-info alert-dismissible fade show" role="alert">
-        <strong>{{ $message }}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+@if ($flash)
+    <div id="admin-flash" hidden data-flash="{{ json_encode($flash, JSON_UNESCAPED_UNICODE) }}"></div>
+    {{-- Without JavaScript the messages are shown as plain alerts instead. --}}
+    <noscript>
+        @foreach ($flash as $item)
+            <div class="alert alert-{{ $item['type'] === 'error' ? 'danger' : $item['type'] }}" role="alert">{{ $item['message'] }}</div>
+        @endforeach
+    </noscript>
 @endif
 
 @if ($errors->any())
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Please check the form below for errors</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="form-error-summary" role="alert">
+        <div class="form-error-summary__title">
+            <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+            Periksa kembali isian Anda ({{ $errors->count() }} kesalahan)
+        </div>
+        <ul>
+            @foreach ($errors->all() as $message)
+                <li>{{ $message }}</li>
+            @endforeach
+        </ul>
     </div>
 @endif

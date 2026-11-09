@@ -19,7 +19,7 @@
                 </select>
             </div>
             @error('modulId')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
@@ -28,7 +28,7 @@
                 <textarea name="description" class="form-control" rows="5"></textarea>
             </div>
             @error('description')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="list" class="form-label">List</label>
@@ -36,7 +36,7 @@
                 <input type="text" name="list" class="form-control" id="formGroupExampleInput">
             </div>
             @error('list')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>

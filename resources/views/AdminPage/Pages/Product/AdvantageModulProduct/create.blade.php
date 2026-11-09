@@ -19,7 +19,7 @@
                 </select>
             </div>
             @error('modulId')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="icon" class="form-label">Icon File</label>
@@ -37,21 +37,21 @@
                 </div>
             </div>
             @error('icon')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" name="title" class="form-control" id="formGroupExampleInput">
             </div>
             @error('title')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="5"></textarea>
             </div>
             @error('description')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>

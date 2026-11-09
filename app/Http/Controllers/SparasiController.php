@@ -56,7 +56,7 @@ class SparasiController extends Controller
 
         Sparasi::create($validatedData);
 
-        return redirect('/Sparasi')->with('success', 'Data created successfully!');
+        return redirect('/Sparasi')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -102,7 +102,7 @@ class SparasiController extends Controller
 
         $sparasi->update($validatedData);
 
-        return redirect('/Sparasi')->with('success', 'Data updated successfully!');
+        return redirect('/Sparasi')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**
@@ -120,6 +120,6 @@ class SparasiController extends Controller
             Storage::disk('local')->delete($imagepath);
         }
 
-        return redirect('/Sparasi')->with('error', 'Data deleted successfully!');
+        return redirect('/Sparasi')->with('success', 'Data berhasil dihapus.');
     }
 }
