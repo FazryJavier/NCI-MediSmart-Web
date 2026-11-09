@@ -28,6 +28,9 @@ class PopupController extends Controller
                 $link = $latestPopup->link;
 
                 return [
+                    'idView' => $latestPopup->id,
+                    // Changes when the popup is edited, so visitors who closed the old one see the new one.
+                    'versionView' => $latestPopup->updated_at?->timestamp,
                     'imageView' => $image,
                     'statusView' => $status,
                     'startdateView' => $tanggalawal,
@@ -37,6 +40,8 @@ class PopupController extends Controller
             }
 
             return [
+                'idView' => null,
+                'versionView' => null,
                 'imageView' => null,
                 'statusView' => null,
                 'startdateView' => null,

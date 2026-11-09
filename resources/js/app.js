@@ -53,6 +53,78 @@ Alpine.data('loadMore', ({ initial = 6, step = 3, total = 0 } = {}) => ({
     },
 }));
 
+/**
+ * Promo popup (resources/views/UserPage/Layouts/popups.blade.php).
+ * Opens after `delay` ms unless this browser session already dismissed it (sessionStorage `key`),
+ * locks page scroll while open, traps keyboard focus inside the dialog and restores focus on close.
+ */
+Alpine.data('promoPopup', ({ key = 'promo-popup', delay = 900 } = {}) => ({
+    open: false,
+    previousFocus: null,
+
+    init() {
+        let dismissed = false;
+        try {
+            dismissed = window.sessionStorage.getItem(key) === '1';
+        } catch (e) {
+            // Storage blocked (private mode): the popup simply shows on every page view.
+        }
+        if (!dismissed) {
+            setTimeout(() => this.show(), delay);
+        }
+    },
+
+    show() {
+        this.previousFocus = document.activeElement;
+        this.open = true;
+        document.documentElement.classList.add('overflow-hidden');
+        this.$nextTick(() => this.$refs.close && this.$refs.close.focus());
+    },
+
+    /** Remember the dismissal for this session. */
+    dismiss() {
+        try {
+            window.sessionStorage.setItem(key, '1');
+        } catch (e) {
+            // ignore
+        }
+    },
+
+    close() {
+        if (!this.open) {
+            return;
+        }
+        this.open = false;
+        this.dismiss();
+        document.documentElement.classList.remove('overflow-hidden');
+        if (this.previousFocus && this.previousFocus.focus) {
+            this.previousFocus.focus();
+        }
+    },
+
+    /** Keep Tab / Shift+Tab inside the dialog while it is open. */
+    trap(event) {
+        if (!this.open) {
+            return;
+        }
+        const focusable = Array.from(this.$refs.panel.querySelectorAll('a[href], button:not([disabled])'));
+        if (!focusable.length) {
+            return;
+        }
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+        } else if (!this.$refs.panel.contains(document.activeElement)) {
+            event.preventDefault();
+            first.focus();
+        }
+    },
+}));
 Alpine.start();
 
 /** Reveal sections as they enter the viewport. */
