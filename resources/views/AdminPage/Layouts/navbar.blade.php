@@ -6,7 +6,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/Admin" class="nav-link">Home</a>
+            <a href="/LandingSlider" class="nav-link">Home</a>
         </li>
     </ul>
 
@@ -15,6 +15,11 @@
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                 <i class="fas fa-expand-arrows-alt"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Account/password" title="Ubah password">
+                <i class="fas fa-user-circle"></i> {{ Auth::user()->username }}
             </a>
         </li>
         <li class="nav-item">

@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\ModulProduct;
 use App\Models\Product;
 use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class SitemapController extends Controller
 {
@@ -19,5 +20,15 @@ class SitemapController extends Controller
         ])->render();
 
         return response($content, 200, ['Content-Type' => 'application/xml; charset=UTF-8']);
+    }
+
+    /** HTML sitemap page. */
+    public function page(): View
+    {
+        return view('UserPage.Pages.sitemap', [
+            'moduls' => ModulProduct::all(),
+            'products' => Product::all(),
+            'articles' => Article::all(),
+        ]);
     }
 }

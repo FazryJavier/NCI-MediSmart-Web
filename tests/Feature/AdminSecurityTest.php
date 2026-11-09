@@ -10,12 +10,10 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
-/** Access control and upload-handling hardening of the admin panel (CMS). */
+/** Upload-handling hardening of the admin panel (CMS). Login and accounts: see AdminAuthTest. */
 class AdminSecurityTest extends TestCase
 {
     use RefreshDatabase;
-
-    private const NEW_ACCOUNT = ['username' => 'newbie', 'password' => 'secret123', 'level' => 'Admin'];
 
     protected function setUp(): void
     {
@@ -24,66 +22,9 @@ class AdminSecurityTest extends TestCase
         Storage::fake('local');
     }
 
-    private function user(string $level): User
+    private function admin(): User
     {
-        return User::create(['username' => strtolower($level) . '-user', 'password' => 'secret123', 'level' => $level]);
-    }
-
-    public function test_guest_cannot_open_or_submit_the_registration_form(): void
-    {
-        $this->get('/RegistrationJustForAdmin')->assertRedirect('/Admin');
-        $this->post('/RegistrationJustForAdmin', self::NEW_ACCOUNT)->assertRedirect('/Admin');
-
-        $this->assertDatabaseMissing('users', ['username' => 'newbie']);
-    }
-
-    public function test_editor_cannot_create_accounts(): void
-    {
-        $this->actingAs($this->user('Editor'))->get('/RegistrationJustForAdmin')->assertForbidden();
-        $this->actingAs($this->user('Editor'))->post('/RegistrationJustForAdmin', self::NEW_ACCOUNT)->assertForbidden();
-
-        $this->assertDatabaseMissing('users', ['username' => 'newbie']);
-    }
-
-    public function test_admin_can_create_accounts_with_a_hashed_password(): void
-    {
-        $this->actingAs($this->user('Admin'))
-            ->post('/RegistrationJustForAdmin', self::NEW_ACCOUNT)
-            ->assertRedirect('/RegistrationJustForAdmin');
-
-        $created = User::where('username', 'newbie')->firstOrFail();
-        $this->assertSame('Admin', $created->level);
-        $this->assertNotSame('secret123', $created->password);
-    }
-
-    public function test_admin_registration_validates_input(): void
-    {
-        $admin = $this->user('Admin');
-
-        $this->actingAs($admin)->post('/RegistrationJustForAdmin', ['username' => 'x', 'password' => '123', 'level' => 'Root'])
-            ->assertSessionHasErrors(['password', 'level']);
-        $this->actingAs($admin)->post('/RegistrationJustForAdmin', ['username' => $admin->username, 'password' => 'secret123', 'level' => 'Editor'])
-            ->assertSessionHasErrors('username');
-    }
-
-    public function test_login_is_rate_limited(): void
-    {
-        $this->user('Admin');
-
-        for ($i = 0; $i < 5; $i++) {
-            $this->post('/Admin', ['username' => 'admin-user', 'password' => 'wrong'])->assertSessionHas('LoginError');
-        }
-
-        $this->post('/Admin', ['username' => 'admin-user', 'password' => 'secret123'])->assertStatus(429);
-        $this->assertGuest();
-    }
-
-    public function test_login_works_with_valid_credentials(): void
-    {
-        $user = $this->user('Admin');
-
-        $this->post('/Admin', ['username' => 'admin-user', 'password' => 'secret123'])->assertRedirect('/LandingSlider');
-        $this->assertAuthenticatedAs($user);
+        return User::create(['username' => 'admin-user', 'password' => 'secret123', 'level' => 'Admin']);
     }
 
     public function test_update_deletes_the_record_image_and_ignores_a_client_supplied_old_image(): void
@@ -97,7 +38,7 @@ class AdminSecurityTest extends TestCase
             'title' => 'T', 'subTitle' => 'S', 'description' => 'D', 'image' => 'file-image/current.png',
         ]);
 
-        $this->actingAs($this->user('Admin'))->put("/Product/{$product->id}", [
+        $this->actingAs($this->admin())->put("/Product/{$product->id}", [
             'title' => 'T2', 'subTitle' => 'S', 'description' => 'D',
             'image' => UploadedFile::fake()->image('new.png'),
             // Forged values must never decide what gets deleted.
@@ -112,7 +53,7 @@ class AdminSecurityTest extends TestCase
 
     public function test_deleting_an_article_removes_its_image_file(): void
     {
-        $admin = $this->user('Admin');
+        $admin = $this->admin();
         Storage::disk('local')->put('file-image/article.png', 'x');
         $article = Article::create([
             'adminId' => $admin->id, 'title' => 'T', 'description' => 'D', 'image' => 'file-image/article.png',

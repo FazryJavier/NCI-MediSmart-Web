@@ -34,9 +34,10 @@ use App\Http\Controllers\ModulProductController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductListController;
-use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\WhatsappController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\PopupController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SparasiController;
@@ -68,7 +69,7 @@ Route::view('/demo', 'UserPage.Pages.demo')->name('demo');
 Route::post('/demo', [DemoController::class, 'store'])->middleware('throttle:10,1')->name('demo.store');
 Route::get('/testimoni/form', [TestimonialSubmissionController::class, 'create'])->name('testimoni.form');
 Route::post('/testimoni/form', [TestimonialSubmissionController::class, 'store'])->middleware('throttle:5,1')->name('testimoni.store');
-Route::get('/sitemap', [UserController::class, 'showAll'])->name('sitemap');
+Route::get('/sitemap', [SitemapController::class, 'page'])->name('sitemap');
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.xml');
 
 // Legacy URLs (already indexed by Google / shared links): permanent redirects to the new URLs.
@@ -85,17 +86,29 @@ Route::permanentRedirect('/Sitemap.xml', '/sitemap.xml');
 // Old demo form posts (cached pages) keep working.
 Route::post('/Demo', [DemoController::class, 'store'])->middleware('throttle:10,1');
 
-Route::get('/Admin', [UserController::class, 'index'])->name('Admin');
-Route::post('/Admin', [UserController::class, 'authenticate'])->middleware('throttle:5,1');
-Route::post('/logout', [UserController::class, 'logout']);
+Route::get('/Admin', [AuthController::class, 'showLogin'])->name('Admin');
+// The per username+IP lockout lives in AuthController; this is only a coarse per-IP ceiling.
+Route::post('/Admin', [AuthController::class, 'login'])->middleware('throttle:30,1');
+Route::post('/logout', [AuthController::class, 'logout']);
 
-// Creating CMS accounts is restricted to logged-in users with the Admin level.
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/RegistrationJustForAdmin', [RegistrationController::class, 'index']);
-    Route::post('/RegistrationJustForAdmin', [RegistrationController::class, 'store']);
+// Former public registration URL (bookmarks): account creation is now part of the Users menu.
+Route::get('/RegistrationJustForAdmin', fn () => redirect('/Users/create'));
+
+// "auth.session" signs a user out of their other devices when the password changes.
+Route::middleware(['auth', 'auth.session', 'admin'])->group(function () {
+    Route::get('/Users', [UserManagementController::class, 'index']);
+    Route::get('/Users/create', [UserManagementController::class, 'create']);
+    Route::post('/Users', [UserManagementController::class, 'store']);
+    Route::get('/Users/{id}/update', [UserManagementController::class, 'edit'])->whereNumber('id');
+    Route::put('/Users/{id}', [UserManagementController::class, 'update'])->whereNumber('id');
+    Route::delete('/Users/{id}', [UserManagementController::class, 'destroy'])->whereNumber('id');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'auth.session'])->group(function () {
+    // Own password (every signed-in user)
+    Route::get('/Account/password', [AccountController::class, 'editPassword']);
+    Route::put('/Account/password', [AccountController::class, 'updatePassword']);
+
     // Landing Slider
     Route::get('/LandingSlider', [LandingSliderController::class, 'index']);
     Route::get('/LandingSlider/create', [LandingSliderController::class, 'create']);

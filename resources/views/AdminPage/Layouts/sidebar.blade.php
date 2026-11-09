@@ -338,6 +338,18 @@
                     </ul>
                 </li>
                 {{-- End Pop up --}}
+
+                {{-- Users (Admin only) --}}
+                @if (Auth::user()->level === 'Admin')
+                    <li class="nav-header">AKUN</li>
+                    <li class="nav-item">
+                        <a href="/Users" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Pengguna</p>
+                        </a>
+                    </li>
+                @endif
+                {{-- End Users --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
