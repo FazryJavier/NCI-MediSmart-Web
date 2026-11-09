@@ -19,7 +19,7 @@
                 </select>
             </div>
             @error('productId')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="logo" class="form-label">Logo File</label>
@@ -37,21 +37,21 @@
                 </div>
             </div>
             @error('logo')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="5"></textarea>
             </div>
             @error('description')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="flyer" class="form-label">Link Flyer</label>
                 <input type="text" name="flyer" class="form-control" id="formGroupExampleInput">
             </div>
             @error('flyer')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="video" class="form-label">Video</label>
@@ -61,7 +61,7 @@
                 <input type="text" name="video" class="form-control" id="formGroupExampleInput">
             </div>
             @error('video')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="moduldesc" class="form-label">Modul Description</label>
@@ -69,7 +69,7 @@
                 <textarea name="moduldesc" id="moduldesc" style="display: none;"></textarea>
             </div>
             @error('moduldesc')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>

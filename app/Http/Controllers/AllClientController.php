@@ -62,7 +62,7 @@ class AllClientController extends Controller
 
         AllClient::create($validatedData);
 
-        return redirect('/LandingClient')->with('success', 'Data created successfully!');
+        return redirect('/LandingClient')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -107,7 +107,7 @@ class AllClientController extends Controller
 
         $client->update($validatedData);
 
-        return redirect('/LandingClient')->with('success', 'Data updated successfully!');
+        return redirect('/LandingClient')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**
@@ -125,6 +125,6 @@ class AllClientController extends Controller
             Storage::disk('local')->delete($imagePath);
         }
 
-        return redirect('/LandingClient')->with('error', 'Data deleted successfully!');
+        return redirect('/LandingClient')->with('success', 'Data berhasil dihapus.');
     }
 }

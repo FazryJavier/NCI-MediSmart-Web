@@ -47,7 +47,7 @@ class AdvantageListProductController extends Controller
             ]);
         }
 
-        return redirect('/AdvantageListProduct')->with('success', 'Data created successfully!');
+        return redirect('/AdvantageListProduct')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -88,7 +88,7 @@ class AdvantageListProductController extends Controller
 
         $advantageListProduct->update($validatedData);
 
-        return redirect('/AdvantageListProduct')->with('success', 'Data updated successfully!');
+        return redirect('/AdvantageListProduct')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**
@@ -100,6 +100,6 @@ class AdvantageListProductController extends Controller
 
         $advantageListProduct->delete();
 
-        return redirect('/AdvantageListProduct')->with('error', 'Data deleted successfully!');
+        return redirect('/AdvantageListProduct')->with('success', 'Data berhasil dihapus.');
     }
 }

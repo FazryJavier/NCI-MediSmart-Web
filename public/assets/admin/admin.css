@@ -239,3 +239,194 @@
     color: var(--admin-muted);
     font-size: .9rem;
 }
+
+/* ---- Toast notifications (public/assets/admin/admin.js) ----------------------------------- */
+.admin-toast-stack {
+    position: fixed;
+    top: 4.25rem;
+    right: 1rem;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    width: min(380px, calc(100vw - 2rem));
+    pointer-events: none;
+}
+
+.admin-toast {
+    --toast-color: #17a2b8;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    padding: .85rem 2.2rem .95rem .9rem;
+    overflow: hidden;
+    background: #fff;
+    border-left: 4px solid var(--toast-color);
+    border-radius: .5rem;
+    box-shadow: 0 10px 30px rgba(16, 24, 40, .18), 0 2px 6px rgba(16, 24, 40, .08);
+    pointer-events: auto;
+    animation: admin-toast-in .25s ease-out both;
+}
+
+.admin-toast--success { --toast-color: #28a745; }
+.admin-toast--error { --toast-color: #dc3545; }
+.admin-toast--warning { --toast-color: #e0a800; }
+.admin-toast--info { --toast-color: #17a2b8; }
+
+.admin-toast__icon {
+    margin-top: .1rem;
+    font-size: 1.25rem;
+    color: var(--toast-color);
+}
+
+.admin-toast__body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    line-height: 1.35;
+}
+
+.admin-toast__title {
+    font-size: .95rem;
+    color: #1f2937;
+}
+
+.admin-toast__message {
+    font-size: .9rem;
+    color: #4b5565;
+    word-break: break-word;
+}
+
+.admin-toast__close {
+    position: absolute;
+    top: .35rem;
+    right: .5rem;
+    padding: 0 .3rem;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: #9aa3b2;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.admin-toast__close:hover,
+.admin-toast__close:focus {
+    color: #1f2937;
+}
+
+.admin-toast__bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: var(--toast-color);
+    opacity: .55;
+    transform-origin: left;
+    animation: admin-toast-progress var(--toast-duration, 5s) linear forwards;
+}
+
+.admin-toast.is-paused .admin-toast__bar {
+    animation-play-state: paused;
+}
+
+.admin-toast.is-leaving {
+    animation: admin-toast-out .2s ease-in forwards;
+}
+
+@keyframes admin-toast-in {
+    from { opacity: 0; transform: translateX(24px); }
+    to { opacity: 1; transform: none; }
+}
+
+@keyframes admin-toast-out {
+    to { opacity: 0; transform: translateX(24px); }
+}
+
+@keyframes admin-toast-progress {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-toast,
+    .admin-toast.is-leaving,
+    .admin-toast__bar {
+        animation: none;
+    }
+}
+
+/* ---- Validation ---------------------------------------------------------------------------- */
+.form-error-summary {
+    margin-bottom: 1.25rem;
+    padding: .85rem 1rem;
+    background: #fff5f5;
+    border: 1px solid #f5c2c7;
+    border-left: 4px solid #dc3545;
+    border-radius: .5rem;
+    color: #842029;
+}
+
+.form-error-summary__title {
+    font-weight: 700;
+}
+
+.form-error-summary ul {
+    margin: .4rem 0 0;
+    padding-left: 1.25rem;
+    font-size: .9rem;
+}
+
+.field-error {
+    display: flex;
+    align-items: flex-start;
+    gap: .35rem;
+    margin: .3rem 0 1rem;
+    font-size: .85rem;
+    color: #dc3545;
+}
+
+.field-error::before {
+    content: "\f06a"; /* exclamation-circle (Font Awesome 5 solid) */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    line-height: 1.4;
+}
+
+/* The message sits right under its field block (which has a bottom margin). */
+.mb-3 + .field-error,
+.mb-4 + .field-error,
+.form-group + .field-error {
+    margin-top: -.6rem;
+}
+
+.card-body .form-control.is-invalid,
+.card-body .custom-file-input.is-invalid ~ .custom-file-label {
+    border-color: #dc3545;
+}
+
+/* ---- Confirmation modal -------------------------------------------------------------------- */
+.admin-confirm {
+    border: 0;
+    border-radius: .75rem;
+    box-shadow: 0 20px 50px rgba(16, 24, 40, .25);
+}
+
+.admin-confirm__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: .5rem auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #dc3545;
+    background: #fdecee;
+    border-radius: 50%;
+}
+
+.admin-confirm__title {
+    font-weight: 700;
+}

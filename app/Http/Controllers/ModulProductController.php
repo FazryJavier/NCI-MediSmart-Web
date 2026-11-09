@@ -79,7 +79,7 @@ class ModulProductController extends Controller
 
         ModulProduct::create($validatedData);
 
-        return redirect('/ModulProduct')->with('success', 'Data created successfully!');
+        return redirect('/ModulProduct')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -128,7 +128,7 @@ class ModulProductController extends Controller
 
         $modulProduct->update($validatedData);
 
-        return redirect('/ModulProduct')->with('success', 'Data updated successfully!');
+        return redirect('/ModulProduct')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**
@@ -146,6 +146,6 @@ class ModulProductController extends Controller
             Storage::disk('local')->delete($imagepath);
         }
 
-        return redirect('/ModulProduct')->with('error', 'Data deleted successfully!');
+        return redirect('/ModulProduct')->with('success', 'Data berhasil dihapus.');
     }
 }

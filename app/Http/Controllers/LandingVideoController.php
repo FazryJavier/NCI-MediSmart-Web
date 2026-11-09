@@ -62,7 +62,7 @@ class LandingVideoController extends Controller
 
         LandingVideo::create($validatedData);
 
-        return redirect('/LandingVideo')->with('success', 'Data created successfully!');
+        return redirect('/LandingVideo')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -102,7 +102,7 @@ class LandingVideoController extends Controller
 
         $video->update($validatedData);
 
-        return redirect('/LandingVideo')->with('success', 'Data updated successfully!');
+        return redirect('/LandingVideo')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**
@@ -114,6 +114,6 @@ class LandingVideoController extends Controller
 
         $video->delete();
 
-        return redirect('/LandingVideo')->with('error', 'Data deleted successfully!');
+        return redirect('/LandingVideo')->with('success', 'Data berhasil dihapus.');
     }
 }

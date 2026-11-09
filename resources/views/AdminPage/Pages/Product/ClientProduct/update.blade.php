@@ -20,7 +20,7 @@
                 </select>
             </div>
             @error('productId')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
@@ -45,7 +45,7 @@
                 </div>
             </div>
             @error('image')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>

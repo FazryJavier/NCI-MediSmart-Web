@@ -45,7 +45,7 @@
                             @method('delete')
                             @if ($item->id !== Auth::id())
                                 <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Hapus akun {{ $item->username }}?')">
+                                    data-confirm="Hapus akun {{ $item->username }}?">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             @endif

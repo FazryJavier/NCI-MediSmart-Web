@@ -65,7 +65,7 @@ class DetailProductController extends Controller
         }
 
         DetailProduct::create($validatedData);
-        return redirect('/DetailProduct')->with('success', 'Data created successfully!');
+        return redirect('/DetailProduct')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -115,7 +115,7 @@ class DetailProductController extends Controller
 
         $detailProduct->update($validatedData);
 
-        return redirect('/DetailProduct')->with('success', 'Data updated successfully!');
+        return redirect('/DetailProduct')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**
@@ -133,6 +133,6 @@ class DetailProductController extends Controller
             Storage::disk('local')->delete($imagepath);
         }
 
-        return redirect('/DetailProduct')->with('error', 'Data deleted successfully!');
+        return redirect('/DetailProduct')->with('success', 'Data berhasil dihapus.');
     }
 }

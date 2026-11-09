@@ -21,7 +21,7 @@
                 </select>
             </div>
             @error('advantageId')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -31,7 +31,7 @@
                     id="formGroupExampleInput">
             </div>
             @error('name')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>

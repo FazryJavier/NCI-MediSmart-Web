@@ -14,7 +14,7 @@
                 <input type="text" name="title" class="form-control" id="formGroupExampleInput">
             </div>
             @error('title')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="image" class="form-label">Image File</label>
@@ -32,7 +32,7 @@
                 </div>
             </div>
             @error('image')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Create</button>

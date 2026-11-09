@@ -14,7 +14,7 @@
                 <input type="text" name="address_head" class="form-control" id="formGroupExampleInput">
             </div>
             @error('address_head')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="phone_head" class="form-label">Phone Head Office</label>
@@ -31,7 +31,7 @@
                 <input type="text" name="address_branch" class="form-control" id="formGroupExampleInput">
             </div>
             @error('address_branch')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="phone_branch" class="form-label">Phone Branch Office</label>

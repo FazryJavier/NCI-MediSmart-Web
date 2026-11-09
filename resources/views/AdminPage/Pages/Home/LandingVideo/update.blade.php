@@ -14,14 +14,14 @@
                 <input type="text" value="{{ $videoUpdate->title }}" name="title" class="form-control">
             </div>
             @error('title')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="5">{{ $videoUpdate->description }}</textarea>
             </div>
             @error('description')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label for="video" class="form-label">Video</label>
@@ -31,7 +31,7 @@
                 <input type="text" value="{{ $videoUpdate->video }}" name="video" class="form-control">
             </div>
             @error('video')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="field-error" role="alert">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Update</button>

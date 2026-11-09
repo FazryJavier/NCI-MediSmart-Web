@@ -68,7 +68,7 @@ class AboutController extends Controller
 
         About::create($validatedData);
 
-        return redirect('/AboutUs')->with('success', 'Data created successfully!');
+        return redirect('/AboutUs')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -115,7 +115,7 @@ class AboutController extends Controller
 
         $about->update($validatedData);
 
-        return redirect('/AboutUs')->with('success', 'Data updated successfully!');
+        return redirect('/AboutUs')->with('success', 'Data berhasil diperbarui.');
     }
 
     /**
@@ -133,6 +133,6 @@ class AboutController extends Controller
             Storage::disk('local')->delete($imagePath);
         }
 
-        return redirect('/AboutUs')->with('error', 'Data deleted successfully!');
+        return redirect('/AboutUs')->with('success', 'Data berhasil dihapus.');
     }
 }
