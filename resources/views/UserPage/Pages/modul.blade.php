@@ -64,7 +64,7 @@
                             {{-- Fixed icon box and title height so the descriptions line up across columns. --}}
                             <div class="flex h-14 w-full items-center justify-center">
                                 @if ($advantage->icon)
-                                    <img src="{{ $img($advantage->icon) }}" alt="" class="max-h-14 w-auto max-w-[72px] object-contain opacity-60 grayscale"
+                                    <img src="{{ $img($advantage->icon) }}" alt="" class="max-h-14 w-auto max-w-[72px] object-contain"
                                         loading="lazy" decoding="async">
                                 @endif
                             </div>
