@@ -96,9 +96,7 @@ class ClientProductController extends Controller
         $clientProduct = ClientProduct::find($id);
 
         if ($request->hasFile('image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
+            $this->deleteStoredFile($clientProduct?->image);
             $validatedData['image'] = $request->file('image')->store('file-image');
         }
 

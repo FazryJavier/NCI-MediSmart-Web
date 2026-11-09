@@ -105,9 +105,7 @@ class CTAController extends Controller
         $cta = CTA::find($id);
 
         if ($request->hasFile('image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
+            $this->deleteStoredFile($cta?->image);
             $validatedData['image'] = $request->file('image')->store('file-image');
         }
 

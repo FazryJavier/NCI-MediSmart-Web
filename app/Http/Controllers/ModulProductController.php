@@ -121,9 +121,7 @@ class ModulProductController extends Controller
         $modulProduct = ModulProduct::find($id);
 
         if ($request->hasFile('icon')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
+            $this->deleteStoredFile($modulProduct?->icon);
 
             $validatedData['icon'] = $request->file('icon')->store('file-image');
         }

@@ -143,9 +143,7 @@ class ArticleController extends Controller
         $articles = Article::find($id);
 
         if ($request->hasFile('image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
+            $this->deleteStoredFile($articles?->image);
 
             $validatedData['image'] = $request->file('image')->store('file-image');
         }
@@ -159,8 +157,10 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         $articles = Article::findOrFail($id);
+        $imagePath = $articles->image;
 
         $articles->delete();
+        $this->deleteStoredFile($imagePath);
 
         return redirect('/Article')->with('error', 'Data deleted successfully!');
     }

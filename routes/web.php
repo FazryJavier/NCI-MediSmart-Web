@@ -86,11 +86,14 @@ Route::permanentRedirect('/Sitemap.xml', '/sitemap.xml');
 Route::post('/Demo', [DemoController::class, 'store'])->middleware('throttle:10,1');
 
 Route::get('/Admin', [UserController::class, 'index'])->name('Admin');
-Route::post('/Admin', [UserController::class, 'authenticate']);
+Route::post('/Admin', [UserController::class, 'authenticate'])->middleware('throttle:5,1');
 Route::post('/logout', [UserController::class, 'logout']);
 
-Route::get('/RegistrationJustForAdmin', [RegistrationController::class, 'index']);
-Route::post('/RegistrationJustForAdmin', [RegistrationController::class, 'store']);
+// Creating CMS accounts is restricted to logged-in users with the Admin level.
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/RegistrationJustForAdmin', [RegistrationController::class, 'index']);
+    Route::post('/RegistrationJustForAdmin', [RegistrationController::class, 'store']);
+});
 
 Route::middleware(['auth'])->group(function () {
     // Landing Slider

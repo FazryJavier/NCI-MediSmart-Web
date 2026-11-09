@@ -119,9 +119,7 @@ class ProductController extends Controller
         $product = Product::find($id);
 
         if ($request->hasFile('image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
+            $this->deleteStoredFile($product?->image);
 
             $validatedData['image'] = $request->file('image')->store('file-image');
         }

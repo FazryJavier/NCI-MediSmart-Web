@@ -98,9 +98,7 @@ class AdvantageModulProductController extends Controller
         $advantageModulProduct = AdvantageModulProduct::find($id);
 
         if ($request->hasFile('icon')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
+            $this->deleteStoredFile($advantageModulProduct?->icon);
 
             $validatedData['icon'] = $request->file('icon')->store('file-image');
         }

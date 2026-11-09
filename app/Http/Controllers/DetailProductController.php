@@ -109,9 +109,7 @@ class DetailProductController extends Controller
         $detailProduct = DetailProduct::find($id);
 
         if ($request->hasFile('logo')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
+            $this->deleteStoredFile($detailProduct?->logo);
             $validatedData['logo'] = $request->file('logo')->store('file-image');
         }
 

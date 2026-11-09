@@ -96,9 +96,7 @@ class SparasiController extends Controller
         $sparasi = Sparasi::find($id);
 
         if ($request->hasFile('image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
+            $this->deleteStoredFile($sparasi?->image);
             $validatedData['image'] = $request->file('image')->store('file-image');
         }
 

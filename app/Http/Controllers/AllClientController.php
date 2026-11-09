@@ -100,9 +100,7 @@ class AllClientController extends Controller
         $client = AllClient::find($id);
 
         if ($request->hasFile('image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
+            $this->deleteStoredFile($client?->image);
 
             $validatedData['image'] = $request->file('image')->store('file-image');
         }
