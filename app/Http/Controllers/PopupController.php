@@ -10,9 +10,10 @@ class PopupController extends Controller
 {
     public function index()
     {
-        $popup = Popup::all();
+        $popup = Popup::query()->orderByDesc('id')->get();
 
-        return view('AdminPage.Pages.PopUp.index', compact('popup'));
+        // The website only shows the newest popup, so the list marks which one that is.
+        return view('AdminPage.Pages.PopUp.index', ['popup' => $popup, 'currentId' => $popup->first()?->id]);
     }
 
     public static function showContent()
@@ -52,13 +53,7 @@ class PopupController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
-            'status' => 'required|boolean',
-            'start_date' => 'date',
-            'end_date' => 'date',
-            'link' => 'required',
-        ]);
+        $validatedData = $request->validate($this->rules(imageRequired: true));
 
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('file-image');
@@ -85,21 +80,15 @@ class PopupController extends Controller
 
     public function update(Request $request, $id)
     {
-        $content = [
-            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
-            'status' => 'required',
-            'start_date' => 'date', // Validasi untuk tanggal awal yang dapat bernilai NULL
-            'end_date' => 'date',   // Validasi untuk tanggal akhir yang dapat bernilai NULL
-            'link' => 'required',   // Validasi untuk tanggal akhir yang dapat bernilai NULL
-        ];
+        $validatedData = $request->validate($this->rules(imageRequired: false));
 
-        $validatedData = $request->validate($content);
-
-        $popup = Popup::find($id);
+        $popup = Popup::findOrFail($id);
 
         if ($request->hasFile('image')) {
-            $this->deleteStoredFile($popup?->image);
+            $this->deleteStoredFile($popup->image);
             $validatedData['image'] = $request->file('image')->store('file-image');
+        } else {
+            unset($validatedData['image']); // keep the current image
         }
 
         $popup->update($validatedData);
@@ -120,5 +109,18 @@ class PopupController extends Controller
         }
 
         return redirect('/Popup')->with('error', 'Data deleted successfully!');
+    }
+    /** @return array<string, mixed> */
+    private function rules(bool $imageRequired): array
+    {
+        return [
+            'image' => [$imageRequired ? 'required' : 'nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:5120'],
+            'status' => ['required', 'boolean'],
+            // Dates are optional: empty means "no limit". The end date is the last day the popup is shown.
+            'start_date' => ['nullable', 'date'],
+            'end_date' => ['nullable', 'date', 'after_or_equal:start_date'],
+            // A path on this site or a full http(s) address; blocks javascript: and similar schemes.
+            'link' => ['required', 'string', 'max:2048', 'regex:#^(/|https?://)#i'],
+        ];
     }
 }

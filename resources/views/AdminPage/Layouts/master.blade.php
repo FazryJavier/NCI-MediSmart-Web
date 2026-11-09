@@ -44,7 +44,8 @@
     <link rel="stylesheet" href="{{ asset('/adminlte/dist/css/adminlte.min.css') }}">
     @stack('style')
     <!-- Shared admin look (after AdminLTE and the page styles so it can refine them) -->
-    <link rel="stylesheet" href="{{ asset('assets/admin/admin.css') }}?v={{ filemtime(public_path('assets/admin/admin.css')) }}">
+    @php($adminCss = public_path('assets/admin/admin.css'))
+    <link rel="stylesheet" href="{{ asset('assets/admin/admin.css') }}{{ is_file($adminCss) ? '?v=' . filemtime($adminCss) : '' }}">
     <script>
         // Shared DataTables options (Indonesian labels); pages pass this to DataTable().
         window.adminDataTableOptions = {

@@ -1,11 +1,11 @@
 {{-- Promo popup: rendered only when active and inside its date window (checked server-side). --}}
 @php
-    $popupStart = $popupContent['startdateView'] ? \Illuminate\Support\Carbon::parse($popupContent['startdateView']) : null;
-    $popupEnd = $popupContent['enddateView'] ? \Illuminate\Support\Carbon::parse($popupContent['enddateView']) : null;
-    $popupActive = (int) $popupContent['statusView'] === 1
-        && $popupContent['imageView']
-        && (! $popupStart || now()->gte($popupStart))
-        && (! $popupEnd || now()->lte($popupEnd));
+    $popupActive = \App\Models\Popup::resolveState(
+        $popupContent['statusView'],
+        $popupContent['startdateView'],
+        $popupContent['enddateView'],
+        $popupContent['imageView'],
+    ) === \App\Models\Popup::STATE_LIVE;
 @endphp
 
 @if ($popupActive)
