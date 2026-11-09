@@ -95,9 +95,7 @@ class FeedbackController extends Controller
         $feedback = Feedback::find($id);
 
         if ($request->hasFile('image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
+            $this->deleteStoredFile($feedback?->image);
 
             $validatedData['image'] = $request->file('image')->store('file-image');
         }

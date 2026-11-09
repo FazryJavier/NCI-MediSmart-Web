@@ -108,9 +108,7 @@ class AboutController extends Controller
         $about = About::find($id);
 
         if ($request->hasFile('image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
+            $this->deleteStoredFile($about?->image);
 
             $validatedData['image'] = $request->file('image')->store('file-image');
         }

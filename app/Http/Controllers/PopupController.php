@@ -98,9 +98,7 @@ class PopupController extends Controller
         $popup = Popup::find($id);
 
         if ($request->hasFile('image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
+            $this->deleteStoredFile($popup?->image);
             $validatedData['image'] = $request->file('image')->store('file-image');
         }
 

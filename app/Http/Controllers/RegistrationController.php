@@ -41,7 +41,7 @@ class RegistrationController extends Controller
             'level' => $request->input('level'),
         ]);
 
-        return redirect('/Admin');
+        return redirect('/RegistrationJustForAdmin')->with('success', 'Akun berhasil dibuat.');
     }
 
     /**

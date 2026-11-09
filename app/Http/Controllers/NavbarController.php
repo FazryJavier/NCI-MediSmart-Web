@@ -92,9 +92,7 @@ class NavbarController extends Controller
         $navbar = Navbar::find($id);
 
         if ($request->hasFile('icon')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
+            $this->deleteStoredFile($navbar?->icon);
 
             $validatedData['icon'] = $request->file('icon')->store('file-image');
         }
