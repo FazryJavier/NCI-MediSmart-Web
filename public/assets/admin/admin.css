@@ -1,0 +1,204 @@
+/* Shared look of the admin panel (loaded by AdminPage/Layouts/master.blade.php, after AdminLTE). */
+
+:root {
+    --admin-border: #e3e8ef;
+    --admin-head-bg: #f4f6fa;
+    --admin-muted: #6b7686;
+    --admin-hover: #f5f9ff;
+}
+
+/* ---- Page header + breadcrumb ------------------------------------------------------------- */
+.content-header {
+    padding: 1rem 1rem .5rem;
+}
+
+.content-header h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.content-header .breadcrumb {
+    background: transparent;
+    margin: 0;
+    padding: .35rem 0 0;
+    font-size: .9rem;
+}
+
+.content-header .breadcrumb a {
+    color: #0069d9;
+}
+
+.content-header .breadcrumb .breadcrumb-item.active {
+    color: var(--admin-muted);
+}
+
+/* ---- Card --------------------------------------------------------------------------------- */
+.content-wrapper > .content {
+    padding-bottom: 1.5rem;
+}
+
+.content-wrapper .card {
+    border: 0;
+    border-radius: .6rem;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .1), 0 1px 2px rgba(16, 24, 40, .06);
+}
+
+.content-wrapper .card.card-outline {
+    border-top: 3px solid #007bff;
+}
+
+.content-wrapper .card > .card-header {
+    background: #fff;
+    border-bottom: 1px solid var(--admin-border);
+    padding: .9rem 1.25rem;
+}
+
+.content-wrapper .card > .card-header .card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.content-wrapper .card > .card-body {
+    padding: 1.25rem;
+}
+
+/* ---- Toolbar with the "Tambah Data" button ------------------------------------------------ */
+.content-wrapper .margin-tb .pull-right {
+    float: none !important;
+    display: flex;
+    justify-content: flex-end;
+    gap: .5rem;
+    margin-bottom: 1rem !important;
+}
+
+.content-wrapper .margin-tb .pull-right:empty {
+    display: none;
+}
+
+.content-wrapper .margin-tb .pull-right .btn {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    border-radius: .4rem;
+    padding: .45rem 1rem;
+    box-shadow: 0 1px 2px rgba(0, 105, 217, .3);
+}
+
+/* ---- Tables ------------------------------------------------------------------------------- */
+.card-body table.table {
+    margin-bottom: 0;
+    border: 1px solid var(--admin-border);
+}
+
+.card-body table.table thead th {
+    background: var(--admin-head-bg);
+    color: #4b5565;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-bottom: 2px solid var(--admin-border);
+}
+
+.card-body table.table td {
+    vertical-align: middle;
+    border-top: 1px solid var(--admin-border);
+}
+
+.card-body table.admin-table tbody tr:hover {
+    background: var(--admin-hover);
+}
+
+.card-body table.table td img {
+    display: block;
+    width: auto;
+    max-width: 140px;
+    max-height: 90px;
+    object-fit: cover;
+    margin: 0 !important;
+    border-radius: .4rem;
+    border: 1px solid var(--admin-border);
+}
+
+/* Edit / delete buttons side by side and compact. */
+.card-body table.table td form {
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    margin: 0;
+}
+
+.card-body table.table td form .btn {
+    margin: 0 !important;
+    padding: .3rem .55rem;
+    font-size: .85rem;
+    border-radius: .35rem;
+}
+
+/* DataTables controls */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info {
+    color: var(--admin-muted);
+    font-size: .9rem;
+}
+
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid #ced4da;
+    border-radius: .35rem;
+    padding: .25rem .5rem;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: .4rem;
+}
+
+.dataTables_wrapper .row:first-child {
+    margin-bottom: .75rem;
+}
+
+.dataTables_wrapper .row:last-child {
+    margin-top: .75rem;
+}
+
+/* ---- Forms -------------------------------------------------------------------------------- */
+.card-body form .form-label,
+.card-body form label:not(.custom-file-label):not(.form-check-label) {
+    font-weight: 600;
+    color: #374151;
+}
+
+.card-body form .description {
+    display: block;
+    margin: .1rem 0 .4rem;
+    font-weight: 400;
+    font-size: .85rem;
+    color: var(--admin-muted);
+}
+
+.card-body form .form-control {
+    border-radius: .4rem;
+}
+
+.card-body form > .btn {
+    margin-top: .5rem;
+    margin-right: .25rem;
+    border-radius: .4rem;
+    padding: .45rem 1.1rem;
+    font-weight: 600;
+}
+
+.card-body .alert {
+    border-radius: .4rem;
+}
+
+/* ---- Footer ------------------------------------------------------------------------------- */
+.main-footer {
+    color: var(--admin-muted);
+    font-size: .9rem;
+}

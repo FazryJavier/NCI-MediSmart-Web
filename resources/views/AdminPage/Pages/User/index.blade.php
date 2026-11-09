@@ -8,12 +8,12 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right mb-2">
-                <a class="btn btn-success" href="/Users/create">Tambah Pengguna</a>
+                <a class="btn btn-primary" href="/Users/create"><i class="fas fa-plus mr-1"></i> Tambah Data</a>
             </div>
         </div>
     </div>
 
-    <table class="table table-bordered table-striped">
+    <table class="table table-hover admin-table">
         <thead>
             <tr>
                 <th class="col-sm-1">No</th>

@@ -28,6 +28,46 @@ class AdminLayoutTest extends TestCase
         }
     }
 
+    public function test_list_page_uses_a_short_heading_breadcrumb_and_card_label(): void
+    {
+        $html = $this->adminPage('/LandingSlider');
+
+        $this->assertStringContainsString('<h1 class="m-0">Landing Slider</h1>', $html);
+        $this->assertStringContainsString('<title>Landing Slider | Admin NCI-Medismart</title>', $html);
+        $this->assertStringContainsString('<h3 class="card-title">Daftar Data</h3>', $html);
+        $this->assertStringContainsString('>Beranda</a>', $html);
+        $this->assertStringNotContainsString('Page Home - Landing Slider', $html);
+        $this->assertStringNotContainsString('breadcrumb-item">Home<', $html);
+    }
+
+    public function test_form_pages_show_the_action_in_heading_and_breadcrumb(): void
+    {
+        $create = $this->adminPage('/LandingSlider/create');
+        $this->assertStringContainsString('<h1 class="m-0">Tambah Landing Slider</h1>', $create);
+        $this->assertStringContainsString('<h3 class="card-title">Form Tambah Data</h3>', $create);
+        $this->assertStringContainsString('<li class="breadcrumb-item active">Tambah</li>', $create);
+
+        // The title already says "Tambah": it must not be doubled.
+        $this->assertStringContainsString('<h1 class="m-0">Tambah Pengguna</h1>', $this->adminPage('/Users/create'));
+    }
+
+    public function test_create_button_is_consistent_and_the_stylesheet_is_loaded(): void
+    {
+        $html = $this->adminPage('/LandingSlider');
+
+        $this->assertStringContainsString('href="/LandingSlider/create"><i class="fas fa-plus mr-1"></i> Tambah Data</a>', $html);
+        $this->assertStringContainsString('assets/admin/admin.css', $html);
+        $this->assertFileExists(public_path('assets/admin/admin.css'));
+        $this->assertStringContainsString('window.adminDataTableOptions', $html);
+    }
+
+    public function test_empty_lists_render_without_the_old_stray_heading(): void
+    {
+        foreach (['/LandingSlider', '/Product', '/Whatsapp', '/CTA', '/Users'] as $url) {
+            $this->assertStringNotContainsString('Data is Empty', $this->adminPage($url), $url);
+        }
+    }
+
     public function test_admin_layout_only_references_assets_that_exist(): void
     {
         $html = $this->adminPage('/LandingSlider');
