@@ -1,358 +1,130 @@
+@php
+    /*
+     * Sidebar definition. Each section has a header and a list of entries:
+     *  - a link:  ['label' => ..., 'icon' => ..., 'path' => '/Path']
+     *  - a group: ['label' => ..., 'icon' => ..., 'children' => [links...]]
+     * Icons are Font Awesome 5 Free classes (the version bundled in /adminlte), one per purpose.
+     * A link is active for its path and everything below it (e.g. /Product, /Product/create, /Product/3/update).
+     */
+    $sections = [
+        'KONTEN WEBSITE' => [
+            [
+                'label' => 'Beranda',
+                'icon' => 'fas fa-home',
+                'children' => [
+                    ['label' => 'Slider', 'icon' => 'fas fa-images', 'path' => '/LandingSlider'],
+                    ['label' => 'Client', 'icon' => 'fas fa-handshake', 'path' => '/LandingClient'],
+                    ['label' => 'Experience', 'icon' => 'fas fa-award', 'path' => '/Experience'],
+                    ['label' => 'Experience List', 'icon' => 'fas fa-tasks', 'path' => '/ExperienceList'],
+                    ['label' => 'Map', 'icon' => 'fas fa-map-marked-alt', 'path' => '/LandingMap'],
+                    ['label' => 'Video', 'icon' => 'fas fa-play-circle', 'path' => '/LandingVideo'],
+                    ['label' => 'CTA', 'icon' => 'fas fa-bullhorn', 'path' => '/CTA'],
+                ],
+            ],
+            [
+                'label' => 'Produk',
+                'icon' => 'fas fa-box-open',
+                'children' => [
+                    ['label' => 'Product', 'icon' => 'fas fa-cube', 'path' => '/Product'],
+                    ['label' => 'Detail Product', 'icon' => 'fas fa-info-circle', 'path' => '/DetailProduct'],
+                    ['label' => 'Client Product', 'icon' => 'fas fa-building', 'path' => '/ClientProduct'],
+                    ['label' => 'Advantage Product', 'icon' => 'fas fa-star', 'path' => '/AdvantageProduct'],
+                    ['label' => 'Advantage List', 'icon' => 'fas fa-list-ul', 'path' => '/AdvantageListProduct'],
+                    ['label' => 'Sparasi Product', 'icon' => 'fas fa-layer-group', 'path' => '/Sparasi'],
+                ],
+            ],
+            [
+                'label' => 'Modul',
+                'icon' => 'fas fa-puzzle-piece',
+                'children' => [
+                    ['label' => 'Modul Product', 'icon' => 'fas fa-cubes', 'path' => '/ModulProduct'],
+                    ['label' => 'Advantage Modul', 'icon' => 'fas fa-thumbs-up', 'path' => '/AdvantageModulProduct'],
+                    ['label' => 'Fasilities Modul', 'icon' => 'fas fa-tools', 'path' => '/FasilitiesModulProduct'],
+                    ['label' => 'Image Modul', 'icon' => 'fas fa-image', 'path' => '/ImageModulProduct'],
+                ],
+            ],
+            ['label' => 'Tentang Kami', 'icon' => 'fas fa-id-card', 'path' => '/AboutUs'],
+            ['label' => 'Blog / Article', 'icon' => 'fas fa-newspaper', 'path' => '/Article'],
+        ],
+        'INTERAKSI' => [
+            [
+                'label' => 'Testimoni',
+                'icon' => 'fas fa-comments',
+                'children' => [
+                    ['label' => 'Feedback', 'icon' => 'fas fa-comment-dots', 'path' => '/Feedback'],
+                    ['label' => 'Map Feedback', 'icon' => 'fas fa-map-pin', 'path' => '/MapFeedback'],
+                    ['label' => 'Testimoni Masuk', 'icon' => 'fas fa-inbox', 'path' => '/TestimoniMasuk'],
+                ],
+            ],
+            ['label' => 'Permintaan Demo', 'icon' => 'fas fa-calendar-check', 'path' => '/DemoList'],
+        ],
+        'PENGATURAN' => [
+            ['label' => 'Navbar', 'icon' => 'fas fa-bars', 'path' => '/Navbar'],
+            ['label' => 'Footer', 'icon' => 'fas fa-grip-lines', 'path' => '/Footer'],
+            ['label' => 'Pop Up', 'icon' => 'fas fa-window-restore', 'path' => '/Popup'],
+            ['label' => 'WhatsApp', 'icon' => 'fab fa-whatsapp', 'path' => '/Whatsapp'],
+        ],
+    ];
+
+    if (Auth::user()->level === 'Admin') {
+        $sections['AKUN'] = [
+            ['label' => 'Pengguna', 'icon' => 'fas fa-users-cog', 'path' => '/Users'],
+        ];
+    }
+
+    $isActive = fn (string $path): bool => request()->is(ltrim($path, '/'), ltrim($path, '/') . '/*');
+@endphp
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-        <img src={{ asset('adminlte/dist/img/AdminLTELogo.png') }} alt="Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Admin NCI-Medismart</span>
+    <!-- Brand -->
+    <a href="/LandingSlider" class="brand-link">
+        <img src="{{ asset('assets/img/logo NCI-01.png') }}" alt="NCI Medismart"
+            class="brand-image img-circle elevation-3 bg-white" style="opacity: .95">
+        <span class="brand-text font-weight-light">NCI Medismart</span>
     </a>
 
-    <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-                <li class="nav-header">HALAMAN</li>
+        <nav class="mt-2" aria-label="Menu admin">
+            <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent nav-compact" data-widget="treeview"
+                role="menu" data-accordion="true">
+                @foreach ($sections as $header => $entries)
+                    <li class="nav-header">{{ $header }}</li>
 
-                {{-- Landing Page --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Landing Page
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/LandingSlider" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Slider</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/LandingClient" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Client</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Experience" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Experience</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/ExperienceList" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Experience List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/LandingMap" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Map</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/LandingVideo" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Video</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End Landing Page --}}
-
-                {{-- Product --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
-                        <p>
-                            Product
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/Product" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/DetailProduct" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Detail Product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/ClientProduct" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Client Product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/AdvantageProduct" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Advantage Product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/AdvantageListProduct" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Advantage List Product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Sparasi" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Sparasi Product</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End Product --}}
-
-                {{-- Modul --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
-                        <p>
-                            Modul
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/ModulProduct" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Modul Product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/AdvantageModulProduct" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Advantage Modul</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/FasilitiesModulProduct" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Fasilities Modul</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/ImageModulProduct" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Image Modul</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End Modul --}}
-
-                {{-- Healthcare Solution --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tree"></i>
-                        <p>
-                            Healthcare Solution
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/AboutUs" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>About Us</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End Healthcare Solution --}}
-
-                {{-- Testimoni --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>
-                            Testimoni
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/Feedback" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Feedback</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/MapFeedback" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Map</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End Testimoni --}}
-
-                {{-- Blog --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Blog
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/Article" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Article</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End Blog --}}
-
-                {{-- Header --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-plus-square"></i>
-                        <p>
-                            Navbar
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/Navbar" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Navbar</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End Header --}}
-
-                {{-- Footer --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-plus-square"></i>
-                        <p>
-                            Footer
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/Footer" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Footer</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End Footer --}}
-
-                {{-- Demo --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-plus-square"></i>
-                        <p>
-                            Demo
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/DemoList" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Demo</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End Demo --}}
-
-                {{-- CTA --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-plus-square"></i>
-                        <p>
-                            CTA
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/CTA" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>CTA</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End CTA --}}
-
-                {{-- WhatsApp --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-plus-square"></i>
-                        <p>
-                            WhatsApp
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/Whatsapp" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>WhatsApp</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End WhatsApp --}}
-
-                {{-- Pop Up --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-plus-square"></i>
-                        <p>
-                            Pop Up
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/Popup" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Pop Up</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- End Pop up --}}
-
-                {{-- Users (Admin only) --}}
-                @if (Auth::user()->level === 'Admin')
-                    <li class="nav-header">AKUN</li>
-                    <li class="nav-item">
-                        <a href="/Users" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>Pengguna</p>
-                        </a>
-                    </li>
-                @endif
-                {{-- End Users --}}
+                    @foreach ($entries as $entry)
+                        @if (isset($entry['children']))
+                            @php($open = collect($entry['children'])->contains(fn ($child) => $isActive($child['path'])))
+                            <li class="nav-item {{ $open ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link {{ $open ? 'active' : '' }}">
+                                    <i class="nav-icon {{ $entry['icon'] }}"></i>
+                                    <p>
+                                        {{ $entry['label'] }}
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @foreach ($entry['children'] as $child)
+                                        <li class="nav-item">
+                                            <a href="{{ $child['path'] }}"
+                                                class="nav-link {{ $isActive($child['path']) ? 'active' : '' }}">
+                                                <i class="nav-icon {{ $child['icon'] }}"></i>
+                                                <p>{{ $child['label'] }}</p>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a href="{{ $entry['path'] }}"
+                                    class="nav-link {{ $isActive($entry['path']) ? 'active' : '' }}">
+                                    <i class="nav-icon {{ $entry['icon'] }}"></i>
+                                    <p>{{ $entry['label'] }}</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endforeach
+                @endforeach
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
 </aside>
