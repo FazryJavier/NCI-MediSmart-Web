@@ -43,9 +43,13 @@
                     @endif
                 </div>
                 @if ($heroImage)
-                    {{-- Framed: uploaded photos may have their own background, the frame keeps them tidy. --}}
-                    <div class="aspect-[16/10] w-full overflow-hidden rounded-2xl border-4 border-white/70 bg-white shadow-xl">
-                        <img src="{{ $img($heroImage->image) }}" alt="{{ $modul->title }}" class="h-full w-full object-contain"
+                    {{--
+                        No white box: a transparent PNG sits directly on the green, with a shadow that follows its
+                        shape. An image with its own background shows as a rounded card at its real size.
+                    --}}
+                    <div class="flex justify-center">
+                        <img src="{{ $img($heroImage->image) }}" alt="{{ $modul->title }}"
+                            class="max-h-[22rem] w-auto max-w-full rounded-2xl object-contain drop-shadow-2xl"
                             fetchpriority="high" decoding="async">
                     </div>
                 @endif
