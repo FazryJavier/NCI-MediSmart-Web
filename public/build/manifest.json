@@ -24,12 +24,12 @@
     "src": "node_modules/@fontsource/be-vietnam-pro/files/be-vietnam-pro-latin-700-normal.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-a932502b.css",
+    "file": "assets/app-8baf0626.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/app.js": {
-    "file": "assets/app-8f96c1fb.js",
+    "file": "assets/app-0e669872.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
