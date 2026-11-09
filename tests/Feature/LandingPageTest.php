@@ -242,6 +242,9 @@ class LandingPageTest extends TestCase
         // Advantages headed by the module title, in divider columns.
         $this->assertStringContainsString('text-ink sm:text-3xl">Modul Rawat Jalan</h2>', $html);
         $this->assertStringContainsString('md:[&:nth-child(3n+2)]:border-x', $html);
+        // Advantage icons keep their original colours.
+        $this->assertStringContainsString('max-w-[72px] object-contain"', $html);
+        $this->assertStringNotContainsString('grayscale', $html);
         $this->assertStringContainsString('Fasilitas Modul Rawat Jalan', $html);
         // Testimonial band is white (design).
         $this->assertStringContainsString('<section class="reveal bg-white py-12 sm:py-14">', $html);
